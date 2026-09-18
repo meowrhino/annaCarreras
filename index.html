@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>annaCarreras — visor de contenido</title>
+<meta name="robots" content="noindex">
+<style>
+  /* Lo mínimo para poder leer. Esto NO es el diseño del sitio. */
+  :root { color-scheme: light dark; }
+  body { font: 16px/1.55 system-ui, sans-serif; max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 6rem; }
+  img, video, iframe { max-width: 100%; height: auto; display: block; }
+  iframe { aspect-ratio: 16/9; height: auto; width: 100%; border: 0; }
+  a { color: inherit; }
+  hr { border: 0; border-top: 1px solid; opacity: .2; margin: 2rem 0; }
+  .meta { opacity: .6; font-size: .85rem; }
+  .grid { list-style: none; padding: 0; display: grid; gap: 1.5rem; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr)); }
+  .grid a { text-decoration: none; display: block; }
+  .grid img { aspect-ratio: 16/9; object-fit: cover; width: 100%; }
+  figure { margin: 1.5rem 0; }
+  blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid; }
+  blockquote cite { display: block; font-size: .85rem; opacity: .7; font-style: normal; margin-top: .5rem; }
+  .credits { font-size: .85rem; opacity: .75; }
+  .credits div { margin: .15rem 0; }
+  .tweet { font-size: .9rem; }
+  .missing { color: #c00; font-weight: bold; }
+  nav { margin-bottom: 2rem; font-size: .9rem; }
+  nav a { margin-right: 1rem; }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#/">Work</a>
+  <a href="#/about">About</a>
+  <a href="https://github.com/meowrhino/annaCarreras">repo</a>
+</nav>
+
+<main id="app">Cargando…</main>
+
+<script>
+// Los `src` de los JSON son root-absolutos (/assets/...). En GitHub Pages el
+// sitio cuelga de /annaCarreras/, así que hay que prefijarlos con la base.
+const BASE = location.pathname.replace(/\/[^/]*$/, '');
+const app = document.getElementById('app');
+
+const asset = (src) => BASE + src;
+const get = (path) => fetch(BASE + '/' + path).then(r => {
+  if (!r.ok) throw new Error(path + ' → HTTP ' + r.status);
+  return r.json();
+});
+
+const el = (tag, html) => { const n = document.createElement(tag); if (html != null) n.innerHTML = html; return n; };
+
+function renderBlock(b) {
+  switch (b.type) {
+    case 'text':    return el('p', b.html);
+    case 'heading': return el('h' + b.level, b.html);
+    case 'list': {
+      const l = el(b.ordered ? 'ol' : 'ul');
+      b.items.forEach(i => l.append(el('li', i)));
+      return l;
+    }
+    case 'image': {
+      const f = el('figure');
+      const img = new Image();
+      img.src = asset(b.src);
+      img.alt = b.alt || '';
+      img.loading = 'lazy';
+      if (b.width) { img.width = b.width; img.height = b.height; }
+      img.onerror = () => f.prepend(el('p', '<span class="missing">falta: ' + b.src + '</span>'));
+      f.append(img);
+      if (b.caption) f.append(el('figcaption', b.caption));
+      return f;
+    }
+    case 'video': {
+      const v = document.createElement('video');
+      v.src = asset(b.src); v.controls = true; v.preload = 'metadata';
+      return v;
+    }
+    case 'quote': {
+      const q = el('blockquote', b.html);
+      if (b.cite) q.append(el('cite', b.cite));
+      return q;
+    }
+    case 'embed': {
+      if (b.provider === 'youtube' || b.provider === 'vimeo') {
+        const f = el('figure');
+        const i = document.createElement('iframe');
+        i.src = b.provider === 'youtube'
+          ? 'https://www.youtube-nocookie.com/embed/' + b.id
+          : 'https://player.vimeo.com/video/' + b.id;
+        i.loading = 'lazy';
+        i.allowFullscreen = true;
+        i.title = b.title || b.provider;
+        f.append(i);
+        if (b.title) f.append(el('figcaption', '<span class="meta">' + b.title + '</span>'));
+        return f;
+      }
+      // X/Twitter: el widget ya no carga de forma fiable, se pinta el fallback
+      const q = el('blockquote');
+      q.className = 'tweet';
+      if (b.text) q.append(el('p', b.text));
+      q.append(el('cite', '<a href="' + b.url + '">' + b.url + '</a>'));
+      return q;
+    }
+    default:
+      return el('pre', JSON.stringify(b, null, 2));
+  }
+}
+
+function renderIndex(index) {
+  document.title = 'annaCarreras — ' + index.length + ' proyectos';
+  app.replaceChildren(
+    el('h1', 'Work'),
+    el('p', '<span class="meta">' + index.length + ' proyectos · visor de verificación del contenido scrapeado</span>')
+  );
+  const ul = el('ul'); ul.className = 'grid';
+  index.forEach(p => {
+    const li = el('li');
+    const a = el('a');
+    a.href = '#/p/' + p.slug;
+    if (p.cover) {
+      const img = new Image();
+      img.src = asset(p.cover.src); img.alt = p.cover.alt || ''; img.loading = 'lazy';
+      a.append(img);
+    }
+    a.append(el('strong', p.title));
+    a.append(el('div', '<span class="meta">' + p.year + ' · ' + p.categories.join(', ') + '</span>'));
+    li.append(a);
+    ul.append(li);
+  });
+  app.append(ul);
+}
+
+function renderProject(p) {
+  document.title = p.title;
+  app.replaceChildren(
+    el('p', '<a href="#/">← Work</a>'),
+    el('h1', p.title),
+    el('p', '<span class="meta">' + p.year + ' · ' + p.categories.join(', ') +
+       (p.tags.length ? ' · ' + p.tags.join(' ') : '') + '</span>')
+  );
+  if (p.summary) app.append(el('p', '<em>' + p.summary + '</em>'));
+  p.blocks.forEach(b => app.append(renderBlock(b)));
+  if (p.credits.length) {
+    app.append(el('hr'));
+    const c = el('div'); c.className = 'credits';
+    p.credits.forEach(line => {
+      c.append(el('div', (line.label ? '<strong>' + line.label + ':</strong> ' : '') + line.html));
+    });
+    app.append(c);
+  }
+  app.append(el('hr'), el('p', '<span class="meta">Original: <a href="' + p.source + '">' + p.source + '</a></span>'));
+}
+
+function renderAbout(a) {
+  document.title = 'About';
+  app.replaceChildren(el('h1', 'About'));
+  a.bio.forEach(h => app.append(el('p', h)));
+  a.cv.forEach(s => {
+    app.append(el('h2', s.title));
+    if (!s.entries.length) { app.append(el('p', '<span class="meta">(vacío en origen)</span>')); return; }
+    const ul = el('ul');
+    s.entries.forEach(e => ul.append(el('li', e.html)));
+    app.append(ul);
+  });
+}
+
+function route() {
+  const hash = location.hash.slice(1) || '/';
+  const m = hash.match(/^\/p\/(.+)$/);
+  app.textContent = 'Cargando…';
+  const job = m ? get('content/projects/' + m[1] + '.json').then(renderProject)
+    : hash === '/about' ? get('content/about.json').then(renderAbout)
+    : get('content/projects/index.json').then(renderIndex);
+  job.catch(e => app.replaceChildren(el('p', '<span class="missing">' + e.message + '</span>')));
+  scrollTo(0, 0);
+}
+
+addEventListener('hashchange', route);
+route();
+</script>
+</body>
+</html>
