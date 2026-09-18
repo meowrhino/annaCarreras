@@ -20,6 +20,29 @@ Los `src` de los JSON son rutas root-absolutas (`/assets/projects/...`), así qu
 basta con servir `assets/` desde la raíz pública (en Astro/Next: mover o
 enlazar la carpeta dentro de `public/`).
 
+**Ojo con el base path:** si el sitio no cuelga de la raíz del dominio —como en
+GitHub Pages, que sirve desde `/annaCarreras/`— hay que prefijar esos `src`. En
+Astro es `import.meta.env.BASE_URL`; en Next, `basePath`. El visor lo hace a
+mano en `index.html`.
+
+## Visor de contenido
+
+`index.html` es una página única, con rutas por hash, para revisar de un vistazo
+que el scraping salió bien: grid de proyectos, detalle con todos los tipos de
+bloque y el about.
+
+<https://meowrhino.github.io/annaCarreras/>
+
+No es el diseño del sitio ni pretende serlo: lleva el CSS mínimo para poder
+leer. Cuando montemos el front encima, este fichero se sustituye (y conviene
+cambiar el origen de Pages a GitHub Actions para servir el build).
+
+Para verlo en local, desde la raíz del repo:
+
+```bash
+python3 -m http.server 8765
+```
+
 ## Regenerar
 
 ```bash
@@ -113,5 +136,10 @@ línea entera, año incluido.
   embebido, mp4 local, citas, hilos de tuits, créditos extensos).
 - La sección *Upcoming exhibitions* del about está vacía en origen: se mantiene
   para poder rellenarla.
+- `tops-m` no tiene `summary`: el post original no tiene ni un párrafo de texto,
+  solo medios, así que WordPress no genera extracto.
+- El `summary` de `tesi` es el extracto automático de WordPress y arrastra el
+  texto de la cita inicial y un `[…]` final. Si se va a usar en listados o en
+  las `<meta>`, conviene reescribirlo a mano.
 - Los GIFs de `arrels` son pesados (~6 MB cada uno); conviene convertirlos a
   vídeo o WebP en el build.
