@@ -1,0 +1,116 @@
+{
+  "slug": "hamelin",
+  "title": "Hamelin",
+  "year": 2008,
+  "date": "2012-02-13",
+  "summary": "Hamelin is an interactive module for AD Out of Home where participants are immersed inside the advertisement. The module uses sensors and image processing to let users experience and full-body play with specially ad hoc designed games.",
+  "categories": [
+    "advertising",
+    "installation"
+  ],
+  "tags": [
+    "fullbody",
+    "image_processing",
+    "opencv"
+  ],
+  "cover": {
+    "src": "/assets/projects/hamelin/hamelin_0.jpg",
+    "width": 900,
+    "height": 506,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "html": "<strong>Hamelin</strong> is an outdoor interactive display consisting in a cubic structure lacking the two side faces of the cube. Measuring 3m wide, 2,5m long and 3m high, it is designed to be assembled and set on a fixed location –a shopping center, for example- to be used as an advertising medium for different campaigns."
+    },
+    {
+      "type": "text",
+      "html": "People have access into the structure through the open sides of the cube. Once inside the module, they can see the outline of their body traced on a plasma screen, as if it was a kind of mirror. The game starts as the participants interact with the module by moving themselves, walking, jumping, gesturing, etc. and watching their movements reflected on the screen in real time and scale. Thus, this full-body interaction is used in <strong>Hamelin</strong> to integrate the participants into the advertisement itself and to create recreational, amusing experiences."
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/hamelin/hamelin_1.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/hamelin/hamelin_2.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "By8kajiE4rU",
+      "url": "https://www.youtube.com/watch?v=By8kajiE4rU",
+      "title": "La Sexta - Hamelin El Muro Infernal"
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "fw8950OeGvg",
+      "url": "https://www.youtube.com/watch?v=fw8950OeGvg",
+      "title": "Kandoo de Dodot - Hamelin"
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "QhpIrmLq0FA",
+      "url": "https://www.youtube.com/watch?v=QhpIrmLq0FA",
+      "title": "Hamelin - La Sexta Bones"
+    },
+    {
+      "type": "embed",
+      "provider": "vimeo",
+      "id": "3237318",
+      "url": "https://vimeo.com/3237318",
+      "title": "Raimat"
+    },
+    {
+      "type": "embed",
+      "provider": "vimeo",
+      "id": "3161914",
+      "url": "https://vimeo.com/3161914",
+      "title": "Cerveza Alhambra"
+    }
+  ],
+  "credits": [
+    {
+      "label": "Clients",
+      "html": "La Sexta, Kandoo, Cervezas Alhambra, Raimat, Generalitat de Catalunya."
+    },
+    {
+      "label": "Developed at",
+      "html": "Cuatic"
+    },
+    {
+      "label": "Creative Director",
+      "html": "Natalia Rojas."
+    },
+    {
+      "label": "Project initial development",
+      "html": "18.02.2008 – 07.07.2008"
+    },
+    {
+      "label": "Ad-games development",
+      "html": "07.07.2008 – 31.01.2009."
+    },
+    {
+      "label": "Project running",
+      "html": "07.07.2008 – 31.01.2009 at La Illa Diagonal."
+    },
+    {
+      "label": "Tasks",
+      "html": "sensors, image processing, coding, technology director, on-site installation."
+    },
+    {
+      "label": "Photos",
+      "html": "Natalia Rojas."
+    }
+  ],
+  "source": "https://www.annacarreras.com/hamelin/"
+}

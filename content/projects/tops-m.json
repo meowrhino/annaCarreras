@@ -1,0 +1,165 @@
+{
+  "slug": "tops-m",
+  "title": "TOPS-M",
+  "year": 2022,
+  "date": "2022-04-30",
+  "summary": "",
+  "categories": [
+    "installation",
+    "museum",
+    "performance"
+  ],
+  "tags": [
+    "arduino",
+    "generative",
+    "interactive",
+    "livecoding"
+  ],
+  "cover": {
+    "src": "/assets/projects/tops-m/tops_m_1.jpg",
+    "width": 900,
+    "height": 506,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "5T07KivJbaA",
+      "url": "https://www.youtube.com/watch?v=5T07KivJbaA",
+      "title": "Anna Carreras | Ljudmila Artist-In-Residence"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_22.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_03.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_04.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "video",
+      "src": "/assets/projects/tops-m/tops_visuals_maquina.mp4"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_05.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_20.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_19.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_visuals.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_17.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_16.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_12.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_18.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_08.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_11.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_07.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_06.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_13.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/tops_m_09.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/tops-m/ljudmila_studio_1.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  ],
+  "credits": [],
+  "source": "https://www.annacarreras.com/tops-m/"
+}

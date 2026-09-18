@@ -1,0 +1,220 @@
+{
+  "slug": "trossets",
+  "title": "“Trossets” at ArtBlocks curated",
+  "year": 2021,
+  "date": "2021-10-21",
+  "summary": "Trossets explores the emergence of diversity. Combining twelve construction blocks the system generates endless patterns with a unique result each iteration. Trossets /trusɛts/ means parts, blocks, pieces and it’s my particular homage to a classical generative system, the multiscale Truchet tiles. The systems plays an interlocking blocks game creating unexpected drawings with colors borrowed from […]",
+  "categories": [
+    "generative"
+  ],
+  "tags": [
+    "code",
+    "diversity",
+    "generative"
+  ],
+  "cover": {
+    "src": "/assets/projects/trossets/trossets_flyer1.png",
+    "width": 900,
+    "height": 506,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "html": "Trossets explores the emergence of diversity. Combining twelve construction blocks the system generates endless patterns with a unique result each iteration. Trossets /trusɛts/ means parts, blocks, pieces and it’s my particular homage to a classical generative system, the multiscale Truchet tiles. The systems plays an interlocking blocks game creating unexpected drawings with colors borrowed from the Mediterranean."
+    },
+    {
+      "type": "quote",
+      "html": "<a href=\"https://www.artblocks.io/project/147\">Trossets</a>",
+      "cite": "1.000 editions of a long-form generative art project and algorithm, hosted on the Ethereum blockchain.<br>ArtBlocks Curated season 4."
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/trossets/trossets_flyer2.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "text",
+      "html": "You can browse Trossets images on <a href=\"https://filter-blocks.netlify.app/project/147\">Filter Blocks</a> or <a href=\"https://archipelago.art/collections/trossets\">Archipelago</a>, which have great tools for filtering images by traits."
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/trossets/trossets_flyer3.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "text",
+      "html": "And you can collect them on the secondary market through <a href=\"https://opensea.io/collection/trossets-by-anna-carreras\">OpenSea</a>."
+    },
+    {
+      "type": "quote",
+      "html": "prints"
+    },
+    {
+      "type": "text",
+      "html": "If you own one of the minted 1.000 Trossets token, and can prove wallet ownership, you are eligible to <a href=\"https://www.annacarreras.com/trossets-prints/\">purchase</a> a limited edition, archival-quality print signed and dated by the artist, corresponding to the token # that you own."
+    },
+    {
+      "type": "text",
+      "html": "Details to <a href=\"https://www.annacarreras.com/trossets-prints/\">order your print here</a>."
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "bNONmWUsA70",
+      "url": "https://www.youtube.com/watch?v=bNONmWUsA70",
+      "title": "Episode 26: Art Blocks After Dinner Mints w/ Anna Carreras"
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "gEcKnsJQNYg",
+      "url": "https://www.youtube.com/watch?v=gEcKnsJQNYg",
+      "title": "ADM: Behind the Code | Trossets by Anna Carreras with aramunu"
+    },
+    {
+      "type": "quote",
+      "html": "inspiration"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1436802549022138375",
+      "url": "https://twitter.com/carreras_anna/status/1436802549022138375",
+      "text": "#inspiration for Trossets color: Industria #18 #57 pic.twitter.com/PxtKFjBJI3— Anna Carreras (@carreras_anna) September 11, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1437690513017163779",
+      "url": "https://twitter.com/carreras_anna/status/1437690513017163779",
+      "text": "#inspiration for Trossets color: Paella#fakepaella #51 #146 #realpaella pic.twitter.com/Mkv4IextDC— Anna Carreras (@carreras_anna) September 14, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1447290189592866816",
+      "url": "https://twitter.com/carreras_anna/status/1447290189592866816",
+      "text": "#inspiration Trossets color: Ibiza#aigua i #pi #150 #154 #528 pic.twitter.com/aiYUgSZCyt— Anna Carreras (@carreras_anna) October 10, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1440041481402609673",
+      "url": "https://twitter.com/carreras_anna/status/1440041481402609673",
+      "text": "#inspiration for Trossets color: Buganvilea #888 #627 #874 pic.twitter.com/7QcVtaxINO— Anna Carreras (@carreras_anna) September 20, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1440332256648712197",
+      "url": "https://twitter.com/carreras_anna/status/1440332256648712197",
+      "text": "la #barca #512 #515 pic.twitter.com/XcJ9GHZVmm— Anna Carreras (@carreras_anna) September 21, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1442948407685906433",
+      "url": "https://twitter.com/carreras_anna/status/1442948407685906433",
+      "text": "\"barraca\" is the shelter near the sea where you keep \"la barca\" and that's why this two color palettes are complementary #191 #276 pic.twitter.com/Ml4wvEOrc0— Anna Carreras (@carreras_anna) September 28, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1443874462416490504",
+      "url": "https://twitter.com/carreras_anna/status/1443874462416490504",
+      "text": "#inspiration Trossets color: Tortilla eggplant #tortilla and potato #tortilla #514 #654 #349 pic.twitter.com/q7o8dMt5WC— Anna Carreras (@carreras_anna) October 1, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1448590984409985025",
+      "url": "https://twitter.com/carreras_anna/status/1448590984409985025",
+      "text": "#inspiration Trossets color: Salines This ones are specially inspired by a place and a song. A song by @Antonia_Font \"… i enfila sa carretera des far de ses Salines\"#carretera #903 #179 #168 pic.twitter.com/OLiQkDIzs6— Anna Carreras (@carreras_anna) October 14, 2021"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1581401060618678272",
+      "url": "https://twitter.com/carreras_anna/status/1581401060618678272",
+      "text": "#inspiration for Trossets color Mallorca serra i mar #7 #171 #224 pic.twitter.com/6vf7d339GK— Anna Carreras (@carreras_anna) October 15, 2022"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1583410479237500928",
+      "url": "https://twitter.com/carreras_anna/status/1583410479237500928",
+      "text": "#inspiration for Trossets color Beget ancient \"romànic\" church, #443, #86, bridge and village pic.twitter.com/DWlOtgD2Gk— Anna Carreras (@carreras_anna) October 21, 2022"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1580827298206740480",
+      "url": "https://twitter.com/carreras_anna/status/1580827298206740480",
+      "text": null
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1445339391845617667",
+      "url": "https://twitter.com/carreras_anna/status/1445339391845617667",
+      "text": "#inspiration Trossets color: Alzines#alzina #196 #358 #liquens pic.twitter.com/ujBGBYdFMG— Anna Carreras (@carreras_anna) October 5, 2021"
+    },
+    {
+      "type": "quote",
+      "html": "fun"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1698249507534967290",
+      "url": "https://twitter.com/carreras_anna/status/1698249507534967290",
+      "text": "Today is the day to reveal some truth. Apologies for misleading you two years ago. Join me as we uncover some secrets while meeting Garrofeta la fallera, renowned chef Adrián Ferrán, and a wild boar named Pata Negra Stay tuned! The first story will be released in just 1 hour ⏳ pic.twitter.com/jHd7qVvKfg— Anna Carreras (@carreras_anna) September 3, 2023"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1698266720157532200",
+      "url": "https://twitter.com/carreras_anna/status/1698266720157532200",
+      "text": "This is the true true true story of Toñi León and Riachuelo de Llovizna, who nurtured the vibrant colors of Buganvilea's Trossets. My apologies for deceiving you two years ago: https://t.co/VEfVcTkMzC— Anna Carreras (@carreras_anna) September 3, 2023"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1701611741703188564",
+      "url": "https://twitter.com/carreras_anna/status/1701611741703188564",
+      "text": null
+    },
+    {
+      "type": "quote",
+      "html": "media"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1583027543627960321",
+      "url": "https://twitter.com/carreras_anna/status/1583027543627960321",
+      "text": null
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1516476724648853508",
+      "url": "https://twitter.com/artblocks_io/status/1516476724648853508",
+      "text": "Visit @dartpavilion during the Venice Biennale to see work by @carreras_anna and @simondemai Apr 23 – Jun 20 Tu – Sun 11am – 7pm Decentral Art Pavilion – Free Admission Palazzo Giustinian Lolin Calle Giustinian, 2893, 30124 Venezia VE, Italy pic.twitter.com/VQznS0ob32— Art Blocks (@artblocks_io) April 19, 2022"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1515337377149067271",
+      "url": "https://twitter.com/artblocks_io/status/1515337377149067271",
+      "text": "We are very excited to share that Art Blocks will be participating in the Venice Biennale (@la_Biennale ) This event is the Olympics of the art world, and we plan to make a statement as the champions of the next evolution in art pic.twitter.com/Vcjm67EInl— Art Blocks (@artblocks_io) April 16, 2022"
+    }
+  ],
+  "credits": [],
+  "source": "https://www.annacarreras.com/trossets/"
+}

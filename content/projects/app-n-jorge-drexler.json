@@ -1,0 +1,139 @@
+{
+  "slug": "app-n-jorge-drexler",
+  "title": "Android app “n” by Jorge Drexler",
+  "year": 2012,
+  "date": "2013-03-07",
+  "summary": "Jorge Drexler “n” represents a revolutionary approach to songwriting, in which, for the first time, songs are editable, and listeners become users. “n” it’s an app for smartphones and tablets where users control the order of the lyrics, the instrumentation and the artists singing the vocals.",
+  "categories": [
+    "mobile"
+  ],
+  "tags": [
+    "android",
+    "app"
+  ],
+  "cover": {
+    "src": "/assets/projects/app-n-jorge-drexler/app_n_matriz.jpg",
+    "width": 1200,
+    "height": 696,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "image",
+      "src": "/assets/projects/app-n-jorge-drexler/app_n_intro.jpg",
+      "width": 1200,
+      "height": 696,
+      "alt": ""
+    },
+    {
+      "type": "text",
+      "html": "<strong>“n”</strong> represents a revolutionary approach to songwriting, in which, for the first time, songs are editable, and listeners become users. <strong>“n”</strong> contains three original songs: <strong>“n1”</strong>, <strong>“n2”</strong> and <strong>“n3”</strong>; each is a unique interactive musical experience."
+    },
+    {
+      "type": "text",
+      "html": "<strong>“n1”</strong> called “Habitación 316” (also playable in English as “Room 316”), explores what Drexler calls “combinatory poetry.” Each time the song starts, there is a new combination spontaneous text. As the song unfolds, users can play with the lyrics, freely arranging the verses and choruses Drexler sings. One can also choose, with touch of a button at any point in the song, to hear the song acoustic or with a full band. Touching the pause button, the user can see written the lyrics of the song as she or he has ordered it: what has already played as well as what remains to be combined. An almost infinite number of versions are possible."
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "EvxSWpFCFkM",
+      "url": "https://www.youtube.com/watch?v=EvxSWpFCFkM",
+      "title": "Jorge Drexler - Habitación 316 (n1)"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/app-n-jorge-drexler/app_n_1.jpg",
+      "width": 1200,
+      "height": 696,
+      "alt": ""
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "2k1Ga13K5UY",
+      "url": "https://www.youtube.com/watch?v=2k1Ga13K5UY",
+      "title": "Jorge Drexler introduces n1"
+    },
+    {
+      "type": "text",
+      "html": "<strong>“n2”</strong> entitled “Driftwood” (“Madera de Deriva”) is a song about drifting through life, and in the app, listeners must drift to experience the song. Drexler recorded the tracks with some 80 musicians from la Orquesta Sinfónica de Euskadi (the Basque Country Symphonic Orchestra). Once users activate location services within the app, they can move throughout a place, unlocking, adding and subtracting sections of the orchestra. The experience is something like music-arrangement-by-scavenger hunt: at any given moment, the app tells the user the location of the next instrument of section of the orchestra that can be added."
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "pOWHmurlpKM",
+      "url": "https://www.youtube.com/watch?v=pOWHmurlpKM",
+      "title": "Jorge Drexler introduces n2"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/app-n-jorge-drexler/app_n_2.jpg",
+      "width": 1200,
+      "height": 696,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/app-n-jorge-drexler/app_n_2_2.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "text",
+      "html": "To create <strong>“n3”</strong>, “Décima a la Décima” (“Décima to the Power of Ten”), Drexler invited an international and stylistically diverse group of distinguished singers—including René Pérez from Calle 13 (Puerto Rico), Kiko Veneno (Spain), Xoel López (Spain), Vitor Ramil (Brazil), Fernando Cabrera (Argentina), Martín Buscaglia (Uruguay), Kevin Johansen (Argentina / U.S.), Daniel Drexler (Uruguay) and Alex Ferreira (Dominican Republic)—to contribute vocals. Users can choose which of the ten singers sings each verse."
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "AO1pzr_KlkM",
+      "url": "https://www.youtube.com/watch?v=AO1pzr_KlkM",
+      "title": "Jorge Drexler presenta n3 con \"Décima a la décima\""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/app-n-jorge-drexler/app_n_3.jpg",
+      "width": 1200,
+      "height": 696,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/app-n-jorge-drexler/app_n_develop.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  ],
+  "credits": [
+    {
+      "label": "Client",
+      "html": "Warner Music, Samsung."
+    },
+    {
+      "label": "Developed at",
+      "html": "<a href=\"http://reactable.com/\">Reactable Systems</a>."
+    },
+    {
+      "label": "Project development",
+      "html": "01.08.2012 – 29.11.2012"
+    },
+    {
+      "label": "Project running",
+      "html": "29.11.2012 – currently"
+    },
+    {
+      "label": "Tasks",
+      "html": "project manager and coding."
+    },
+    {
+      "label": "Photo",
+      "html": "Jacobo Begareche."
+    },
+    {
+      "label": "Videos",
+      "html": "Wakeapp"
+    }
+  ],
+  "source": "https://www.annacarreras.com/app-n-jorge-drexler/"
+}

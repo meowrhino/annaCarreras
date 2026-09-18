@@ -1,0 +1,127 @@
+{
+  "slug": "kit-libertad-expresion",
+  "title": "Kit de Libertad de Expresión (KLE)",
+  "year": 2013,
+  "date": "2013-05-20",
+  "summary": "A portable digital interactive banner that allows people from all over the world to participate to remote protests by sending and displaying text messages in public space",
+  "categories": [
+    "do_it_yourself",
+    "event",
+    "performance"
+  ],
+  "tags": [
+    "android",
+    "arduino",
+    "devart",
+    "diwo",
+    "diy",
+    "medialab",
+    "open"
+  ],
+  "cover": {
+    "src": "/assets/projects/kit-libertad-expresion/kle_project2.jpg",
+    "width": 900,
+    "height": 550,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "html": "The <strong>Freedom of Speech Kit</strong> (<strong>Kit de Libertad de Expresión</strong> in Spanish) consist of an electronic portable banner where a user can display messages either using a local physical interface, such a keyboard, or remote interfaces using social networks through internet. Hence there are different entry interfaces: a physical one, so anyone close to the banner can send messages to it, and another one via internet, thus anyone in the world, using a cell phone, a computer or other devices connected to the cloud can send messages to the banner as well."
+    },
+    {
+      "type": "text",
+      "html": "The device is built with a series of textiles (both conductors and insulators of electricity) and LEDs, together with a microprocessor and communication modules. All software and hardware design is being documented in an instructions manual, so anyone will be able to build their own kit: a Do-It-Yourself kit. It is delivered under copyleft license, so users are able to improve the design and adapt it to their local circumstances."
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/kit-libertad-expresion/kle_visualization.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    },
+    {
+      "type": "embed",
+      "provider": "vimeo",
+      "id": "70939001",
+      "url": "https://vimeo.com/70939001",
+      "title": "La libertad de expresión tiene forma de LED"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/kit-libertad-expresion/kle_work_03.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/kit-libertad-expresion/KLE_prototype.png",
+      "width": 900,
+      "height": 510,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/kit-libertad-expresion/kle_diy.jpg",
+      "width": 900,
+      "height": 481,
+      "alt": ""
+    }
+  ],
+  "credits": [
+    {
+      "label": null,
+      "html": "<a href=\"http://freedomofspeechproject.org/\">Project web page</a>"
+    },
+    {
+      "label": "Developed at",
+      "html": "<a href=\"http://medialab-prado.es/article/future_tools\">Interactivos’13 Medialab Prado</a>."
+    },
+    {
+      "label": "Project develoment",
+      "html": "10.04.2013 – 27.04.2013"
+    },
+    {
+      "label": "Project running",
+      "html": "27.04.2013 – currently"
+    },
+    {
+      "label": "Tasks",
+      "html": "idea, desing circuits, prototiping, sewing soft hardware and coding."
+    },
+    {
+      "label": null,
+      "html": "<a href=\"http://we-make-money-not-art.com/archives/2013/05/kit-de-libertad-de-expresion-f.php\">Article at We make money not art</a>"
+    },
+    {
+      "label": null,
+      "html": "<a href=\"http://www.yorokobu.es/yorokobumayo2013\">Article at Yorokobu nº40 page 51</a>"
+    },
+    {
+      "label": null,
+      "html": "<a href=\"http://www.wired.co.uk/news/archive/2013-05/17/freedom-of-expression-kit\">Article at Wired UK</a>"
+    },
+    {
+      "label": "Promoters",
+      "html": "Etc Inventions (Chema Blanco, Anna Carreras) and María Solé Bravo."
+    },
+    {
+      "label": "Collaborators",
+      "html": "Gonzalo Iglesias, Rafael Fernandes, Carlos Fernández, Daniel Alonso, Sonya Ricketts, Andrea Rosales, Soraya Nasser, Echedey Lorenzo, Miguel Fernández, Eva Rueda &amp; Christian Rojo."
+    },
+    {
+      "label": "Photos",
+      "html": "Chema Blanco, María Solé."
+    },
+    {
+      "label": "Video",
+      "html": "Carlos Fernandez"
+    },
+    {
+      "label": "Details at",
+      "html": "<a href=\"https://devart.withgoogle.com/#/project/18103025\">Google DEV ART</a>"
+    }
+  ],
+  "source": "https://www.annacarreras.com/kit-libertad-expresion/"
+}

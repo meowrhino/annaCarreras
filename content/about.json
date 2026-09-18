@@ -1,0 +1,323 @@
+{
+  "title": "About",
+  "bio": [
+    "Anna Carreras (Barcelona, 1979) is a creative coder and digital artist interested in experimentation on interactive communication focusing her work on the use of generative algorithms, creative code and interactive technology as a means of communication and an experience generator.",
+    "She is interested on complexity that emerges from small simple behaviors, from the balance between order and chaos. She tries to capture the diversity and richness of complexity working with generative algorithms and visuals.",
+    "She develops interactive installations to explore new emerging narratives encouraging the audience to participate and promoting their collaboration. Interaction adds the human diverse behavior to the experience fostering richer outcomes.",
+    "She holds two MSc degrees, one in Engineering from Universitat Politècnica de Catalunya (<a href=\"https://www.upc.edu/ca\">UPC</a>) and another in Audiovisual Technologies from the Universitat Pompeu Fabra (<a href=\"https://www.upf.edu/\">UPF</a>).",
+    "She teaches creative coding in several Design Schools in Barcelona.",
+    "She has developed and exhibited digital installations for Cosmocaixa (Barcelona Science Museum), Expo Zaragoza, Forum Barcelona 2004, Sónar Innovation Challenge 2016, MIRA Visual Arts Festival, Mobile Art Week, etc. She has some international awards as a Cannes Golden Lion for Interactive Projects in 2010 or a Google DevArt (art made with code) Award in 2014."
+  ],
+  "cv": [
+    {
+      "title": "Upcoming exhibitions",
+      "slug": "upcoming-exhibitions",
+      "entries": []
+    },
+    {
+      "title": "Solo exhibitions",
+      "slug": "solo-exhibitions",
+      "entries": [
+        {
+          "year": 2022,
+          "html": "2022. June. De hormigueros y algoritmos at <a href=\"https://www.anamasprojects.com/exhibitions/de-hormigueros-y-algoritmos/\">Ana Mas Projects</a> gallery. Exhibited pieces Figueres impossibles, Bancals, Bomborolles, Ganxillo, Arrels, Llaçades entrellaçades."
+        }
+      ]
+    },
+    {
+      "title": "Collective exhibitions and Residencies",
+      "slug": "collective-exhibitions-and-residencies",
+      "entries": [
+        {
+          "year": 2023,
+          "html": "2023 January. Generative Abstraction and Beyond curated by Expanded Art gallery + Verse Works. A collective show at Expanded Art gallery Berlin. Project Discs."
+        },
+        {
+          "year": 2023,
+          "html": "2023 January. Cure3 exhibition at Bonhams London. Curated by Alex Estorick, Foteini Valeonti and curatorial collective Artwise. Exhibited project Garbuix."
+        },
+        {
+          "year": 2022,
+          "html": "2022 Desember. Art Basel Miami. FEMGEN generative art collective show. Curated by Micol and Alex Estorick. Exhibited project Pinzell d’Arbres."
+        },
+        {
+          "year": 2022,
+          "html": "2022 September. Unsigned installation at Francisco Carolinum, Linz."
+        },
+        {
+          "year": 2022,
+          "html": "2022 September. In TOUCH Art in the age of post-nft-ism. Dekabinet, Berlin. Curated by Micol and Anika Meyers. Generative art exhibition. Exhibited project Redols."
+        },
+        {
+          "year": 2022,
+          "html": "2022 September. NFT Europe. Valencia, Spain. Generative art exhibition. Exhibited project Trossets."
+        },
+        {
+          "year": 2022,
+          "html": "2022. July. <a href=\"https://www.cortesigallery.com/c-verso\">C-Verso</a> gallery, Milano, Italy. Project Estratosfèric."
+        },
+        {
+          "year": 2022,
+          "html": "2022. July. <a href=\"https://screensguru.io\">ScreensGuru</a>. Exhibited pieces Bomborolles, Figueres impossibles, Ventalls, Bancals, Torrents."
+        },
+        {
+          "year": 2022,
+          "html": "2022. June. La Capella, Barcelona. Show What Is Possible and What Is Not. Part of the ISEA international conference. Exhibited project Arrels."
+        },
+        {
+          "year": 2022,
+          "html": "2022. June. <a href=\"https://sonar.es\">Sónar Festival</a>, Sonarmàtica. Exhibited project Llevataps."
+        },
+        {
+          "year": 2022,
+          "html": "2022. May. NFT Barcelona at <a href=\"https://www.reialcercleartistic.cat\">Real Cercle Artístic</a>. Exhibited project Trossets."
+        },
+        {
+          "year": 2022,
+          "html": "2022. May. Algopolis festival at <a href=\"https://wiki.ljudmila.org/Algopolis_(en)\">Ljudmila Lab Osmo/za</a>, Ljubljana Slovenia. Exhibited project TOPS M-1."
+        },
+        {
+          "year": 2022,
+          "html": "2022. April. Biennale di Venezia exhibition at <a href=\"https://decentralartpavilion.io/calendar/generative-art-special-event/\">Decentral Art Pavilion</a>, Palazzo Giustinian Lolin. Project Trossets."
+        },
+        {
+          "year": 2022,
+          "html": "2022. March-April. Residency at <a href=\"https://wiki.ljudmila.org/Main_Page\">Ljudmila Lab</a>, Ljubljana<br>Slovenia. On-the-Fly European Project."
+        },
+        {
+          "year": 2022,
+          "html": "2022. February-May. <a href=\"https://artssantamonica.gencat.cat/ca/detall/La-tradicio-que-ens-travessa\">La tradició que ens travessa</a> exhibition at Arts Santa Mònica. Project l’Algorisme despullat."
+        },
+        {
+          "year": 2021,
+          "html": "2021. Desember. Feral File, <a href=\"https://feralfile.com/exhibitions/for-your-eyes-only-qpg\">For Your Eyes Only</a> curated by Domenico Quaranta. Project Ganxillo."
+        },
+        {
+          "year": 2021,
+          "html": "2021. November. Crypto Roots exhibition at Sónar Festival. Project Trossets."
+        },
+        {
+          "year": 2021,
+          "html": "2021. Setember. <a href=\"https://www.artblocks.io/project/147\">ArtBlocks curated</a>. Project Trossets."
+        },
+        {
+          "year": 2021,
+          "html": "2021. March. Feral File, <a href=\"https://feralfile.com/exhibitions/social-codes-pcl\">Social Codes</a> curated by Casey Reas. Project Arrels."
+        },
+        {
+          "year": 2021,
+          "html": "2021. March. MUTEK ES+AR. Project Llaçades Entrellaçades."
+        },
+        {
+          "year": 2021,
+          "html": "2021 February. Metaverse exhibition at Eufònic Urbà Decentraland. Project Franges."
+        },
+        {
+          "year": 2020,
+          "html": "2020. December. Processing Foundation artist."
+        },
+        {
+          "year": 2020,
+          "html": "2020. March. Exhibition at Lagos Art Gallery. Project Rugas da História Fendas na Paisagem. Piece within <a href=\"https://labonne.org/projectes/contested-desires/\">Contested Desires</a> project, Creative Europe Program."
+        },
+        {
+          "year": 2020,
+          "html": "2020. February-March. Residency at <a href=\"http://www.lac.org.pt/\">Laboratorio de Actividades Criativas</a>. Lagos, Portugal. Project <a href=\"https://labonne.org/projectes/contested-desires/\">Contested Desires</a> within Creative Europe Program."
+        },
+        {
+          "year": 2020,
+          "html": "2020. February. Llum barcelona exhibition. Project Llum a les Desigualtats."
+        },
+        {
+          "year": 2019,
+          "html": "2019. November. Exhibition <a href=\"http://conventagusti.com/blog/recorreguts-sonors-2019-installacions-artistiques/\">Recorreguts Sonors</a>, Convent de Sant Agustí, Barcelona. Project Bufablau."
+        },
+        {
+          "year": 2019,
+          "html": "2019. August. Residency at Digital Naturalism. Gamboa, Panama. Project Froggy camouflage handheld fans."
+        },
+        {
+          "year": 2019,
+          "html": "2019. April. Residency at <a href=\"http://Interactivos?&#x27;19: Eating against collapse\">Interactivos?’19</a> Eating against collapse. Medialab Prado, Madrid."
+        },
+        {
+          "year": 2019,
+          "html": "2019. February. Exhibition at <a href=\"https://www-lameva.barcelona.cat/santaeulalia/en/llumbcn\">Llum Barcelona</a>.<a href=\"https://www.annacarreras.com/constelations/\"> </a>Project Constel·lacions."
+        },
+        {
+          "year": 2017,
+          "html": "2017. February. Exhibition at Mobile Art Week. Project Social matrix: emergent social behaviors visualization"
+        },
+        {
+          "year": 2016,
+          "html": "2016. June. Residency and Exhibition at <a href=\"https://sonar.es/\">Sónar</a>. Project Rite of Color."
+        },
+        {
+          "year": 2015,
+          "html": "2015. November. Exhibition at <a href=\"https://sonar.es/\">MIRA Digital Arts Festival</a>. Project Genera Esfera."
+        },
+        {
+          "year": 2015,
+          "html": "2015. November. Exhibition at <a href=\"http://conventagusti.com/blog/recorreguts-sonors-2015-programacio-completa/\">Recorreguts Sonors</a>. Convent de Sant Agustí of Barcelona. Project La interfície més gustosa i inútil del món."
+        },
+        {
+          "year": 2015,
+          "html": "2015. July. Exhibtion at II Mostra Simultània d’Art Digital de Barcelona. Project My City My Playground."
+        },
+        {
+          "year": 2015,
+          "html": "2015. October. <a href=\"https://elmalda.cat/\">Teatre Maldà</a>. Sherlock Holmes and The Internet of Things."
+        },
+        {
+          "year": 2015,
+          "html": "2015-2016. Residency at <a href=\"http://ajuntament.barcelona.cat/fabraicoats/en\">Fabra i Coats</a>. Project Open Color 3D Scanner, The Hyperlapsed City."
+        },
+        {
+          "year": 2014,
+          "html": "2014. Artistic residence at L’Estruch, Sabadell. Project Bitels per a Nadons."
+        },
+        {
+          "year": 2013,
+          "html": "2013. November. Performance at Nau Ivanow. Project Land Without Words."
+        },
+        {
+          "year": 2013,
+          "html": "2013-2014. Residency at Nau Ivanow. Project Land Without Words."
+        },
+        {
+          "year": 2013,
+          "html": "2013. October. Exhibition <a href=\"https://www.andfestival.org.uk/events/freedom-of-speech-2/\">Abandon Normal Devices</a> new cinema, digital culture &amp; art. Liverpool, UK. Project Kit de Libertad de Expresión."
+        },
+        {
+          "year": 2013,
+          "html": "2013. April. Residency at <a href=\"http://Future Tools. Encuentro Libre Graphics 2013 y Taller Interactivos?&#x27;13\">Interactivos?’13</a> Future Tools. Medialab Prado, Madrid."
+        },
+        {
+          "year": 2010,
+          "html": "2010. September. Performance at Art Festival Ingràvid of Figueres. Project Màgia per a Pixeloscopi."
+        },
+        {
+          "year": 2010,
+          "html": "2010. May. Performance at CosmoCaixa Auditorium of Barcelona at the <a href=\"https://www.barcelona.cat/lanitdelsmuseus\">Nights of the Museums</a>. Project Màgia per a Pixeloscopi."
+        },
+        {
+          "year": 2009,
+          "html": "2009. Residency and grant by <a href=\"https://www.upf.edu/web/phonos\">Phonos</a>. Project Màgia per a Pixeloscopi."
+        }
+      ]
+    },
+    {
+      "title": "Teaching",
+      "slug": "teaching",
+      "entries": [
+        {
+          "year": null,
+          "html": "Creative coding for Designers at <a href=\"http://baued.es/\">BAU</a>. 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022."
+        },
+        {
+          "year": null,
+          "html": "Interactive narrative and non-linear scripting at <a href=\"https://www.upf.edu/\">UPF</a>. 2016, 2017, 2018."
+        },
+        {
+          "year": null,
+          "html": "Interactive instalations at <a href=\"https://www.uvic.cat/\">uVic</a>. 2016, 2017, 2018."
+        },
+        {
+          "year": null,
+          "html": "Interaction and Audiovisual Generation at the Master in Digital Arts, <a href=\"http://www.idec.upf.edu/university-master-in-digital-arts\">MAD</a> at <a href=\"https://www.upf.edu/\">UPF</a>. 2009, 2010, 2011, 2012, 2013, 2014."
+        },
+        {
+          "year": null,
+          "html": "Mathematics with Processing for Designers at <a href=\"http://www.elisava.net/\">Elisava</a>. 2010, 2011, 2012, 2013."
+        },
+        {
+          "year": null,
+          "html": "Interactive Digital Video at the Master of Digital Video, MVD at <a href=\"https://www.upf.edu/\">UPF</a>. 2011."
+        }
+      ]
+    },
+    {
+      "title": "Invited Talks and Workshops",
+      "slug": "invited-talks-and-workshops",
+      "entries": [
+        {
+          "year": 2022,
+          "html": "2022 october. UPCArts. Academy Repairing the Present. S+T+Arts EU project."
+        },
+        {
+          "year": 2022,
+          "html": "2022 october. Talking Galleries Barcelona. Panel discussion: Do Artists Need Galleries to Sell their Work? MACBA, Barcelona."
+        },
+        {
+          "year": 2022,
+          "html": "2022 september. NFT Show Europe. Generative art. Valencia, Spain."
+        },
+        {
+          "year": 2022,
+          "html": "2022 september. Palma Nit de l’art 22. NFutures: Perspectivas del futuro de los NFT en el mercado del arte. Mallorca, Spain."
+        },
+        {
+          "year": 2022,
+          "html": "2022. ACVIC. Art generatiu i art interactiu: artistes geeks que fem art amb codi."
+        },
+        {
+          "year": 2021,
+          "html": "2021. Biennal Ciutat Ciencia Bcn"
+        },
+        {
+          "year": 2021,
+          "html": "2021. Life coding at Hangar"
+        },
+        {
+          "year": 2019,
+          "html": "2019. Debat: Teixint xarxes d’identitats en trànsit #2. Gènere i art intermèdia. Centre <a href=\"https://labonne.org/\">Bonnemaison</a>."
+        },
+        {
+          "year": 2019,
+          "html": "2019. Processat d’imatge en projectes interactius. Col·legi Oficial d’Enginyers de Telecomunicació de Catalunya <a href=\"https://www.coetc.net\">COETC</a>."
+        },
+        {
+          "year": 2019,
+          "html": "2019. Workshop. <a href=\"https://escape.cat/\">ESC</a> 4a Escapada de Cultura i Creació Digitals. Digital Collage"
+        },
+        {
+          "year": 2018,
+          "html": "2018. L’escena actual d’art digital, visual i música experimental – Barcelona entre les superproduccions i la precarietat. <a href=\"http://conventagusti.com/blog/jornades-teorema-2018/\">TEOREMA</a>."
+        },
+        {
+          "year": 2018,
+          "html": "2018. Esmorzar-networking sobre Les TIC en indústries culturals by Cercle Tecnològic de Catalunya <a href=\"http://www.ctecno.cat/com-la-cultura-pot-millorar-i-obrir-camins-en-el-mon-de-la-tecnologia/\">CTecno</a>"
+        },
+        {
+          "year": 2016,
+          "html": "2016. Programación Creativa <a href=\"https://vimeo.com/171542257\">talk</a> at <a href=\"http://catedratelefonica.uoc.edu/taller-programacion-creativa/\">Cátedra Telefónica-UOC en Diseño y Creación Multimedia.</a>"
+        },
+        {
+          "year": 2015,
+          "html": "2015. Interview. <a href=\"https://www.youtube.com/watch?v=_37uu68m1qU\">EYECatalunya</a>."
+        },
+        {
+          "year": 2013,
+          "html": "2013. Tangible and Embeded Interaction International Conference <a href=\"http://www.tei-conf.org/13/\">TEI</a>. Demos’ chair."
+        },
+        {
+          "year": 2012,
+          "html": "2012. Jornadas de Experiencia de Usuario <a href=\"http://uxed.uoc.edu/jornadaux/jornada-ux-2012/\">UX</a>. UOC."
+        },
+        {
+          "year": 2010,
+          "html": "2010. Pixel Attack Valencia."
+        },
+        {
+          "year": 2009,
+          "html": "2009. <a href=\"http://joves.bcn.cat/visualsound/\">Barcelona Visual Sound</a>."
+        },
+        {
+          "year": 2008,
+          "html": "2008. Outdoors Interactivity: two approaches: advertising and education at The Image Processing and Multimedia Technology Center, <a href=\"https://www.citm.upc.edu/\">CITM</a>, Terrassa."
+        }
+      ]
+    }
+  ],
+  "source": "https://www.annacarreras.com/about/"
+}

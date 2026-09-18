@@ -1,0 +1,279 @@
+[
+  {
+    "slug": "tesi",
+    "title": "tesi",
+    "year": 2024,
+    "summary": "text complet | full text tesi pdf paper Abstract The practice of generative art, the artistic practice behind this project-based thesis, involves using computer code instructions and algorithms to create works of art. This involves building systems that consist of graphic elements with specific behaviors and adding randomness to them to generate unique works of […]",
+    "categories": [
+      "development",
+      "generative"
+    ],
+    "tags": [
+      "art",
+      "complexity",
+      "generative"
+    ],
+    "cover": {
+      "src": "/assets/projects/tesi/tesi.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "tops-m",
+    "title": "TOPS-M",
+    "year": 2022,
+    "summary": "",
+    "categories": [
+      "installation",
+      "museum",
+      "performance"
+    ],
+    "tags": [
+      "arduino",
+      "generative",
+      "interactive",
+      "livecoding"
+    ],
+    "cover": {
+      "src": "/assets/projects/tops-m/tops_m_1.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "arrels",
+    "title": "“Arrels” at Social Codes, Feral File",
+    "year": 2021,
+    "summary": "Arrels piece exhibited at Social Codes the first exhibition at Feral File platform",
+    "categories": [
+      "generative"
+    ],
+    "tags": [
+      "generative"
+    ],
+    "cover": {
+      "src": "/assets/projects/arrels/arrels_6.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "trossets",
+    "title": "“Trossets” at ArtBlocks curated",
+    "year": 2021,
+    "summary": "Trossets explores the emergence of diversity. Combining twelve construction blocks the system generates endless patterns with a unique result each iteration. Trossets /trusɛts/ means parts, blocks, pieces and it’s my particular homage to a classical generative system, the multiscale Truchet tiles. The systems plays an interlocking blocks game creating unexpected drawings with colors borrowed from […]",
+    "categories": [
+      "generative"
+    ],
+    "tags": [
+      "code",
+      "diversity",
+      "generative"
+    ],
+    "cover": {
+      "src": "/assets/projects/trossets/trossets_flyer1.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "3d-forms-sounds",
+    "title": "Generative 3D Forms/Sounds",
+    "year": 2017,
+    "summary": "A custom software developed for Insert Club to generate 3D forms from techno sound. A real-time sound analysis coupled with 3D flocking and wander behaviours creates unique 3D objects.",
+    "categories": [
+      "development"
+    ],
+    "tags": [
+      "3d",
+      "3d_form",
+      "3d_printer",
+      "generative"
+    ],
+    "cover": {
+      "src": "/assets/projects/3d-forms-sounds/insert_form.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "my-city-my-playground",
+    "title": "My City My Playground",
+    "year": 2014,
+    "summary": "My City My Playground allows you to play with the city landscape. Buildings, pedestrians, traffic, street furniture, etc. Choose as many elements as you like and turn them into the pieces of your game.",
+    "categories": [
+      "installation"
+    ],
+    "tags": [
+      "augmented_architecture",
+      "game",
+      "interactive",
+      "openframeworks"
+    ],
+    "cover": {
+      "src": "/assets/projects/my-city-my-playground/my_city_my_playground.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "kit-libertad-expresion",
+    "title": "Kit de Libertad de Expresión (KLE)",
+    "year": 2013,
+    "summary": "A portable digital interactive banner that allows people from all over the world to participate to remote protests by sending and displaying text messages in public space",
+    "categories": [
+      "do_it_yourself",
+      "event",
+      "performance"
+    ],
+    "tags": [
+      "android",
+      "arduino",
+      "devart",
+      "diwo",
+      "diy",
+      "medialab",
+      "open"
+    ],
+    "cover": {
+      "src": "/assets/projects/kit-libertad-expresion/kle_project2.jpg",
+      "width": 900,
+      "height": 550,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "walking-man",
+    "title": "Walking man",
+    "year": 2013,
+    "summary": "“Walking man: se hace camino al andar” makes reference to time passing by. It’s a tribute to the cinema technology. A man walking in an eternal loop based in 12 images (12 months) that compose a digital personage walking in a zoetrope animated way.",
+    "categories": [
+      "event"
+    ],
+    "tags": [
+      "generative",
+      "mediafacade",
+      "medialab"
+    ],
+    "cover": {
+      "src": "/assets/projects/walking-man/walking_man_0.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "app-n-jorge-drexler",
+    "title": "Android app “n” by Jorge Drexler",
+    "year": 2012,
+    "summary": "Jorge Drexler “n” represents a revolutionary approach to songwriting, in which, for the first time, songs are editable, and listeners become users. “n” it’s an app for smartphones and tablets where users control the order of the lyrics, the instrumentation and the artists singing the vocals.",
+    "categories": [
+      "mobile"
+    ],
+    "tags": [
+      "android",
+      "app"
+    ],
+    "cover": {
+      "src": "/assets/projects/app-n-jorge-drexler/app_n_matriz.jpg",
+      "width": 1200,
+      "height": 696,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "hamelin",
+    "title": "Hamelin",
+    "year": 2008,
+    "summary": "Hamelin is an interactive module for AD Out of Home where participants are immersed inside the advertisement. The module uses sensors and image processing to let users experience and full-body play with specially ad hoc designed games.",
+    "categories": [
+      "advertising",
+      "installation"
+    ],
+    "tags": [
+      "fullbody",
+      "image_processing",
+      "opencv"
+    ],
+    "cover": {
+      "src": "/assets/projects/hamelin/hamelin_0.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "magia-per-a-pixeloscopi",
+    "title": "Màgia per a Pixeloscopi",
+    "year": 2008,
+    "summary": "Màgia per a Pixeloscopi is a one hour show conceived to be represented in a theater scenario that merges mixed and augmented reality and fullbody interaction with classical magic to create new tricks.",
+    "categories": [
+      "theater"
+    ],
+    "tags": [
+      "fullbody",
+      "image_processing",
+      "magic",
+      "opencv",
+      "opengl"
+    ],
+    "cover": {
+      "src": "/assets/projects/magia-per-a-pixeloscopi/magia_pixeloscopi_0.jpg",
+      "width": 900,
+      "height": 544,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "water-games",
+    "title": "“Water Games” at Universal Forum of Cultures Barcelona",
+    "year": 2003,
+    "summary": "Water Games is an interactive and refreshing installation for the youngest visitors, and their families. One only needs to find friends to form a ring, spin together around one fountain and discover the Water Games!",
+    "categories": [
+      "installation"
+    ],
+    "tags": [
+      "children",
+      "fullbody",
+      "image_processing",
+      "opencv",
+      "outdoor"
+    ],
+    "cover": {
+      "src": "/assets/projects/water-games/water_games_0.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    }
+  },
+  {
+    "slug": "mediate",
+    "title": "“MEDIATE” a multisensorial interactive environment for children with autism",
+    "year": 2001,
+    "summary": "MEDIATE is a multimodal interactive space for children with severe autism. MEDIATE wishes to give the child the opportunity to have fun, play, explore and be creative in a predictable, controllable and safe space.",
+    "categories": [
+      "installation"
+    ],
+    "tags": [
+      "autism",
+      "children",
+      "fullbody",
+      "image_processing",
+      "multimodal",
+      "opencv"
+    ],
+    "cover": {
+      "src": "/assets/projects/mediate/mediate_0.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  }
+]

@@ -1,0 +1,15 @@
+{
+  "name": "Anna Carreras",
+  "description": "generative art && interactive installations",
+  "source": "https://www.annacarreras.com",
+  "nav": [
+    {
+      "label": "Work",
+      "href": "/"
+    },
+    {
+      "label": "About",
+      "href": "/about"
+    }
+  ]
+}

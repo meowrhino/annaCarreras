@@ -1,0 +1,111 @@
+{
+  "slug": "magia-per-a-pixeloscopi",
+  "title": "Màgia per a Pixeloscopi",
+  "year": 2008,
+  "date": "2012-02-13",
+  "summary": "Màgia per a Pixeloscopi is a one hour show conceived to be represented in a theater scenario that merges mixed and augmented reality and fullbody interaction with classical magic to create new tricks.",
+  "categories": [
+    "theater"
+  ],
+  "tags": [
+    "fullbody",
+    "image_processing",
+    "magic",
+    "opencv",
+    "opengl"
+  ],
+  "cover": {
+    "src": "/assets/projects/magia-per-a-pixeloscopi/magia_pixeloscopi_0.jpg",
+    "width": 900,
+    "height": 544,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "html": "<strong>Màgia per a Pixeloscopi</strong> is a one hour show conceived to be represented in a theater scenario that merges mixed and augmented reality and full-body interaction with classical magic to create new tricks. The show was conceived by an interdisciplinary team composed by a magician, two interaction designers, a theater director and a stage designer. The magician uses custom based hardware and software to create new illusions which are a starting point to explore new language for magical expression."
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/magia-per-a-pixeloscopi/magia_pixeloscopi_1.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/magia-per-a-pixeloscopi/magia_pixeloscopi_2.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/magia-per-a-pixeloscopi/magia_pixeloscopi_3.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/magia-per-a-pixeloscopi/magia_pixeloscopi_4.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "embed",
+      "provider": "vimeo",
+      "id": "8067493",
+      "url": "https://vimeo.com/8067493",
+      "title": "Màgia per a Pixeloscopi"
+    }
+  ],
+  "credits": [
+    {
+      "label": "Magician",
+      "html": "Màgic Jaïr."
+    },
+    {
+      "label": "Actress",
+      "html": "Fiona Rycroft."
+    },
+    {
+      "label": "Interaction design",
+      "html": "<a href=\"http://www.csora.org\">Carles Sora</a>, Anna Carreras."
+    },
+    {
+      "label": "Script and direction",
+      "html": "Carles Sora."
+    },
+    {
+      "label": "Stage director",
+      "html": "Ferran Utzet."
+    },
+    {
+      "label": "Sound designer",
+      "html": "Ariadna Alsina."
+    },
+    {
+      "label": "Set designer",
+      "html": "Martí Baltà."
+    },
+    {
+      "label": "Project development",
+      "html": "15.09.2008 – 19.12.2008"
+    },
+    {
+      "label": "Performance",
+      "html": "05.11.2009 at Casa Elizalde. 15.05.2010 at Cosmocaixa Barcelona."
+    },
+    {
+      "label": "Tasks",
+      "html": "idea, design, production, coding, installation, performance."
+    },
+    {
+      "label": "Photos",
+      "html": "Marta Farràs. Video: Carles Sora."
+    }
+  ],
+  "source": "https://www.annacarreras.com/magia-per-a-pixeloscopi/"
+}

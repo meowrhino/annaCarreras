@@ -1,0 +1,60 @@
+{
+  "slug": "walking-man",
+  "title": "Walking man",
+  "year": 2013,
+  "date": "2013-05-12",
+  "summary": "“Walking man: se hace camino al andar” makes reference to time passing by. It’s a tribute to the cinema technology. A man walking in an eternal loop based in 12 images (12 months) that compose a digital personage walking in a zoetrope animated way.",
+  "categories": [
+    "event"
+  ],
+  "tags": [
+    "generative",
+    "mediafacade",
+    "medialab"
+  ],
+  "cover": {
+    "src": "/assets/projects/walking-man/walking_man_0.jpg",
+    "width": 900,
+    "height": 506,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "html": "“Walking man: se hace camino al andar” makes reference to time passing by. It’s a tribute to the cinema technology. A man walking in an eternal loop based in 12 images (12 months) that compose a digital personage walking in a zoetrope animated way."
+    },
+    {
+      "type": "text",
+      "html": "Coded for the <a href=\"http://medialab-prado.es/\">Medialab-Prado</a>‘s digital facade, 15 meters wide, as a generative sketch based on Processing.js and showcased as part of <a href=\"http://programalaplaza.medialab-prado.es/static/videos.html\">AfterArco</a> activities program."
+    },
+    {
+      "type": "embed",
+      "provider": "vimeo",
+      "id": "70045128",
+      "url": "https://vimeo.com/70045128",
+      "title": "Walking man: se hace camino al andar"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/walking-man/walking_man_1.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    }
+  ],
+  "credits": [
+    {
+      "label": "Project development",
+      "html": "1 day"
+    },
+    {
+      "label": "Project running",
+      "html": "13.02.2013 – 17.02.2013"
+    },
+    {
+      "label": "Tasks",
+      "html": "idea and coding."
+    }
+  ],
+  "source": "https://www.annacarreras.com/walking-man/"
+}

@@ -1,0 +1,114 @@
+{
+  "slug": "tesi",
+  "title": "tesi",
+  "year": 2024,
+  "date": "2024-01-29",
+  "summary": "text complet | full text tesi pdf paper Abstract The practice of generative art, the artistic practice behind this project-based thesis, involves using computer code instructions and algorithms to create works of art. This involves building systems that consist of graphic elements with specific behaviors and adding randomness to them to generate unique works of […]",
+  "categories": [
+    "development",
+    "generative"
+  ],
+  "tags": [
+    "art",
+    "complexity",
+    "generative"
+  ],
+  "cover": {
+    "src": "/assets/projects/tesi/tesi.jpg",
+    "width": 900,
+    "height": 507,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "quote",
+      "html": "text complet | full text",
+      "cite": "<a href=\"https://www.annacarreras.com/phd/TESI_art_generatiu_complexitat_Anna_Carreras.pdf\">tesi pdf paper</a>"
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "Ufz5xwPEqCQ",
+      "url": "https://www.youtube.com/watch?v=Ufz5xwPEqCQ",
+      "title": "Anna Carreras: \"Art generatiu. Estudi entorn la complexitat des de la pràctica artística amb codi\""
+    },
+    {
+      "type": "text",
+      "html": "<strong>Abstract</strong>"
+    },
+    {
+      "type": "text",
+      "html": "The practice of generative art, the artistic practice behind this project-based thesis, involves using computer code instructions and algorithms to create works of art. This involves building systems that consist of graphic elements with specific behaviors and adding randomness to them to generate unique works of art. These systems can be complex, and certain complexities can emerge from them when they are run. It is interesting to ponder how complex behaviors can emerge from specific and repetitive instructions of a deterministic computer. Can studying generative art help us understand the complexity of the world we live in?"
+    },
+    {
+      "type": "text",
+      "html": "Current generative art is heir to the new avant-gardes of the 20th century, abstract and conceptual art. Contemporary artists dialogue, in this text, with the pioneers of generative art of the 60s and the artistic practices and new ways of creating, due to the emergence of the web3, generative art of long series, and the new digital art galleries. In this scenario, the complexity is more limited to the generative system and depends less on the artist’s curation, so that research around complex systems and algorithms takes on a certain weight."
+    },
+    {
+      "type": "text",
+      "html": "The most common framework places complexity on a continuum between order and disorder for generative art. A new framework is proposed in this research based on artistic practice. Each of the projects explores a characteristic of complex systems to distill, little by little, certain knowledge. 5 projects are presented that support the research: «L’algorisme despullat» which questions the interaction with the environment, «Trossets» explores diversity, «Ganxillo» adds dynamism and repetition, «Estratosfèric» accentuates and observes noise, and «Discs» emphasizes the interaction between individuals. At the same time, these projects highlight how the artistic practice with code presents an appropriate, original approach and a unique look for the study of complexity as a broad theme."
+    },
+    {
+      "type": "text",
+      "html": "<strong>Keywords</strong>"
+    },
+    {
+      "type": "text",
+      "html": "generative art, complexity, algorithm, complex systems."
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1752004600914469162",
+      "url": "https://twitter.com/carreras_anna/status/1752004600914469162",
+      "text": "↓↓ download the PhD thesis paper below. ART + COMPLEXITY The original text is in Catalan. I'll soon share translated excerpts. In the meantime, enjoy this super-fast sneak peek video. pic.twitter.com/FPltH79jTZ— Anna Carreras (@carreras_anna) January 29, 2024"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1755167189597065244",
+      "url": "https://twitter.com/carreras_anna/status/1755167189597065244",
+      "text": null
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1750078162212683779",
+      "url": "https://twitter.com/carreras_anna/status/1750078162212683779",
+      "text": "Tomorrow's PhD defense features an exhibition showcasing: * Trossets (2021) by @artblocks_io * Ganxillo (2021) by @FeralFile @ran_dom * Estratosfèric (2022) by @CortesiVerso * Algorisme Despullat (2022) by @fundaciosorigue * Discs (2023) by @verse_works @postanika pic.twitter.com/vEl6ouUMgR— Anna Carreras (@carreras_anna) January 24, 2024"
+    },
+    {
+      "type": "embed",
+      "provider": "twitter",
+      "id": "1751631418202145209",
+      "url": "https://twitter.com/carreras_anna/status/1751631418202145209",
+      "text": "A PhD defense, how it started and how it ended. Thanks to @toplap_bcn for organizing such incredible live coding sessions. It was a unique opportunity and a fortunate agenda coincidence to wrap up the day with a lot of geeky fun. pic.twitter.com/8bIpOjo8Kl— Anna Carreras (@carreras_anna) January 28, 2024"
+    },
+    {
+      "type": "text",
+      "html": "<strong>Resum</strong>"
+    },
+    {
+      "type": "text",
+      "html": "La pràctica artística d’aquesta tesi, l’art generatiu, usa instruccions de codi informàtic i algoritmes per crear obres d’art. S’imaginen i construeixen sistemes –formats per elements gràfics amb certs comportaments i afegint una mica d’atzar– que dibuixen les obres, que les generen. El sistema pot ser complex o en pot emergir certa complexitat en posar-lo en funcionament, en executar-lo. ¿Com poden emergir comportaments complexos d’instruccions determinades i repetitives d’un ordinador? ¿Dibuixar-ho ens pot ajudar a entendre la complexitat en què vivim i que ens trobem?"
+    },
+    {
+      "type": "text",
+      "html": "L’art generatiu actual és hereu de les noves avantguardes del s.XX, de l’art abstracte i del conceptual. Els artistes contemporanis dialoguen, en aquest text, amb els pioners de l’art generatiu dels anys 60. I es reflexiona i descriuen pràctiques artístiques i noves maneres de crear, degut a l’aparició del web3, l’art generatiu de serie llarga i les noves galeries d’art digital. En aquest escenari la complexitat queda més acotada al sistema generatiu i depèn menys de la curadoria de l’artista, de manera que la recerca entorn als sistemes complexos i els algoritmes cobra cert pes."
+    },
+    {
+      "type": "text",
+      "html": "El marc habitual de l’art generatiu ubica la complexitat en un continu que va entre l’ordre i el desordre. En aquesta investigació basada en la pràctica artística es proposa un marc nou. Cadascun dels projectes explor una característica dels sistemes complexos per a destil·lar-ne, mica en mica, certs coneixements. Es presenten 5 projectes que sostenen la recerca: <em>L’algorisme despullat</em> que qüestiona la interacció amb l’entorn, <em>Trossets</em> explora la diversitat, <em>Ganxillo</em> afegeix el dinamisme i la repetició, <em>Estratosfèric</em> accentua i observa el soroll, i <em>Discs</em> emfatitza la interacció entre individus. Paral·lelament es posa en relleu com la pràctica artística amb codi presenta un enfoc escaient, original i una mirada única per a l’estudi de la complexitat."
+    },
+    {
+      "type": "text",
+      "html": "<strong>Paraules clau</strong>"
+    },
+    {
+      "type": "text",
+      "html": "art generatiu, complexitat, algoritme, sistemes complexos."
+    }
+  ],
+  "credits": [],
+  "source": "https://www.annacarreras.com/tesi/"
+}

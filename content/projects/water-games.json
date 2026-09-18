@@ -1,0 +1,106 @@
+{
+  "slug": "water-games",
+  "title": "“Water Games” at Universal Forum of Cultures Barcelona",
+  "year": 2003,
+  "date": "2012-02-13",
+  "summary": "Water Games is an interactive and refreshing installation for the youngest visitors, and their families. One only needs to find friends to form a ring, spin together around one fountain and discover the Water Games!",
+  "categories": [
+    "installation"
+  ],
+  "tags": [
+    "children",
+    "fullbody",
+    "image_processing",
+    "opencv",
+    "outdoor"
+  ],
+  "cover": {
+    "src": "/assets/projects/water-games/water_games_0.jpg",
+    "width": 900,
+    "height": 507,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "html": "Water Games is an interactive, open air, refreshing installation for the “Universal Forum of Cultures, Barcelona 2004” that summons the users to collaborate in favor of peace and agreement. Visitors must form a ring around a fountain and collaborate in turning around to activate its water jets!"
+    },
+    {
+      "type": "text",
+      "html": "The installation has a footprint of approximately 1200m2 and its composed of a set of circular plazas that are connected by short paths. Each plaza has a water fountain in its center as an interaction element."
+    },
+    {
+      "type": "text",
+      "html": "Visitors must find friends to form a ring around one of the nine fountains in the plazas: holding hands as a symbol of agreement and respect to diversity; collaborating in spinning around the fountain as a symbol of a common goal: work for peace. These rings must spin around the fountains in order to activate them and discover the hidden <strong>Water Games</strong>."
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/water-games/water_games_1.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/water-games/water_games_2o.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/water-games/water_games_3o.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    },
+    {
+      "type": "embed",
+      "provider": "youtube",
+      "id": "O1b-Ax1Gpe8",
+      "url": "https://www.youtube.com/watch?v=O1b-Ax1Gpe8",
+      "title": "Water Games - Jocs d'Aigua - interactive water fountains"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/water-games/water_games_5.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/water-games/water_games_6.jpg",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    }
+  ],
+  "credits": [
+    {
+      "label": "Developed at",
+      "html": "Universitat Pompeu Fabra. Experimentation on Interactive Communication group."
+    },
+    {
+      "label": "Main researcher",
+      "html": "Dr. Narcís Parés."
+    },
+    {
+      "label": "Project development",
+      "html": "01.11.2003 – 09.05.2004"
+    },
+    {
+      "label": "Project running",
+      "html": "09.05.2004 – 26.09.2004"
+    },
+    {
+      "label": "Tasks",
+      "html": "user detection design and coding, installation."
+    },
+    {
+      "label": "Photos",
+      "html": "Joan Benassar, Narcís Parés. Video; Narcís Parés, Fòrum TV."
+    }
+  ],
+  "source": "https://www.annacarreras.com/water-games/"
+}

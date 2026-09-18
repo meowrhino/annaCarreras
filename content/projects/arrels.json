@@ -1,0 +1,140 @@
+{
+  "slug": "arrels",
+  "title": "“Arrels” at Social Codes, Feral File",
+  "year": 2021,
+  "date": "2021-07-26",
+  "summary": "Arrels piece exhibited at Social Codes the first exhibition at Feral File platform",
+  "categories": [
+    "generative"
+  ],
+  "tags": [
+    "generative"
+  ],
+  "cover": {
+    "src": "/assets/projects/arrels/arrels_6.png",
+    "width": 900,
+    "height": 506,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/social_codes_2.png",
+      "width": 1245,
+      "height": 700,
+      "alt": ""
+    },
+    {
+      "type": "quote",
+      "html": "Arrels",
+      "cite": "<a href=\"https://cdn.feralfileassets.com/previews/43c29566-9fad-42ce-aab9-1c4947164d94/1615728457/index.html\">live view</a><br>75 editions, animated + generative"
+    },
+    {
+      "type": "text",
+      "html": "<a href=\"https://feralfile.com/exhibitions/shows/social-codes-pcl\">Curated</a> by Casey Reas:"
+    },
+    {
+      "type": "text",
+      "html": "“Anna Carreras’ work has a strong relationship to the Spanish landscape where she spends her time, and her piece in Social Codes, “Arrels,” connects drawing, code, and the environment through a cycle of growth and decay. While Anna looks to nature for the source of her work, she interprets and transforms her experience into carefully choreographed generative animation. In “Arrels,” growing tendrils the color of earth and sky collide in a vibrant dance. New growth in the arid soil overtakes the old, and the cycle continues.”"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_a.gif",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_11.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_10.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_b.gif",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_8.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_5.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_c.gif",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_2.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/social_codes_3.png",
+      "width": 901,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/arrels_1.png",
+      "width": 900,
+      "height": 506,
+      "alt": ""
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/arrels/social_codes_1.png",
+      "width": 900,
+      "height": 507,
+      "alt": ""
+    },
+    {
+      "type": "text",
+      "html": "<a href=\"https://bruces.medium.com/social-codes-at-feralfile-399840a43757\">Review</a> by Bruce Sterling:"
+    },
+    {
+      "type": "text",
+      "html": "Work number six is “Arrels” by Anna Carreras. “Arrels” means “roots” in the Catalan language and this quite simple work is a series of growing, seething, root-like forms."
+    },
+    {
+      "type": "text",
+      "html": "The code is very lucid in “Arrels.” It’s a series of disks that are gently propelled across the screen. As they move according to their code instructions, the disks overlap and shrink, leaving long, tapered, rootlike forms in their wake. Periodically the thick, twisted roots break up and reveal their fragile tips as little disks, which unmasks the process."
+    },
+    {
+      "type": "text",
+      "html": "The muted color choices are nice, they have a folk-art feeling. The disks carry sketchy interior lines that give the roots a robust, hand-drawn, volumetric quality. The behavior of the roots varies; they emerge from different angles at different speeds and rhythms, and, rarely but pleasingly, one of them manages to root its way across the entire screen."
+    },
+    {
+      "type": "text",
+      "html": "<strong>There’s nothing earth-shaking about “Arrels,” but if I had to live with one of these artworks for the rest of my life, it would likely be this one</strong>. It lacks high-tech gosh-wow, but it has the pleasingly gnarly feeling of the roots of an olive tree."
+    }
+  ],
+  "credits": [],
+  "source": "https://www.annacarreras.com/arrels/"
+}

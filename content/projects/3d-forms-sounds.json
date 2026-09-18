@@ -1,0 +1,159 @@
+{
+  "slug": "3d-forms-sounds",
+  "title": "Generative 3D Forms/Sounds",
+  "year": 2017,
+  "date": "2017-10-20",
+  "summary": "A custom software developed for Insert Club to generate 3D forms from techno sound. A real-time sound analysis coupled with 3D flocking and wander behaviours creates unique 3D objects.",
+  "categories": [
+    "development"
+  ],
+  "tags": [
+    "3d",
+    "3d_form",
+    "3d_printer",
+    "generative"
+  ],
+  "cover": {
+    "src": "/assets/projects/3d-forms-sounds/insert_form.jpg",
+    "width": 900,
+    "height": 506,
+    "alt": ""
+  },
+  "blocks": [
+    {
+      "type": "text",
+      "html": "A custom software developed for Insert Club to generate 3D forms from techno sound. A real-time sound analysis coupled with 3D flocking and wander behaviors creates unique 3D objects. The generated objects are directly exported to a 3D printer format to print them, thus, obtaining physical sounds."
+    },
+    {
+      "type": "embed",
+      "provider": "vimeo",
+      "id": "233722283",
+      "url": "https://vimeo.com/233722283",
+      "title": "INSERT 5th SEASON - 3D FORMS"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insert_interface.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": "insert_interface"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insertSo3D5.gif",
+      "width": 900,
+      "height": 514,
+      "alt": "insertSo3D5"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insertSo3D1.jpg",
+      "width": 900,
+      "height": 486,
+      "alt": "insertSo3D1"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insertSo3D2.gif",
+      "width": 926,
+      "height": 529,
+      "alt": "insertSo3D1"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insertSo3D2.jpg",
+      "width": 900,
+      "height": 180,
+      "alt": "insertSo3D2"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insertSo3D3.jpg",
+      "width": 900,
+      "height": 243,
+      "alt": "insertSo3D3"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insertSo3D1.gif",
+      "width": 1190,
+      "height": 680,
+      "alt": "insertSo3D1"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insert_work.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": "insert_work"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insert_codi.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": "insert_codi"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insert_ona.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": "insert_ona"
+    },
+    {
+      "type": "image",
+      "src": "/assets/projects/3d-forms-sounds/insert_printer.jpg",
+      "width": 900,
+      "height": 506,
+      "alt": "insert_printer"
+    }
+  ],
+  "credits": [
+    {
+      "label": "Idea Creativa",
+      "html": "LaDosis"
+    },
+    {
+      "label": "Guión y Dirección",
+      "html": "Manuel Domínguez de la Osa"
+    },
+    {
+      "label": "Producción",
+      "html": "Edu Segurado"
+    },
+    {
+      "label": "Diseño y Programación",
+      "html": "Anna Carreras"
+    },
+    {
+      "label": "DOP",
+      "html": "Oriol Bosch"
+    },
+    {
+      "label": "Edición i sound design",
+      "html": "Aimar Galdós"
+    },
+    {
+      "label": "BSO",
+      "html": "Flug"
+    },
+    {
+      "label": "Agradecimientos",
+      "html": "Pau, L Ex – Designer project Bar, Alessandro di Renzo, CTRlight"
+    },
+    {
+      "label": null,
+      "html": "Developed for http://insertclub.net/en"
+    },
+    {
+      "label": "Dates de desenvolupament",
+      "html": "20.07.2017 – 10.10.2017"
+    },
+    {
+      "label": "Vídeos i fotos",
+      "html": "Anna Carreras, Edu Segurado, Manu Domínguez"
+    }
+  ],
+  "source": "https://www.annacarreras.com/3d-forms-sounds/"
+}
