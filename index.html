@@ -23,6 +23,9 @@
   .credits { font-size: .85rem; opacity: .75; }
   .credits div { margin: .15rem 0; }
   .tweet { font-size: .9rem; }
+  .tweet p { white-space: pre-line; }
+  .tweet-media { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: .25rem; }
+  .tweet-media img { width: 100%; height: 100%; object-fit: cover; }
   .missing { color: #c00; font-weight: bold; }
   nav { margin-bottom: 2rem; font-size: .9rem; }
   nav a { margin-right: 1rem; }
@@ -100,8 +103,24 @@ function renderBlock(b) {
       // X/Twitter: el widget ya no carga de forma fiable, se pinta el fallback
       const q = el('blockquote');
       q.className = 'tweet';
-      if (b.text) q.append(el('p', b.text));
-      q.append(el('cite', '<a href="' + b.url + '">' + b.url + '</a>'));
+      if (b.text) { const p = el('p'); p.textContent = b.text; q.append(p); }
+      if (b.media) {
+        const g = el('div');
+        g.className = 'tweet-media';
+        b.media.forEach(m => {
+          const img = new Image();
+          img.src = asset(m.src); img.alt = m.alt || ''; img.loading = 'lazy';
+          if (m.width) { img.width = m.width; img.height = m.height; }
+          g.append(img);
+        });
+        q.append(g);
+      }
+      const cite = el('cite');
+      const a = el('a');
+      a.href = b.url;
+      a.textContent = (b.author ? '@' + b.author : b.url) + (b.date ? ' · ' + b.date : '');
+      cite.append(a);
+      q.append(cite);
       return q;
     }
     default:

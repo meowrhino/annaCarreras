@@ -273,7 +273,43 @@ def fetch_asset(src, slug):
 
 # ------------------------------------------------------------- blocks -------
 
-def parse_embed(outer, attrs):
+def fetch_tweet(tid, slug):
+    """Text, date and media of a tweet from X's public syndication endpoint.
+
+    The oEmbed blockquote WordPress stores has no images, and some posts only
+    keep the bare URL because the embed never resolved. Returns {} on failure
+    so the blockquote fallback stays in place.
+    """
+    try:
+        d = get_json("https://cdn.syndication.twimg.com/tweet-result?id=%s&lang=en&token=4" % tid)
+    except Exception as e:
+        print("      ! tweet %s: %s" % (tid, e))
+        return {}
+    # display_text_range would trim the media link, but its offsets drift with
+    # emoji, so drop the media t.co links and expand the rest instead
+    text = d.get("text") or ""
+    entities = d.get("entities") or {}
+    for m in entities.get("media", []):
+        text = text.replace(m["url"], "")
+    for u in entities.get("urls", []):
+        text = text.replace(u["url"], u.get("expanded_url") or u["url"])
+    media = []
+    for m in d.get("mediaDetails") or []:
+        # "small" is ~680px wide: enough for a tweet card, a fraction of the weight
+        info = fetch_asset(m["media_url_https"] + "?name=small", slug)
+        item = {"src": info["src"], "width": info["width"], "height": info["height"],
+                "alt": m.get("ext_alt_text") or ""}
+        if m.get("type") in ("video", "animated_gif"):
+            item["kind"] = "video"  # src is only the poster frame
+        media.append(item)
+    out = {"text": htmlmod.unescape(text).strip(), "date": (d.get("created_at") or "")[:10] or None,
+           "author": (d.get("user") or {}).get("screen_name")}
+    if media:
+        out["media"] = media
+    return out
+
+
+def parse_embed(outer, attrs, slug):
     classes = " ".join(cls(attrs))
     iframe = re.search(r"<iframe[^>]*>", outer)
     title = attr(iframe.group(0), "title") if iframe else None
@@ -304,10 +340,13 @@ def parse_embed(outer, attrs):
             link = link.split("?")[0]
         quote = re.search(r"<blockquote[^>]*>(.*?)</blockquote>", wrapper, re.S)
         tid = re.search(r"/status/(\d+)", link or "")
-        return {"type": "embed", "provider": "twitter",
-                "id": tid.group(1) if tid else None,
-                "url": link,
-                "text": plain(quote.group(1)) if quote else None}
+        block = {"type": "embed", "provider": "twitter",
+                 "id": tid.group(1) if tid else None,
+                 "url": link,
+                 "text": plain(quote.group(1)) if quote else None}
+        if block["id"]:
+            block.update(fetch_tweet(block["id"], slug))
+        return block
     if src:
         return {"type": "embed", "provider": "iframe", "url": abs_url(src), "title": title}
     return None
@@ -320,10 +359,14 @@ def parse_image(outer, slug, known_slugs):
     src = attr(img.group(0), "src")
     info = fetch_asset(src, slug)
     caption = re.search(r"<figcaption[^>]*>(.*?)</figcaption>", outer, re.S)
-    alt = attr(img.group(0), "alt") or ""
+    alt = htmlmod.unescape(attr(img.group(0), "alt") or "")
+    # WordPress fills alt with the file name when nobody wrote one: that's noise
+    # (or a sibling's file name): a single token with digits or underscores
+    if re.fullmatch(r"[\w.-]*[\d_][\w.-]*", alt):
+        alt = ""
     block = {"type": "image", "src": info["src"],
              "width": info["width"], "height": info["height"],
-             "alt": htmlmod.unescape(alt)}
+             "alt": alt}
     if caption:
         block["caption"] = clean_inline(caption.group(1), known_slugs)
     return block
@@ -386,7 +429,7 @@ def parse_content(markup, slug, known_slugs):
                 blocks.append({"type": "video", "src": info["src"]})
 
         elif tag == "figure" and "wp-block-embed" in cstr:
-            b = parse_embed(outer, attrs)
+            b = parse_embed(outer, attrs, slug)
             if b:
                 blocks.append(b)
 

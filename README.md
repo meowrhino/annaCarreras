@@ -99,9 +99,26 @@ reescritos a rutas relativas (`/trossets`).
 | `quote` | `html`, `cite?` |
 | `embed` | `provider`, `id`, `url`, y `title?` (vídeo) o `text?` (tuit) |
 
-`provider` es `youtube`, `vimeo`, `twitter` o `iframe`. En los tuits, `text`
-guarda el texto plano del tuit como fallback: el widget de X ya no carga de
-forma fiable y conviene renderizar una tarjeta propia con `text` + `url`.
+`provider` es `youtube`, `vimeo`, `twitter` o `iframe`.
+
+Los tuits no dependen del widget de X (ya no carga de forma fiable): el script
+los completa desde el endpoint público de sindicación de X, así que llevan todo
+lo necesario para pintar una tarjeta propia:
+
+```jsonc
+{
+  "type": "embed", "provider": "twitter", "id": "…", "url": "…",
+  "text": "…",               // texto plano con saltos de línea; t.co expandidos
+  "date": "2024-02-07",
+  "author": "carreras_anna",
+  "media": [                  // opcional; imágenes locales a ~680px
+    { "src": "…", "width": 453, "height": 680, "alt": "", "kind?": "video" }
+  ]
+}
+```
+
+`kind: "video"` indica que `src` es solo el fotograma de portada de un vídeo
+del tuit; enlaza al `url` para verlo.
 
 ### `content/projects/index.json`
 
@@ -141,5 +158,10 @@ línea entera, año incluido.
 - El `summary` de `tesi` es el extracto automático de WordPress y arrastra el
   texto de la cita inicial y un `[…]` final. Si se va a usar en listados o en
   las `<meta>`, conviene reescribirlo a mano.
+- Cuatro tuits (tres en `trossets`, uno en `tesi`) no se ven en la web actual:
+  WordPress nunca resolvió el embed y guardó solo la URL. Aquí sí tienen texto
+  e imágenes.
+- Casi ninguna imagen tiene `alt` real. WordPress rellena el `alt` con el nombre
+  del fichero cuando no se escribe uno; el script lo descarta y deja `""`.
 - Los GIFs de `arrels` son pesados (~6 MB cada uno); conviene convertirlos a
   vídeo o WebP en el build.
