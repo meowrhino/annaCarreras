@@ -1,4 +1,4 @@
-/* Línea 1: índice cronológico. */
+/* Líneas 5 + 6: selección + archivo, proyecto como ficha. El archivo es la línea 1. */
 
 :root {
   --bg: #f3f2ee;
@@ -56,9 +56,9 @@ img, video, iframe { display: block; max-width: 100%; height: auto; }
 .site nav a[aria-current] { color: var(--ink); }
 .site nav a:hover { color: var(--ink); }
 
-/* En móvil: nombre y menú en una línea, el lema debajo */
+/* En móvil: nombre y lema arriba, el menú en su propia fila */
 @media (max-width: 40rem) {
-  .site-tagline { order: 3; flex-basis: 100%; }
+  .site nav { order: 3; flex-basis: 100%; margin: .75rem 0 0; }
 }
 
 main { padding: var(--gutter); padding-bottom: 6rem; }
@@ -136,26 +136,98 @@ main { padding: var(--gutter); padding-bottom: 6rem; }
   }
 }
 
-/* ---------- proyecto ---------- */
+/* ---------- work: selección ---------- */
+
+.work { margin-top: clamp(3rem, 10vh, 6rem); }
+
+.selected {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
+  gap: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2.5rem);
+}
+.selected a { display: block; text-decoration: none; }
+.selected .cover {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  background: var(--hover);
+  transition: opacity .25s;
+}
+.selected a:hover .cover { opacity: .85; }
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
+  margin-top: .9rem;
+  padding-bottom: .5rem;
+  border-bottom: 1px solid var(--rule);
+}
+.card-head .name { font-size: clamp(1.125rem, 1.6vw, 1.4rem); }
+.card-head .year { color: var(--muted); font-variant-numeric: tabular-nums; }
+
+.medium { display: flex; flex-wrap: wrap; gap: .35rem; margin: .6rem 0 0; }
+.medium span {
+  font-size: .75rem;
+  padding: .05rem .5rem;
+  border: 1px solid var(--rule);
+  border-radius: 1rem;
+  color: var(--muted);
+}
+
+.selected .line { margin: .6rem 0 0; max-width: 34rem; }
+
+.to-archive {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-top: clamp(4rem, 10vh, 7rem);
+  padding: 1rem 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  text-decoration: none;
+  font-size: clamp(1.125rem, 1.6vw, 1.4rem);
+}
+.to-archive span:last-child { color: var(--muted); font-size: .875rem; align-self: center; }
+.to-archive:hover span:last-child { color: var(--ink); }
+
+/* ---------- proyecto: ficha + cuerpo ---------- */
 
 .project { max-width: var(--wide); margin-top: clamp(2.5rem, 8vh, 5rem); }
 
 .back { color: var(--muted); text-decoration: none; font-size: .875rem; }
 .back:hover { color: var(--ink); }
 
-.project-head { margin: 2rem 0 3rem; }
-.project-head .meta { color: var(--muted); font-size: .875rem; margin: 0 0 .75rem; }
-.project-head h1 {
+.project h1 {
   font-size: clamp(2rem, 5vw, 4rem);
   line-height: 1.05;
   font-weight: 500;
   letter-spacing: -.02em;
-  margin: 0;
-  max-width: 20ch;
+  margin: 1.5rem 0 2rem;
 }
 
+.ficha {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr);
+  gap: 0 1rem;
+  max-width: var(--text);
+  margin: 0 0 3rem;
+  border-top: 1px solid var(--ink);
+  font-size: .875rem;
+}
+.ficha dt, .ficha dd { padding: .5rem 0; border-bottom: 1px solid var(--rule); margin: 0; }
+.ficha dt { color: var(--muted); }
+.ficha ul { list-style: none; margin: 0; padding: 0; }
+.ficha li + li { margin-top: .2rem; }
+.ficha a { text-decoration: none; }
+.ficha a:hover { text-decoration: underline; }
+
 .body > * { max-width: var(--text); }
-.body > figure, .body > video, .body > .embed { max-width: var(--wide); }
+.body > figure, .body > video, .body > .embed, .body > .outputs, .body > .tweets { max-width: var(--wide); }
 
 .body p { margin: 0 0 1.1em; }
 .body h2, .body h3, .body h4 { font-weight: 500; margin: 2.5rem 0 .75rem; }
@@ -165,6 +237,14 @@ main { padding: var(--gutter); padding-bottom: 6rem; }
 .body video { width: 100%; margin: 2.5rem 0; }
 
 .body .embed iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+
+/* Rejilla de outputs: imágenes seguidas, a su proporción, en columnas */
+.outputs { columns: 3 14rem; column-gap: .75rem; margin: 2.5rem 0; }
+.outputs[data-n="2"] { columns: 2 14rem; }
+.outputs figure { margin: 0 0 .75rem; break-inside: avoid; }
+
+.tweets { columns: 2 20rem; column-gap: 1rem; margin: 1.5rem 0; }
+.tweets .tweet { break-inside: avoid; margin: 0 0 1rem; }
 
 .body blockquote {
   margin: 2.5rem 0;
@@ -188,24 +268,13 @@ main { padding: var(--gutter); padding-bottom: 6rem; }
   padding: 1rem 1.25rem;
   border: 1px solid var(--rule);
   font-size: .95rem;
+  line-height: 1.5;
 }
 .tweet p { white-space: pre-line; margin: 0 0 .75rem; }
 .tweet-media { display: grid; grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr)); gap: .25rem; margin-bottom: .75rem; }
 .tweet-media img { width: 100%; height: 100%; object-fit: cover; }
 .tweet a.src { color: var(--muted); font-size: .875rem; text-decoration: none; }
 .tweet a.src:hover { color: var(--ink); }
-
-.project-foot {
-  max-width: var(--text);
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--rule);
-  font-size: .875rem;
-}
-.project-foot dl { display: grid; grid-template-columns: 8rem 1fr; gap: .35rem 1rem; margin: 0 0 1.5rem; }
-.project-foot dt { color: var(--muted); }
-.project-foot dd { margin: 0; }
-.project-foot .tags { color: var(--muted); }
 
 .pager {
   display: flex;
@@ -242,12 +311,35 @@ main { padding: var(--gutter); padding-bottom: 6rem; }
 }
 .cv li .year { font-variant-numeric: tabular-nums; }
 .cv li.same-year .year { visibility: hidden; }
-.cv .empty { color: var(--muted); }
+.upcoming h2 { font-size: .875rem; font-weight: 400; color: var(--muted); margin: 0 0 .75rem; }
+.upcoming ul { list-style: none; margin: 0 0 4rem; padding: 0; font-size: clamp(1.125rem, 1.6vw, 1.35rem); }
+
+/* ---------- contact ---------- */
+
+.contact { margin-top: clamp(3rem, 12vh, 8rem); }
+.contact ul { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); max-width: var(--text); }
+.contact li { border-bottom: 1px solid var(--rule); }
+.contact a { display: block; padding: .8rem 0; text-decoration: none; font-size: clamp(1.25rem, 2vw, 1.6rem); }
+.contact a:hover { padding-left: .75rem; transition: padding-left .25s; }
+
+/* Aviso de prueba: se quita al publicar */
+.badge {
+  position: fixed;
+  left: .75rem;
+  bottom: .75rem;
+  margin: 0;
+  padding: .2rem .6rem;
+  font-size: .75rem;
+  background: var(--ink);
+  color: var(--bg);
+  border-radius: 1rem;
+  z-index: 20;
+}
 
 @media (max-width: 40rem) {
   .cv li { grid-template-columns: 3.5rem minmax(0, 1fr); }
-  .project-foot dl { grid-template-columns: 1fr; }
-  .project-foot dd { margin-bottom: .5rem; }
+  .ficha { grid-template-columns: 1fr; }
+  .ficha dt { border-bottom: 0; padding-bottom: 0; }
 }
 
 .error { color: #c33; }

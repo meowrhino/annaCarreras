@@ -10,6 +10,7 @@ sirve el repo tal cual.
 content/
   site.json                 datos globales del sitio
   about.json                bio + CV
+  curated.json              selección, frases y fichas (a mano)
   projects/
     index.json              listado ligero para el grid
     <slug>.json             un fichero por proyecto
@@ -37,8 +38,9 @@ bloque y el about.
 No es el diseño del sitio ni pretende serlo: lleva el CSS mínimo para poder
 leer. Cuando montemos el front encima, este fichero se sustituye.
 
-La prueba de diseño en curso vive en [`prueba/`](prueba/) (línea 1, índice
-cronológico); las líneas aparcadas, en [`LINEASDEDISEÑO.md`](LINEASDEDISEÑO.md).
+La prueba de diseño en curso vive en [`prueba/`](prueba/) (líneas 5 + 6:
+selección + archivo, proyecto como ficha); todas las líneas, en
+[`LINEASDEDISEÑO.md`](LINEASDEDISEÑO.md).
 
 Para verlo en local, desde la raíz del repo:
 
@@ -149,6 +151,32 @@ proyectos completos.
 `year` es el año inicial de la entrada, o `null` cuando la línea no empieza por
 un año (pasa en *Teaching*, donde los años van al final). El `html` conserva la
 línea entera, año incluido.
+
+### `content/curated.json`
+
+Lo único escrito a mano: `scrape.py` no lo toca. Manda sobre lo scrapeado.
+
+```jsonc
+{
+  "selected": ["trossets", "arrels", …],   // orden de la portada
+  "projects": {
+    "trossets": {
+      "name": "Trossets",                   // nombre corto (sin «at ArtBlocks curated»)
+      "line": "…",                          // una frase para la selección
+      "medium": ["digital"],                // soporte; si falta, las categorías
+      "facts": [ { "label": "Edition", "html": "1,000 outputs" } ],
+      "links": [ { "label": "Art Blocks", "url": "…" } ],
+      "exhibitions": ["2022 — …"],
+      "press": [ { "label": "…", "url": "…" } ]
+    }
+  },
+  "contact": [ { "label": "X", "url": "…" } ],
+  "upcoming": []                            // html; si está vacío no se pinta
+}
+```
+
+Los créditos del proyecto con etiqueta van a la ficha; las líneas sin
+etiqueta (enlaces a prensa) van a *Press*.
 
 ## Notas de contenido
 

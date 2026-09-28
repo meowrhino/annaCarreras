@@ -38,14 +38,25 @@ trabajar.
 
 ## En prueba
 
-**1. Índice cronológico.** Portada como lista de 2024 a 2001: año, título,
-categoría. Al pasar el ratón aparece la portada del proyecto. Prueba en
-[`prueba/`](prueba/), archivada como
+**5 + 6, sobre la 1.** En [`prueba/`](prueba/):
+- *Work*: la selección, en una rejilla de dos columnas. Cada proyecto lleva
+  imagen, nombre corto, año, soporte y una frase.
+- *Archive*: el índice cronológico de la línea 1, con todo.
+- Proyecto: nombre, **ficha** (año, soporte, datos, créditos, enlaces,
+  exposiciones, prensa) y el cuerpo. Las imágenes o tuits seguidos se agrupan
+  en una rejilla.
+- *About*: *upcoming* arriba (si hay), bio y CV. *Contact* aparte.
+
+Lo curado a mano está en [`content/curated.json`](content/curated.json).
+**Todo es provisional**: la selección, las frases, los soportes y las fichas
+los he puesto yo a partir del contenido y el CV; los tiene que revisar Anna.
+
+La línea 1 sola está archivada como
 [01](https://meowrhino.github.io/annaCarreras-disenos/01-indice-cronologico/).
 
 ## Ideas de las referencias (brainstorming)
 
-**5. Selección + archivo** (Rikić + Anna Lucia). Dos niveles:
+**5. Selección + archivo** (Rikić + Anna Lucia). *En prueba.* Dos niveles:
 - *Work*: 5 a 8 proyectos elegidos, grandes, con título, año, soporte y
   una frase.
 - *Archive*: todo, como la línea 1 (el índice cronológico pasa a ser esto).
@@ -54,7 +65,7 @@ categoría. Al pasar el ratón aparece la portada del proyecto. Prueba en
 Resuelve la estructura de artista sin tirar la línea 1. Falta que Anna elija
 la selección y escriba la frase de cada una.
 
-**6. Proyecto como ficha** (Anna Lucia). La página de proyecto empieza con una
+**6. Proyecto como ficha** (Anna Lucia). *En prueba.* La página de proyecto empieza con una
 ficha: año, soporte, edición, enlaces (Art Blocks, Feral File, OpenSea),
 exposiciones y prensa. Después, texto corto y outputs en rejilla. Los
 `credits` que ya tenemos (etiqueta: valor) son casi esa ficha; faltarían
