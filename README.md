@@ -1,7 +1,10 @@
-# annacarreras.com — contenido para JAMstack
+# annacarreras.com
 
 Contenido extraído de la web actual (WordPress) a JSON plano + assets locales.
 Sin estilos, sin markup de tema: solo datos listos para montar el front encima.
+
+El front va en HTML, CSS y JS a pelo: sin frameworks, sin build. GitHub Pages
+sirve el repo tal cual.
 
 ```
 content/
@@ -17,13 +20,11 @@ scripts/
 ```
 
 Los `src` de los JSON son rutas root-absolutas (`/assets/projects/...`), así que
-basta con servir `assets/` desde la raíz pública (en Astro/Next: mover o
-enlazar la carpeta dentro de `public/`).
+basta con servir `assets/` desde la raíz pública.
 
 **Ojo con el base path:** si el sitio no cuelga de la raíz del dominio —como en
-GitHub Pages, que sirve desde `/annaCarreras/`— hay que prefijar esos `src`. En
-Astro es `import.meta.env.BASE_URL`; en Next, `basePath`. El visor lo hace a
-mano en `index.html`.
+GitHub Pages, que sirve desde `/annaCarreras/`— hay que prefijar esos `src` en
+JS. El visor lo hace en `index.html`.
 
 ## Visor de contenido
 
@@ -34,8 +35,10 @@ bloque y el about.
 <https://meowrhino.github.io/annaCarreras/>
 
 No es el diseño del sitio ni pretende serlo: lleva el CSS mínimo para poder
-leer. Cuando montemos el front encima, este fichero se sustituye (y conviene
-cambiar el origen de Pages a GitHub Actions para servir el build).
+leer. Cuando montemos el front encima, este fichero se sustituye.
+
+La prueba de diseño en curso vive en [`prueba/`](prueba/) (línea 1, índice
+cronológico); las líneas aparcadas, en [`LINEASDEDISEÑO.md`](LINEASDEDISEÑO.md).
 
 Para verlo en local, desde la raíz del repo:
 
@@ -164,4 +167,4 @@ línea entera, año incluido.
 - Casi ninguna imagen tiene `alt` real. WordPress rellena el `alt` con el nombre
   del fichero cuando no se escribe uno; el script lo descarta y deja `""`.
 - Los GIFs de `arrels` son pesados (~6 MB cada uno); conviene convertirlos a
-  vídeo o WebP en el build.
+  vídeo o WebP (a mano, con `ffmpeg`, antes de publicar).
