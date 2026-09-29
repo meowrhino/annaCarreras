@@ -45,7 +45,7 @@ Pruebas de diseño en curso:
 - [`prueba-a/`](prueba-a/): lo mismo más la línea A, la web como output (un
   hash por visita decide la paleta y el marco de Truchet).
 
-Las líneas de diseño, por fecha, en [`lineas/`](lineas/). Lo último:
+Las líneas de diseño, por fecha, en [`lineas/`](lineas/). Conceptos desde cero, tras leer la tesis: [`lineas/2026-09-29-conceptos.md`](lineas/2026-09-29-conceptos.md). Antes:
 [`lineas/2026-09-29.md`](lineas/2026-09-29.md), con las preguntas pendientes
 para Anna.
 

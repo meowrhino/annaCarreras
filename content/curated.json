@@ -4,6 +4,7 @@
   "projects": {
     "trossets": {
       "name": "Trossets",
+      "sketch": "trossets",
       "line": "Long-form generative algorithm: twelve construction blocks, endless multiscale Truchet patterns.",
       "medium": ["digital"],
       "facts": [
