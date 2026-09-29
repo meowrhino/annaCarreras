@@ -10,6 +10,10 @@
 </head>
 <body>
 
+<canvas class="marco" aria-hidden="true"></canvas>
+
+<div class="sheet">
+
 <header class="site">
   <a class="site-name" href="#/">Anna Carreras</a>
   <span class="site-tagline">generative art &amp;&amp; interactive installations</span>
@@ -23,12 +27,14 @@
 
 <main id="app"></main>
 
+<footer class="site-foot">
+  <p class="seed"><a href="?seed="></a> <button type="button" title="New seed" aria-label="New seed">↻</button></p>
+  <p class="badge">Prueba A, textos provisionales</p>
+</footer>
+
+</div>
+
 <img class="peek" alt="" aria-hidden="true">
-
-<canvas class="marco" aria-hidden="true"></canvas>
-
-<p class="badge">prueba A · textos provisionales</p>
-<p class="seed"><a href="?seed="></a> <button type="button" title="New seed" aria-label="New seed">↻</button></p>
 
 <script type="module" src="marco.js"></script>
 <script src="app.js"></script>

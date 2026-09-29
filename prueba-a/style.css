@@ -1,15 +1,20 @@
-/* Línea A sobre 5 + 6: la web es un output. marco.js pisa los colores, --frame
-   y --card según el hash de la visita; estos valores son el fallback sin JS. */
+/* Línea A sobre 5 + 6: la web es un output. marco.js pinta el fondo según el
+   hash de la visita (--field, --accent, --frame); la hoja con el contenido es
+   siempre igual. Estos valores son el fallback sin JS. */
 
 :root {
-  --bg: #f3f2ee;
-  --ink: #141414;
-  --muted: #7a7873;
-  --rule: #d9d7d0;
-  --hover: #e8e6df;
-  --accent: #c2410c;
-  --frame: 0px;
-  --card: 26rem;
+  /* La hoja: fija, no depende del seed */
+  --bg: #f7f7f5;
+  --ink: #161616;
+  --muted: #5a5a58;
+  --rule: rgb(0 0 0 / .13);
+  --hover: rgb(0 0 0 / .05);
+  --sheet: rgb(247 247 245 / .8);
+
+  /* El fondo: lo pisa marco.js */
+  --field: #d9d6cf;
+  --accent: #8a8a86;
+  --frame: 16px;
 
   --font: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --gutter: clamp(1rem, 3vw, 2.5rem);
@@ -19,18 +24,19 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121211;
-    --ink: #ecebe6;
-    --muted: #8c8a84;
-    --rule: #2c2b29;
-    --hover: #1d1c1a;
-    --accent: #fb923c;
+    --bg: #161617;
+    --ink: #ececea;
+    --muted: #a2a29e;
+    --rule: rgb(255 255 255 / .14);
+    --hover: rgb(255 255 255 / .06);
+    --sheet: rgb(22 22 23 / .78);
+    --field: #262624;
   }
 }
 
 * { box-sizing: border-box; }
 
-html { background: var(--bg); color: var(--ink); }
+html { background: var(--field); color: var(--ink); }
 
 body {
   margin: 0;
@@ -41,46 +47,58 @@ body {
 
 a { color: inherit; }
 
-::selection { background: var(--accent); color: var(--bg); }
-:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+::selection { background: var(--ink); color: var(--bg); }
+:focus-visible { outline: 2px solid var(--ink); outline-offset: 2px; }
 
-/* ---------- el marco (marco.js) ---------- */
+/* ---------- fondo (marco.js) y hoja ---------- */
 
-/* Por encima del contenido: solo pinta la banda del borde, el centro es
-   transparente y el contenido pasa por debajo al hacer scroll. */
 .marco {
   position: fixed;
   inset: 0;
   width: 100%;
   height: 100%;
-  pointer-events: none;
-  z-index: 15;
+  z-index: -1;
 }
 
-.seed {
-  position: fixed;
-  right: calc(var(--frame) + .75rem);
-  bottom: calc(var(--frame) + .75rem);
-  margin: 0;
+/* Translúcida y desenfocada: el campo tiñe la hoja sin competir con el texto. */
+.sheet {
   display: flex;
-  align-items: center;
-  gap: .25rem;
-  padding: .1rem .15rem .1rem .6rem;
-  font: .75rem/1.5 ui-monospace, "SF Mono", Menlo, monospace;
-  background: var(--bg);
+  flex-direction: column;
+  min-height: calc(100dvh - 2 * var(--frame));
+  background: var(--sheet);
+  -webkit-backdrop-filter: blur(48px) saturate(1.4);
+  backdrop-filter: blur(48px) saturate(1.4);
   border: 1px solid var(--rule);
-  border-radius: 1rem;
-  z-index: 20;
+  border-radius: 10px;
 }
-.seed a { color: var(--muted); text-decoration: none; }
-.seed a:hover { color: var(--ink); }
+.sheet main { flex: 1; }
+
+.site-foot {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: .5rem 1.5rem;
+  padding: .9rem var(--gutter);
+  border-top: 1px solid var(--rule);
+  font-size: .8125rem;
+  color: var(--muted);
+}
+.site-foot p { margin: 0; }
+
+.seed { display: flex; align-items: center; gap: .25rem; }
+.seed a { color: inherit; text-decoration: none; font-variant-numeric: tabular-nums; }
+.seed a:hover { color: var(--ink); text-decoration: underline; }
 .seed button {
   font: inherit;
-  color: var(--accent);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--ink);
   background: none;
-  border: 0;
-  border-radius: 1rem;
-  padding: 0 .45rem;
+  border: 1px solid var(--rule);
+  border-radius: 50%;
+  width: 1.75rem;
+  height: 1.75rem;
   cursor: pointer;
 }
 .seed button:hover { background: var(--hover); }
@@ -111,7 +129,7 @@ img, video, iframe { display: block; max-width: 100%; height: auto; }
   .site nav { order: 3; flex-basis: 100%; margin: .75rem 0 0; }
 }
 
-main { padding: var(--gutter); padding-bottom: 6rem; }
+main { padding: var(--gutter); padding-bottom: 5rem; }
 
 /* ---------- índice ---------- */
 
@@ -195,7 +213,7 @@ main { padding: var(--gutter); padding-bottom: 6rem; }
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, var(--card)), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 26rem), 1fr));
   gap: clamp(2.5rem, 5vw, 4rem) clamp(1rem, 3vw, 2.5rem);
 }
 .selected a { display: block; text-decoration: none; }
@@ -373,21 +391,9 @@ main { padding: var(--gutter); padding-bottom: 6rem; }
 .contact a:hover { padding-left: .75rem; transition: padding-left .25s; }
 
 /* Aviso de prueba: se quita al publicar */
-.badge {
-  position: fixed;
-  left: calc(var(--frame) + .75rem);
-  bottom: calc(var(--frame) + .75rem);
-  margin: 0;
-  padding: .2rem .6rem;
-  font-size: .75rem;
-  background: var(--ink);
-  color: var(--bg);
-  border-radius: 1rem;
-  z-index: 20;
-}
+.badge { font-style: italic; }
 
 @media (max-width: 40rem) {
-  .seed { bottom: calc(var(--frame) + 2.6rem); }
   .cv li { grid-template-columns: 3.5rem minmax(0, 1fr); }
   .ficha { grid-template-columns: 1fr; }
   .ficha dt { border-bottom: 0; padding-bottom: 0; }

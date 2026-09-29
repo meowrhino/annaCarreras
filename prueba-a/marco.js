@@ -1,6 +1,7 @@
 // Línea A: la web es un output. Cada visita saca un hash, como el
-// tokenData.hash de Art Blocks, y de él salen la paleta, el grosor del marco,
-// el patrón de Truchet que se ve a través de él y el ancho de las tarjetas.
+// tokenData.hash de Art Blocks, y de él sale el fondo: un campo de teselas de
+// Truchet con su paleta, y el margen que deja alrededor de la hoja. La hoja
+// (el contenido) es siempre la misma.
 // ?seed=0x… reproduce una versión. Provisional: Anna puede cambiar draw() por
 // un sketch suyo (p5 en modo instancia incluido) sin tocar lo demás.
 
@@ -33,23 +34,22 @@ function traits(hash) {
   return {
     hue,
     accentHue: (hue + 90 + R() * 180) % 360,
-    chroma: .008 + R() * .03,
-    frame: .014 + R() * .018,       // grosor, en fracción del lado corto
+    chroma: .02 + R() * .05,
+    frame: .02 + R() * .035,        // margen de la hoja, en fracción del lado corto
     scale: 1 + (R() * 3 | 0),       // tamaño de celda, en grosores de marco
     split: .25 + R() * .45,         // probabilidad de partir una celda en cuatro
     style: pick(['arcs', 'arcs', 'diagonals', 'triangles']),
     line: 1 + R() * 1.25,
-    card: 18 + R() * 12,            // ancho mínimo de tarjeta en Work, rem
   };
 }
 
-// OKLCH con el mismo tono en todo: el contraste lo fija la luminosidad, así
-// que cualquier hash se lee bien.
+// Fondo y teselas en OKLCH. Oscuro o claro según el sistema, para que la
+// hoja translúcida no cambie de tono de golpe.
 function palette(t, isDark) {
-  const c = (l, k = 1) => `oklch(${l}% ${(t.chroma * k).toFixed(3)} ${t.hue.toFixed(1)})`;
+  const hue = (h) => h.toFixed(1);
   return isDark
-    ? { bg: c(17), ink: c(93, .6), muted: c(68), rule: c(30), hover: c(22), accent: `oklch(74% .13 ${t.accentHue.toFixed(1)})` }
-    : { bg: c(96.5), ink: c(21, 1.5), muted: c(50, 1.5), rule: c(86), hover: c(92), accent: `oklch(58% .16 ${t.accentHue.toFixed(1)})` };
+    ? { field: `oklch(22% ${t.chroma.toFixed(3)} ${hue(t.hue)})`, accent: `oklch(70% .14 ${hue(t.accentHue)})` }
+    : { field: `oklch(90% ${t.chroma.toFixed(3)} ${hue(t.hue)})`, accent: `oklch(60% .17 ${hue(t.accentHue)})` };
 }
 
 let hash, t, colors;
@@ -59,8 +59,7 @@ function apply(h) {
   t = traits(hash);
   colors = palette(t, dark.matches);
   for (const [k, v] of Object.entries(colors)) root.style.setProperty('--' + k, v);
-  root.style.setProperty('--card', t.card.toFixed(1) + 'rem');
-  seedLink.textContent = `seed ${hash.slice(0, 6)}…${hash.slice(-4)} · ${t.style}`;
+  seedLink.textContent = `seed ${hash.slice(0, 6)}…${hash.slice(-4)}, ${t.style}`;
   updateLink();
   draw();
 }
@@ -69,24 +68,19 @@ const updateLink = () => { seedLink.href = '?seed=' + hash + location.hash; };
 
 /* ---------- el marco ---------- */
 
-// Un campo infinito de teselas de Truchet visto a través de una banda en el
-// borde de la ventana. Cada celda tiene su propio PRNG (hash + posición), así
-// que al redimensionar la esquina de arriba a la izquierda no cambia.
+// Un campo de teselas de Truchet detrás de la hoja. Cada celda tiene su
+// propio PRNG (hash + posición), así que al redimensionar la esquina de
+// arriba a la izquierda no cambia.
 function draw() {
   const w = innerWidth, h = innerHeight, dpr = devicePixelRatio || 1;
-  const B = Math.round(Math.min(Math.max(Math.min(w, h) * t.frame, 10), 32));
+  const B = Math.round(Math.min(Math.max(Math.min(w, h) * t.frame, 12), 56));
   root.style.setProperty('--frame', B + 'px');
 
   canvas.width = w * dpr;
   canvas.height = h * dpr;
   ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
 
-  ctx.save();
-  ctx.beginPath();
-  ctx.rect(0, 0, w, h);
-  ctx.rect(B, B, w - 2 * B, h - 2 * B);
-  ctx.clip('evenodd');
-  ctx.fillStyle = colors.bg;
+  ctx.fillStyle = colors.field;
   ctx.fillRect(0, 0, w, h);
 
   ctx.strokeStyle = ctx.fillStyle = colors.accent;
@@ -99,18 +93,11 @@ function draw() {
   for (let i = 0; i * S < w; i++) {
     for (let j = 0; j * S < h; j++) {
       const x = i * S, y = j * S;
-      if (x >= B && x + S <= w - B && y >= B && y + S <= h - B) continue; // no se ve
       const r = sfc32(W[0] ^ Math.imul(i + 1, 0x9e3779b1), W[1] ^ Math.imul(j + 1, 0x85ebca6b), W[2], W[3]);
       for (let k = 0; k < 8; k++) r();
       tile(x, y, S, r, depth);
     }
   }
-  ctx.restore();
-
-  // Filo interior del marco
-  ctx.strokeStyle = colors.rule;
-  ctx.lineWidth = 1;
-  ctx.strokeRect(B - .5, B - .5, w - 2 * B + 1, h - 2 * B + 1);
 }
 
 function tile(x, y, s, r, depth) {
