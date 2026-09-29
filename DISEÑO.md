@@ -22,7 +22,12 @@ La web es una rejilla de Trossets.
   paleta. Es el hueco sin rajoles; no flota con desenfoque.
 - **Al entrar**: primero se pinta el fondo, rajola a rajola (~1 s); después
   se asienta la hoja.
-- **Pie**: `paleta Paella · 29.09.2026`, enlazado a ese día.
+- **Bloques**: los 13 de Trossets, con su azar ponderado (qué bloques
+  salen juntos) y sus adornos, sacados del script on-chain y pasados de p5 a
+  canvas sin cambiar la geometría.
+- **Pie**: `‹ 29.09.2026 › · paleta Paella · ↻`. Las flechas cambian de día,
+  la paleta abre las 18 muestras (y «del día») y ↻ saca otra combinación con
+  la misma paleta. Todo queda en la URL: `?dia=`, `?llavor=`, `?paleta=`.
 
 ## Lo que sale de la tesis
 
@@ -58,9 +63,8 @@ La web es una rejilla de Trossets.
 
 ## Falta
 
-- **Los bloques son nuestros**, a la manera de Trossets (barras con
-  cuentas, arcos de Smith, anillos, semillas). Anna puede cambiarlos por
-  los suyos en `BLOCKS` sin tocar el resto.
+- **Permiso de Anna** para usar el código de Trossets en su web (pregunta
+  1). Si dice que no, hay que dibujar bloques nuevos en `TROSSETS`.
 - **Diccionari** y **lab/** ocultos (el calendario de fondos va ahí, en
   *small multiples*).
 - **Racó geek** del resto de proyectos.
@@ -83,8 +87,8 @@ La web es una rejilla de Trossets.
 
 ## Preguntas para Anna
 
-1. ¿Nos deja usar sus bloques de Trossets, o prefiere dibujar unos nuevos
-   para la web?
+1. ¿Nos deja usar el código de Trossets en el fondo (ya está puesto), o
+   prefiere dibujar bloques nuevos para la web?
 2. ¿Qué 5 a 8 proyectos van en la selección?
 3. ¿Añadimos Ganxillo, Discs, Estratosfèric y L'algorisme despullat?
 4. ¿Web en catalán, en inglés o en los dos?

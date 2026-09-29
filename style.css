@@ -77,8 +77,31 @@ main { padding: clamp(2.5rem, 8vh, 5rem) 0 4rem; }
   font-size: .875rem;
   color: var(--muted);
 }
-.dia { font-family: var(--mono); font-size: .8125rem; text-decoration: none; }
+/* Los mandos del fondo: día, paleta, otra combinación */
+.mando { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; font-family: var(--mono); font-size: .8125rem; }
+.mando button, .paletas button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 1px solid var(--line);
+  padding: .15rem .55rem;
+  cursor: pointer;
+}
+.mando button:hover, .paletas button:hover, .paletas [aria-pressed="true"] { border-color: var(--ink); color: var(--ink); }
+.dia { text-decoration: none; padding: 0 .25rem; }
 .dia:hover { color: var(--ink); text-decoration: underline; }
+
+.paletas {
+  flex-basis: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(8.5rem, 1fr));
+  gap: .4rem;
+  font: .8125rem var(--mono);
+}
+.paletas[hidden] { display: none; }
+.paletas button { display: flex; align-items: center; gap: .5rem; text-align: left; padding: .35rem .5rem; }
+.muestra { display: flex; flex: none; }
+.muestra i { width: .6rem; height: 1.1rem; }
 
 /* ---------- work: la selección ---------- */
 

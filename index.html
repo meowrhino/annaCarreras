@@ -33,14 +33,21 @@
 <main id="app"></main>
 
 <footer class="site-foot">
-  <a class="dia" href="?dia="></a>
+  <div class="mando">
+    <button type="button" class="prev" aria-label="Previous day">‹</button>
+    <a class="dia" href="?"></a>
+    <button type="button" class="next" aria-label="Next day">›</button>
+    <button type="button" class="paleta" aria-expanded="false" aria-controls="paletas"></button>
+    <button type="button" class="otra" aria-label="Another combination" title="Another combination">↻</button>
+  </div>
   <span>Prototype, provisional texts</span>
+  <div class="paletas" id="paletas" hidden></div>
 </footer>
 
 </div>
 </div>
 
-<script src="rajoles.js"></script>
+<script type="module" src="rajoles.js"></script>
 <script src="app.js"></script>
 </body>
 </html>

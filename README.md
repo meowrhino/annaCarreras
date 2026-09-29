@@ -5,8 +5,8 @@ GitHub Pages sirve el repo tal cual.
 
 <https://meowrhino.github.io/annaCarreras/>
 
-El diseño es **Rajoles**: el fondo es una rejilla de rajoles multiescala, como
-en Trossets, con una de sus paletas; la semilla es el día. La hoja con el
+El diseño es **Rajoles**: el fondo es Trossets (sus 13 bloques y sus 18
+paletas) en una rejilla sin fin; la semilla es el día. La hoja con el
 contenido ocupa celdas enteras de la rejilla. Por qué y qué falta, en
 [`DISEÑO.md`](DISEÑO.md). Las pruebas anteriores están en el historial de git
 y archivadas en
@@ -15,7 +15,7 @@ y archivadas en
 ```
 index.html                  la página (rutas por hash: #/, #/archive, #/about, #/contact, #/<slug>)
 style.css
-rajoles.js                  el fondo, la paleta del día y la rejilla de la hoja
+rajoles.js                  el fondo (Trossets), los mandos del pie y la rejilla de la hoja
 app.js                      pinta el contenido desde content/
 content/
   site.json                 datos globales del sitio
@@ -30,7 +30,9 @@ scripts/
   scrape.py                 regenera content/ y assets/ desde el WordPress
 ```
 
-`?dia=AAAA-MM-DD` enseña el fondo de otro día.
+`?dia=AAAA-MM-DD` enseña el fondo de otro día, `?paleta=Paella` fija la paleta
+y `?llavor=…` saca otra combinación. Los mandos del pie escriben estos mismos
+parámetros.
 
 Los `src` de los JSON son rutas root-absolutas (`/assets/projects/...`).
 **Ojo con el base path:** GitHub Pages sirve desde `/annaCarreras/`, así que
