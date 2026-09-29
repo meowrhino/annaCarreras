@@ -1,53 +1,40 @@
 # annacarreras.com
 
-Contenido extraído de la web actual (WordPress) a JSON plano + assets locales.
-Sin estilos, sin markup de tema: solo datos listos para montar el front encima.
+La web de Anna Carreras, en HTML, CSS y JS a pelo: sin frameworks, sin build.
+GitHub Pages sirve el repo tal cual.
 
-El front va en HTML, CSS y JS a pelo: sin frameworks, sin build. GitHub Pages
-sirve el repo tal cual.
+<https://meowrhino.github.io/annaCarreras/>
+
+El diseño es **Rajoles**: el fondo es una rejilla de rajoles multiescala, como
+en Trossets, con una de sus paletas; la semilla es el día. La hoja con el
+contenido ocupa celdas enteras de la rejilla. Por qué y qué falta, en
+[`DISEÑO.md`](DISEÑO.md). Las pruebas anteriores están en el historial de git
+y archivadas en
+[meowrhino/annaCarreras-disenos](https://github.com/meowrhino/annaCarreras-disenos).
 
 ```
+index.html                  la página (rutas por hash: #/, #/archive, #/about, #/contact, #/<slug>)
+style.css
+rajoles.js                  el fondo, la paleta del día y la rejilla de la hoja
+app.js                      pinta el contenido desde content/
 content/
   site.json                 datos globales del sitio
   about.json                bio + CV
-  curated.json              selección, frases y fichas (a mano)
+  curated.json              selección, frases, fichas y Racó geek (a mano)
   projects/
     index.json              listado ligero para el grid
     <slug>.json             un fichero por proyecto
 assets/
   projects/<slug>/…         imágenes y vídeos a resolución original
 scripts/
-  scrape.py                 regenera todo lo anterior
+  scrape.py                 regenera content/ y assets/ desde el WordPress
 ```
 
-Los `src` de los JSON son rutas root-absolutas (`/assets/projects/...`), así que
-basta con servir `assets/` desde la raíz pública.
+`?dia=AAAA-MM-DD` enseña el fondo de otro día.
 
-**Ojo con el base path:** si el sitio no cuelga de la raíz del dominio —como en
-GitHub Pages, que sirve desde `/annaCarreras/`— hay que prefijar esos `src` en
-JS. El visor lo hace en `index.html`.
-
-## Visor de contenido
-
-`index.html` es una página única, con rutas por hash, para revisar de un vistazo
-que el scraping salió bien: grid de proyectos, detalle con todos los tipos de
-bloque y el about.
-
-<https://meowrhino.github.io/annaCarreras/>
-
-No es el diseño del sitio ni pretende serlo: lleva el CSS mínimo para poder
-leer. Cuando montemos el front encima, este fichero se sustituye.
-
-Pruebas de diseño en curso:
-
-- [`prueba/`](prueba/): líneas 5 + 6, selección + archivo y proyecto como
-  ficha.
-- [`prueba-a/`](prueba-a/): lo mismo más la línea A, la web como output (un
-  hash por visita decide la paleta y el marco de Truchet).
-
-Las líneas de diseño, por fecha, en [`lineas/`](lineas/). Conceptos desde cero, tras leer la tesis: [`lineas/2026-09-29-conceptos.md`](lineas/2026-09-29-conceptos.md). Antes:
-[`lineas/2026-09-29.md`](lineas/2026-09-29.md), con las preguntas pendientes
-para Anna.
+Los `src` de los JSON son rutas root-absolutas (`/assets/projects/...`).
+**Ojo con el base path:** GitHub Pages sirve desde `/annaCarreras/`, así que
+`app.js` los resuelve contra la carpeta de la página.
 
 Para verlo en local, desde la raíz del repo:
 
@@ -174,7 +161,8 @@ Lo único escrito a mano: `scrape.py` no lo toca. Manda sobre lo scrapeado.
       "facts": [ { "label": "Edition", "html": "1,000 outputs" } ],
       "links": [ { "label": "Art Blocks", "url": "…" } ],
       "exhibitions": ["2022 — …"],
-      "press": [ { "label": "…", "url": "…" } ]
+      "press": [ { "label": "…", "url": "…" } ],
+      "geek": ["<html>", "…"]               // Racó geek: cómo funciona; si falta, no sale
     }
   },
   "contact": [ { "label": "X", "url": "…" } ],

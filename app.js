@@ -1,12 +1,11 @@
-// Los JSON viven en la raíz del repo y sus `src` son root-absolutos
-// (/assets/...). Se resuelven contra la carpeta padre de esta página, así
-// funciona igual en local que en GitHub Pages (/annaCarreras/). Una copia
-// archivada fuera de este repo apunta a otro origen con <html data-content>.
-const ROOT = new URL(document.documentElement.dataset.content || '..', location.href);
+// Los JSON viven junto a esta página y sus `src` son root-absolutos
+// (/assets/...). Se resuelven contra la carpeta de la página, así funciona
+// igual en local que en GitHub Pages (/annaCarreras/). Una copia archivada
+// fuera de este repo apunta a otro origen con <html data-content>.
+const ROOT = new URL(document.documentElement.dataset.content || '.', location.href);
 const url = (path) => new URL(path.replace(/^\//, ''), ROOT).href;
 
 const app = document.getElementById('app');
-const peek = document.querySelector('.peek');
 
 const cache = {};
 const get = (path) => cache[path] ??= fetch(url(path)).then(r => {
@@ -48,89 +47,49 @@ function fixLinks(node, slugs) {
 // Lo curado a mano (content/curated.json) manda sobre lo scrapeado.
 const nameOf = (p, cur) => cur.projects[p.slug]?.name || p.title;
 const mediumOf = (p, cur) => cur.projects[p.slug]?.medium || p.categories.map(label);
+const span = (years) => `${Math.min(...years)}–${Math.max(...years)}`;
 
 /* ---------- work: la selección ---------- */
 
 function renderWork(index, cur) {
   document.title = 'Anna Carreras';
   const bySlug = Object.fromEntries(index.map(p => [p.slug, p]));
-  const years = index.map(p => p.year);
 
-  const grid = el('ul', { class: 'selected' }, ...cur.selected.map(slug => {
+  const list = el('ul', { class: 'selected' }, ...cur.selected.map(slug => {
     const p = bySlug[slug], c = cur.projects[slug] || {};
     return el('li', {}, el('a', { href: '#/' + slug },
       p.cover && img(p.cover, { class: 'cover' }),
-      el('div', { class: 'card-head' },
+      el('p', { class: 'card-head' },
         el('span', { class: 'name', text: nameOf(p, cur) }),
-        el('span', { class: 'year', text: p.year })),
-      el('div', { class: 'medium' }, ...mediumOf(p, cur).map(m => el('span', { text: m }))),
+        el('span', { class: 'meta', text: `${mediumOf(p, cur).join(', ')}, ${p.year}` })),
       c.line && el('p', { class: 'line', text: c.line })));
   }));
 
   const more = el('a', { class: 'to-archive', href: '#/archive' },
     el('span', { text: 'Archive' }),
-    el('span', { text: `all ${index.length} projects, ${Math.min(...years)}–${Math.max(...years)} →` }));
+    el('span', { text: `all ${index.length} projects, ${span(index.map(p => p.year))} →` }));
 
-  app.replaceChildren(el('section', { class: 'work' }, grid, more));
+  app.replaceChildren(el('section', { class: 'work' }, list, more));
 }
 
-/* ---------- archive: el índice cronológico (línea 1) ---------- */
+/* ---------- archive: small multiples ---------- */
 
-function renderArchive(index) {
+// Todas las portadas al mismo tamaño, en orden cronológico: como los dibujos
+// de L'algorisme despullat colgados en rejilla, para ver el conjunto de golpe.
+function renderArchive(index, cur) {
   document.title = 'Archive — Anna Carreras';
-  const years = index.map(p => p.year);
-  const head = el('div', { class: 'index-head' },
+  const head = el('p', { class: 'index-head' },
     el('span', { text: 'Archive' }),
-    el('span', { text: `${index.length} projects, ${Math.min(...years)}–${Math.max(...years)}` }),
-  );
-  const list = el('ul', { class: 'index' });
-  index.forEach((p, i) => {
-    const same = i > 0 && index[i - 1].year === p.year;
-    const a = el('a', { href: '#/' + p.slug, 'data-cover': p.cover && url(p.cover.src) },
+    el('span', { text: `${index.length} projects, ${span(index.map(p => p.year))}` }));
+  const grid = el('ul', { class: 'multiples' }, ...index.map(p =>
+    el('li', {}, el('a', { href: '#/' + p.slug },
+      p.cover ? img(p.cover) : el('span', { class: 'no-cover' }),
       el('span', { class: 'year', text: p.year }),
-      el('span', { class: 'title', text: p.title }),
-      el('span', { class: 'cats', text: p.categories.map(label).join(', ') }),
-      el('span', { class: 'tags', text: p.tags.map(label).join(', ') }),
-      p.cover && img(p.cover, { class: 'thumb' }),
-    );
-    list.append(el('li', same ? { class: 'same-year' } : {}, a));
-  });
-  app.replaceChildren(head, list);
-  bindPeek(list);
+      el('span', { class: 'title', text: nameOf(p, cur) })))));
+  app.replaceChildren(el('section', { class: 'archive' }, head, grid));
 }
 
-// La portada sigue al cursor con un poco de retardo.
-let target = { x: 0, y: 0 }, pos = { x: 0, y: 0 }, raf = 0;
-
-function bindPeek(list) {
-  if (!matchMedia('(hover: hover)').matches) return;
-  list.addEventListener('pointerover', e => {
-    const a = e.target.closest('a[data-cover]');
-    if (!a) return;
-    if (peek.src !== a.dataset.cover) peek.src = a.dataset.cover;
-    peek.classList.add('on');
-  });
-  list.addEventListener('pointerleave', () => peek.classList.remove('on'));
-  list.addEventListener('pointermove', e => {
-    target = { x: e.clientX, y: e.clientY };
-    if (!peek.classList.contains('on')) pos = { ...target };
-    if (!raf) raf = requestAnimationFrame(tick);
-  });
-}
-
-function tick() {
-  pos.x += (target.x - pos.x) * .18;
-  pos.y += (target.y - pos.y) * .18;
-  const w = peek.offsetWidth, h = peek.offsetHeight;
-  // A la derecha del cursor; si no cabe, a la izquierda.
-  let x = pos.x + 32;
-  if (x + w > innerWidth - 16) x = pos.x - w - 32;
-  const y = Math.min(Math.max(pos.y - h / 2, 16), innerHeight - h - 16);
-  peek.style.transform = `translate(${x}px, ${y}px)`;
-  raf = Math.abs(target.x - pos.x) + Math.abs(target.y - pos.y) > .5 ? requestAnimationFrame(tick) : 0;
-}
-
-/* ---------- proyecto: ficha + cuerpo ---------- */
+/* ---------- proyecto: ficha + cuerpo + racó geek ---------- */
 
 function renderBlock(b) {
   switch (b.type) {
@@ -203,6 +162,15 @@ function renderFicha(p, cur) {
   return dl;
 }
 
+// El «Racó geek» es como acaba cada proyecto en su tesis: cómo funciona el
+// algoritmo, con números. Solo sale si hay texto en curated.json.
+function renderGeek(c) {
+  if (!c.geek?.length) return null;
+  return el('section', { class: 'geek' },
+    el('h2', { text: 'Racó geek' }),
+    ...c.geek.map(h => el('p', { html: h })));
+}
+
 function renderProject(p, index, cur) {
   const name = nameOf(p, cur);
   document.title = name + ' — Anna Carreras';
@@ -224,6 +192,7 @@ function renderProject(p, index, cur) {
     el('h1', { text: name }),
     renderFicha(p, cur),
     renderBody(p.blocks),
+    renderGeek(cur.projects[p.slug] || {}),
     pager);
 
   app.replaceChildren(fixLinks(article, slugs));
@@ -265,13 +234,12 @@ const PAGES = ['archive', 'about', 'contact'];
 
 async function route() {
   const path = location.hash.replace(/^#\/?/, '');
-  peek.classList.remove('on');
   document.querySelectorAll('[data-nav]').forEach(a =>
     a.toggleAttribute('aria-current', a.dataset.nav === (PAGES.includes(path) ? path : 'work')));
   try {
     const [index, cur] = await Promise.all([get('content/projects/index.json'), get('content/curated.json')]);
     if (!path) renderWork(index, cur);
-    else if (path === 'archive') renderArchive(index);
+    else if (path === 'archive') renderArchive(index, cur);
     else if (path === 'about') renderAbout(await get('content/about.json'), cur);
     else if (path === 'contact') renderContact(cur);
     else renderProject(await get('content/projects/' + path + '.json'), index, cur);

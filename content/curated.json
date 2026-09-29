@@ -1,10 +1,9 @@
 {
-  "_note": "Escrito a mano; scrape.py no lo toca. Todo es PROVISIONAL hasta que Anna lo confirme: la selección, los nombres cortos, las frases, los soportes y la ficha.",
+  "_note": "Escrito a mano; scrape.py no lo toca. Todo es PROVISIONAL hasta que Anna lo confirme: la selección, los nombres cortos, las frases, los soportes y la ficha. El campo \"geek\" (Racó geek) resume la tesis.",
   "selected": ["trossets", "arrels", "tesi", "tops-m", "my-city-my-playground", "mediate"],
   "projects": {
     "trossets": {
       "name": "Trossets",
-      "sketch": "trossets",
       "line": "Long-form generative algorithm: twelve construction blocks, endless multiscale Truchet patterns.",
       "medium": ["digital"],
       "facts": [
@@ -22,6 +21,13 @@
         "2022 — Decentral Art Pavilion, Biennale di Venezia, Venice",
         "2021 — Crypto Roots, Sónar Festival, Barcelona",
         "2021 — Art Blocks Curated"
+      ],
+      "geek": [
+        "A multiscale Truchet pattern, after Carlson’s multiscale tiles (2018), reduced to 13 building blocks. No rotation and no colour alternation: the algorithm only chooses which block goes in each cell.",
+        "The grid is 6×3, 9×5 or 12×7, and it is subdivided only once. Most outputs have large tiles and about 8% small ones; 12% of the 12×7 outputs have many small tiles and few large ones. Where the two sizes overlap, shapes step on each other and draw “beautiful errors” that are not in the code.",
+        "Which blocks appear is weighted randomness: of the 1,000 outputs, 15 use only vertical blocks, 14 only horizontal ones and 43 use all 13. The rarest composition, vertical, is #931.",
+        "Colour: 18 named palettes (Paella, Tortilla, Olivos, Palamós, Buganvilea…), chosen by eye and named afterwards, when they turned out to evoke places.",
+        "From the PhD thesis, §2.2.3. <em>Provisional summary, to be checked by Anna.</em>"
       ]
     },
     "arrels": {
