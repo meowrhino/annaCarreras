@@ -1,4 +1,4 @@
-/* Rajoles. rajoles.js pinta el fondo y fija, según el día:
+/* Rajoles. js/rajoles.js pinta el fondo y fija, según el día:
    --paper, --ink, --accent (de la paleta) y la rejilla --s (lado de celda),
    --n (celdas de ancho de la hoja), --m (celdas de margen).
    Estos valores son el fallback sin JS. */
@@ -23,6 +23,9 @@
 
 html { background: var(--paper); color: var(--ink); }
 
+/* La página no hace scroll: el fondo está quieto y la hoja scrollea dentro. */
+html, body { height: 100%; overflow: hidden; }
+
 body {
   margin: 0;
   font: 17px/1.55 var(--font);
@@ -39,14 +42,22 @@ img, video, iframe { display: block; max-width: 100%; height: auto; }
 
 .rajoles { position: fixed; inset: 0; width: 100%; height: 100%; }
 
-/* La hoja ocupa celdas enteras: rajoles.js le da el alto en múltiplos de --s. */
+/* La hoja ocupa celdas enteras (rajoles.js le da el alto en múltiplos de
+   --s) y es lo único que hace scroll. */
 .hoja {
-  position: relative;
+  position: fixed;
+  top: var(--s);
+  left: calc(var(--m) * var(--s));
   width: calc(var(--n) * var(--s));
-  margin: var(--s) 0 var(--s) calc(var(--m) * var(--s));
+  height: calc(100% - 2 * var(--s));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line) transparent;
   background: var(--paper);
   transition: opacity .35s ease;
 }
+.hoja:focus { outline: none; }
 /* Al entrar, primero el fondo; la hoja se asienta cuando está pintado. */
 .js .hoja:not(.on) { opacity: 0; }
 

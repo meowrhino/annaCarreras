@@ -20,6 +20,10 @@ La web es una rejilla de Trossets.
   máquina dibuja una vez al día.
 - **Hoja**: ocupa celdas enteras de la rejilla, del color de fondo de la
   paleta. Es el hueco sin rajoles; no flota con desenfoque.
+- **Quieto al hacer scroll**: el fondo es fijo y lo que hace scroll es la
+  hoja, por dentro. Así nunca se redibuja al hacer scroll (en móvil, el
+  fondo que seguía al scroll daba tirones). Hasta el 2026-09-29 el fondo
+  se movía con la página: archivado como 06.
 - **Al entrar**: primero se pinta el fondo, rajola a rajola (~1 s); después
   se asienta la hoja.
 - **Bloques**: los 13 de Trossets, con su azar ponderado (qué bloques

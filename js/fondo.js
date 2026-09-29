@@ -1,5 +1,6 @@
-// El fondo: una rejilla sin fin de rajoles de Trossets, pintada en un canvas
-// fijo que solo dibuja las filas visibles y las mueve con el scroll.
+// El fondo: una rejilla de rajoles de Trossets en un canvas fijo, del tamaño
+// de la ventana. No se mueve: lo que hace scroll es la hoja, por dentro, así
+// el scroll nunca obliga a redibujar.
 //
 // Cada celda tiene un estado de base, que sale de la semilla: siempre el
 // mismo para el mismo día. Encima pueden ir dos capas vivas:
@@ -108,11 +109,11 @@ function dibuja() {
   // Una fila de más arriba y abajo, porque los bloques se salen de su celda.
   const grandes = [], pequeñas = [];
   const ahora = performance.now();
-  for (let j = Math.floor(scrollY / s) - 1; j * s < scrollY + vh + s; j++) {
+  for (let j = -1; j * s < vh + s; j++) {
     for (let i = 0; i < cols; i++) {
       const b = base(i, j);
       if (b.cuando > progreso) continue;
-      const x = i * s, y = j * s - scrollY;
+      const x = i * s, y = j * s;
       const f = fundidos.get(clave(i, j));
       const k = f ? Math.min((ahora - f.t0) / FUNDIDO, 1) : 1;
       if (k < 1) coloca(f.de, x, y, 1 - k, grandes, pequeñas);
@@ -176,10 +177,9 @@ export function revela(ms) {
 // 1. Cambios lentos: una celda libre y visible al azar.
 function cambioLento() {
   if (document.hidden || progreso < 1) return;
-  const vh = innerHeight;
-  const j0 = Math.floor(scrollY / s), j1 = Math.floor((scrollY + vh) / s);
+  const filas = Math.ceil(innerHeight / s);
   for (let intento = 0; intento < 20; intento++) {
-    const i = Math.random() * cols | 0, j = j0 + (Math.random() * (j1 - j0 + 1) | 0);
+    const i = Math.random() * cols | 0, j = Math.random() * filas | 0;
     if (libre(i, j)) return cambia(i, j, varia(estado(i, j)));
   }
 }
@@ -188,7 +188,7 @@ function cambioLento() {
 let ultima = '';
 function pasa(e) {
   if (progreso < 1) return;
-  const i = Math.floor(e.clientX / s), j = Math.floor((e.clientY + scrollY) / s);
+  const i = Math.floor(e.clientX / s), j = Math.floor(e.clientY / s);
   const k = clave(i, j);
   if (k === ultima || !libre(i, j)) return;
   ultima = k;

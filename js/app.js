@@ -251,7 +251,7 @@ async function route() {
   } catch (e) {
     app.replaceChildren(el('p', { class: 'error', text: e.message }));
   }
-  scrollTo(0, 0);
+  app.closest('.hoja').scrollTop = 0;   // la hoja es la que hace scroll
 }
 
 addEventListener('hashchange', route);

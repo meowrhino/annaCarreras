@@ -7,7 +7,8 @@ GitHub Pages sirve el repo tal cual.
 
 El diseño es **Rajoles**: el fondo es Trossets (sus 13 bloques y sus 18
 paletas) en una rejilla sin fin; la semilla es el día. La hoja con el
-contenido ocupa celdas enteras de la rejilla. Por qué y qué falta, en
+contenido ocupa celdas enteras de la rejilla y es lo único que hace scroll: el
+fondo se queda quieto. Por qué y qué falta, en
 [`DISEÑO.md`](DISEÑO.md). Las pruebas anteriores están en el historial de git
 y archivadas en
 [meowrhino/annaCarreras-disenos](https://github.com/meowrhino/annaCarreras-disenos).

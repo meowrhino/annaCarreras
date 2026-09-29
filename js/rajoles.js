@@ -66,7 +66,6 @@ function colores(P) {
 // Trossets. La hoja va centrada, lo más ancha que quepa en ~1040 px, con un
 // número de celdas de la misma paridad que las columnas.
 const hoja = document.querySelector('.hoja');
-const contenido = hoja.firstElementChild;
 let cols, s, n;
 
 function mide() {
@@ -81,10 +80,12 @@ function mide() {
   ajustaHoja();
 }
 
-// El alto de la hoja se redondea a celdas enteras; el fondo sabe qué celdas
-// tapa para no animarlas.
+// La hoja es fija y ocupa celdas enteras: una fila de margen arriba y al
+// menos media abajo. El contenido hace scroll dentro de ella, así el fondo no
+// se redibuja al hacer scroll. El fondo sabe qué celdas tapa para no
+// animarlas.
 function ajustaHoja() {
-  const filas = Math.ceil(contenido.offsetHeight / s);
+  const filas = Math.max(3, Math.floor(innerHeight / s - 1.5));
   hoja.style.height = filas * s + 'px';
   const m = (cols - n) / 2;
   fondo.rejilla({ cols, s, hueco: { x0: m, x1: m + n, y0: 1, y1: 1 + filas } });
@@ -171,9 +172,11 @@ function actualiza({ soloPaleta = false, primera = false } = {}) {
 
 actualiza({ primera: true });
 mide();
-new ResizeObserver(ajustaHoja).observe(contenido);
 addEventListener('resize', mide);
-addEventListener('scroll', fondo.pide, { passive: true });
 
 // Primero el fondo, rajola a rajola; luego se asienta la hoja.
-fondo.revela(900).then(() => hoja.classList.add('on'));
+// Con el foco en la hoja, el teclado (espacio, flechas) la hace scrollear.
+fondo.revela(900).then(() => {
+  hoja.classList.add('on');
+  hoja.focus({ preventScroll: true });
+});
