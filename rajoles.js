@@ -8,6 +8,10 @@
 // Los bloques son el script on-chain de Trossets (Art Blocks, proyecto 147),
 // de Anna Carreras, pasado de p5 a canvas 2D sin cambiar la geometría. Solo
 // es nuestro lo que los coloca en la rejilla y los controles del pie.
+// Sacado de generator.artblocks.io/0xa7d8d9ef8d8ce8992df33d8b8cf4aebabd5bd270/147000000
+// (2026-09-29). Licencia de Trossets: CC BY-NC-SA 4.0
+// (https://creativecommons.org/licenses/by-nc-sa/4.0/). Esta adaptación se
+// publica con la misma licencia.
 
 // Las paletas de Trossets, en su orden: c1 fondo, c2 fondo medio, c3 línea,
 // c4 puntos, c5 acento.

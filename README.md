@@ -30,6 +30,11 @@ scripts/
   scrape.py                 regenera content/ y assets/ desde el WordPress
 ```
 
+El fondo adapta el código de Trossets (Art Blocks, proyecto 147), que tiene
+licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/):
+con atribución, sin uso comercial y compartiendo igual. `rajoles.js` se
+publica con esa misma licencia y el pie de la web lleva el crédito.
+
 `?dia=AAAA-MM-DD` enseña el fondo de otro día, `?paleta=Paella` fija la paleta
 y `?llavor=…` saca otra combinación. Los mandos del pie escriben estos mismos
 parámetros.
