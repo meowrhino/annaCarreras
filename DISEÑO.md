@@ -25,6 +25,11 @@ La web es una rejilla de Trossets.
 - **Bloques**: los 13 de Trossets, con su azar ponderado (qué bloques
   salen juntos) y sus adornos, sacados del script on-chain y pasados de p5 a
   canvas sin cambiar la geometría.
+- **Vivo**: cada ~2 s una rajola libre cambia de bloque, o se parte en
+  cuatro, o se vuelve a unir (la diversidad de Trossets, en el tiempo). Y
+  las celdas por donde pasa el ratón o el dedo se regeneran y a los 5 s
+  vuelven a lo que eran. Cada cambio se funde en 0,4 s. Quieto con
+  «reducir movimiento» y con la pestaña oculta.
 - **Pie**: `‹ 29.09.2026 › · paleta Paella · ↻`. Las flechas cambian de día,
   la paleta abre las 18 muestras (y «del día») y ↻ saca otra combinación con
   la misma paleta. Todo queda en la URL: `?dia=`, `?llavor=`, `?paleta=`.
@@ -55,16 +60,20 @@ La web es una rejilla de Trossets.
 
 ## Hecho
 
-- [`rajoles.js`](rajoles.js): el fondo, la paleta del día, la tinta (el
-  color de la paleta que más contrasta con el fondo, mínimo 4.5:1) y la
-  rejilla de la hoja. Solo pinta las filas visibles, al hacer scroll.
-- [`app.js`](app.js): Work, Archive, proyecto con Racó geek, About, Contact.
+- [`js/rajoles.js`](js/rajoles.js): el estado en la URL, la tinta (el
+  color de la paleta que más contrasta con el fondo, mínimo 4.5:1), la hoja
+  en la rejilla y los mandos del pie.
+- [`js/fondo.js`](js/fondo.js): el canvas. Solo pinta las filas visibles;
+  la intro y las dos animaciones.
+- [`js/trossets.js`](js/trossets.js): los bloques y paletas de Anna.
+- [`js/app.js`](js/app.js): Work, Archive, proyecto con Racó geek, About,
+  Contact.
 - Tipografía: Jost (geométrica, de la familia de Futura), 400 y 500.
 
 ## Falta
 
 - **Permiso de Anna** para usar el código de Trossets en su web (pregunta
-  1). Si dice que no, hay que dibujar bloques nuevos en `TROSSETS`.
+  1). Si dice que no, hay que dibujar bloques nuevos en `TROSSETS` (`js/trossets.js`).
 - **Diccionari** y **lab/** ocultos (el calendario de fondos va ahí, en
   *small multiples*).
 - **Racó geek** del resto de proyectos.

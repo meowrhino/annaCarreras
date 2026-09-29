@@ -15,8 +15,12 @@ y archivadas en
 ```
 index.html                  la página (rutas por hash: #/, #/archive, #/about, #/contact, #/<slug>)
 style.css
-rajoles.js                  el fondo (Trossets), los mandos del pie y la rejilla de la hoja
-app.js                      pinta el contenido desde content/
+js/
+  rajoles.js                arranque: estado en la URL, colores, la hoja en la rejilla, el pie
+  fondo.js                  el canvas: la rejilla sin fin, la intro y las animaciones
+  trossets.js               los bloques y paletas de Trossets (CC BY-NC-SA 4.0)
+  azar.js                   azar determinista (la misma semilla, el mismo fondo)
+  app.js                    el contenido: pinta cada ruta desde content/
 content/
   site.json                 datos globales del sitio
   about.json                bio + CV
@@ -32,8 +36,8 @@ scripts/
 
 El fondo adapta el código de Trossets (Art Blocks, proyecto 147), que tiene
 licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/):
-con atribución, sin uso comercial y compartiendo igual. `rajoles.js` se
-publica con esa misma licencia y el pie de la web lleva el crédito.
+con atribución, sin uso comercial y compartiendo igual. La adaptación se
+publica con esa misma licencia (`js/trossets.js`) y el pie de la web lleva el crédito.
 
 `?dia=AAAA-MM-DD` enseña el fondo de otro día, `?paleta=Paella` fija la paleta
 y `?llavor=…` saca otra combinación. Los mandos del pie escriben estos mismos

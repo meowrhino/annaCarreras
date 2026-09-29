@@ -1,7 +1,11 @@
-// Los JSON viven junto a esta página y sus `src` son root-absolutos
-// (/assets/...). Se resuelven contra la carpeta de la página, así funciona
-// igual en local que en GitHub Pages (/annaCarreras/). Una copia archivada
-// fuera de este repo apunta a otro origen con <html data-content>.
+// El contenido: lee los JSON de content/ y pinta cada ruta dentro de la hoja
+// (#/, #/archive, #/about, #/contact, #/<slug>). El fondo va aparte, en
+// rajoles.js; no se hablan: el fondo sigue el alto de la hoja por su cuenta.
+//
+// Los `src` de los JSON son root-absolutos (/assets/...). Se resuelven contra
+// la carpeta de la página, así funciona igual en local que en GitHub Pages
+// (/annaCarreras/). Una copia archivada fuera de este repo apunta a otro
+// origen con <html data-content>.
 const ROOT = new URL(document.documentElement.dataset.content || '.', location.href);
 const url = (path) => new URL(path.replace(/^\//, ''), ROOT).href;
 
@@ -47,7 +51,8 @@ function fixLinks(node, slugs) {
 // Lo curado a mano (content/curated.json) manda sobre lo scrapeado.
 const nameOf = (p, cur) => cur.projects[p.slug]?.name || p.title;
 const mediumOf = (p, cur) => cur.projects[p.slug]?.medium || p.categories.map(label);
-const span = (years) => `${Math.min(...years)}–${Math.max(...years)}`;
+// «2001–2024»
+const rango = (years) => `${Math.min(...years)}–${Math.max(...years)}`;
 
 /* ---------- work: la selección ---------- */
 
@@ -67,7 +72,7 @@ function renderWork(index, cur) {
 
   const more = el('a', { class: 'to-archive', href: '#/archive' },
     el('span', { text: 'Archive' }),
-    el('span', { text: `all ${index.length} projects, ${span(index.map(p => p.year))} →` }));
+    el('span', { text: `all ${index.length} projects, ${rango(index.map(p => p.year))} →` }));
 
   app.replaceChildren(el('section', { class: 'work' }, list, more));
 }
@@ -80,7 +85,7 @@ function renderArchive(index, cur) {
   document.title = 'Archive — Anna Carreras';
   const head = el('p', { class: 'index-head' },
     el('span', { text: 'Archive' }),
-    el('span', { text: `${index.length} projects, ${span(index.map(p => p.year))}` }));
+    el('span', { text: `${index.length} projects, ${rango(index.map(p => p.year))}` }));
   const grid = el('ul', { class: 'multiples' }, ...index.map(p =>
     el('li', {}, el('a', { href: '#/' + p.slug },
       p.cover ? img(p.cover) : el('span', { class: 'no-cover' }),
