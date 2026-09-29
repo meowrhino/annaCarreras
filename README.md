@@ -38,9 +38,16 @@ bloque y el about.
 No es el diseño del sitio ni pretende serlo: lleva el CSS mínimo para poder
 leer. Cuando montemos el front encima, este fichero se sustituye.
 
-La prueba de diseño en curso vive en [`prueba/`](prueba/) (líneas 5 + 6:
-selección + archivo, proyecto como ficha); todas las líneas, en
-[`LINEASDEDISEÑO.md`](LINEASDEDISEÑO.md).
+Pruebas de diseño en curso:
+
+- [`prueba/`](prueba/): líneas 5 + 6, selección + archivo y proyecto como
+  ficha.
+- [`prueba-a/`](prueba-a/): lo mismo más la línea A, la web como output (un
+  hash por visita decide la paleta y el marco de Truchet).
+
+Las líneas de diseño, por fecha, en [`lineas/`](lineas/). Lo último:
+[`lineas/2026-09-29.md`](lineas/2026-09-29.md), con las preguntas pendientes
+para Anna.
 
 Para verlo en local, desde la raíz del repo:
 
