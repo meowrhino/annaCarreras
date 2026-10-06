@@ -61,12 +61,33 @@ const mediumOf = (p) => p.medium?.length ? p.medium : p.categories.map(label);
 // encima (v3ga). Apaisadas en ordenador, en vertical en el móvil.
 function renderWork(index) {
   document.title = 'Anna Carreras';
-  app.replaceChildren(el('ul', { class: 'work' }, ...index.map((p, i) =>
-    el('li', {}, el('a', { href: '#/' + p.slug },
+  app.replaceChildren(el('ul', { class: 'work' }, ...index.map((p, i) => {
+    const name = el('span', { class: 'name', text: nameOf(p) });
+    const a = el('a', { href: '#/' + p.slug },
       p.cover ? img(p.cover, { loading: i < 4 ? 'eager' : 'lazy' }) : el('span', { class: 'no-cover' }),
-      el('span', { class: 'label' },
-        el('span', { class: 'name', text: nameOf(p) }),
-        el('span', { class: 'year', text: p.year })))))));
+      el('span', { class: 'label' }, name, el('span', { class: 'year', text: p.year })));
+    a.addEventListener('pointerenter', () => baraja(name, nameOf(p)));
+    a.addEventListener('focus', () => baraja(name, nameOf(p)));
+    return el('li', {}, a);
+  })));
+}
+
+// El título se baraja: las letras pasan por caracteres al azar y se van
+// recomponiendo de izquierda a derecha (~0,5 s). Atzar que acaba en el nombre.
+const AZAR = 'abcdefghijklmnopqrstuvwxyz#/+*=<>';
+const quieto = matchMedia('(prefers-reduced-motion: reduce)');
+
+function baraja(node, texto) {
+  if (quieto.matches) return;
+  cancelAnimationFrame(node.baraja);
+  const t0 = performance.now();
+  const paso = (t) => {
+    const hechas = Math.floor((t - t0) / 500 * texto.length);
+    node.textContent = [...texto].map((c, i) =>
+      i < hechas || c === ' ' ? c : AZAR[Math.random() * AZAR.length | 0]).join('');
+    if (hechas < texto.length) node.baraja = requestAnimationFrame(paso);
+  };
+  node.baraja = requestAnimationFrame(paso);
 }
 
 /* ---------- proyecto: ficha + cuerpo + racó geek ---------- */

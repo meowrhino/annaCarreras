@@ -125,23 +125,36 @@ main { flex: 1; }
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .6s ease, opacity .6s ease;
 }
 
-.work a:hover img { transform: scale(1.03); }
-
-/* el título encima, como v3ga: blanco invertido sobre la foto */
+/* el título encima, como v3ga: blanco sobre la foto; la sombra suave lo
+   deja leer sobre las portadas claras */
 .work .label {
   position: absolute;
   inset: 0 0 auto 0;
   padding: .35em .45em;
   display: flex;
   flex-direction: column;
-  mix-blend-mode: difference;
+  text-shadow: 0 0 .5em rgba(0, 0, 0, .45);
   line-height: 1;
 }
 .work .name { font-size: var(--big); letter-spacing: -.02em; }
 .work .year { font-size: clamp(1rem, 1.4vw, 1.3rem); margin-top: .35em; }
+
+/* hover: la foto pasa a tinta y papel (gris + papel multiplicado encima) y
+   el título se invierte sobre ella. El título además se baraja (app.js). */
+.work a { isolation: isolate; }
+.work a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--paper);
+  mix-blend-mode: multiply;
+  opacity: 0;
+}
+.work a:is(:hover, :focus-visible) img { filter: grayscale(1) contrast(1.3); }
+.work a:is(:hover, :focus-visible)::after { opacity: 1; }
+.work a:is(:hover, :focus-visible) .label { z-index: 1; text-shadow: none; mix-blend-mode: difference; }
 
 /* ---------- proyecto ---------- */
 
