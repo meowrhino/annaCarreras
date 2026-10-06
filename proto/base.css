@@ -1,0 +1,41 @@
+/* Estructura compartida por los tres prototipos: reset, página de detalle,
+   about y bloques de contenido. Cada prototipo define sus propias variables
+   (--bg, --fg, --dim, --rule, --accent, --mono, --sans) y su propio listado:
+   aquí solo está lo que no debería cambiar entre pruebas. */
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--sans); }
+a { color: inherit; text-decoration: none; }
+img, video { max-width: 100%; }
+
+/* ---- detalle de proyecto / about ---- */
+.detail { padding: 0 1.5rem 8rem; }
+.detail .wrap { max-width: 40rem; }
+.detail .back { display: inline-block; margin: 2.5rem 0 3rem; font: 400 .78rem/1 var(--mono); color: var(--dim); }
+.detail .back:hover { color: var(--accent); }
+.detail h1 { font-size: clamp(1.8rem, 4vw, 2.9rem); font-weight: 400; letter-spacing: -.02em; line-height: 1.1; margin: 0 0 .9rem; }
+.detail .meta { font: 400 .78rem/1.6 var(--mono); color: var(--dim); margin: 0 0 2.5rem; }
+.detail .lead { font-size: 1.15rem; line-height: 1.5; margin: 0 0 3rem; }
+.detail p, .detail li { font-size: 1rem; line-height: 1.65; }
+.detail .wrap a:not(.back) { border-bottom: 1px solid var(--dim); }
+.detail .section { font: 400 .78rem/1 var(--mono); letter-spacing: .08em; color: var(--dim); margin: 3.5rem 0 1rem; font-weight: 400; }
+.detail .cv { list-style: none; padding: 0; margin: 0; }
+.detail .cv li { padding: .55rem 0; border-bottom: 1px solid var(--rule); font-size: .95rem; line-height: 1.5; }
+
+figure { margin: 3rem 0; max-width: 58rem; }
+figure img, figure video { width: 100%; height: auto; display: block; background: var(--rule); }
+figure.embed iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
+figcaption { font: 400 .72rem/1.5 var(--mono); color: var(--dim); margin-top: .5rem; }
+blockquote { margin: 2.5rem 0; padding: 0; font-size: 1.1rem; line-height: 1.45; }
+blockquote cite { display: block; font: 400 .78rem/1.5 var(--mono); color: var(--dim); font-style: normal; margin-top: .6rem; }
+.credits { margin: 4rem 0 0; padding-top: 1.5rem; border-top: 1px solid var(--rule); font: 400 .8rem/1.6 var(--mono); }
+.credits dt { color: var(--dim); }
+.credits dd { margin: 0 0 .7rem; }
+.note { font: 400 .8rem/1.6 var(--mono); color: var(--accent); }
+.protobar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 9;
+  display: flex; gap: 1rem; justify-content: center;
+  padding: .5rem; background: var(--bg); border-top: 1px solid var(--rule);
+  font: 400 .72rem/1 var(--mono); color: var(--dim); letter-spacing: .04em;
+}
+.protobar a[aria-current] { color: var(--accent); }

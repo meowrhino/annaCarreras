@@ -54,6 +54,27 @@ Para verlo en local, desde la raíz del repo:
 python3 -m http.server 8765
 ```
 
+## Prototipos de diseño
+
+`proto/` tiene tres direcciones de portada montadas sobre el contenido real,
+para compararlas antes de elegir front:
+
+| | de dónde sale | idea |
+|---|---|---|
+| [`proto/a-index.html`](proto/a-index.html) | v3ga.net + annalucia.io | índice tipográfico, sin imágenes en el listado, portada al hover |
+| [`proto/b-grid.html`](proto/b-grid.html) | monicarikic.com | parrilla de portadas con filtro por categoría |
+| [`proto/c-canvas.html`](proto/c-canvas.html) | su propio trabajo | home generativa (Truchet multiescala) + índice a dos columnas |
+
+`proto/index.html` es el punto de entrada con las tres y sus riesgos.
+`proto/base.css` y `proto/proto.js` son lo compartido: detalle, about y rutas.
+En `c-canvas.html?still` el patrón se pinta de golpe (útil para capturas).
+
+**`proto/density.json` es dato de prueba, no contenido del sitio.** Son los 103
+posts del WordPress (título, año, categorías, tags y portada **enlazada a
+annacarreras.com**, no descargada), para poder juzgar los diseños a la escala
+real y no con los 13 proyectos scrapeados. Se regenera desde la API de WP; los
+proyectos que no están en `content/` se abren como ficha incompleta.
+
 ## Regenerar
 
 ```bash

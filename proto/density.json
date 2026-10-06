@@ -1,0 +1,2435 @@
+[
+ {
+  "slug": "artwatch-2025",
+  "title": "Artwatch",
+  "year": 2025,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [],
+  "tags": [
+   "generative",
+   "watch"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/artwatch-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "bancals",
+  "title": "Bancals",
+  "year": 2025,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative",
+   "museum"
+  ],
+  "tags": [
+   "generative",
+   "museum",
+   "print",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/bancals_morera_quadre1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "caniques",
+  "title": "Caniques",
+  "year": 2025,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "do_it_yourself",
+   "generative",
+   "installation"
+  ],
+  "tags": [
+   "generative",
+   "interactive",
+   "marbles",
+   "phygital",
+   "processing",
+   "touch"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/caniques_6-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "corals-code",
+  "title": "Coral’s code",
+  "year": 2025,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [],
+  "tags": [],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/coral_code-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "impuls",
+  "title": "Impuls i traçat",
+  "year": 2025,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative",
+   "museum"
+  ],
+  "tags": [
+   "art",
+   "code",
+   "color",
+   "digitalart",
+   "exhibition",
+   "generative",
+   "geometry",
+   "interactive",
+   "museum",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/impuls_tracat_detall-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "brava",
+  "title": "Brava",
+  "year": 2024,
+  "year_guessed": false,
+  "summary": "The artwork is inspired by quotidianity and the Mediterranean human landscape, as well as the personal experience of jumping into the vast open sea.",
+  "local": false,
+  "categories": [
+   "event",
+   "generative"
+  ],
+  "tags": [
+   "exhibition",
+   "generative",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/brightmoments_day1_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 341
+ },
+ {
+  "slug": "follon",
+  "title": "Follon",
+  "year": 2024,
+  "year_guessed": false,
+  "summary": "A humorous and conceptual project exploring digital art authorship. It poses with sarcasm the timeless question we face: Who is the author, the artist or the algorithm? ‘Follon’ is a mess, a joyful disorder, a party. It ",
+  "local": false,
+  "categories": [
+   "event",
+   "generative"
+  ],
+  "tags": [
+   "exhibition",
+   "generative",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/follon-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 2068
+ },
+ {
+  "slug": "gotim",
+  "title": "Gotim a gotim",
+  "year": 2024,
+  "year_guessed": false,
+  "summary": "contract",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "generative",
+   "processing",
+   "visuals",
+   "wine",
+   "winelabels"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/gotim_a_gotim_vins-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 8
+ },
+ {
+  "slug": "morena",
+  "title": "Morena",
+  "year": 2024,
+  "year_guessed": false,
+  "summary": "A small and intimate project with 17 unique curated digital creations accompanied by a hand-cut giclée print, minted through Highlight. Morena 15 unique curated output of the algorithm. An ongoing visual exploration that",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "3d",
+   "generative",
+   "hand-carved",
+   "hand-cut",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/morena-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1162
+ },
+ {
+  "slug": "tesi",
+  "title": "tesi",
+  "year": 2024,
+  "year_guessed": false,
+  "summary": "text complet | full text tesi pdf paper Abstract The practice of generative art, the artistic practice behind this project-based thesis, involves using computer code instructions and algorithms to create works of art. Th",
+  "local": true,
+  "categories": [
+   "development",
+   "generative"
+  ],
+  "tags": [
+   "art",
+   "complexity",
+   "generative",
+   "phd",
+   "tesi",
+   "writting"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/tesi-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 5090
+ },
+ {
+  "slug": "troballa",
+  "title": "Troballa",
+  "year": 2024,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "event",
+   "generative"
+  ],
+  "tags": [],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/troballa-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "discs",
+  "title": "Discs",
+  "year": 2023,
+  "year_guessed": false,
+  "summary": "Discs is a generative curated project. It is an exploration of the generative medium and its intrinsic characteristics. It observes how abstract systems can evoke memories and life experiences. Discs 100 curated long-for",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "code",
+   "exhibition",
+   "generative",
+   "geometry",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/discs_promo1-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1260
+ },
+ {
+  "slug": "exlibris",
+  "title": "Exlibris UPC",
+  "year": 2023,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/exlibris_upc-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "garbuix",
+  "title": "Garbuix",
+  "year": 2023,
+  "year_guessed": false,
+  "summary": "Garbuix shows how our thoughts, body and life can sometimes get messy. As an image, it relates to how hard situations can affect and alter one’s life, but also how strength and hope are always there. Garbuix 1/1 unique a",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "1-1",
+   "exhibition",
+   "generative",
+   "unique",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/garbuix_07-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 528
+ },
+ {
+  "slug": "ratlladis",
+  "title": "Ratlladís",
+  "year": 2023,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/ratlladis-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "anelles",
+  "title": "Anelles",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "comissioned",
+   "generative",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/anelles-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "estratosferic",
+  "title": "Estratosfèric",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "“Estratosfèric” means amazing, awesome. And It is my visual tribute to life! The title “Estratosfèric” derives from the word “stratum” a layer of rock or sediment. Visually the project also plays with layers. The visual ",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "art",
+   "generative",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/Anna_Carreras_expo_Cortesi_12-768x432.jpeg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1415
+ },
+ {
+  "slug": "llevataps-2022",
+  "title": "Llevataps",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "Llevataps is a corkscrew, sacacorchos, tirebouchon. It is a project inspired by wine. Its colors and vineyards landscapes; the feelings and memories that explode inside our brain when we smell it and we taste it, the emo",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "generative",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/llevataps_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 555
+ },
+ {
+  "slug": "lligams-2022",
+  "title": "Lligams",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "generative",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/Lligams_Palau_Musica_1-768x432.jpeg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "algorisme-despullat",
+  "title": "L’algorisme despullat",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative",
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "creativecoding",
+   "electronics",
+   "generative",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/algorisme_despullat_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "pinzell-darbres",
+  "title": "Pinzell d’arbres",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "Lines, only lines.Branches, trees, nature.I can’t reproduce the perfection and errors of nature digitally.Can we code pure digital images that recall our memories of nature scenery?Lines, only lines.Details.Look closer, ",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "exhibition",
+   "generative",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/pinzell_darbres_1-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 614
+ },
+ {
+  "slug": "redols",
+  "title": "Redols",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "Redols is a piece about the automated arrangement of geometrical shapes in space and how the images generated can foster different moods. It visually investigates how to adjust the amount of randomness and repetition -bo",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "generative",
+   "long-form",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/redols_exemple_1-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1246
+ },
+ {
+  "slug": "tops-m",
+  "title": "TOPS-M",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "",
+  "local": true,
+  "categories": [
+   "installation",
+   "museum",
+   "performance"
+  ],
+  "tags": [
+   "arduino",
+   "generative",
+   "interactive",
+   "livecoding",
+   "processing",
+   "typewriter"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/tops_m_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "unsigned",
+  "title": "Unsigned",
+  "year": 2022,
+  "year_guessed": false,
+  "summary": "Unsigned is a conceptual artwork by Operator (Experiential Artist Duo, Ania Catherine & Dejha Ti) and Anika Meyers reversing the current negative value of the signatures through their transformation into artworks themsel",
+  "local": false,
+  "categories": [
+   "installation",
+   "performance"
+  ],
+  "tags": [
+   "art",
+   "conceptual",
+   "women"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/unsigned_Los_Angeles-300x169.jpeg",
+   "width": 300,
+   "height": 169
+  },
+  "blocks_len": 441
+ },
+ {
+  "slug": "generative-robot",
+  "title": "Generative visuals for “la màquina que juga sola”",
+  "year": 2021,
+  "year_guessed": false,
+  "summary": "",
+  "local": false,
+  "categories": [
+   "generative",
+   "museum"
+  ],
+  "tags": [
+   "animation",
+   "arduino",
+   "electronics",
+   "generative",
+   "processing",
+   "robot",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/robot_juga_1-768x432.jpeg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "pifcamp",
+  "title": "Robocickens",
+  "year": 2021,
+  "year_guessed": true,
+  "summary": "Robočickens go to Pifčamp artisanal video, sound effects and robots a project with Mónica Rikić and Marta Verde",
+  "local": false,
+  "categories": [
+   "event",
+   "performance"
+  ],
+  "tags": [
+   "robots",
+   "sound"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/robochickens_pifcamp-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 115
+ },
+ {
+  "slug": "arrels",
+  "title": "“Arrels” at Social Codes, Feral File",
+  "year": 2021,
+  "year_guessed": false,
+  "summary": "Arrels piece exhibited at Social Codes the first exhibition at Feral File platform",
+  "local": true,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "generative",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/arrels_6-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1766
+ },
+ {
+  "slug": "franja",
+  "title": "“Franja” exhibition at Eufònic Sintètic",
+  "year": 2021,
+  "year_guessed": false,
+  "summary": "Exhibition for Euphonic festival at Decentraland with several pieces inspired by personal imaginaries and landscapes",
+  "local": false,
+  "categories": [
+   "generative",
+   "museum"
+  ],
+  "tags": [
+   "code",
+   "creativecoding",
+   "generative",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/franges_10-768x431.png",
+   "width": 768,
+   "height": 431
+  },
+  "blocks_len": 678
+ },
+ {
+  "slug": "ganxillo",
+  "title": "“Ganxillo” at For Your Eyes Only, Feral File",
+  "year": 2021,
+  "year_guessed": false,
+  "summary": "Ganxillo live view",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "color",
+   "creativecoding",
+   "generative",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/ganxillo-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 516
+ },
+ {
+  "slug": "llacades",
+  "title": "“Llaçades” at Mutek and live coding at Biennal Ciutat",
+  "year": 2021,
+  "year_guessed": false,
+  "summary": "Video generated with code exploring repetition and symmetry.",
+  "local": false,
+  "categories": [
+   "event",
+   "generative"
+  ],
+  "tags": [
+   "creativecoding",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/mutek_llacades_6-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "trossets",
+  "title": "“Trossets” at ArtBlocks curated",
+  "year": 2021,
+  "year_guessed": false,
+  "summary": "Trossets explores the emergence of diversity. Combining twelve construction blocks the system generates endless patterns with a unique result each iteration. Trossets /trusɛts/ means parts, blocks, pieces and it’s my par",
+  "local": true,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "code",
+   "diversity",
+   "generative",
+   "truchet",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/trossets_flyer1-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 4284
+ },
+ {
+  "slug": "llum-a-les-desigualtats",
+  "title": "Llum a les desigualtats",
+  "year": 2020,
+  "year_guessed": false,
+  "summary": "Mapa de llums fet artesanalment que parla de diferents temes com la violència de gènere, l’ecologia o les migracions. Un objecte lumínic que explica històries.",
+  "local": false,
+  "categories": [
+   "event",
+   "installation"
+  ],
+  "tags": [
+   "light",
+   "llumbcn2020",
+   "visualization"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/llum_desigualtats_7-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 525
+ },
+ {
+  "slug": "p5foundation",
+  "title": "Processing Foundation",
+  "year": 2020,
+  "year_guessed": false,
+  "summary": "Design for the t-shirts and hoodies of the Processing Foundation raisefunding campaing christmas 2021",
+  "local": false,
+  "categories": [
+   "generative"
+  ],
+  "tags": [
+   "generative",
+   "processing"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/p5_foundation_3-768x433.png",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 42
+ },
+ {
+  "slug": "quarantena-generativa",
+  "title": "Quarantena generativa",
+  "year": 2020,
+  "year_guessed": false,
+  "summary": "Everyday coding during the 2020 lockdown. Experiments and prototypes to explore aesthetics and ideas about compelx systems and generative art",
+  "local": false,
+  "categories": [
+   "development"
+  ],
+  "tags": [
+   "art",
+   "code",
+   "creativecoding",
+   "devart",
+   "digitalart",
+   "everyday",
+   "experiments",
+   "generative",
+   "procedural",
+   "processing"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/quarantena_6-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 33
+ },
+ {
+  "slug": "rugas-da-historia-fendas-na-paisagem",
+  "title": "Rugas da Historia Fendas na Paisagem",
+  "year": 2020,
+  "year_guessed": false,
+  "summary": "Introduction Memories and narratives are built by the winners of history. How do these narratives shape our identities? How historical legacy shapes who we are? How our context and heritage leave a mark in our communitie",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "colonialism",
+   "culture",
+   "electronics",
+   "generative",
+   "heritage",
+   "interactive",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/rugas_17-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 4982
+ },
+ {
+  "slug": "arlequin",
+  "title": "“Arlequin && colores” gen tinycode",
+  "year": 2020,
+  "year_guessed": false,
+  "summary": "A tinny sketch for Medialab Prado mediafacade",
+  "local": false,
+  "categories": [
+   "event",
+   "generative"
+  ],
+  "tags": [
+   "creativecoding",
+   "mediafacade",
+   "medialab",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/tinny_medialab-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 97
+ },
+ {
+  "slug": "bufablau",
+  "title": "Bufablau",
+  "year": 2019,
+  "year_guessed": true,
+  "summary": "Bufablau (blow + blue) is a musical and visual instrument. It captures blow and voice translating it into a new colourful world.",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "blow",
+   "children",
+   "color",
+   "generative",
+   "interactive",
+   "sound",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/bufablau_3-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 475
+ },
+ {
+  "slug": "constelations",
+  "title": "Constel·lacions",
+  "year": 2019,
+  "year_guessed": true,
+  "summary": "Interactive installation for children and families that allows the public to draw freely and collaboratively on a vertical panel using large modules of LEDs of different colors. The composition of these pixels generate d",
+  "local": false,
+  "categories": [
+   "event",
+   "installation"
+  ],
+  "tags": [
+   "children",
+   "family",
+   "leds",
+   "light"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/constela_llumBCN-1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1751
+ },
+ {
+  "slug": "flying-dreams",
+  "title": "Flying Dreams",
+  "year": 2019,
+  "year_guessed": true,
+  "summary": "Interactive installation for kids where they can color their own spaceships and send them to fly on space",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "animation",
+   "children",
+   "color",
+   "interactive"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/flying_dreams-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 618
+ },
+ {
+  "slug": "collage-generatiu",
+  "title": "“Collage + code” at ESC 2019",
+  "year": 2019,
+  "year_guessed": true,
+  "summary": "Create unlimited and unique collages using code!",
+  "local": false,
+  "categories": [
+   "do_it_yourself",
+   "workshop"
+  ],
+  "tags": [
+   "generative",
+   "processing"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/collage3-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 950
+ },
+ {
+  "slug": "cordino-chair",
+  "title": "Cordino chair",
+  "year": 2017,
+  "year_guessed": true,
+  "summary": "Cordino chair is a DIY customizable chair.",
+  "local": false,
+  "categories": [
+   "development",
+   "do_it_yourself"
+  ],
+  "tags": [
+   "cnc",
+   "digital_fabrication",
+   "laser_cutter"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/cordino_cian1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 458
+ },
+ {
+  "slug": "3d-forms-sounds",
+  "title": "Generative 3D Forms/Sounds",
+  "year": 2017,
+  "year_guessed": false,
+  "summary": "A custom software developed for Insert Club to generate 3D forms from techno sound. A real-time sound analysis coupled with 3D flocking and wander behaviours creates unique 3D objects.",
+  "local": true,
+  "categories": [
+   "development"
+  ],
+  "tags": [
+   "3d",
+   "3d_form",
+   "3d_printer",
+   "generative",
+   "processing",
+   "sound_processing"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/insert_form-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 723
+ },
+ {
+  "slug": "fenotypical-cactus",
+  "title": "Fenotípic Cactus",
+  "year": 2016,
+  "year_guessed": true,
+  "summary": "A game for tablet devices to play and learn genetics",
+  "local": false,
+  "categories": [
+   "mobile"
+  ],
+  "tags": [
+   "children",
+   "education",
+   "educative",
+   "game",
+   "gamification",
+   "generative",
+   "genetics",
+   "graphic"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/fenotipic_cactus-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 378
+ },
+ {
+  "slug": "generative-typography",
+  "title": "Generative Typography",
+  "year": 2016,
+  "year_guessed": true,
+  "summary": "A Generative Typography workshop. By using code students create new letters manipulating color, form, geometry, animation and interaction to create new textures and typos.",
+  "local": false,
+  "categories": [
+   "workshop"
+  ],
+  "tags": [
+   "animation",
+   "generative",
+   "interactive",
+   "letters",
+   "processing",
+   "text",
+   "typo",
+   "typography"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/typografia_generativa-768x431.png",
+   "width": 768,
+   "height": 431
+  },
+  "blocks_len": 224
+ },
+ {
+  "slug": "alphabet",
+  "title": "Geometric interactive and animated alphabet",
+  "year": 2016,
+  "year_guessed": true,
+  "summary": "A geometric alphabet to write animated text that explodes and builds back with simple mouse interactions.",
+  "local": false,
+  "categories": [
+   "workshop"
+  ],
+  "tags": [
+   "animation",
+   "interactive",
+   "processing",
+   "typo",
+   "typography",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/alfabet-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 145
+ },
+ {
+  "slug": "light-jumper",
+  "title": "Light Jumper",
+  "year": 2016,
+  "year_guessed": true,
+  "summary": "Interactive videogame with 4 light controlers developed for the trampoline’s spaces company Salting.",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/light_jumper-1-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 956
+ },
+ {
+  "slug": "rite-of-color-sonar",
+  "title": "“Rite of Color” at Sónar Innovation Challenge 2016",
+  "year": 2016,
+  "year_guessed": true,
+  "summary": "Rite of Color it’s an initiation ritual to be experienced in a hidden space, to prepare you for the coming event. A proposal to boost hidden experiences that can influence the nightlife in unexpected ways fusing music, a",
+  "local": false,
+  "categories": [
+   "event",
+   "installation",
+   "performance"
+  ],
+  "tags": [
+   "arduino",
+   "fullbody",
+   "light",
+   "real_time",
+   "sonar",
+   "sound",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/rite_of_color_modd_pic-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 2274
+ },
+ {
+  "slug": "b-flow-visualization",
+  "title": "B-FLOW A visualization app to explore city population",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "Explore your city and neighbourhood: How many people live in your area? To which districts people move? How dense is your neighbourhood population? Explore your city, be curious and visualize your universe.",
+  "local": false,
+  "categories": [
+   "mobile"
+  ],
+  "tags": [
+   "big_data",
+   "data",
+   "open_data",
+   "processing",
+   "visualization"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/bflow-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 613
+ },
+ {
+  "slug": "emotional-reactive-presentation",
+  "title": "Emotional Reactive Presentation",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "A real time audio speech detection feeds a presentation in real time. It generates visuals that show and reinforce the talk mood and messages. The visuals react acordingly to the speech that is given. They accompany the ",
+  "local": false,
+  "categories": [
+   "event",
+   "performance"
+  ],
+  "tags": [
+   "interactive",
+   "sound_processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/emotional_reactive_presentation_brenntag_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 0
+ },
+ {
+  "slug": "emotional-skin-ego-superego",
+  "title": "Emotional skin / Performative Space: Ego Superego",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "A sensorial journey investigating human interactionand behaviour using bodies and as agents of emotions. Challenge the human consciousness through spatial behaviours and sensibility. Replace our standard mean of interact",
+  "local": false,
+  "categories": [
+   "performance",
+   "workshop"
+  ],
+  "tags": [
+   "fullbody",
+   "immersive",
+   "interactive",
+   "interface",
+   "processing",
+   "space",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/ego_superego-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1758
+ },
+ {
+  "slug": "generated-sphere",
+  "title": "Genera Esfera",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "Genera Esfera is an interactive installation to discover and play with real-time generated visuals. While listening to music participants can interact with an spherical interface to explore several worlds and create diff",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "generative",
+   "interactive",
+   "music",
+   "sound",
+   "visuals",
+   "vj"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/genera_esfera19-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 563
+ },
+ {
+  "slug": "orgull-de-baix",
+  "title": "Interactive documentary Orgull de Baix",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "Orgull de Baix és un documental interactiu que proposa un viatge virtual per la comarca del Baix Llobregat, per a descobrir el valor agrícola i mediambiental d’aquest territori.",
+  "local": false,
+  "categories": [
+   "web"
+  ],
+  "tags": [
+   "3d_web",
+   "interactive_documentary",
+   "javascript_3d",
+   "narrative",
+   "threejs",
+   "user_experience",
+   "webdoc",
+   "web_documentary"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/orgull_de_baix-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 2157
+ },
+ {
+  "slug": "useless-interface",
+  "title": "La interfície més inútil i gustosa del món",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "The Most Useless and Amusing Interface Ever (MUAIE) creates audio and visual effects when you pop bubble wrap in front of it. It generates a collective music sheet of sounds and visual explosions.",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "arduino",
+   "interactive",
+   "leds",
+   "raspberry_pi",
+   "sound",
+   "sound_processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/interficie_gustosa-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1684
+ },
+ {
+  "slug": "sherlock-holmes-internet-of-things-barcelona",
+  "title": "Sherlock Holmes & the Internet of Things Barcelona",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "The goal of Sherlock Holmes & the Internet of Things is to build a massive connected crime scene consisting of smart storytelling objects. Barcelona’s team designed and created a crime scene. Participants explored and di",
+  "local": false,
+  "categories": [
+   "development",
+   "event",
+   "theater"
+  ],
+  "tags": [],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/sherlock_iot_bcn20-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 2034
+ },
+ {
+  "slug": "the-hyperlapsed-city",
+  "title": "The Hyperlapsed City",
+  "year": 2015,
+  "year_guessed": true,
+  "summary": "Visitor ride a stationary bicycle through six different hyperlapsed routes arround the city of Barcelona.",
+  "local": false,
+  "categories": [
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "arduino",
+   "bicycle",
+   "hyperlapse",
+   "interactive",
+   "openframeworks",
+   "sensors"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/hyperlapsed_city-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 1072
+ },
+ {
+  "slug": "beetles-for-babies",
+  "title": "Bitels per a nadons (tribute concert to The Beatles)",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "Bitels for Babies is a four musicians in motion (violin, clarinet, cello and percussions) and a dancer playing instruments, dancing and performing an interactive scenography. They invite the youngest audiences, and their",
+  "local": false,
+  "categories": [
+   "theater"
+  ],
+  "tags": [
+   "arduino",
+   "scenography",
+   "sensors",
+   "theater",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/bitels_per_a_nadons_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 676
+ },
+ {
+  "slug": "geometric-animals",
+  "title": "Geometric animals",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "Geometric animals it’s a generative applet to fill text and animal silhouettes with geometrical colored forms. It creates interactively unique images to print out.",
+  "local": false,
+  "categories": [
+   "development"
+  ],
+  "tags": [
+   "generative",
+   "geometry",
+   "graphic",
+   "processing"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/animals_geometrics-768x546.png",
+   "width": 768,
+   "height": 546
+  },
+  "blocks_len": 165
+ },
+ {
+  "slug": "light-vs-pixels",
+  "title": "Light versus Pixels",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "An interactive piece dedicated to live musical event. Custom software creates graphic content, animations and controls a light setting while a DJ perfomrs life.",
+  "local": false,
+  "categories": [
+   "event",
+   "performance"
+  ],
+  "tags": [
+   "life",
+   "light",
+   "processing",
+   "visuals",
+   "vj"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/pixels_vs_lights1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 479
+ },
+ {
+  "slug": "my-city-my-playground",
+  "title": "My City My Playground",
+  "year": 2014,
+  "year_guessed": false,
+  "summary": "My City My Playground allows you to play with the city landscape. Buildings, pedestrians, traffic, street furniture, etc. Choose as many elements as you like and turn them into the pieces of your game.",
+  "local": true,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "augmented_architecture",
+   "game",
+   "interactive",
+   "openframeworks",
+   "play",
+   "video",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/my_city_my_playground-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 2053
+ },
+ {
+  "slug": "open-color-3d-scanner",
+  "title": "Open Color 3D Scanner",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "A low cost 3D scanner to be assembled and used at home. Capture objects and experiment with all the possibilities of color 3D scanning and manufacturing.",
+  "local": false,
+  "categories": [
+   "development"
+  ],
+  "tags": [
+   "3d",
+   "color",
+   "diy",
+   "fabrication",
+   "open_hardware",
+   "open_software",
+   "scan",
+   "scanner"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/opencolor3dscan_scan1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1399
+ },
+ {
+  "slug": "15-vida-awards",
+  "title": "Promoting 15th VIDA Awards",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "To promote the 15th edition of Vida Awards (Art and Artificial Life) at Madrid streets people could make technology live.",
+  "local": false,
+  "categories": [
+   "event",
+   "installation"
+  ],
+  "tags": [
+   "fullbody",
+   "interactive"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/premios_vida15_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 356
+ },
+ {
+  "slug": "relaxing-cup",
+  "title": "Relaxing cup",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "“Relaxing cup” is a visual joke about politicians in Madrid, a generative animation for the busy city representing a cotidian calm situation where a coffe cup peacefully smokes lying on a table.",
+  "local": false,
+  "categories": [
+   "development"
+  ],
+  "tags": [
+   "generative",
+   "mediafacade",
+   "medialab",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/relaxing_cup-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 535
+ },
+ {
+  "slug": "social-matrix",
+  "title": "Social matrix",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "An emergent social behaviours visualization. Matriu Social dibuixa i ens permet descobrir comportaments col·lectius que sorgeixen de senzilles decisions individuals.",
+  "local": false,
+  "categories": [
+   "event",
+   "museum"
+  ],
+  "tags": [
+   "automata-eng",
+   "leds",
+   "visualization",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/matriu_social_expo-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 4585
+ },
+ {
+  "slug": "super-easy-bezier-shapes-reacting-mapping",
+  "title": "Super Easy Bezier Shapes Reacting Mapping",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "A super easy way to create interactive mappings. Draw a bézier shape, choose the color, the stroke, it’s transparency or the texture in real time and explore the visual result of your performance.",
+  "local": false,
+  "categories": [
+   "development",
+   "installation",
+   "performance"
+  ],
+  "tags": [
+   "addon",
+   "mapping",
+   "ofxbeziereditor",
+   "openframeworks",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/super_easy_bezier_shapes_reacting_mapping-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 847
+ },
+ {
+  "slug": "toonaville",
+  "title": "ToonaVille",
+  "year": 2014,
+  "year_guessed": true,
+  "summary": "A touristic guide to the parallel city of cartoon of Toon a Ville Barcelona. The Secret Guides to Toon a Ville will guide you to these parallel world of animated cartoons. An innovative cartoon series with unique stories",
+  "local": false,
+  "categories": [
+   "mobile"
+  ],
+  "tags": [
+   "animation",
+   "augmented_reallity",
+   "cartoon"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/toon_barceloneta-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1454
+ },
+ {
+  "slug": "kit-libertad-expresion",
+  "title": "Kit de Libertad de Expresión (KLE)",
+  "year": 2013,
+  "year_guessed": false,
+  "summary": "A portable digital interactive banner that allows people from all over the world to participate to remote protests by sending and displaying text messages in public space",
+  "local": true,
+  "categories": [
+   "do_it_yourself",
+   "event",
+   "performance"
+  ],
+  "tags": [
+   "android",
+   "arduino",
+   "devart",
+   "diwo",
+   "diy",
+   "medialab",
+   "open",
+   "processing",
+   "soft_hardware",
+   "textiles",
+   "twitter",
+   "wearables"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/kle_project2-768x469.jpg",
+   "width": 768,
+   "height": 469
+  },
+  "blocks_len": 1646
+ },
+ {
+  "slug": "ofxdmxsuidi",
+  "title": "ofxDmxSuidi",
+  "year": 2013,
+  "year_guessed": true,
+  "summary": "An OpenFrameworks addon. Control from your computer in real time via DMX protocol any hardware as RGB color lights",
+  "local": false,
+  "categories": [
+   "development"
+  ],
+  "tags": [
+   "addon",
+   "light",
+   "openframeworks"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/ofxdmxsuidi_net_controller_to_leds-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 592
+ },
+ {
+  "slug": "social-kisses-vending-machine",
+  "title": "Social kisses vending machine",
+  "year": 2013,
+  "year_guessed": true,
+  "summary": "An interactive vending machine to discover how kissable you are. Participants share an snapshot with their contacts and ask for “Likes” to demonstrate if they look really kissable. The reward will be an icecream",
+  "local": false,
+  "categories": [
+   "advertising",
+   "event"
+  ],
+  "tags": [
+   "light",
+   "ofxdmxsuidi",
+   "vending-machine"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/kiss_machine_verda-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 413
+ },
+ {
+  "slug": "tortosa-museum",
+  "title": "Tortosa Museum",
+  "year": 2013,
+  "year_guessed": true,
+  "summary": "A multitouch map to discover and learn about landscapes, historical and artistic heritage in the city of Tortosa.",
+  "local": false,
+  "categories": [
+   "museum"
+  ],
+  "tags": [
+   "multitouch",
+   "virtual_heritage"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/muse_tortosa_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 527
+ },
+ {
+  "slug": "vsf-proximel",
+  "title": "VSF Justicia Alimentaria Global presents Proximel",
+  "year": 2013,
+  "year_guessed": true,
+  "summary": "The NGO launches Proximel, a new product that explains the advantages that proximity products have on our health and economy",
+  "local": false,
+  "categories": [
+   "event",
+   "installation"
+  ],
+  "tags": [
+   "ngo",
+   "social"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/vsf_proximel_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 508
+ },
+ {
+  "slug": "walking-man",
+  "title": "Walking man",
+  "year": 2013,
+  "year_guessed": false,
+  "summary": "“Walking man: se hace camino al andar” makes reference to time passing by. It’s a tribute to the cinema technology. A man walking in an eternal loop based in 12 images (12 months) that compose a digital personage walking",
+  "local": true,
+  "categories": [
+   "event"
+  ],
+  "tags": [
+   "generative",
+   "mediafacade",
+   "medialab",
+   "processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/walking_man_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 505
+ },
+ {
+  "slug": "wedding-photo-booth",
+  "title": "Wedding animated photo booth",
+  "year": 2013,
+  "year_guessed": true,
+  "summary": "Take three different photos and enjoy an animated stopmotion photo booth",
+  "local": false,
+  "categories": [
+   "event",
+   "installation"
+  ],
+  "tags": [
+   "stopmotion"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/photo_booth_1-768x512.gif",
+   "width": 768,
+   "height": 512
+  },
+  "blocks_len": 302
+ },
+ {
+  "slug": "app-n-jorge-drexler",
+  "title": "Android app “n” by Jorge Drexler",
+  "year": 2012,
+  "year_guessed": false,
+  "summary": "Jorge Drexler “n” represents a revolutionary approach to songwriting, in which, for the first time, songs are editable, and listeners become users. “n” it’s an app for smartphones and tablets where users control the orde",
+  "local": true,
+  "categories": [
+   "mobile"
+  ],
+  "tags": [
+   "android",
+   "app",
+   "sound"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/app_n_matriz-768x445.jpg",
+   "width": 768,
+   "height": 445
+  },
+  "blocks_len": 2241
+ },
+ {
+  "slug": "gaudi-experiencia-museum",
+  "title": "Gaudí Experiència museum",
+  "year": 2012,
+  "year_guessed": true,
+  "summary": "Gaudí Experiència is an audiovisual exhibition space that uses state-of-the-art technology to get inside the mind of a man whose work appears to use computers… long before they had even been invented!",
+  "local": false,
+  "categories": [
+   "museum"
+  ],
+  "tags": [
+   "multitouch"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/gaudi_experiencia_0-768x378.jpg",
+   "width": 768,
+   "height": 378
+  },
+  "blocks_len": 824
+ },
+ {
+  "slug": "land-without-words",
+  "title": "Land Without Words",
+  "year": 2012,
+  "year_guessed": true,
+  "summary": "A project exploring the relations between stage theater and the digital world in Dea Loher’s “Land without words” text",
+  "local": false,
+  "categories": [
+   "theater"
+  ],
+  "tags": [
+   "interactive",
+   "scenography",
+   "theater"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/psp_2-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1429
+ },
+ {
+  "slug": "real-madrid-museum",
+  "title": "Real Madrid museum",
+  "year": 2012,
+  "year_guessed": true,
+  "summary": "Real Madrid’s Bernabeu Tour modernization enriches the visitor’s experience by providing greater interactivity and audiovisual content. Each one of the remodeled areas includes interactive solutions with the latest techn",
+  "local": false,
+  "categories": [
+   "museum"
+  ],
+  "tags": [
+   "multitouch",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/realmadrid-768x416.jpg",
+   "width": 768,
+   "height": 416
+  },
+  "blocks_len": 1791
+ },
+ {
+  "slug": "interactive-floor-japan",
+  "title": "Bershka, Tokyo Window Display, Showroom & Shop Interior",
+  "year": 2011,
+  "year_guessed": true,
+  "summary": "Bershka breaks through in the Japanese market with a stunningly designed store conceived to turn the shopping experience into an amazing and spectacular interactive event.",
+  "local": false,
+  "categories": [
+   "advertising",
+   "installation"
+  ],
+  "tags": [
+   "floor",
+   "image_processing",
+   "opencv"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/berska_floor_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 875
+ },
+ {
+  "slug": "campus-bbva",
+  "title": "Campus BBVA",
+  "year": 2011,
+  "year_guessed": true,
+  "summary": "Sharing knowledge and encouraging lifelong learning are the main purposes of Campus BBVA. Our team created a set of interactive devices to facilitate access to information on the Campus and the activities offered.",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "multitouch",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/campus_bbva_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1958
+ },
+ {
+  "slug": "digital-graffiti",
+  "title": "Digital graffiti",
+  "year": 2011,
+  "year_guessed": true,
+  "summary": "A digital graffiti wall which uses fake spray paint cans and special flashlights is used as a background set on the shooting of a Smirnoff TV commercial.",
+  "local": false,
+  "categories": [
+   "advertising",
+   "event"
+  ],
+  "tags": [
+   "image_processing",
+   "light",
+   "opencv",
+   "opengl",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/digital_graffiti_0-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 814
+ },
+ {
+  "slug": "fluxograma",
+  "title": "Fluxograma",
+  "year": 2011,
+  "year_guessed": true,
+  "summary": "Conceive, create and exhibit. Using their fingers as the paintbrush, a tactile drawing station as the canvas and the walls of the building as the exhibition panels, the visitors of Museo de Galicia become the authors of ",
+  "local": false,
+  "categories": [
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "fullbody",
+   "kinect",
+   "multitouch"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/fluxograma_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 940
+ },
+ {
+  "slug": "magic-fountain-of-montjuic",
+  "title": "Editor and Simulator of choreographies for the Barcelona’s Magic Fountain of Montjuïc",
+  "year": 2010,
+  "year_guessed": true,
+  "summary": "With its color lighted water springs swaying to the music, the Magic Fountain of Montjuïc keeps on fascinating visitors. It was built in 1929, renovated in 1992 and recently enhanced technologically.",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "opengl",
+   "sound_processing"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/font_montjuic_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1918
+ },
+ {
+  "slug": "cubear",
+  "title": "CubeAR",
+  "year": 2009,
+  "year_guessed": true,
+  "summary": "A house, a car, furniture, clothes,.. millions of products can be examined by users as if they were holding in their hands with this 3D catalogue augmented reality technology based.",
+  "local": false,
+  "categories": [
+   "advertising",
+   "event"
+  ],
+  "tags": [
+   "augmented_reallity"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/cubeAR_0-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 665
+ },
+ {
+  "slug": "entrepreneurial-awards",
+  "title": "Entrepreneurial Awards XXI",
+  "year": 2009,
+  "year_guessed": true,
+  "summary": "An awarding event for entrepreneurial companies in Spain. A screen behind the presenter shows posters according to the event’s script. Virtual lenses come out of presenter’s body and candidates coming up to stage interac",
+  "local": false,
+  "categories": [
+   "advertising",
+   "event"
+  ],
+  "tags": [
+   "fullbody",
+   "image_processing",
+   "opencv"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/emprendedor_0-768x427.jpg",
+   "width": 768,
+   "height": 427
+  },
+  "blocks_len": 1086
+ },
+ {
+  "slug": "roca-interactive-gallery",
+  "title": "Roca Barcelona Gallery",
+  "year": 2009,
+  "year_guessed": true,
+  "summary": "World leader in bathroom spaces Roca resorts to cutting-edge technology to equip its brand’s new flagship building with interactive installations which entice the visitor to a unique and sensory experience.",
+  "local": false,
+  "categories": [
+   "advertising",
+   "installation"
+  ],
+  "tags": [
+   "fullbody",
+   "image_processing",
+   "interface",
+   "multitouch",
+   "opencv",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/roca_gallery-768x427.jpg",
+   "width": 768,
+   "height": 427
+  },
+  "blocks_len": 1345
+ },
+ {
+  "slug": "tv3-c33-presentation",
+  "title": "TV3/C33 mapping",
+  "year": 2009,
+  "year_guessed": true,
+  "summary": "Digital contents merge with the architecture of the chapel of an ancient hospital where catalan TV presented its new cultural programs.",
+  "local": false,
+  "categories": [
+   "event"
+  ],
+  "tags": [
+   "augmented_architecture",
+   "mapping"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/augmented_architecture_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 599
+ },
+ {
+  "slug": "bacardi-interactive-tables",
+  "title": "Bacardi interactive tables",
+  "year": 2008,
+  "year_guessed": true,
+  "summary": "Bacardi lovers play with the interactive tables using their hands, glasses or bottles, creating sounds and discovering bottles behavior.",
+  "local": false,
+  "categories": [
+   "advertising",
+   "event"
+  ],
+  "tags": [
+   "multitouch",
+   "sound"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/bacardi_interactive_table_0-768x428.jpg",
+   "width": 768,
+   "height": 428
+  },
+  "blocks_len": 668
+ },
+ {
+  "slug": "hamelin",
+  "title": "Hamelin",
+  "year": 2008,
+  "year_guessed": false,
+  "summary": "Hamelin is an interactive module for AD Out of Home where participants are immersed inside the advertisement. The module uses sensors and image processing to let users experience and full-body play with specially ad hoc ",
+  "local": true,
+  "categories": [
+   "advertising",
+   "installation"
+  ],
+  "tags": [
+   "fullbody",
+   "image_processing",
+   "opencv"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/hamelin_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1263
+ },
+ {
+  "slug": "illusionistes",
+  "title": "Il·lusionistes",
+  "year": 2008,
+  "year_guessed": true,
+  "summary": "Opening of the collective exhibition Il·lusionistes where seven artists proposed pieces around the subject of illusions.",
+  "local": false,
+  "categories": [
+   "event",
+   "performance"
+  ],
+  "tags": [
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/ilusionistes_1-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 622
+ },
+ {
+  "slug": "magia-per-a-pixeloscopi",
+  "title": "Màgia per a Pixeloscopi",
+  "year": 2008,
+  "year_guessed": false,
+  "summary": "Màgia per a Pixeloscopi is a one hour show conceived to be represented in a theater scenario that merges mixed and augmented reality and fullbody interaction with classical magic to create new tricks.",
+  "local": true,
+  "categories": [
+   "theater"
+  ],
+  "tags": [
+   "fullbody",
+   "image_processing",
+   "magic",
+   "opencv",
+   "opengl",
+   "show",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/magia_pixeloscopi_0-768x464.jpg",
+   "width": 768,
+   "height": 464
+  },
+  "blocks_len": 949
+ },
+ {
+  "slug": "pixeloscopi",
+  "title": "Pixeloscopi",
+  "year": 2008,
+  "year_guessed": true,
+  "summary": "Pixeloscopi merges interactive technology with classical magic. Full-body real time interactions let a magician and the public play new magical illusions and tricks.",
+  "local": false,
+  "categories": [
+   "theater"
+  ],
+  "tags": [
+   "fullbody",
+   "image_processing",
+   "magic",
+   "opencv",
+   "show",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/pixeloscopi_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 794
+ },
+ {
+  "slug": "virtual-dancer",
+  "title": "Virtual dancer",
+  "year": 2008,
+  "year_guessed": true,
+  "summary": "A 3D avatar which dances at the rythm of the music adapting in real time her steps and movements to the music that is being played by the DJs",
+  "local": false,
+  "categories": [
+   "advertising",
+   "performance"
+  ],
+  "tags": [
+   "sound",
+   "sound_processing",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/virtual_dancer_0-768x512.jpg",
+   "width": 768,
+   "height": 512
+  },
+  "blocks_len": 940
+ },
+ {
+  "slug": "seasons-outdoor-interactive-display",
+  "title": "“Seasons” interactive display",
+  "year": 2008,
+  "year_guessed": true,
+  "summary": "Outdoor giant display allows interaction to everyone that walks by in Sabadell’s city centre. Each season different visual interaction games are presented.",
+  "local": false,
+  "categories": [
+   "advertising",
+   "installation"
+  ],
+  "tags": [
+   "fullbody",
+   "image_processing",
+   "opencv",
+   "outdoor"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/street_display_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 756
+ },
+ {
+  "slug": "interactive-slide",
+  "title": "Interactive Slide",
+  "year": 2007,
+  "year_guessed": true,
+  "summary": "An inflatable slide augmented through interactive technology. A computer vision system detects the movements, actions and attitudes of children to link them with any experience. Infinity of games and educational or ludic",
+  "local": false,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "children",
+   "fullbody",
+   "image_processing",
+   "opencv",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/interactive_slide_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1822
+ },
+ {
+  "slug": "azpeitia-museum",
+  "title": "Virtual Heritage for Azpeitia Museum",
+  "year": 2007,
+  "year_guessed": true,
+  "summary": "From iron ore to tools. Turning mine’s iron ore into tools for working was one of the main activities carried out by the mining industry in the area of Azpeitia. Interacting with this installation, the visitor at the mus",
+  "local": false,
+  "categories": [
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "image_processing",
+   "multitouch",
+   "opencv",
+   "virtual_heritage"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/virtual_heritage_zerain_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1114
+ },
+ {
+  "slug": "exhibition-approaching-science",
+  "title": "Approaching Science. From Research to Innovation",
+  "year": 2006,
+  "year_guessed": true,
+  "summary": "The exhibition is designed with the purpose of revealing the connection between scientific knowledge and technological advances, bringing Science closer to the public in an attractive and didactic way and stimulating sci",
+  "local": false,
+  "categories": [
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "fullbody"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/fullaraca_0-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 1407
+ },
+ {
+  "slug": "connexions",
+  "title": "Connexions. Interactive instalation to discover Science",
+  "year": 2006,
+  "year_guessed": true,
+  "summary": "Science is a network of knowledge where discoveries, ideas and concepts are connected with one another. Connexions is a playful installation where visitors experience, explore and cooperate to visualize and acquire a bet",
+  "local": false,
+  "categories": [
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "children",
+   "floor",
+   "fullbody",
+   "image_processing",
+   "opencv",
+   "visuals"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/connexions_0-768x452.jpg",
+   "width": 768,
+   "height": 452
+  },
+  "blocks_len": 1834
+ },
+ {
+  "slug": "how-do-we-interact",
+  "title": "How do we interact?",
+  "year": 2006,
+  "year_guessed": true,
+  "summary": "A 1hour workshop to experience with different objects and machines, reflect and learn about interaction and its properties to learn to be critical about technology.",
+  "local": false,
+  "categories": [
+   "museum"
+  ],
+  "tags": [
+   "children",
+   "workshop"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/taller_com_interactuem_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 900
+ },
+ {
+  "slug": "expo-zaragoza",
+  "title": "Interacting with Water at Expo Zaragoza 2008 Visitors Centre",
+  "year": 2006,
+  "year_guessed": true,
+  "summary": "Be water. Enabling the visitors to playfully simulate the flow of water through their movements is the aim of the project Interacting with Water, an installation held at the Visitors Center of the Universal Exposition Za",
+  "local": false,
+  "categories": [
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "fullbody",
+   "image_processing",
+   "multitouch",
+   "opencv",
+   "opengl",
+   "water"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/expo_zaragoza_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1040
+ },
+ {
+  "slug": "exhibition-einstein",
+  "title": "Exhibition Einstein 1905. One Hundred Years of Physics",
+  "year": 2005,
+  "year_guessed": true,
+  "summary": "In 1905, Albert Einstein published five revolutionary articles which contributed to the foundation of modern physics. This exhibition celebrates the anniversary with several installations which allow the visitors to expe",
+  "local": false,
+  "categories": [
+   "installation",
+   "museum"
+  ],
+  "tags": [
+   "image_processing",
+   "opencv"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/einstein-768x432.png",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 957
+ },
+ {
+  "slug": "self-dissasembling-robot",
+  "title": "Self-dissasembling Robot",
+  "year": 2005,
+  "year_guessed": true,
+  "summary": "A videoinstalation of a 3D robot by artist Roc Parés which dissasembles gradually itself. The robot borrows the movements and body parts/pieces from a dancer in real time. As the dancer dress herself up the robot perform",
+  "local": false,
+  "categories": [
+   "performance"
+  ],
+  "tags": [
+   "dancer",
+   "fullbody",
+   "image_processing",
+   "opencv",
+   "robot"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/self_disassembling_robot-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 948
+ },
+ {
+  "slug": "water-games",
+  "title": "“Water Games” at Universal Forum of Cultures Barcelona",
+  "year": 2003,
+  "year_guessed": false,
+  "summary": "Water Games is an interactive and refreshing installation for the youngest visitors, and their families. One only needs to find friends to form a ring, spin together around one fountain and discover the Water Games!",
+  "local": true,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "children",
+   "fullbody",
+   "image_processing",
+   "opencv",
+   "outdoor",
+   "water"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/water_games_0-768x433.jpg",
+   "width": 768,
+   "height": 433
+  },
+  "blocks_len": 1195
+ },
+ {
+  "slug": "mediate",
+  "title": "“MEDIATE” a multisensorial interactive environment for children with autism",
+  "year": 2001,
+  "year_guessed": false,
+  "summary": "MEDIATE is a multimodal interactive space for children with severe autism. MEDIATE wishes to give the child the opportunity to have fun, play, explore and be creative in a predictable, controllable and safe space.",
+  "local": true,
+  "categories": [
+   "installation"
+  ],
+  "tags": [
+   "autism",
+   "children",
+   "fullbody",
+   "image_processing",
+   "multimodal",
+   "opencv",
+   "pas"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/mediate_0-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 1517
+ },
+ {
+  "slug": "froggy-fans",
+  "title": "Froggy camouflage handheld fans",
+  "year": 2000,
+  "year_guessed": true,
+  "summary": "Build your unique DIY hand fans inspired by frogs of the rainforest in Panama. A playful way to act upon our surveying world learning from nature how to camouflage.",
+  "local": false,
+  "categories": [
+   "do_it_yourself"
+  ],
+  "tags": [
+   "camouflage",
+   "frog",
+   "hand-fan",
+   "nature",
+   "processing",
+   "rainforest",
+   "surveillance"
+  ],
+  "cover": {
+   "src": "https://www.annacarreras.com/wp-content/uploads/camouflage_hand_fan-768x432.jpg",
+   "width": 768,
+   "height": 432
+  },
+  "blocks_len": 7758
+ }
+]
