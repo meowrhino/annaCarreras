@@ -1,7 +1,7 @@
-// Rajoles: la web es una rejilla de Trossets. Este módulo lo une todo:
+// Rajoles: el fondo de la web es una rejilla de Trossets. Este módulo lo une todo:
 //   - el estado (día, llavor, paleta), que vive en la URL;
-//   - los colores de la hoja, que salen de la paleta;
-//   - la geometría: la hoja ocupa celdas enteras de la rejilla;
+//   - los colores del texto y sus fondos, que salen de la paleta;
+//   - la geometría de la rejilla;
 //   - los mandos del pie.
 // El dibujo está en fondo.js y los bloques de Anna en trossets.js.
 //
@@ -35,7 +35,7 @@ function url() {
 let r;                                   // los rasgos de la semilla actual
 const paleta = () => estado.paleta || r.paleta;
 
-/* ---------- colores de la hoja ---------- */
+/* ---------- colores ---------- */
 
 // Tinta: el color de la paleta que más contrasta con el fondo; si ninguno
 // llega a 4.5:1 (WCAG AA), negro o blanco.
@@ -60,35 +60,16 @@ function colores(P) {
   root.style.setProperty('--accent', P[4] === fondoColor ? P[2] : P[4]);
 }
 
-/* ---------- geometría: la hoja en la rejilla ---------- */
+/* ---------- geometría ---------- */
 
 // 12 columnas en móvil y escritorio, 9 en tableta, como las rejillas de
-// Trossets. La hoja va centrada, lo más ancha que quepa en ~1040 px, con un
-// número de celdas de la misma paridad que las columnas.
-const hoja = document.querySelector('.hoja');
-let cols, s, n;
-
+// Trossets. El fondo ocupa toda la ventana: el contenido va por encima y
+// hace scroll la página; el canvas es fijo y no se redibuja al hacer scroll.
 function mide() {
   const w = root.clientWidth;
-  cols = w < 600 || w >= 1100 ? 12 : 9;
-  s = w / cols;
-  const anchos = cols === 12 ? [10, 8, 6] : [7, 5];
-  n = anchos.find(k => k * s <= 1040) ?? anchos.at(-1);
-  root.style.setProperty('--s', s + 'px');
-  root.style.setProperty('--n', n);
-  root.style.setProperty('--m', (cols - n) / 2);
-  ajustaHoja();
-}
-
-// La hoja es fija y ocupa celdas enteras: una fila de margen arriba y al
-// menos media abajo. El contenido hace scroll dentro de ella, así el fondo no
-// se redibuja al hacer scroll. El fondo sabe qué celdas tapa para no
-// animarlas.
-function ajustaHoja() {
-  const filas = Math.max(3, Math.floor(innerHeight / s - 1.5));
-  hoja.style.height = filas * s + 'px';
-  const m = (cols - n) / 2;
-  fondo.rejilla({ cols, s, hueco: { x0: m, x1: m + n, y0: 1, y1: 1 + filas } });
+  const cols = w < 600 || w >= 1100 ? 12 : 9;
+  root.style.setProperty('--s', w / cols + 'px');
+  fondo.rejilla({ cols, s: w / cols, hueco: null });
 }
 
 /* ---------- el pie: día, paleta y otra combinación ---------- */
@@ -174,9 +155,5 @@ actualiza({ primera: true });
 mide();
 addEventListener('resize', mide);
 
-// Primero el fondo, rajola a rajola; luego se asienta la hoja.
-// Con el foco en la hoja, el teclado (espacio, flechas) la hace scrollear.
-fondo.revela(900).then(() => {
-  hoja.classList.add('on');
-  hoja.focus({ preventScroll: true });
-});
+// Al entrar, el fondo sale rajola a rajola.
+fondo.revela(900);

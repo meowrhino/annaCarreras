@@ -18,18 +18,17 @@ La web es una rejilla de Trossets.
 - **Semilla = el día**: hoy todo el mundo ve el mismo fondo; mañana, otro.
   `?dia=AAAA-MM-DD` reproduce uno. Viene de L'algorisme despullat: la
   máquina dibuja una vez al día.
-- **Hoja**: ocupa celdas enteras de la rejilla, del color de fondo de la
-  paleta. Es el hueco sin rajoles; no flota con desenfoque.
-- **Quieto al hacer scroll**: el fondo es fijo y lo que hace scroll es la
-  hoja, por dentro. Así nunca se redibuja al hacer scroll (en móvil, el
-  fondo que seguía al scroll daba tirones). Hasta el 2026-09-29 el fondo
-  se movía con la página: archivado como 06.
-- **Al entrar**: primero se pinta el fondo, rajola a rajola (~1 s); después
-  se asienta la hoja.
+- **Contenido grande encima** (feedback de Anna, 2026-10-06): sin hoja
+  flotante con scroll por dentro, que se veía de principios de los 2000.
+  Hace scroll la página. Las imágenes van directas sobre el fondo y el
+  texto sobre papel (el color de fondo de la paleta), en columnas de 44rem.
+  El fondo es un canvas fijo y no se redibuja al hacer scroll. La hoja
+  flotante está archivada como 07.
+- **Al entrar**: el fondo sale rajola a rajola (~1 s).
 - **Bloques**: los 13 de Trossets, con su azar ponderado (qué bloques
   salen juntos) y sus adornos, sacados del script on-chain y pasados de p5 a
   canvas sin cambiar la geometría.
-- **Vivo**: cada ~2 s una rajola libre cambia de bloque, o se parte en
+- **Vivo**: cada 0,25 s una rajola cambia de bloque, o se parte en
   cuatro, o se vuelve a unir (la diversidad de Trossets, en el tiempo). Y
   las celdas por donde pasa el ratón o el dedo se regeneran y a los 5 s
   vuelven a lo que eran. Cada cambio se funde en 0,4 s. Quieto con
@@ -53,24 +52,25 @@ La web es una rejilla de Trossets.
 
 ## Estructura
 
-- Menú **Work · Archive · About · Contact** (Rikić). *About* empieza por
-  *upcoming* si hay.
-- **Work**: la selección; imagen, nombre, soporte y año, una frase (Anna
-  Lucia).
-- **Archive**: todos los proyectos en *small multiples*, del más nuevo al más
-  viejo.
-- **Proyecto**: ficha → texto → imágenes → **Racó geek** (solo si hay texto
-  en `curated.json`; de momento, Trossets).
+- Menú **Work · About · Contact**. *About* empieza por *upcoming* si hay.
+- **Work**: todos los proyectos, del más nuevo al más viejo, con la portada a
+  sangre y el título y el año encima (v3ga). Dos columnas apaisadas en
+  ordenador (tres en pantallas muy anchas) y una en vertical en el móvil.
+- **Proyecto** (La Diegol, más ancho): arriba el primer vídeo a todo el ancho,
+  con la portada y ▶ hasta que se clica (sin vídeo, la portada); la cabecera
+  centrada con el título; la ficha; el cuerpo, con las imágenes hasta 110rem;
+  **Racó geek** (solo si hay texto en `curated.json`); más nuevo · todos ·
+  más viejo.
 
 ## Hecho
 
 - [`js/rajoles.js`](js/rajoles.js): el estado en la URL, la tinta (el
-  color de la paleta que más contrasta con el fondo, mínimo 4.5:1), la hoja
-  en la rejilla y los mandos del pie.
+  color de la paleta que más contrasta con el fondo, mínimo 4.5:1), la rejilla y
+  los mandos del pie.
 - [`js/fondo.js`](js/fondo.js): el canvas. Solo pinta las filas visibles;
   la intro y las dos animaciones.
 - [`js/trossets.js`](js/trossets.js): los bloques y paletas de Anna.
-- [`js/app.js`](js/app.js): Work, Archive, proyecto con Racó geek, About,
+- [`js/app.js`](js/app.js): Work, proyecto con Racó geek, About,
   Contact.
 - Tipografía: Jost (geométrica, de la familia de Futura), 400 y 500.
 

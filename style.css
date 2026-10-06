@@ -1,7 +1,10 @@
-/* Rajoles. js/rajoles.js pinta el fondo y fija, según el día:
-   --paper, --ink, --accent (de la paleta) y la rejilla --s (lado de celda),
-   --n (celdas de ancho de la hoja), --m (celdas de margen).
-   Estos valores son el fallback sin JS. */
+/* Rajoles grande. js/rajoles.js pinta el fondo y fija, según el día:
+   --paper, --ink, --accent (de la paleta) y --s (lado de celda del fondo).
+   Estos valores son el fallback sin JS.
+
+   El fondo es un canvas fijo detrás de todo. El contenido hace scroll por
+   encima: las imágenes van directas sobre el fondo y el texto sobre papel
+   (--paper), en columnas que dejan ver el fondo alrededor. */
 
 :root {
   --paper: #f5bb0c;
@@ -10,21 +13,17 @@
   --muted: color-mix(in oklab, var(--ink) 74%, var(--paper));
   --line: color-mix(in oklab, var(--ink) 24%, var(--paper));
   --s: calc(100vw / 12);
-  --n: 10;
-  --m: 1;
 
   --font: "Jost", "Futura", "Century Gothic", sans-serif;
   --mono: ui-monospace, "SF Mono", Menlo, monospace;
-  --pad: clamp(1rem, calc(var(--s) * .5), 3.5rem);
-  --text: 40rem;
+  --gap: clamp(.5rem, 1.2vw, 1rem);    /* entre imágenes: por aquí se ve el fondo */
+  --pad: clamp(1rem, 2.5vw, 2.5rem);   /* dentro del papel */
+  --text: 44rem;                       /* columna de texto */
 }
 
 * { box-sizing: border-box; }
 
 html { background: var(--paper); color: var(--ink); }
-
-/* La página no hace scroll: el fondo está quieto y la hoja scrollea dentro. */
-html, body { height: 100%; overflow: hidden; }
 
 body {
   margin: 0;
@@ -38,32 +37,15 @@ a { color: inherit; text-decoration-color: var(--accent); text-decoration-thickn
 
 img, video, iframe { display: block; max-width: 100%; height: auto; }
 
-/* ---------- fondo y hoja ---------- */
+/* ---------- fondo ---------- */
 
-.rajoles { position: fixed; inset: 0; width: 100%; height: 100%; }
+/* Sin eventos: el clic derecho cae en la página, no en «guardar imagen» de
+   un fotograma. El cursor lo sigue igual (rajoles.js escucha en window). */
+.rajoles { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; }
 
-/* La hoja ocupa celdas enteras (rajoles.js le da el alto en múltiplos de
-   --s) y es lo único que hace scroll. */
-.hoja {
-  position: fixed;
-  top: var(--s);
-  left: calc(var(--m) * var(--s));
-  width: calc(var(--n) * var(--s));
-  height: calc(100% - 2 * var(--s));
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  scrollbar-width: thin;
-  scrollbar-color: var(--line) transparent;
-  background: var(--paper);
-  transition: opacity .35s ease;
-}
-.hoja:focus { outline: none; }
-/* Al entrar, primero el fondo; la hoja se asienta cuando está pintado. */
-.js .hoja:not(.on) { opacity: 0; }
+/* ---------- cabecera y pie: tiras de papel ---------- */
 
-.in { padding: var(--pad); }
-
-/* ---------- cabecera y pie ---------- */
+.site, .site-foot { background: var(--paper); padding: var(--pad); }
 
 .site { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem 1.5rem; }
 .site-name { font-weight: 500; text-decoration: none; font-size: 1.15rem; }
@@ -76,15 +58,13 @@ img, video, iframe { display: block; max-width: 100%; height: auto; }
   .site nav { order: 3; flex-basis: 100%; margin: .75rem 0 0; }
 }
 
-main { padding: clamp(2.5rem, 8vh, 5rem) 0 4rem; }
+main { padding: var(--gap); min-height: 70vh; }
 
 .site-foot {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   gap: .5rem 1.5rem;
-  padding-top: 1rem;
-  border-top: 1px solid var(--line);
   font-size: .875rem;
   color: var(--muted);
 }
@@ -114,151 +94,160 @@ main { padding: clamp(2.5rem, 8vh, 5rem) 0 4rem; }
 .muestra { display: flex; flex: none; }
 .muestra i { width: .6rem; height: 1.1rem; }
 
-/* ---------- work: la selección ---------- */
+/* ---------- work: todos los proyectos ---------- */
 
-.selected {
+.work {
   list-style: none;
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(100%, 20rem), 1fr));
-  gap: clamp(2.5rem, 5vw, 4rem) var(--pad);
+  grid-template-columns: 1fr;
+  gap: var(--gap);
 }
-.selected a { display: block; text-decoration: none; }
-.selected .cover { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; }
+@media (min-width: 48rem)  { .work { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 120rem) { .work { grid-template-columns: repeat(3, 1fr); } }
 
-.card-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
-  gap: 1rem;
-  margin: .75rem 0 0;
-  padding-bottom: .4rem;
-  border-bottom: 1px solid var(--line);
+.work a { position: relative; display: block; text-decoration: none; overflow: hidden; }
+.work img, .no-cover {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;               /* móvil: en vertical */
+  object-fit: cover;
+  background: var(--line);
+  transition: transform .6s ease;
 }
-.card-head .name { font-size: 1.35rem; font-weight: 500; }
-.card-head .meta { color: var(--muted); font-size: .875rem; text-align: right; }
-.selected a:hover .name { text-decoration: underline; text-decoration-color: var(--accent); }
-.selected .line { margin: .5rem 0 0; }
+@media (min-width: 48rem) { .work img, .no-cover { aspect-ratio: 16 / 9; } }
 
-.to-archive {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: clamp(3.5rem, 8vh, 6rem);
-  padding: 1rem 0;
-  border-top: 2px solid var(--ink);
-  text-decoration: none;
-  font-size: 1.35rem;
+/* Título y año encima de la portada; en diferencia, se leen sobre claro y oscuro */
+.work .label {
+  position: absolute;
+  inset: .3em .5em auto;
+  color: #fff;
+  mix-blend-mode: difference;
+  pointer-events: none;
+  line-height: 1.05;
 }
-.to-archive span:last-child { color: var(--muted); font-size: .875rem; align-self: center; }
-
-/* ---------- archive: small multiples ---------- */
-
-.index-head {
-  display: flex;
-  justify-content: space-between;
-  margin: 0 0 1rem;
-  padding-bottom: .5rem;
-  border-bottom: 2px solid var(--ink);
-}
-.index-head span:last-child { color: var(--muted); font-size: .875rem; }
-
-.multiples {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(45%, 9rem), 1fr));
-  gap: 1.5rem .75rem;
-}
-.multiples a { display: block; text-decoration: none; font-size: .875rem; line-height: 1.3; }
-.multiples img, .no-cover { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; background: var(--line); }
-.multiples .year { display: block; margin-top: .4rem; color: var(--muted); font-variant-numeric: tabular-nums; }
-.multiples a:hover .title { text-decoration: underline; text-decoration-color: var(--accent); }
+.work .name { display: block; font-size: clamp(1.75rem, 3.6vw, 3.4rem); }
+.work .year { display: block; margin-top: .3em; font-size: clamp(1rem, 1.4vw, 1.35rem); }
+.work a:hover img { transform: scale(1.03); }
 
 /* ---------- proyecto ---------- */
 
-.back { color: var(--muted); text-decoration: none; font-size: .875rem; }
-.back:hover { color: var(--ink); }
+.project { display: flex; flex-direction: column; gap: var(--gap); }
 
-.project h1 {
-  font-size: clamp(2.2rem, 5vw, 4.2rem);
-  line-height: 1.05;
+/* Arriba, a todo el ancho: el vídeo (portada + play hasta que se clica) o la portada */
+.hero { margin: 0; padding: 0; border: 0; background: var(--ink); width: 100%; position: relative; }
+.hero img { width: 100%; max-height: 88vh; object-fit: cover; }
+.hero iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+.hero.play { cursor: pointer; font: inherit; }
+.play-icon {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  color: #fff;
+  text-shadow: 0 0 24px rgba(0, 0, 0, .5);
+  transition: transform .3s ease;
+}
+.hero.play:hover .play-icon { transform: scale(1.12); }
+
+/* La ficha, centrada (La Diegol) */
+.project-head { background: var(--paper); text-align: center; padding: clamp(3rem, 10vh, 7rem) var(--pad); }
+.project-head h1 {
+  font-size: clamp(2.4rem, 6vw, 5.5rem);
+  line-height: 1;
   font-weight: 500;
-  margin: 1.25rem 0 2rem;
+  margin: 0 0 1rem;
+}
+.project-head .meta { margin: 0; color: var(--muted); font-size: clamp(1rem, 1.4vw, 1.25rem); }
+
+/* Papel: las columnas de texto */
+.panel, .body > :is(p, h2, h3, h4, ul, ol, blockquote),
+.geek, .pager, .about, .contact {
+  background: var(--paper);
+  width: 100%;
+  max-width: var(--text);
+  margin-inline: auto;
+  padding: var(--pad);
 }
 
 .ficha {
   display: grid;
   grid-template-columns: 9rem minmax(0, 1fr);
   gap: 0 1rem;
-  max-width: var(--text);
-  margin: 0 0 3rem;
+  margin: 0;
   border-top: 2px solid var(--ink);
   font-size: .9375rem;
 }
-.ficha dt, .ficha dd { padding: .5rem 0; border-bottom: 1px solid var(--line); margin: 0; }
+.ficha dt, .ficha dd { overflow-wrap: anywhere; padding: .5rem 0; border-bottom: 1px solid var(--line); margin: 0; }
 .ficha dt { color: var(--muted); }
 .ficha ul { list-style: none; margin: 0; padding: 0; }
 .ficha li + li { margin-top: .2rem; }
 
-.body > * { max-width: var(--text); }
-.body > figure, .body > video, .body > .embed, .body > .outputs, .body > .tweets { max-width: none; }
+/* El cuerpo: el texto en papel, las imágenes y los vídeos sueltos sobre el
+   fondo, más anchos que el texto. Párrafos seguidos se juntan en una sola
+   columna de papel. */
+.body { display: flex; flex-direction: column; }
+.body > * { margin-block: 0; }
+.body > :is(p, h2, h3, h4, ul, ol, blockquote) + :is(p, h2, h3, h4, ul, ol, blockquote) { padding-top: 0; }
+.body > :is(p, ul, ol):has(+ :is(p, h2, h3, h4, ul, ol, blockquote)) { padding-bottom: 1.1em; }
+.body > :is(figure, video, .embed, .outputs, .tweets, .tweet) { margin-block: var(--gap); }
+.body > :first-child { margin-top: 0; }
+.body > :is(figure, video, .embed, .outputs) { width: 100%; max-width: 110rem; margin-inline: auto; }
 
-.body p { margin: 0 0 1.1em; }
-.body h2, .body h3, .body h4 { font-weight: 500; margin: 2.5rem 0 .75rem; }
-.body figure { margin: 2.5rem 0; }
-.body figcaption { color: var(--muted); font-size: .875rem; margin-top: .5rem; }
-.body video { width: 100%; margin: 2.5rem 0; }
+.body h2, .body h3, .body h4 { font-weight: 500; }
+.body figure { margin-inline: 0; }
+.body figure img { width: 100%; }
+.body figcaption { background: var(--paper); color: var(--muted); font-size: .875rem; padding: .4rem .6rem; width: fit-content; }
+.body video { width: 100%; }
+.body .embed { margin-inline: 0; }
 .body .embed iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; }
+.body .embed figcaption { display: none; }
 
 /* Rejilla de outputs: imágenes seguidas, a su proporción, en columnas */
-.outputs { columns: 3 12rem; column-gap: .75rem; margin: 2.5rem 0; }
-.outputs[data-n="2"] { columns: 2 12rem; }
-.outputs figure { margin: 0 0 .75rem; break-inside: avoid; }
+.outputs { columns: 3 16rem; column-gap: var(--gap); }
+.outputs[data-n="2"] { columns: 2 16rem; }
+.outputs figure { margin: 0 0 var(--gap); break-inside: avoid; }
 
-.tweets { columns: 2 18rem; column-gap: 1rem; margin: 1.5rem 0; }
-.tweets .tweet { break-inside: avoid; margin: 0 0 1rem; }
+.tweets { columns: 2 18rem; column-gap: var(--gap); width: 100%; max-width: 70rem; margin-inline: auto; }
+.tweets .tweet { break-inside: avoid; margin: 0 0 var(--gap); }
 
-.body blockquote { margin: 2.5rem 0; padding: 0; font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.3; }
+.body blockquote { font-size: clamp(1.25rem, 2vw, 1.6rem); line-height: 1.3; }
 .body blockquote p { margin: 0; }
 .body blockquote cite { display: block; margin-top: .75rem; font-size: .875rem; font-style: normal; color: var(--muted); }
 
 /* Tuits: tarjeta propia, sin el widget de X */
-.body .tweet { max-width: 34rem; margin: 1.5rem 0; padding: 1rem 1.25rem; border: 1px solid var(--line); font-size: .95rem; line-height: 1.5; }
-.tweet p { white-space: pre-line; margin: 0 0 .75rem; }
+.tweet { background: var(--paper); padding: 1rem 1.25rem; font-size: .95rem; line-height: 1.5; }
+.body > .tweet { max-width: 34rem; margin-inline: auto; width: 100%; }
+.tweet p { white-space: pre-line; overflow-wrap: anywhere; margin: 0 0 .75rem; }
 .tweet-media { display: grid; grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr)); gap: .25rem; margin-bottom: .75rem; }
 .tweet-media img { width: 100%; height: 100%; object-fit: cover; }
 .tweet a.src { color: var(--muted); font-size: .875rem; text-decoration: none; }
 
 /* Racó geek: el apartado técnico, como en la tesis */
-.geek {
-  max-width: var(--text);
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 2px solid var(--ink);
-  font: .875rem/1.65 var(--mono);
-}
+.geek { font: .875rem/1.65 var(--mono); }
 .geek h2 { font: 500 1rem/1.3 var(--font); margin: 0 0 1rem; }
 .geek p { margin: 0 0 1em; }
 
 .pager {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 4rem;
-  padding-top: 1rem;
-  border-top: 2px solid var(--ink);
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: 1.5rem;
+  max-width: none;
 }
-.pager a { text-decoration: none; max-width: 45%; }
-.pager a:last-child { text-align: right; margin-left: auto; }
+.pager a { text-decoration: none; }
+.pager .newer { grid-column: 1; }
+.pager .back { grid-column: 2; align-self: center; text-transform: uppercase; letter-spacing: .1em; font-size: .875rem; }
+.pager .older { grid-column: 3; text-align: right; }
 .pager small { display: block; color: var(--muted); }
+.pager a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
 
 /* ---------- about ---------- */
 
-.bio { max-width: var(--text); font-size: clamp(1.125rem, 1.6vw, 1.35rem); line-height: 1.45; }
+.about, .contact { margin-block: clamp(2rem, 10vh, 6rem); }
+
+.bio { font-size: clamp(1.125rem, 1.6vw, 1.35rem); line-height: 1.45; }
 .bio p { margin: 0 0 1em; }
 
 .cv h2, .upcoming h2 { font-size: .875rem; font-weight: 400; color: var(--muted); margin: 3.5rem 0 .75rem; }
@@ -278,7 +267,7 @@ main { padding: clamp(2.5rem, 8vh, 5rem) 0 4rem; }
 
 /* ---------- contact ---------- */
 
-.contact ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); max-width: var(--text); }
+.contact ul { list-style: none; margin: 0; padding: 0; border-top: 2px solid var(--ink); }
 .contact li { border-bottom: 1px solid var(--line); }
 .contact a { display: block; padding: .8rem 0; text-decoration: none; font-size: clamp(1.25rem, 2vw, 1.6rem); }
 .contact a:hover { text-decoration: underline; text-decoration-color: var(--accent); }
@@ -288,10 +277,13 @@ main { padding: clamp(2.5rem, 8vh, 5rem) 0 4rem; }
   .cv li { grid-template-columns: 3.25rem minmax(0, 1fr); }
   .ficha { grid-template-columns: 1fr; }
   .ficha dt { border-bottom: 0; padding-bottom: 0; }
+  .pager { grid-template-columns: 1fr 1fr; }
+  .pager .back { grid-column: 1 / -1; grid-row: 2; justify-self: center; }
+  .pager .older { grid-column: 2; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .hoja { transition: none; }
+  .work img, .play-icon { transition: none; }
 }
 
-.error { color: inherit; font-family: var(--mono); }
+.error { color: inherit; font-family: var(--mono); background: var(--paper); padding: var(--pad); }

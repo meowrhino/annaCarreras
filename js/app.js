@@ -1,6 +1,6 @@
-// El contenido: lee los JSON de content/ y pinta cada ruta dentro de la hoja
-// (#/, #/archive, #/about, #/contact, #/<slug>). El fondo va aparte, en
-// rajoles.js; no se hablan: el fondo sigue el alto de la hoja por su cuenta.
+// El contenido: lee los JSON de content/ y pinta cada ruta encima del fondo
+// (#/, #/about, #/contact, #/<slug>). El fondo va aparte, en rajoles.js; no
+// se hablan.
 //
 // Los `src` de los JSON son root-absolutos (/assets/...). Se resuelven contra
 // la carpeta de la página, así funciona igual en local que en GitHub Pages
@@ -51,47 +51,19 @@ function fixLinks(node, slugs) {
 // Lo curado a mano (content/curated.json) manda sobre lo scrapeado.
 const nameOf = (p, cur) => cur.projects[p.slug]?.name || p.title;
 const mediumOf = (p, cur) => cur.projects[p.slug]?.medium || p.categories.map(label);
-// «2001–2024»
-const rango = (years) => `${Math.min(...years)}–${Math.max(...years)}`;
 
-/* ---------- work: la selección ---------- */
+/* ---------- work: todos los proyectos ---------- */
 
+// Portadas grandes, del más nuevo al más viejo, con el título y el año
+// encima (v3ga). Apaisadas en ordenador, en vertical en el móvil.
 function renderWork(index, cur) {
   document.title = 'Anna Carreras';
-  const bySlug = Object.fromEntries(index.map(p => [p.slug, p]));
-
-  const list = el('ul', { class: 'selected' }, ...cur.selected.map(slug => {
-    const p = bySlug[slug], c = cur.projects[slug] || {};
-    return el('li', {}, el('a', { href: '#/' + slug },
-      p.cover && img(p.cover, { class: 'cover' }),
-      el('p', { class: 'card-head' },
-        el('span', { class: 'name', text: nameOf(p, cur) }),
-        el('span', { class: 'meta', text: `${mediumOf(p, cur).join(', ')}, ${p.year}` })),
-      c.line && el('p', { class: 'line', text: c.line })));
-  }));
-
-  const more = el('a', { class: 'to-archive', href: '#/archive' },
-    el('span', { text: 'Archive' }),
-    el('span', { text: `all ${index.length} projects, ${rango(index.map(p => p.year))} →` }));
-
-  app.replaceChildren(el('section', { class: 'work' }, list, more));
-}
-
-/* ---------- archive: small multiples ---------- */
-
-// Todas las portadas al mismo tamaño, en orden cronológico: como los dibujos
-// de L'algorisme despullat colgados en rejilla, para ver el conjunto de golpe.
-function renderArchive(index, cur) {
-  document.title = 'Archive — Anna Carreras';
-  const head = el('p', { class: 'index-head' },
-    el('span', { text: 'Archive' }),
-    el('span', { text: `${index.length} projects, ${rango(index.map(p => p.year))}` }));
-  const grid = el('ul', { class: 'multiples' }, ...index.map(p =>
+  app.replaceChildren(el('ul', { class: 'work' }, ...index.map((p, i) =>
     el('li', {}, el('a', { href: '#/' + p.slug },
-      p.cover ? img(p.cover) : el('span', { class: 'no-cover' }),
-      el('span', { class: 'year', text: p.year }),
-      el('span', { class: 'title', text: nameOf(p, cur) })))));
-  app.replaceChildren(el('section', { class: 'archive' }, head, grid));
+      p.cover ? img(p.cover, { loading: i < 4 ? 'eager' : 'lazy' }) : el('span', { class: 'no-cover' }),
+      el('span', { class: 'label' },
+        el('span', { class: 'name', text: nameOf(p, cur) }),
+        el('span', { class: 'year', text: p.year })))))));
 }
 
 /* ---------- proyecto: ficha + cuerpo + racó geek ---------- */
@@ -176,29 +148,47 @@ function renderGeek(c) {
     ...c.geek.map(h => el('p', { html: h })));
 }
 
+// Arriba, lo importante: el primer vídeo, con la portada hasta que se clica
+// (La Diegol); así no carga el reproductor sin que nadie lo pida. Sin
+// vídeo, la portada sola.
+const isVideo = (b) => b.type === 'embed' && (b.provider === 'youtube' || b.provider === 'vimeo');
+
+function renderHero(p, video) {
+  if (!video) return p.cover && el('figure', { class: 'hero' }, img(p.cover, { loading: 'eager' }));
+  const box = el('button', { type: 'button', class: 'hero play', 'aria-label': 'Play ' + (video.title || 'video') },
+    p.cover && img(p.cover, { loading: 'eager' }), el('span', { class: 'play-icon', text: '▶' }));
+  box.addEventListener('click', () => {
+    const src = video.provider === 'youtube'
+      ? 'https://www.youtube-nocookie.com/embed/' + video.id + '?autoplay=1'
+      : 'https://player.vimeo.com/video/' + video.id + '?autoplay=1&dnt=1';
+    box.replaceWith(el('div', { class: 'hero' },
+      el('iframe', { src, title: video.title || video.provider, allow: 'autoplay; fullscreen', allowfullscreen: '' })));
+  });
+  return box;
+}
+
 function renderProject(p, index, cur) {
   const name = nameOf(p, cur);
   document.title = name + ' — Anna Carreras';
   const slugs = new Set(index.map(i => i.slug));
 
-  // Anterior/siguiente dentro de la selección si el proyecto está en ella;
-  // si no, por el archivo (que va de más nuevo a más viejo).
-  const inSel = cur.selected.includes(p.slug);
-  const seq = inSel ? cur.selected.map(s => index.find(x => x.slug === s)) : index;
-  const i = seq.findIndex(x => x.slug === p.slug);
-  const pagerLink = (q, dir) => q && el('a', { href: '#/' + q.slug },
+  const video = p.blocks.find(isVideo);
+  const i = index.findIndex(x => x.slug === p.slug);
+  const pagerLink = (q, dir, cls) => q && el('a', { href: '#/' + q.slug, class: cls },
     el('small', { text: dir }), document.createTextNode(nameOf(q, cur)));
-  const pager = el('nav', { class: 'pager' },
-    pagerLink(seq[i - 1], '← Previous'),
-    pagerLink(seq[i + 1], 'Next →'));
 
   const article = el('article', { class: 'project' },
-    el('a', { class: 'back', href: inSel ? '#/' : '#/archive', text: inSel ? '← Work' : '← Archive' }),
-    el('h1', { text: name }),
-    renderFicha(p, cur),
-    renderBody(p.blocks),
+    renderHero(p, video),
+    el('header', { class: 'project-head' },
+      el('h1', { text: name }),
+      el('p', { class: 'meta', text: [p.year, mediumOf(p, cur).join(', ')].join(' · ') })),
+    el('div', { class: 'panel' }, renderFicha(p, cur)),
+    renderBody(p.blocks.filter(b => b !== video)),
     renderGeek(cur.projects[p.slug] || {}),
-    pager);
+    el('nav', { class: 'pager' },
+      pagerLink(index[i - 1], '← Newer', 'newer'),
+      el('a', { class: 'back', href: '#/', text: 'All projects' }),
+      pagerLink(index[i + 1], 'Older →', 'older')));
 
   app.replaceChildren(fixLinks(article, slugs));
 }
@@ -235,7 +225,7 @@ function renderContact(cur) {
 
 /* ---------- rutas ---------- */
 
-const PAGES = ['archive', 'about', 'contact'];
+const PAGES = ['about', 'contact'];
 
 async function route() {
   const path = location.hash.replace(/^#\/?/, '');
@@ -243,15 +233,14 @@ async function route() {
     a.toggleAttribute('aria-current', a.dataset.nav === (PAGES.includes(path) ? path : 'work')));
   try {
     const [index, cur] = await Promise.all([get('content/projects/index.json'), get('content/curated.json')]);
-    if (!path) renderWork(index, cur);
-    else if (path === 'archive') renderArchive(index, cur);
+    if (!path || path === 'archive') renderWork(index, cur);
     else if (path === 'about') renderAbout(await get('content/about.json'), cur);
     else if (path === 'contact') renderContact(cur);
     else renderProject(await get('content/projects/' + path + '.json'), index, cur);
   } catch (e) {
     app.replaceChildren(el('p', { class: 'error', text: e.message }));
   }
-  app.closest('.hoja').scrollTop = 0;   // la hoja es la que hace scroll
+  scrollTo(0, 0);
 }
 
 addEventListener('hashchange', route);

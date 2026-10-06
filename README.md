@@ -6,18 +6,17 @@ GitHub Pages sirve el repo tal cual.
 <https://meowrhino.github.io/annaCarreras/>
 
 El diseño es **Rajoles**: el fondo es Trossets (sus 13 bloques y sus 18
-paletas) en una rejilla sin fin; la semilla es el día. La hoja con el
-contenido ocupa celdas enteras de la rejilla y es lo único que hace scroll: el
-fondo se queda quieto. Por qué y qué falta, en
+paletas) en una rejilla sin fin; la semilla es el día. El fondo está
+quieto y el contenido, grande, hace scroll por encima. Por qué y qué falta, en
 [`DISEÑO.md`](DISEÑO.md). Las pruebas anteriores están en el historial de git
 y archivadas en
 [meowrhino/annaCarreras-disenos](https://github.com/meowrhino/annaCarreras-disenos).
 
 ```
-index.html                  la página (rutas por hash: #/, #/archive, #/about, #/contact, #/<slug>)
+index.html                  la página (rutas por hash: #/, #/about, #/contact, #/<slug>)
 style.css
 js/
-  rajoles.js                arranque: estado en la URL, colores, la hoja en la rejilla, el pie
+  rajoles.js                arranque: estado en la URL, colores, la rejilla, el pie
   fondo.js                  el canvas: la rejilla sin fin, la intro y las animaciones
   trossets.js               los bloques y paletas de Trossets (CC BY-NC-SA 4.0)
   azar.js                   azar determinista (la misma semilla, el mismo fondo)

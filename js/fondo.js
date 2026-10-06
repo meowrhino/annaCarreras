@@ -1,10 +1,10 @@
 // El fondo: una rejilla de rajoles de Trossets en un canvas fijo, del tamaño
-// de la ventana. No se mueve: lo que hace scroll es la hoja, por dentro, así
-// el scroll nunca obliga a redibujar.
+// de la ventana. No se mueve: el contenido hace scroll por encima, así el
+// scroll nunca obliga a redibujar.
 //
 // Cada celda tiene un estado de base, que sale de la semilla: siempre el
 // mismo para el mismo día. Encima pueden ir dos capas vivas:
-//   - cambios lentos (animación 1): cada ~2 s una celda libre cambia un
+//   - cambios (animación 1): cada 0,25 s una celda libre cambia un
 //     bloque, o se parte en cuatro, o se vuelve a unir. Se quedan.
 //   - el rastro del cursor (animación 2): las celdas por donde pasa el ratón
 //     o el dedo se regeneran y a los pocos segundos vuelven a lo que eran.
@@ -19,12 +19,12 @@ const g = canvas.getContext('2d');
 const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const FUNDIDO = 400;          // ms que tarda una celda en cambiar
-const CADA = 2000;            // ms entre cambios lentos
+const CADA = 250;             // ms entre cambios lentos
 const RASTRO = 5000;          // ms que dura el rastro del cursor
 
 let semilla, P, r;            // r: los rasgos del día (adornos, parte, possibles)
 let cols = 12, s = 100;       // columnas y lado de celda, en px
-let hueco = null;             // la hoja, en celdas: { x0, x1, y0, y1 } (y1 excluido)
+let hueco = null;             // celdas que no se animan: { x0, x1, y0, y1 } (y1 excluido)
 let progreso = 0;             // la intro: qué fracción de celdas se ve (0 hasta que empieza)
 
 const cambios = new Map();    // 'i,j' → estado: cambios lentos
