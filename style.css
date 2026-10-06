@@ -27,10 +27,20 @@ body {
   flex-direction: column;
 }
 
-/* las letras llevan un halo de papel: el dibujo pasa por detrás sin
-   tapar el texto, y sin meter el texto en una caja */
-.site, .project-head, .body, .ficha, .geek, .pager, .about, .contact, .site-foot {
-  text-shadow: 0 0 3px var(--paper), 0 0 6px var(--paper), 0 0 10px var(--paper);
+/* Dos maneras de leer encima del dibujo, sin cajas:
+   - lo grande va en blanco con difference (como mokakopa): negro sobre el
+     papel, invertido sobre fotos, y las líneas que lo cruzan salen blancas
+     dentro de la letra;
+   - el texto de leer lleva un halo de papel en capas, que borra el dibujo
+     alrededor de cada letra (con difference se invertiría a trozos). */
+.site, .project-head h1, .pager a, .contact a {
+  color: #fff;
+  mix-blend-mode: difference;
+}
+.project-head .meta, .project-head .line, .body, .ficha, .geek, .about, .site-foot {
+  text-shadow:
+    0 0 1px var(--paper), 0 0 2px var(--paper), 0 0 3px var(--paper),
+    0 0 5px var(--paper), 0 0 8px var(--paper), 0 0 14px var(--paper);
 }
 
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
@@ -49,7 +59,11 @@ img { height: auto; }
 
 /* ---------- cabecera ---------- */
 
+/* la cabecera se queda arriba (menos en la portada, donde el nombre es enorme) */
 .site {
+  position: sticky;
+  top: 0;
+  z-index: 10;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -65,7 +79,7 @@ img { height: auto; }
   text-decoration: none;
 }
 
-.site-tagline { margin: 0; color: var(--dim); flex: 1 1 18rem; }
+.site-tagline { margin: 0; opacity: .6; flex: 1 1 18rem; }
 
 .site nav { display: flex; gap: 1.2rem; }
 .site nav a { text-decoration: none; }
@@ -73,6 +87,7 @@ img { height: auto; }
 
 /* en la portada, la cabecera deja ver el dibujo: media pantalla de aire */
 [data-page="work"] .site {
+  position: static;
   min-height: 46svh;
   align-content: flex-start;
 }
@@ -184,7 +199,7 @@ main { flex: 1; }
   max-width: var(--wide);
   margin: clamp(2rem, 5vw, 4rem) auto;
 }
-.body p { font-size: 1.15rem; margin-top: 0; margin-bottom: 1.1em; }
+.body p { font-size: 1.2rem; margin-top: 0; margin-bottom: 1.1em; }
 .body h2, .body h3, .body h4 { font-weight: 500; margin: 2.5rem auto 1rem; }
 
 figure { margin: 0; }
