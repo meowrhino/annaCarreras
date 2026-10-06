@@ -5,26 +5,23 @@ GitHub Pages sirve el repo tal cual.
 
 <https://meowrhino.github.io/annaCarreras/>
 
-El diseño es **Rajoles**: el fondo es Trossets (sus 13 bloques y sus 18
-paletas) en una rejilla sin fin; la semilla es el día. El fondo está
-quieto y el contenido, grande, hace scroll por encima. Por qué y qué falta, en
-[`DISEÑO.md`](DISEÑO.md). Las pruebas anteriores están en el historial de git
-y archivadas en
+El diseño es el **10**: portadas grandes a sangre con el título y el año
+encima, proyecto con el vídeo arriba, y detrás un dibujo que se hace en
+directo. Sale del feedback de Anna del 2026-10-06; por qué y qué falta, en
+[`DISEÑO.md`](DISEÑO.md). Las pruebas anteriores (Rajoles incluida) están
+archivadas en
 [meowrhino/annaCarreras-disenos](https://github.com/meowrhino/annaCarreras-disenos).
 
 ```
 index.html                  la página (rutas por hash: #/, #/about, #/contact, #/<slug>)
 style.css
 js/
-  rajoles.js                arranque: estado en la URL, colores, la rejilla, el pie
-  fondo.js                  el canvas: la rejilla sin fin, la intro y las animaciones
-  trossets.js               los bloques y paletas de Trossets (CC BY-NC-SA 4.0)
-  azar.js                   azar determinista (la misma semilla, el mismo fondo)
   app.js                    el contenido: pinta cada ruta desde content/
+  fondo.js                  el dibujo del fondo; cada página, su semilla
 content/
   site.json                 datos globales del sitio
   about.json                bio + CV
-  curated.json              selección, frases, fichas y Racó geek (a mano)
+  curated.json              nombres, frases, fichas y Racó geek (a mano)
   projects/
     index.json              listado ligero para el grid
     <slug>.json             un fichero por proyecto
@@ -33,15 +30,6 @@ assets/
 scripts/
   scrape.py                 regenera content/ y assets/ desde el WordPress
 ```
-
-El fondo adapta el código de Trossets (Art Blocks, proyecto 147), que tiene
-licencia [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/):
-con atribución, sin uso comercial y compartiendo igual. La adaptación se
-publica con esa misma licencia (`js/trossets.js`) y el pie de la web lleva el crédito.
-
-`?dia=AAAA-MM-DD` enseña el fondo de otro día, `?paleta=Paella` fija la paleta
-y `?llavor=…` saca otra combinación. Los mandos del pie escriben estos mismos
-parámetros.
 
 Los `src` de los JSON son rutas root-absolutas (`/assets/projects/...`).
 **Ojo con el base path:** GitHub Pages sirve desde `/annaCarreras/`, así que
@@ -52,27 +40,6 @@ Para verlo en local, desde la raíz del repo:
 ```bash
 python3 -m http.server 8765
 ```
-
-## Prototipos de diseño
-
-`proto/` tiene tres direcciones de portada montadas sobre el contenido real,
-para compararlas antes de elegir front:
-
-| | de dónde sale | idea |
-|---|---|---|
-| [`proto/a-index.html`](proto/a-index.html) | v3ga.net + annalucia.io | índice tipográfico, sin imágenes en el listado, portada al hover |
-| [`proto/b-grid.html`](proto/b-grid.html) | monicarikic.com | parrilla de portadas con filtro por categoría |
-| [`proto/c-canvas.html`](proto/c-canvas.html) | su propio trabajo | home generativa (Truchet multiescala) + índice a dos columnas |
-
-`proto/index.html` es el punto de entrada con las tres y sus riesgos.
-`proto/base.css` y `proto/proto.js` son lo compartido: detalle, about y rutas.
-En `c-canvas.html?still` el patrón se pinta de golpe (útil para capturas).
-
-**`proto/density.json` es dato de prueba, no contenido del sitio.** Son los 103
-posts del WordPress (título, año, categorías, tags y portada **enlazada a
-annacarreras.com**, no descargada), para poder juzgar los diseños a la escala
-real y no con los 13 proyectos scrapeados. Se regenera desde la API de WP; los
-proyectos que no están en `content/` se abren como ficha incompleta.
 
 ## Regenerar
 
@@ -184,7 +151,7 @@ Lo único escrito a mano: `scrape.py` no lo toca. Manda sobre lo scrapeado.
 
 ```jsonc
 {
-  "selected": ["trossets", "arrels", …],   // orden de la portada
+  "selected": ["trossets", "arrels", …],   // sin uso desde la 10: la portada los enseña todos
   "projects": {
     "trossets": {
       "name": "Trossets",                   // nombre corto (sin «at ArtBlocks curated»)

@@ -1,11 +1,13 @@
 // El contenido: lee los JSON de content/ y pinta cada ruta encima del fondo
-// (#/, #/about, #/contact, #/<slug>). El fondo va aparte, en rajoles.js; no
-// se hablan.
+// (#/, #/about, #/contact, #/<slug>). Lo único que le dice al fondo es la
+// semilla: cada proyecto dibuja con su carácter.
 //
 // Los `src` de los JSON son root-absolutos (/assets/...). Se resuelven contra
 // la carpeta de la página, así funciona igual en local que en GitHub Pages
 // (/annaCarreras/). Una copia archivada fuera de este repo apunta a otro
 // origen con <html data-content>.
+import { semilla } from './fondo.js';
+
 const ROOT = new URL(document.documentElement.dataset.content || '.', location.href);
 const url = (path) => new URL(path.replace(/^\//, ''), ROOT).href;
 
@@ -123,8 +125,6 @@ function renderFicha(p, cur) {
   const row = (dt, ...dd) => dd.length && dl.append(el('dt', { text: dt }), el('dd', {}, ...dd));
   const list = (items) => el('ul', {}, ...items.map(i => el('li', {}, i)));
 
-  row('Year', document.createTextNode(p.year));
-  row('Medium', document.createTextNode(mediumOf(p, cur).join(', ')));
   (c.facts || []).forEach(f => row(f.label, el('span', { html: f.html })));
 
   // Créditos con etiqueta van a la ficha; las líneas sueltas suelen ser prensa.
@@ -136,7 +136,7 @@ function renderFicha(p, cur) {
   if (c.exhibitions?.length) row('Exhibitions', list(c.exhibitions.map(t => document.createTextNode(t))));
   const press = [...(c.press || []).map(l => extLink(l.url, l.label)), ...loose.map(x => el('span', { html: x.html }))];
   if (press.length) row('Press', list(press));
-  return dl;
+  return dl.children.length ? dl : null;
 }
 
 // El «Racó geek» es como acaba cada proyecto en su tesis: cómo funciona el
@@ -181,9 +181,10 @@ function renderProject(p, index, cur) {
     renderHero(p, video),
     el('header', { class: 'project-head' },
       el('h1', { text: name }),
-      el('p', { class: 'meta', text: [p.year, mediumOf(p, cur).join(', ')].join(' · ') })),
-    el('div', { class: 'panel' }, renderFicha(p, cur)),
+      el('p', { class: 'meta', text: [p.year, mediumOf(p, cur).join(', ')].join(' · ') }),
+      cur.projects[p.slug]?.line && el('p', { class: 'line', text: cur.projects[p.slug].line })),
     renderBody(p.blocks.filter(b => b !== video)),
+    renderFicha(p, cur),
     renderGeek(cur.projects[p.slug] || {}),
     el('nav', { class: 'pager' },
       pagerLink(index[i - 1], '← Newer', 'newer'),
@@ -197,7 +198,7 @@ function renderProject(p, index, cur) {
 
 function renderAbout(a, cur) {
   document.title = 'About — Anna Carreras';
-  const upcoming = cur.upcoming?.length && el('section', { class: 'upcoming' },
+  const upcoming = cur.upcoming?.length > 0 && el('section', { class: 'upcoming' },
     el('h2', { text: 'Upcoming' }),
     el('ul', {}, ...cur.upcoming.map(u => el('li', { html: u }))));
   const bio = el('div', { class: 'bio' }, ...a.bio.map(h => el('p', { html: h })));
@@ -229,6 +230,8 @@ const PAGES = ['about', 'contact'];
 
 async function route() {
   const path = location.hash.replace(/^#\/?/, '');
+  semilla(path);
+  document.body.dataset.page = path ? (PAGES.includes(path) ? path : 'project') : 'work';
   document.querySelectorAll('[data-nav]').forEach(a =>
     a.toggleAttribute('aria-current', a.dataset.nav === (PAGES.includes(path) ? path : 'work')));
   try {

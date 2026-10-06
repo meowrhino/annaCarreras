@@ -6,19 +6,19 @@
 <title>Anna Carreras</title>
 <meta name="description" content="generative art && interactive installations">
 <meta name="robots" content="noindex">
+<meta name="theme-color" content="#efede8">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jost:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&display=swap">
 <link rel="stylesheet" href="style.css">
-<script>document.documentElement.classList.add('js')</script>
 </head>
 <body>
 
-<canvas class="rajoles" aria-hidden="true"></canvas>
+<canvas class="fondo" aria-hidden="true"></canvas>
 
 <header class="site">
   <a class="site-name" href="#/">Anna Carreras</a>
-  <span class="site-tagline">generative art &amp;&amp; interactive installations</span>
+  <p class="site-tagline">generative art &amp;&amp; interactive installations</p>
   <nav>
     <a href="#/" data-nav="work">Work</a>
     <a href="#/about" data-nav="about">About</a>
@@ -29,18 +29,10 @@
 <main id="app"></main>
 
 <footer class="site-foot">
-  <div class="mando">
-    <button type="button" class="prev" aria-label="Previous day">‹</button>
-    <a class="dia" href="?"></a>
-    <button type="button" class="next" aria-label="Next day">›</button>
-    <button type="button" class="paleta" aria-expanded="false" aria-controls="paletas"></button>
-    <button type="button" class="otra" aria-label="Another combination" title="Another combination">↻</button>
-  </div>
-  <span>Background: <a href="https://www.artblocks.io/project/147">Trossets</a>, Anna Carreras, <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> · Prototype, provisional texts</span>
-  <div class="paletas" id="paletas" hidden></div>
+  <span>Anna Carreras</span>
+  <span>The background draws itself live; move over it. Prototype, provisional texts.</span>
 </footer>
 
-<script type="module" src="js/rajoles.js"></script>
 <script type="module" src="js/app.js"></script>
 </body>
 </html>
