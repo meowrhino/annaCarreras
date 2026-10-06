@@ -27,20 +27,16 @@ body {
   flex-direction: column;
 }
 
-/* Dos maneras de leer encima del dibujo, sin cajas:
-   - lo grande va en blanco con difference (como mokakopa): negro sobre el
-     papel, invertido sobre fotos, y las líneas que lo cruzan salen blancas
-     dentro de la letra;
-   - el texto de leer lleva un halo de papel en capas, que borra el dibujo
-     alrededor de cada letra (con difference se invertiría a trozos). */
-.site, .project-head h1, .pager a, .contact a {
+/* Todo el texto va en blanco con difference (como mokakopa): negro sobre
+   el papel, invertido sobre fotos, y las líneas del dibujo que lo cruzan
+   salen blancas dentro de la letra. Solo el texto: las imágenes no se
+   invierten. Dentro, lo tenue es gris claro, que al restar sale gris medio. */
+.site, .project-head, .pager a, .contact a,
+.body > p, .body > h2, .body > h3, .body > h4, .body > ul, .body > ol, .body > blockquote,
+figcaption, .tweet p, .tweet .src, .ficha, .geek, .about, .site-foot {
   color: #fff;
+  --dim: #9a9893;
   mix-blend-mode: difference;
-}
-.project-head .meta, .project-head .line, .body, .ficha, .geek, .about, .site-foot {
-  text-shadow:
-    0 0 1px var(--paper), 0 0 2px var(--paper), 0 0 3px var(--paper),
-    0 0 5px var(--paper), 0 0 8px var(--paper), 0 0 14px var(--paper);
 }
 
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
@@ -59,11 +55,7 @@ img { height: auto; }
 
 /* ---------- cabecera ---------- */
 
-/* la cabecera se queda arriba (menos en la portada, donde el nombre es enorme) */
 .site {
-  position: sticky;
-  top: 0;
-  z-index: 10;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
@@ -87,7 +79,6 @@ img { height: auto; }
 
 /* en la portada, la cabecera deja ver el dibujo: media pantalla de aire */
 [data-page="work"] .site {
-  position: static;
   min-height: 46svh;
   align-content: flex-start;
 }
@@ -228,7 +219,7 @@ cite { display: block; font-size: .9rem; font-style: normal; color: var(--dim); 
   gap: .5rem 1.5rem;
   margin-top: clamp(3rem, 8vw, 6rem);
   padding-top: 1rem;
-  border-top: 1px solid var(--ink);
+  border-top: 1px solid currentColor;
   font-size: .95rem;
 }
 .ficha dt { color: var(--dim); }
@@ -261,7 +252,7 @@ cite { display: block; font-size: .9rem; font-style: normal; color: var(--dim); 
 .upcoming, .cv { margin-top: 4rem; }
 .upcoming h2, .cv h2 { font-size: .85rem; font-weight: 500; text-transform: uppercase; letter-spacing: .08em; color: var(--dim); margin: 3rem 0 .8rem; }
 .upcoming ul, .cv ul { list-style: none; margin: 0; padding: 0; }
-.cv li { display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; padding: .35rem 0; border-top: 1px solid var(--rule); }
+.cv li { display: grid; grid-template-columns: 4rem 1fr; gap: 1rem; padding: .35rem 0; border-top: 1px solid color-mix(in srgb, currentColor 22%, transparent); }
 .cv .year { color: var(--dim); }
 .cv .same-year .year { visibility: hidden; }
 @media (min-width: 1100px) { .cv { columns: 2; column-gap: calc(var(--gut) * 3); } .cv h2:first-child { margin-top: 0; } .cv li { break-inside: avoid; } }
