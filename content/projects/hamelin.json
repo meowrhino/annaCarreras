@@ -1,7 +1,10 @@
 {
   "slug": "hamelin",
   "title": "Hamelin",
+  "name": "",
   "year": 2008,
+  "line": "",
+  "medium": [],
   "date": "2012-02-13",
   "summary": "Hamelin is an interactive module for AD Out of Home where participants are immersed inside the advertisement. The module uses sensors and image processing to let users experience and full-body play with specially ad hoc designed games.",
   "categories": [
@@ -112,5 +115,10 @@
       "html": "Natalia Rojas."
     }
   ],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/hamelin/"
 }

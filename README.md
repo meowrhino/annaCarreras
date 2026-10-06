@@ -19,12 +19,11 @@ js/
   app.js                    el contenido: pinta cada ruta desde content/
   fondo.js                  el dibujo del fondo; cada página, su semilla
 content/
-  site.json                 datos globales del sitio
+  site.json                 datos globales del sitio (+ contacto y upcoming, a mano)
   about.json                bio + CV
-  curated.json              nombres, frases, fichas y Racó geek (a mano)
   projects/
     index.json              listado ligero para el grid
-    <slug>.json             un fichero por proyecto
+    <slug>.json             un fichero por proyecto: lo scrapeado y lo escrito a mano
 assets/
   projects/<slug>/…         imágenes y vídeos a resolución original
 scripts/
@@ -120,7 +119,7 @@ del tuit; enlaza al `url` para verlo.
 
 ### `content/projects/index.json`
 
-Array ordenado por año descendente con `slug`, `title`, `year`, `summary`,
+Array ordenado por año descendente con `slug`, `title`, `name`, `year`, `summary`,
 `categories`, `tags` y `cover`. Pensado para el grid: no hace falta cargar los
 proyectos completos.
 
@@ -145,28 +144,34 @@ proyectos completos.
 un año (pasa en *Teaching*, donde los años van al final). El `html` conserva la
 línea entera, año incluido.
 
-### `content/curated.json`
+### Lo que se escribe a mano
 
-Lo único escrito a mano: `scrape.py` no lo toca. Manda sobre lo scrapeado.
+La web se actualiza editando JSON. Cada `<slug>.json` lleva, junto a lo
+scrapeado, estos campos, que empiezan vacíos y se rellenan a mano. Vacíos, la
+web usa lo scrapeado o no pinta nada:
 
 ```jsonc
 {
-  "selected": ["trossets", "arrels", …],   // sin uso desde la 10: la portada los enseña todos
-  "projects": {
-    "trossets": {
-      "name": "Trossets",                   // nombre corto (sin «at ArtBlocks curated»)
-      "line": "…",                          // una frase para la selección
-      "medium": ["digital"],                // soporte; si falta, las categorías
-      "facts": [ { "label": "Edition", "html": "1,000 outputs" } ],
-      "links": [ { "label": "Art Blocks", "url": "…" } ],
-      "exhibitions": ["2022 — …"],
-      "press": [ { "label": "…", "url": "…" } ],
-      "geek": ["<html>", "…"]               // Racó geek: cómo funciona; si falta, no sale
-    }
-  },
-  "contact": [ { "label": "X", "url": "…" } ],
-  "upcoming": []                            // html; si está vacío no se pinta
+  "name": "Trossets",                 // nombre corto; vacío → title
+  "line": "…",                        // una frase bajo el título; vacío → nada
+  "medium": ["digital"],              // soporte; vacío → las categorías
+  "facts": [ { "label": "Edition", "html": "1,000 outputs" } ],
+  "links": [ { "label": "Art Blocks", "url": "…" } ],
+  "exhibitions": ["2022 — …"],
+  "press": [ { "label": "…", "url": "…" } ],
+  "geek": ["<html>", "…"]             // Racó geek: cómo funciona; vacío → no sale
 }
+```
+
+Y en `site.json`, a mano: `contact` (`[{ "label", "url" }]`) y `upcoming`
+(html; vacío → no sale).
+
+`scrape.py` no machaca nunca estos campos: si se vuelve a scrapear, conserva
+lo que haya. Después de cambiar un `name` (o la portada, o el año), hay que
+regenerar el listado de la portada, sin red:
+
+```bash
+python3 scripts/scrape.py --index
 ```
 
 Los créditos del proyecto con etiqueta van a la ficha; las líneas sin

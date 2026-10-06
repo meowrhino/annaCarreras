@@ -1,7 +1,10 @@
 {
   "slug": "my-city-my-playground",
   "title": "My City My Playground",
+  "name": "",
   "year": 2014,
+  "line": "",
+  "medium": [],
   "date": "2014-10-30",
   "summary": "My City My Playground allows you to play with the city landscape. Buildings, pedestrians, traffic, street furniture, etc. Choose as many elements as you like and turn them into the pieces of your game.",
   "categories": [
@@ -197,5 +200,10 @@
       "html": "Marcos Alonso (SFO), Noemí Conesa (Graz), Manuel J. Alonso (Bcn), Natalia Rojas (Miami), Guillem Perez (Buenos Aires), Sytse Wierenga (Bcn) and Judith Pujol (Boston)."
     }
   ],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/my-city-my-playground/"
 }

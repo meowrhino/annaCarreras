@@ -76,7 +76,13 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
   slugs en `SLUGS` de `scripts/scrape.py`. En total hay 103 posts en el
   WordPress (la lista está en la 08 del archivo, `density.json`).
 - La bio no menciona el doctorado (2023) ni Art Blocks.
-- Todo lo de `curated.json` (frases, fichas, Racó geek) es provisional.
+- Todo el texto de la web es el de su WordPress, sin inventar nada. Los
+  campos a mano de cada proyecto (`name`, `line`, `medium`, `facts`, `links`,
+  `exhibitions`, `press`, `geek`) están vacíos esperando a Anna. Hay un
+  borrador nuestro de seis proyectos en `content/curated.json` del commit
+  `9cf0b4a`, por si sirve de ejemplo.
+- Sin `name`, las portadas enseñan el título largo del WordPress
+  («“Arrels” at Social Codes, Feral File»).
 
 ## Preguntas para Anna
 

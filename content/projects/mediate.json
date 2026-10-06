@@ -1,7 +1,10 @@
 {
   "slug": "mediate",
   "title": "“MEDIATE” a multisensorial interactive environment for children with autism",
+  "name": "",
   "year": 2001,
+  "line": "",
+  "medium": [],
   "date": "2012-02-13",
   "summary": "MEDIATE is a multimodal interactive space for children with severe autism. MEDIATE wishes to give the child the opportunity to have fun, play, explore and be creative in a predictable, controllable and safe space.",
   "categories": [
@@ -82,5 +85,10 @@
       "html": "Pere Freixa, Narcís Parés, Univ. Porsmouth."
     }
   ],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/mediate/"
 }

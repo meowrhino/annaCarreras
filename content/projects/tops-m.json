@@ -1,7 +1,10 @@
 {
   "slug": "tops-m",
   "title": "TOPS-M",
+  "name": "",
   "year": 2022,
+  "line": "",
+  "medium": [],
   "date": "2022-04-30",
   "summary": "",
   "categories": [
@@ -161,5 +164,10 @@
     }
   ],
   "credits": [],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/tops-m/"
 }

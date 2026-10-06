@@ -1,7 +1,10 @@
 {
   "slug": "kit-libertad-expresion",
   "title": "Kit de Libertad de Expresión (KLE)",
+  "name": "",
   "year": 2013,
+  "line": "",
+  "medium": [],
   "date": "2013-05-20",
   "summary": "A portable digital interactive banner that allows people from all over the world to participate to remote protests by sending and displaying text messages in public space",
   "categories": [
@@ -123,5 +126,10 @@
       "html": "<a href=\"https://devart.withgoogle.com/#/project/18103025\">Google DEV ART</a>"
     }
   ],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/kit-libertad-expresion/"
 }

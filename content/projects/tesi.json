@@ -1,7 +1,10 @@
 {
   "slug": "tesi",
   "title": "tesi",
+  "name": "",
   "year": 2024,
+  "line": "",
+  "medium": [],
   "date": "2024-01-29",
   "summary": "text complet | full text tesi pdf paper Abstract The practice of generative art, the artistic practice behind this project-based thesis, involves using computer code instructions and algorithms to create works of art. This involves building systems that consist of graphic elements with specific behaviors and adding randomness to them to generate unique works of […]",
   "categories": [
@@ -199,5 +202,10 @@
     }
   ],
   "credits": [],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/tesi/"
 }

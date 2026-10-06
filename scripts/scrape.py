@@ -5,6 +5,11 @@ Scrape annacarreras.com (WordPress REST API) into plain JSON + local assets.
 Usage:
     python3 scripts/scrape.py              # scrape the slugs in SLUGS
     python3 scripts/scrape.py --no-assets  # JSON only, skip downloads
+    python3 scripts/scrape.py --index      # only rebuild index.json from the
+                                           # project JSONs (no network)
+
+The fields written by hand (MANUAL in each project, SITE_MANUAL in
+site.json) are never overwritten: a new scrape keeps what is there.
 
 Output:
     content/site.json
@@ -47,6 +52,11 @@ SLUGS = [
 ]
 
 DOWNLOAD_ASSETS = "--no-assets" not in sys.argv
+
+# Written by hand, not scraped: empty until someone fills them in.
+MANUAL = {"name": "", "line": "", "medium": [], "facts": [], "links": [],
+          "exhibitions": [], "press": [], "geek": []}
+SITE_MANUAL = {"contact": [], "upcoming": []}
 
 
 # ---------------------------------------------------------------- http ------
@@ -516,7 +526,10 @@ def scrape_projects(cats, tags):
         project = {
             "slug": slug,
             "title": title,
+            "name": "",
             "year": year,
+            "line": "",
+            "medium": [],
             "date": p["date"][:10],
             "summary": plain(p["excerpt"]["rendered"]),
             "categories": [cats[c] for c in p.get("categories", []) if c in cats],
@@ -524,16 +537,31 @@ def scrape_projects(cats, tags):
             "cover": cover,
             "blocks": blocks,
             "credits": credits,
+            **{k: v for k, v in MANUAL.items() if k not in ("name", "line", "medium")},
             "source": p["link"],
         }
+        keep_manual(project, CONTENT / "projects" / ("%s.json" % slug), MANUAL)
         projects.append(project)
-        index.append({
-            "slug": slug, "title": title, "year": year,
-            "summary": project["summary"],
-            "categories": project["categories"], "tags": project["tags"],
-            "cover": cover,
-        })
-    return projects, index
+    return projects
+
+
+def keep_manual(data, path, fields):
+    """Copy the hand-written fields from the file already on disk, if any."""
+    if path.exists():
+        old = json.loads(path.read_text(encoding="utf-8"))
+        for k in fields:
+            if k in old:
+                data[k] = old[k]
+
+
+def index_entry(p):
+    return {k: p[k] for k in ("slug", "title", "name", "year", "summary",
+                              "categories", "tags", "cover")}
+
+
+def write_index(projects):
+    index = sorted(map(index_entry, projects), key=lambda p: (-p["year"], p["title"].lower()))
+    write(CONTENT / "projects" / "index.json", index)
 
 
 # --------------------------------------------------------------- about ------
@@ -591,17 +619,16 @@ def main():
     tags = {t["id"]: t["slug"] for t in get_json("%s/tags?per_page=100" % API)}
 
     print("Projects…")
-    projects, index = scrape_projects(cats, tags)
-    index.sort(key=lambda p: (-p["year"], p["title"].lower()))
+    projects = scrape_projects(cats, tags)
     for p in projects:
         write(CONTENT / "projects" / ("%s.json" % p["slug"]), p)
-    write(CONTENT / "projects" / "index.json", index)
+    write_index(projects)
 
     print("About…")
     write(CONTENT / "about.json", scrape_about(set(SLUGS)))
 
     root = get_json(SITE + "/wp-json/")
-    write(CONTENT / "site.json", {
+    site = {
         "name": htmlmod.unescape(root["name"]),
         "description": htmlmod.unescape(root["description"]),
         "source": SITE,
@@ -609,9 +636,16 @@ def main():
             {"label": "Work", "href": "/"},
             {"label": "About", "href": "/about"},
         ],
-    })
+        **SITE_MANUAL,
+    }
+    keep_manual(site, CONTENT / "site.json", SITE_MANUAL)
+    write(CONTENT / "site.json", site)
     print("Done.")
 
 
 if __name__ == "__main__":
-    main()
+    if "--index" in sys.argv:
+        files = sorted((CONTENT / "projects").glob("*.json"))
+        write_index([json.loads(f.read_text(encoding="utf-8")) for f in files if f.name != "index.json"])
+    else:
+        main()

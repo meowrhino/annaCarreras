@@ -2,6 +2,7 @@
   {
     "slug": "tesi",
     "title": "tesi",
+    "name": "",
     "year": 2024,
     "summary": "text complet | full text tesi pdf paper Abstract The practice of generative art, the artistic practice behind this project-based thesis, involves using computer code instructions and algorithms to create works of art. This involves building systems that consist of graphic elements with specific behaviors and adding randomness to them to generate unique works of […]",
     "categories": [
@@ -23,6 +24,7 @@
   {
     "slug": "tops-m",
     "title": "TOPS-M",
+    "name": "",
     "year": 2022,
     "summary": "",
     "categories": [
@@ -46,6 +48,7 @@
   {
     "slug": "arrels",
     "title": "“Arrels” at Social Codes, Feral File",
+    "name": "",
     "year": 2021,
     "summary": "Arrels piece exhibited at Social Codes the first exhibition at Feral File platform",
     "categories": [
@@ -64,6 +67,7 @@
   {
     "slug": "trossets",
     "title": "“Trossets” at ArtBlocks curated",
+    "name": "",
     "year": 2021,
     "summary": "Trossets explores the emergence of diversity. Combining twelve construction blocks the system generates endless patterns with a unique result each iteration. Trossets /trusɛts/ means parts, blocks, pieces and it’s my particular homage to a classical generative system, the multiscale Truchet tiles. The systems plays an interlocking blocks game creating unexpected drawings with colors borrowed from […]",
     "categories": [
@@ -84,6 +88,7 @@
   {
     "slug": "3d-forms-sounds",
     "title": "Generative 3D Forms/Sounds",
+    "name": "",
     "year": 2017,
     "summary": "A custom software developed for Insert Club to generate 3D forms from techno sound. A real-time sound analysis coupled with 3D flocking and wander behaviours creates unique 3D objects.",
     "categories": [
@@ -105,6 +110,7 @@
   {
     "slug": "my-city-my-playground",
     "title": "My City My Playground",
+    "name": "",
     "year": 2014,
     "summary": "My City My Playground allows you to play with the city landscape. Buildings, pedestrians, traffic, street furniture, etc. Choose as many elements as you like and turn them into the pieces of your game.",
     "categories": [
@@ -126,6 +132,7 @@
   {
     "slug": "kit-libertad-expresion",
     "title": "Kit de Libertad de Expresión (KLE)",
+    "name": "",
     "year": 2013,
     "summary": "A portable digital interactive banner that allows people from all over the world to participate to remote protests by sending and displaying text messages in public space",
     "categories": [
@@ -152,6 +159,7 @@
   {
     "slug": "walking-man",
     "title": "Walking man",
+    "name": "",
     "year": 2013,
     "summary": "“Walking man: se hace camino al andar” makes reference to time passing by. It’s a tribute to the cinema technology. A man walking in an eternal loop based in 12 images (12 months) that compose a digital personage walking in a zoetrope animated way.",
     "categories": [
@@ -172,6 +180,7 @@
   {
     "slug": "app-n-jorge-drexler",
     "title": "Android app “n” by Jorge Drexler",
+    "name": "",
     "year": 2012,
     "summary": "Jorge Drexler “n” represents a revolutionary approach to songwriting, in which, for the first time, songs are editable, and listeners become users. “n” it’s an app for smartphones and tablets where users control the order of the lyrics, the instrumentation and the artists singing the vocals.",
     "categories": [
@@ -191,6 +200,7 @@
   {
     "slug": "hamelin",
     "title": "Hamelin",
+    "name": "",
     "year": 2008,
     "summary": "Hamelin is an interactive module for AD Out of Home where participants are immersed inside the advertisement. The module uses sensors and image processing to let users experience and full-body play with specially ad hoc designed games.",
     "categories": [
@@ -212,6 +222,7 @@
   {
     "slug": "magia-per-a-pixeloscopi",
     "title": "Màgia per a Pixeloscopi",
+    "name": "",
     "year": 2008,
     "summary": "Màgia per a Pixeloscopi is a one hour show conceived to be represented in a theater scenario that merges mixed and augmented reality and fullbody interaction with classical magic to create new tricks.",
     "categories": [
@@ -234,6 +245,7 @@
   {
     "slug": "water-games",
     "title": "“Water Games” at Universal Forum of Cultures Barcelona",
+    "name": "",
     "year": 2003,
     "summary": "Water Games is an interactive and refreshing installation for the youngest visitors, and their families. One only needs to find friends to form a ring, spin together around one fountain and discover the Water Games!",
     "categories": [
@@ -256,6 +268,7 @@
   {
     "slug": "mediate",
     "title": "“MEDIATE” a multisensorial interactive environment for children with autism",
+    "name": "",
     "year": 2001,
     "summary": "MEDIATE is a multimodal interactive space for children with severe autism. MEDIATE wishes to give the child the opportunity to have fun, play, explore and be creative in a predictable, controllable and safe space.",
     "categories": [

@@ -1,7 +1,10 @@
 {
   "slug": "trossets",
   "title": "“Trossets” at ArtBlocks curated",
+  "name": "",
   "year": 2021,
+  "line": "",
+  "medium": [],
   "date": "2021-10-21",
   "summary": "Trossets explores the emergence of diversity. Combining twelve construction blocks the system generates endless patterns with a unique result each iteration. Trossets /trusɛts/ means parts, blocks, pieces and it’s my particular homage to a classical generative system, the multiscale Truchet tiles. The systems plays an interlocking blocks game creating unexpected drawings with colors borrowed from […]",
   "categories": [
@@ -682,5 +685,10 @@
     }
   ],
   "credits": [],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/trossets/"
 }

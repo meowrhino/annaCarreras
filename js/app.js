@@ -50,21 +50,22 @@ function fixLinks(node, slugs) {
   return node;
 }
 
-// Lo curado a mano (content/curated.json) manda sobre lo scrapeado.
-const nameOf = (p, cur) => cur.projects[p.slug]?.name || p.title;
-const mediumOf = (p, cur) => cur.projects[p.slug]?.medium || p.categories.map(label);
+// Cada proyecto tiene campos escritos a mano (name, line, medium, facts…)
+// junto a lo scrapeado; vacíos, manda lo scrapeado.
+const nameOf = (p) => p.name || p.title;
+const mediumOf = (p) => p.medium?.length ? p.medium : p.categories.map(label);
 
 /* ---------- work: todos los proyectos ---------- */
 
 // Portadas grandes, del más nuevo al más viejo, con el título y el año
 // encima (v3ga). Apaisadas en ordenador, en vertical en el móvil.
-function renderWork(index, cur) {
+function renderWork(index) {
   document.title = 'Anna Carreras';
   app.replaceChildren(el('ul', { class: 'work' }, ...index.map((p, i) =>
     el('li', {}, el('a', { href: '#/' + p.slug },
       p.cover ? img(p.cover, { loading: i < 4 ? 'eager' : 'lazy' }) : el('span', { class: 'no-cover' }),
       el('span', { class: 'label' },
-        el('span', { class: 'name', text: nameOf(p, cur) }),
+        el('span', { class: 'name', text: nameOf(p) }),
         el('span', { class: 'year', text: p.year })))))));
 }
 
@@ -119,28 +120,27 @@ function renderBody(blocks) {
   return el('div', { class: 'body' }, ...out);
 }
 
-function renderFicha(p, cur) {
-  const c = cur.projects[p.slug] || {};
+function renderFicha(p) {
   const dl = el('dl', { class: 'ficha' });
   const row = (dt, ...dd) => dd.length && dl.append(el('dt', { text: dt }), el('dd', {}, ...dd));
   const list = (items) => el('ul', {}, ...items.map(i => el('li', {}, i)));
 
-  (c.facts || []).forEach(f => row(f.label, el('span', { html: f.html })));
+  (p.facts || []).forEach(f => row(f.label, el('span', { html: f.html })));
 
   // Créditos con etiqueta van a la ficha; las líneas sueltas suelen ser prensa.
   const credits = p.credits.filter(x => x.label);
   const loose = p.credits.filter(x => !x.label);
   credits.forEach(x => row(x.label, el('span', { html: x.html })));
 
-  if (c.links?.length) row('Links', list(c.links.map(l => extLink(l.url, l.label))));
-  if (c.exhibitions?.length) row('Exhibitions', list(c.exhibitions.map(t => document.createTextNode(t))));
-  const press = [...(c.press || []).map(l => extLink(l.url, l.label)), ...loose.map(x => el('span', { html: x.html }))];
+  if (p.links?.length) row('Links', list(p.links.map(l => extLink(l.url, l.label))));
+  if (p.exhibitions?.length) row('Exhibitions', list(p.exhibitions.map(t => document.createTextNode(t))));
+  const press = [...(p.press || []).map(l => extLink(l.url, l.label)), ...loose.map(x => el('span', { html: x.html }))];
   if (press.length) row('Press', list(press));
   return dl.children.length ? dl : null;
 }
 
 // El «Racó geek» es como acaba cada proyecto en su tesis: cómo funciona el
-// algoritmo, con números. Solo sale si hay texto en curated.json.
+// algoritmo, con números. Solo sale si el proyecto tiene texto en «geek».
 function renderGeek(c) {
   if (!c.geek?.length) return null;
   return el('section', { class: 'geek' },
@@ -167,25 +167,25 @@ function renderHero(p, video) {
   return box;
 }
 
-function renderProject(p, index, cur) {
-  const name = nameOf(p, cur);
+function renderProject(p, index) {
+  const name = nameOf(p);
   document.title = name + ' — Anna Carreras';
   const slugs = new Set(index.map(i => i.slug));
 
   const video = p.blocks.find(isVideo);
   const i = index.findIndex(x => x.slug === p.slug);
   const pagerLink = (q, dir, cls) => q && el('a', { href: '#/' + q.slug, class: cls },
-    el('small', { text: dir }), document.createTextNode(nameOf(q, cur)));
+    el('small', { text: dir }), document.createTextNode(nameOf(q)));
 
   const article = el('article', { class: 'project' },
     renderHero(p, video),
     el('header', { class: 'project-head' },
       el('h1', { text: name }),
-      el('p', { class: 'meta', text: [p.year, mediumOf(p, cur).join(', ')].join(' · ') }),
-      cur.projects[p.slug]?.line && el('p', { class: 'line', text: cur.projects[p.slug].line })),
+      el('p', { class: 'meta', text: [p.year, mediumOf(p).join(', ')].join(' · ') }),
+      p.line && el('p', { class: 'line', text: p.line })),
     renderBody(p.blocks.filter(b => b !== video)),
-    renderFicha(p, cur),
-    renderGeek(cur.projects[p.slug] || {}),
+    renderFicha(p),
+    renderGeek(p),
     el('nav', { class: 'pager' },
       pagerLink(index[i - 1], '← Newer', 'newer'),
       el('a', { class: 'back', href: '#/', text: 'All projects' }),
@@ -196,11 +196,11 @@ function renderProject(p, index, cur) {
 
 /* ---------- about y contact ---------- */
 
-function renderAbout(a, cur) {
+function renderAbout(a, site) {
   document.title = 'About — Anna Carreras';
-  const upcoming = cur.upcoming?.length > 0 && el('section', { class: 'upcoming' },
+  const upcoming = site.upcoming?.length > 0 && el('section', { class: 'upcoming' },
     el('h2', { text: 'Upcoming' }),
-    el('ul', {}, ...cur.upcoming.map(u => el('li', { html: u }))));
+    el('ul', {}, ...site.upcoming.map(u => el('li', { html: u }))));
   const bio = el('div', { class: 'bio' }, ...a.bio.map(h => el('p', { html: h })));
   const cv = el('div', { class: 'cv' });
   a.cv.filter(s => s.entries.length).forEach(s => {
@@ -218,10 +218,10 @@ function renderAbout(a, cur) {
   app.replaceChildren(fixLinks(el('section', { class: 'about' }, upcoming, bio, cv), new Set()));
 }
 
-function renderContact(cur) {
+function renderContact(site) {
   document.title = 'Contact — Anna Carreras';
   app.replaceChildren(el('section', { class: 'contact' },
-    el('ul', {}, ...cur.contact.map(c => el('li', {}, extLink(c.url, c.label))))));
+    el('ul', {}, ...site.contact.map(c => el('li', {}, extLink(c.url, c.label))))));
 }
 
 /* ---------- rutas ---------- */
@@ -235,11 +235,11 @@ async function route() {
   document.querySelectorAll('[data-nav]').forEach(a =>
     a.toggleAttribute('aria-current', a.dataset.nav === (PAGES.includes(path) ? path : 'work')));
   try {
-    const [index, cur] = await Promise.all([get('content/projects/index.json'), get('content/curated.json')]);
-    if (!path || path === 'archive') renderWork(index, cur);
-    else if (path === 'about') renderAbout(await get('content/about.json'), cur);
-    else if (path === 'contact') renderContact(cur);
-    else renderProject(await get('content/projects/' + path + '.json'), index, cur);
+    const [index, site] = await Promise.all([get('content/projects/index.json'), get('content/site.json')]);
+    if (!path || path === 'archive') renderWork(index);
+    else if (path === 'about') renderAbout(await get('content/about.json'), site);
+    else if (path === 'contact') renderContact(site);
+    else renderProject(await get('content/projects/' + path + '.json'), index);
   } catch (e) {
     app.replaceChildren(el('p', { class: 'error', text: e.message }));
   }

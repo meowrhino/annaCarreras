@@ -1,7 +1,10 @@
 {
   "slug": "walking-man",
   "title": "Walking man",
+  "name": "",
   "year": 2013,
+  "line": "",
+  "medium": [],
   "date": "2013-05-12",
   "summary": "“Walking man: se hace camino al andar” makes reference to time passing by. It’s a tribute to the cinema technology. A man walking in an eternal loop based in 12 images (12 months) that compose a digital personage walking in a zoetrope animated way.",
   "categories": [
@@ -56,5 +59,10 @@
       "html": "idea and coding."
     }
   ],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/walking-man/"
 }

@@ -1,7 +1,10 @@
 {
   "slug": "3d-forms-sounds",
   "title": "Generative 3D Forms/Sounds",
+  "name": "",
   "year": 2017,
+  "line": "",
+  "medium": [],
   "date": "2017-10-20",
   "summary": "A custom software developed for Insert Club to generate 3D forms from techno sound. A real-time sound analysis coupled with 3D flocking and wander behaviours creates unique 3D objects.",
   "categories": [
@@ -155,5 +158,10 @@
       "html": "Anna Carreras, Edu Segurado, Manu Domínguez"
     }
   ],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/3d-forms-sounds/"
 }

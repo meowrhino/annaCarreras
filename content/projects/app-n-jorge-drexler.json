@@ -1,7 +1,10 @@
 {
   "slug": "app-n-jorge-drexler",
   "title": "Android app “n” by Jorge Drexler",
+  "name": "",
   "year": 2012,
+  "line": "",
+  "medium": [],
   "date": "2013-03-07",
   "summary": "Jorge Drexler “n” represents a revolutionary approach to songwriting, in which, for the first time, songs are editable, and listeners become users. “n” it’s an app for smartphones and tablets where users control the order of the lyrics, the instrumentation and the artists singing the vocals.",
   "categories": [
@@ -135,5 +138,10 @@
       "html": "Wakeapp"
     }
   ],
+  "facts": [],
+  "links": [],
+  "exhibitions": [],
+  "press": [],
+  "geek": [],
   "source": "https://www.annacarreras.com/app-n-jorge-drexler/"
 }
