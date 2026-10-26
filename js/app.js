@@ -254,7 +254,7 @@ async function route() {
   semilla(path);
   document.body.dataset.page = path ? (PAGES.includes(path) ? path : 'project') : 'work';
   document.querySelectorAll('[data-nav]').forEach(a =>
-    a.toggleAttribute('aria-current', a.dataset.nav === (PAGES.includes(path) ? path : 'work')));
+    a.dataset.nav === (PAGES.includes(path) ? path : 'work') ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
   try {
     const [index, site] = await Promise.all([get('content/projects/index.json'), get('content/site.json')]);
     if (!path || path === 'archive') renderWork(index);

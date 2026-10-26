@@ -7,13 +7,16 @@
   --ink: #121212;
   --dim: #6d6a64;
   --rule: rgb(18 18 18 / .14);
-  --trazo: #121212;           /* el fondo lo lee al arrancar */
+  --trazo: #4a4843;           /* tinta del fondo: más clara que la letra, para leer encima */
   --gut: clamp(10px, 1.4vw, 22px);
   --text: 40rem;              /* ancho de lectura */
   --wide: 112rem;             /* ancho de imágenes y vídeos */
   --big: clamp(1.9rem, 3.6vw, 3.6rem);
   --font: "Instrument Sans", "Helvetica Neue", Arial, sans-serif;
 }
+
+@font-face { font-family: "Instrument Sans"; font-weight: 400; font-display: swap; src: url(assets/fonts/instrument-sans-400.woff2) format("woff2"); }
+@font-face { font-family: "Instrument Sans"; font-weight: 500; font-display: swap; src: url(assets/fonts/instrument-sans-500.woff2) format("woff2"); }
 
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -27,15 +30,12 @@ body {
   flex-direction: column;
 }
 
-/* Todo el texto va en blanco con difference (como mokakopa): negro sobre
-   el papel, invertido sobre fotos, y las líneas del dibujo que lo cruzan
-   salen blancas dentro de la letra. Solo el texto: las imágenes no se
-   invierten. Dentro, lo tenue es gris claro, que al restar sale gris medio. */
-.site, .project-head, .pager a, .contact a,
-.body > p, .body > h2, .body > h3, .body > h4, .body > ul, .body > ol, .body > blockquote,
-figcaption, .tweet p, .tweet .src, .ficha, .geek, .about, .site-foot {
+/* Solo los títulos grandes van en blanco con difference (como mokakopa):
+   las líneas del dibujo que los cruzan salen blancas dentro de la letra.
+   En el texto de leer eso rompe el trazo fino: va en tinta normal, y el
+   dibujo se apaga bajo la columna de lectura (máscara del canvas). */
+.site-name, .project-head h1 {
   color: #fff;
-  --dim: #9a9893;
   mix-blend-mode: difference;
 }
 
@@ -51,6 +51,17 @@ img { height: auto; }
   height: 100%;
   z-index: -1;
   pointer-events: none;
+}
+/* bajo el texto de leer el dibujo queda al 25 %; en los márgenes, entero */
+[data-page="project"] .fondo {
+  --m: linear-gradient(to right, #000, #000 calc(50% - 27rem), rgb(0 0 0 / .25) calc(50% - 22rem), rgb(0 0 0 / .25) calc(50% + 22rem), #000 calc(50% + 27rem), #000);
+  -webkit-mask-image: var(--m);
+  mask-image: var(--m);
+}
+[data-page="about"] .fondo {
+  --m: linear-gradient(to right, rgb(0 0 0 / .25), rgb(0 0 0 / .25) 54rem, #000 60rem);
+  -webkit-mask-image: var(--m);
+  mask-image: var(--m);
 }
 
 /* ---------- cabecera ---------- */
@@ -77,9 +88,9 @@ img { height: auto; }
 .site nav a { text-decoration: none; }
 .site nav a[aria-current] { text-decoration: underline; }
 
-/* en la portada, la cabecera deja ver el dibujo: media pantalla de aire */
+/* en la portada, la cabecera deja ver el dibujo: un tercio de pantalla de aire */
 [data-page="work"] .site {
-  min-height: 46svh;
+  min-height: 30svh;
   align-content: flex-start;
 }
 [data-page="work"] .site-name { font-size: clamp(3rem, 11vw, 11rem); flex-basis: 100%; }
@@ -95,6 +106,8 @@ main { flex: 1; }
   color: var(--dim);
   font-size: .85rem;
 }
+.seed { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+.seed:hover { text-decoration: underline; }
 
 .error { padding: var(--gut); }
 
@@ -285,7 +298,7 @@ cite { display: block; font-size: .9rem; font-style: normal; color: var(--dim); 
   .pager { grid-template-columns: 1fr 1fr; }
   .pager .back { grid-column: 1 / -1; grid-row: 2; text-align: center; margin-top: 2rem; }
   .pager .older { grid-column: 2; }
-  [data-page="work"] .site { min-height: 36svh; }
+  [data-page="work"] .site { min-height: 0; }
 }
 
 @media (prefers-reduced-motion: reduce) {

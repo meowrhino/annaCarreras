@@ -17,9 +17,9 @@
     "openframeworks"
   ],
   "cover": {
-    "src": "/assets/projects/my-city-my-playground/my_city_my_playground.png",
+    "src": "/assets/projects/my-city-my-playground/my_city_cover.png",
     "width": 900,
-    "height": 506,
+    "height": 440,
     "alt": ""
   },
   "blocks": [

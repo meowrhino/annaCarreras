@@ -1,10 +1,12 @@
-// El fondo: un dibujo que se hace en directo. Unas puntas avanzan, giran,
-// se ramifican y mueren; lo que dibujan se va borrando a los pocos segundos.
-// Nunca está quieto, así que se ve que se genera.
+// El fondo: un dibujo que se hace en directo. Unas puntas siguen un campo
+// de flujo (un ruido suave que dice hacia dónde ir en cada punto y que va
+// derivando con el tiempo), se ramifican y mueren; lo que dibujan se borra
+// a los pocos segundos. Nunca está quieto, así que se ve que se genera.
 //
 // Cada página tiene su semilla (la portada, la vacía; cada proyecto, su
-// slug): misma página, mismo carácter de dibujo; otra página, otro carácter
-// (cuánto gira, cuánto se ramifica, si va en ángulos rectos o en curva).
+// slug): misma página, mismo campo; otra página, otro campo (más grande o
+// más rizado, en curva o en ángulos rectos). El pie enseña la semilla y la
+// iteración, y clicarlo vuelve a tirar los dados con la misma semilla.
 // Al pasar el ratón o el dedo nacen puntas nuevas.
 //
 // El canvas no recibe clics (pointer-events: none): el botón derecho no
@@ -12,12 +14,13 @@
 
 const canvas = document.querySelector('.fondo');
 const g = canvas.getContext('2d');
+const pie = document.querySelector('.seed');
 const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const VIDA = 12000;       // ms que tarda un trazo en borrarse
 let PUNTAS = 26;          // puntas vivas como mucho: según el tamaño de la pantalla
 const MAX = 60000;        // trazos guardados como mucho (anillo)
-const ALFA = .6;          // tinta como mucho: el texto se lee por encima
+const ALFA = .5;          // tinta como mucho: el texto se lee por encima
 const TONOS = 10;         // escalones de opacidad: un path por escalón
 
 // mulberry32: azar determinista a partir de un entero.
@@ -30,40 +33,56 @@ const azar = (a) => () => {
 const hash = (s) => [...s].reduce((h, c) => Math.imul(h ^ c.charCodeAt(0), 16777619), 2166136261) >>> 0;
 
 let rnd = Math.random, c;          // c: el carácter de la página
+let texto = '', iteracion = 0;
 let puntas = [];
 const trazos = new Float32Array(MAX * 5);   // x1 y1 x2 y2 t
 let n = 0, cabeza = 0;
 let w = 0, h = 0, tinta = '#111';
 
-// El carácter sale de la semilla.
-export function semilla(texto = '') {
-  rnd = azar(hash(texto || 'anna carreras'));
+// Ruido de valor en 3D (x, y, tiempo), suave, a partir de una tabla barajada
+// con la semilla. Entre 0 y 1.
+const tabla = new Uint8Array(512);
+const suave = (t) => t * t * (3 - 2 * t);
+function ruido(x, y, z) {
+  const X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z);
+  const u = suave(x - X), v = suave(y - Y), s = suave(z - Z);
+  const at = (i, j, k) => tabla[(tabla[(tabla[(X + i) & 255] + Y + j) & 255] + Z + k) & 255] / 255;
+  const mezcla = (a, b, t) => a + (b - a) * t;
+  const capa = (k) => mezcla(mezcla(at(0, 0, k), at(1, 0, k), u), mezcla(at(0, 1, k), at(1, 1, k), u), v);
+  return mezcla(capa(0), capa(1), s);
+}
+
+// El carácter sale de la semilla; la iteración solo cambia la tirada.
+export function semilla(nuevo = '', otra = false) {
+  nuevo ||= 'anna carreras';
+  iteracion = otra && nuevo === texto ? iteracion + 1 : 1;
+  texto = nuevo;
+  rnd = azar(hash(texto) + iteracion);
+  for (let i = 0; i < 256; i++) tabla[i] = i;
+  for (let i = 255; i > 0; i--) { const j = rnd() * (i + 1) | 0; [tabla[i], tabla[j]] = [tabla[j], tabla[i]]; }
+  tabla.copyWithin(256, 0, 256);
   c = {
-    paso: 2 + rnd() * 2.5,                 // px por paso
-    giro: .03 + rnd() * .12,               // cuánto se tuerce
-    rama: .006 + rnd() * .03,              // probabilidad de ramificar por paso
-    recto: rnd() < .4,                     // ángulos rectos (circuito) o curva libre
-    vida: 120 + rnd() * 380,               // pasos que vive una punta
-    grueso: .9 + rnd() * 1.4,
+    paso: 1.6 + rnd() * 1.8,               // px por paso
+    escala: 1 / (120 + rnd() * 320),       // tamaño de los remolinos, en px
+    rizo: 1 + rnd() * 2.5,                 // cuánto gira el campo (vueltas)
+    deriva: 1 / (40000 + rnd() * 80000),   // cuánto cambia el campo con el tiempo
+    rama: .004 + rnd() * .02,              // probabilidad de ramificar por paso
+    recto: rnd() < .35,                    // ángulos rectos (circuito) o curva libre
+    vida: 150 + rnd() * 450,               // pasos que vive una punta
+    grueso: .9 + rnd() * 1,
   };
   puntas = [];
+  if (pie) pie.textContent = `seed ${texto} · iteration ${iteracion} · draw again`;
   if (quieto) estatico();
 }
 
-function nace(x, y, a, tope = PUNTAS) {
-  if (puntas.length >= tope) return;
-  a ??= rnd() * Math.PI * 2;
-  if (c.recto) a = Math.round(a / (Math.PI / 2)) * Math.PI / 2;   // circuito: solo en ejes
-  puntas.push({ x, y, a, va: 0, edad: 0 });
+function nace(x, y, tope = PUNTAS) {
+  if (puntas.length < tope) puntas.push({ x, y, edad: 0 });
 }
 
-function naceDondeSea() {
-  // Desde un borde hacia dentro, o desde un punto cualquiera.
-  if (rnd() < .5) return nace(rnd() * w, rnd() * h);
-  const lado = rnd() * 4 | 0;
-  const x = lado === 1 ? w : lado === 3 ? 0 : rnd() * w;
-  const y = lado === 2 ? h : lado === 0 ? 0 : rnd() * h;
-  nace(x, y, [Math.PI / 2, Math.PI, -Math.PI / 2, 0][lado] + (rnd() - .5));
+function rumbo(x, y, t) {
+  const a = (ruido(x * c.escala, y * c.escala, t * c.deriva) - .5) * Math.PI * 2 * c.rizo;
+  return c.recto ? Math.round(a / (Math.PI / 2)) * Math.PI / 2 : a;
 }
 
 function traza(x1, y1, x2, y2, t) {
@@ -75,21 +94,16 @@ function traza(x1, y1, x2, y2, t) {
 function avanza(t) {
   for (let i = puntas.length - 1; i >= 0; i--) {
     const p = puntas[i];
-    if (c.recto) {
-      // Giros de 90° de vez en cuando: como pistas de un circuito.
-      if (rnd() < c.giro * .12) p.a += (rnd() < .5 ? 1 : -1) * Math.PI / 2;
-    } else {
-      p.va = p.va * .92 + (rnd() - .5) * c.giro;
-      p.a += p.va;
-    }
-    const x = p.x + Math.cos(p.a) * c.paso, y = p.y + Math.sin(p.a) * c.paso;
+    const a = rumbo(p.x, p.y, t);
+    const x = p.x + Math.cos(a) * c.paso, y = p.y + Math.sin(a) * c.paso;
     traza(p.x, p.y, x, y, t);
     p.x = x; p.y = y; p.edad++;
-    if (rnd() < c.rama) nace(x, y, p.a + (rnd() < .5 ? 1 : -1) * (c.recto ? Math.PI / 2 : .5 + rnd() * .8));
+    // La rama nace un poco al lado: en el mismo punto seguiría el mismo camino.
+    if (rnd() < c.rama) nace(x + Math.cos(a + Math.PI / 2) * 8, y + Math.sin(a + Math.PI / 2) * 8);
     const fuera = x < -40 || y < -40 || x > w + 40 || y > h + 40;
     if (fuera || p.edad > c.vida) puntas.splice(i, 1);
   }
-  while (puntas.length < PUNTAS * .5) naceDondeSea();
+  while (puntas.length < PUNTAS * .5) nace(rnd() * w, rnd() * h);
 }
 
 function dibuja(t) {
@@ -133,6 +147,7 @@ function mide() {
 mide();
 addEventListener('resize', mide);
 semilla();
+pie?.addEventListener('click', () => semilla(texto, true));
 
 if (!quieto) {
   // 30 pasos por segundo bastan para que se vea crecer, y gasta la mitad.
@@ -151,6 +166,6 @@ if (!quieto) {
   addEventListener('pointermove', (e) => {
     if (e.timeStamp - ultimo < 90) return;
     ultimo = e.timeStamp;
-    nace(e.clientX, e.clientY, undefined, PUNTAS + 14);   // el cursor puede pasarse del tope
+    nace(e.clientX, e.clientY, PUNTAS + 14);   // el cursor puede pasarse del tope
   }, { passive: true });
 }

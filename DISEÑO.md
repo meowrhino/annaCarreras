@@ -23,14 +23,16 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
 - **Papel claro y tinta negra.** Nada de tema oscuro ni cajas: el contenido
   va directo sobre el fondo.
 - **Fondo**: un dibujo que se hace en directo
-  ([`js/fondo.js`](js/fondo.js)). Unas puntas avanzan, giran, se ramifican
-  y mueren, y lo que dibujan se borra a los 12 s. Nunca está quieto. Al pasar
-  el ratón o el dedo nacen puntas nuevas. El canvas no recibe clics: no hay
-  «guardar imagen».
+  ([`js/fondo.js`](js/fondo.js)). Unas puntas siguen un campo de flujo (un
+  ruido suave que deriva con el tiempo), se ramifican y mueren, y lo que
+  dibujan se borra a los 12 s. Nunca está quieto. Al pasar el ratón o el dedo
+  nacen puntas nuevas. El canvas no recibe clics: no hay «guardar imagen».
+  El pie enseña `seed · iteration` y clicarlo vuelve a tirar (se ve que es
+  código, vocabulario de su tesis).
 - **Una pieza para toda la web, con un carácter por proyecto** (punto 5, las
   dos cosas a la vez): la semilla es la página. Cada proyecto dibuja distinto
-  (en curva o en circuito, más o menos enredado, más o menos grueso), y
-  siempre igual para el mismo proyecto.
+  (remolinos grandes o pequeños, en curva o en ángulos rectos, más o menos
+  grueso), y siempre igual para el mismo proyecto.
 - **Portada** (v3ga + thrumotion): el nombre enorme sobre media pantalla de
   dibujo, y debajo todas las portadas a sangre, con el título y el año encima
   en blanco invertido. Dos columnas 16:10 en ordenador; una en vertical
@@ -40,9 +42,11 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
   soporte y la frase; el texto a 40rem para leer; las imágenes y los vídeos a
   todo el ancho, en dos columnas cuando van seguidas; la ficha al final; más
   nuevo · todos · más viejo.
-- **El texto lleva un halo de papel**: el dibujo pasa por detrás sin tapar
-  las letras y sin meterlas en una caja.
-- Tipografía: Instrument Sans, 400 y 500.
+- **Legibilidad**: `difference` solo en los títulos grandes (nombre y h1);
+  el texto de leer va en tinta normal, la tinta del fondo es más clara que
+  la letra, y una máscara CSS apaga el dibujo al 25 % bajo la columna de
+  lectura (proyecto y about). En los márgenes, entero.
+- Tipografía: Instrument Sans 400 y 500, woff2 propias en `assets/fonts/`.
 - Ligero: un canvas 2D, ~30 pasos por segundo, puntas según el tamaño de la
   pantalla (16 a 50). Se para con la pestaña oculta. Con «reducir
   movimiento», un dibujo quieto.

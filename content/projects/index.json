@@ -79,9 +79,9 @@
       "generative"
     ],
     "cover": {
-      "src": "/assets/projects/trossets/trossets_flyer1.png",
-      "width": 900,
-      "height": 506,
+      "src": "/assets/projects/trossets/E_wMtJQUcAI009a.png",
+      "width": 680,
+      "height": 400,
       "alt": ""
     }
   },
@@ -123,9 +123,9 @@
       "openframeworks"
     ],
     "cover": {
-      "src": "/assets/projects/my-city-my-playground/my_city_my_playground.png",
+      "src": "/assets/projects/my-city-my-playground/my_city_cover.png",
       "width": 900,
-      "height": 506,
+      "height": 440,
       "alt": ""
     }
   },
