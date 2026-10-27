@@ -1,0 +1,215 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Trossets",
+  "year": 2021,
+  "medium": [
+    "generative"
+  ],
+  "cover": "1",
+  "text": [
+    "Trossets explores the emergence of diversity. Combining twelve construction blocks the system generates endless patterns with a unique result each iteration. Trossets /trusɛts/ means parts, blocks, pieces and it’s my particular homage to a classical generative system, the multiscale Truchet tiles. The systems plays an interlocking blocks game creating unexpected drawings with colors borrowed from the Mediterranean.",
+    "> [Trossets](https://www.artblocks.io/project/147)\n1.000 editions of a long-form generative art project and algorithm, hosted on the Ethereum blockchain.\nArtBlocks Curated season 4.",
+    "[[2]]",
+    "You can browse Trossets images on [Filter Blocks](https://filter-blocks.netlify.app/project/147) or [Archipelago](https://archipelago.art/collections/trossets), which have great tools for filtering images by traits.",
+    "[[3]]",
+    "And you can collect them on the secondary market through [OpenSea](https://opensea.io/collection/trossets-by-anna-carreras).",
+    "> prints",
+    "If you own one of the minted 1.000 Trossets token, and can prove wallet ownership, you are eligible to [purchase](https://www.annacarreras.com/trossets-prints/) a limited edition, archival-quality print signed and dated by the artist, corresponding to the token # that you own.",
+    "Details to [order your print here](https://www.annacarreras.com/trossets-prints/).",
+    "[[youtube:bNONmWUsA70 | Episode 26: Art Blocks After Dinner Mints w/ Anna Carreras]]",
+    "[[youtube:gEcKnsJQNYg | ADM: Behind the Code | Trossets by Anna Carreras with aramunu]]",
+    "> inspiration",
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1436802549022138375",
+      "date": "2021-09-11",
+      "text": "#inspiration for Trossets color: Industria\n#18 #57",
+      "photos": [
+        "4",
+        "5",
+        "6",
+        "7"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1437690513017163779",
+      "date": "2021-09-14",
+      "text": "#inspiration for Trossets color: Paella\n#fakepaella #51 #146 #realpaella",
+      "photos": [
+        "8",
+        "9",
+        "10",
+        "11"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1447290189592866816",
+      "date": "2021-10-10",
+      "text": "#inspiration Trossets color: Ibiza\n#aigua i #pi #150 #154 #528",
+      "photos": [
+        "12",
+        "13",
+        "14",
+        "15"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1440041481402609673",
+      "date": "2021-09-20",
+      "text": "#inspiration for Trossets color: Buganvilea\n#888 #627 #874",
+      "photos": [
+        "16",
+        "1",
+        "17",
+        "18"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1440332256648712197",
+      "date": "2021-09-21",
+      "text": "la #barca #512 #515",
+      "photos": [
+        "19",
+        "20",
+        "21"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1442948407685906433",
+      "date": "2021-09-28",
+      "text": "\"barraca\" is the shelter near the sea where you keep \"la barca\" and that's why this two color palettes are complementary\n#191 #276",
+      "photos": [
+        "22",
+        "23",
+        "24",
+        "25"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1443874462416490504",
+      "date": "2021-10-01",
+      "text": "#inspiration Trossets color: Tortilla\neggplant #tortilla and potato #tortilla #514 #654 #349",
+      "photos": [
+        "26",
+        "27",
+        "28",
+        "29"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1448590984409985025",
+      "date": "2021-10-14",
+      "text": "#inspiration Trossets color: Salines\nThis ones are specially inspired by a place and a song. A song by @Antonia_Font \"... i enfila sa carretera des far de ses Salines\"\n#carretera #903 #179 #168",
+      "photos": [
+        "30",
+        "31",
+        "32",
+        "33"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1581401060618678272",
+      "date": "2022-10-15",
+      "text": "#inspiration for Trossets color Mallorca\nserra i mar #7 #171 #224",
+      "photos": [
+        "34",
+        "35",
+        "36",
+        "37"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1583410479237500928",
+      "date": "2022-10-21",
+      "text": "#inspiration for Trossets color Beget\nancient \"romànic\" church, #443, #86, bridge and village",
+      "photos": [
+        "38",
+        "39",
+        "40",
+        "41"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1580827298206740480",
+      "date": "2022-10-14",
+      "text": "#inspiration for Trossets color Altafulla\npremiered at behind the code by @artblocks_io 👇\nhttps://youtu.be/gEcKnsJQNYg\n\nTrossets #122 #642",
+      "photos": [
+        "42",
+        "43",
+        "44",
+        "45"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1445339391845617667",
+      "date": "2021-10-05",
+      "text": "#inspiration Trossets color: Alzines\n#alzina #196 #358 #liquens",
+      "photos": [
+        "46",
+        "47",
+        "48",
+        "49"
+      ]
+    },
+    "> fun",
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1698249507534967290",
+      "date": "2023-09-03",
+      "text": "Today is the day to reveal some truth. Apologies for misleading you two years ago.\n\nJoin me as we uncover some secrets while meeting Garrofeta la fallera, renowned chef Adrián Ferrán, and a wild boar named Pata Negra\n\nStay tuned! The first story will be released in just 1 hour ⏳",
+      "photos": [
+        "50",
+        "51",
+        "52"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1698266720157532200",
+      "date": "2023-09-03",
+      "text": "This is the true true true story of Toñi León and Riachuelo de Llovizna, who nurtured the vibrant colors of Buganvilea's Trossets.\n\nMy apologies for deceiving you two years ago: https://x.com/carreras_anna/status/1440041481402609673"
+    },
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1701611741703188564",
+      "date": "2023-09-12",
+      "text": "Unveiling the #inspirationStory of Trossets color Ibiza: the legendary Tintilla Blue Cocktail 🥃 🔷 🔴\n\nThe creative spark was ignited by visionary chef Adrián Ferrán, who accidentally invented this unique cocktail 🧵 ↓\n\nTintilla cocktail, Trosset #980, #262, and #937",
+      "photos": [
+        "53",
+        "54",
+        "55",
+        "56"
+      ]
+    },
+    "> media",
+    {
+      "tweet": "https://twitter.com/carreras_anna/status/1583027543627960321",
+      "date": "2022-10-20",
+      "text": "Trossets, Figueres Impossibles and Lligams were yesterday at Barcelona city TV channel @beteve.\nThanks @monicarikic for explaining #generativeart to the audience.\n📺 https://beteve.cat/placa-tisner/la-critica-en-el-periodisme-cultural (25:50\")",
+      "photos": [
+        "57",
+        "58",
+        "59",
+        "60"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/artblocks_io/status/1516476724648853508",
+      "date": "2022-04-19",
+      "text": "Visit @dartpavilion during the Venice Biennale to see work by @carreras_anna and @simondemai\n\nApr 23 - Jun 20\nTu - Sun 11am – 7pm\n\nDecentral Art Pavilion - Free Admission\nPalazzo Giustinian Lolin\nCalle Giustinian, 2893, 30124 \nVenezia VE, Italy",
+      "photos": [
+        "61",
+        "62",
+        "63",
+        "64"
+      ]
+    },
+    {
+      "tweet": "https://twitter.com/artblocks_io/status/1515337377149067271",
+      "date": "2022-04-16",
+      "text": "We are very excited to share that Art Blocks will be participating in the Venice Biennale (@la_Biennale )\n\nThis event is the Olympics of the art world, and we plan to make a statement as the champions of the next evolution in art",
+      "photos": [
+        "65",
+        "66",
+        "67",
+        "68"
+      ]
+    }
+  ]
+}

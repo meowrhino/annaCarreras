@@ -1,0 +1,10 @@
+// La copia de Anna, en Cloudflare: Workers Builds conectado a su repo.
+// El build escribe dist/ y se publica eso, en la raíz, con el dominio de
+// data/site.json → "url". Una dirección que no existe sirve dist/404.html.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "annacarreras",
+  "compatibility_date": "2026-10-01",
+  "build": { "command": "node build/build.mjs" },
+  "assets": { "directory": "./dist", "not_found_handling": "404-page" }
+}

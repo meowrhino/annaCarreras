@@ -46,7 +46,7 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
   el texto de leer va en tinta normal, la tinta del fondo es más clara que
   la letra, y una máscara CSS apaga el dibujo al 25 % bajo la columna de
   lectura (proyecto y about). En los márgenes, entero.
-- Tipografía: Instrument Sans 400 y 500, woff2 propias en `assets/fonts/`.
+- Tipografía: Instrument Sans 400 y 500, woff2 propias en `fonts/`.
 - Ligero: un canvas 2D, ~30 pasos por segundo, puntas según el tamaño de la
   pantalla (16 a 50). Se para con la pestaña oculta. Con «reducir
   movimiento», un dibujo quieto.
@@ -58,7 +58,6 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
   Arrels…)? El cambio es pequeño: la semilla ya llega por página.
 - **Racó geek** del resto de proyectos.
 - **Diccionari** y **lab/** ocultos.
-- Un HTML por proyecto (URLs limpias, og:image) en vez de rutas por hash.
 
 ## Lo que sale de la tesis
 
@@ -76,17 +75,17 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
   generativa.
 - Los proyectos de la tesis existen en su web y no están en la demo:
   `ganxillo`, `discs`, `estratosferic`, `algorisme-despullat` (y
-  `quarantena-generativa`, `llacades`, `franja`). Añadirlos es poner sus
-  slugs en `SLUGS` de `scripts/scrape.py`. En total hay 103 posts en el
+  `quarantena-generativa`, `llacades`, `franja`). Añadirlos es
+  `python3 scripts/scrape.py <slug…>`. En total hay 103 posts en el
   WordPress (la lista está en la 08 del archivo, `density.json`).
 - La bio no menciona el doctorado (2023) ni Art Blocks.
 - Todo el texto de la web es el de su WordPress, sin inventar nada. Los
-  campos a mano de cada proyecto (`name`, `line`, `medium`, `facts`, `links`,
-  `exhibitions`, `press`, `geek`) están vacíos esperando a Anna. Hay un
+  campos a mano de cada proyecto (`line`, `links`, `exhibitions`, `press`,
+  `geek`) no están, esperando a Anna. Hay un
   borrador nuestro de seis proyectos en `content/curated.json` del commit
   `9cf0b4a`, por si sirve de ejemplo.
-- Sin `name`, las portadas enseñan el título largo del WordPress
-  («“Arrels” at Social Codes, Feral File»).
+- Lo que trae `scrape.py` lleva de `title` el título largo del WordPress
+  («“Arrels” at Social Codes, Feral File»): se acorta a mano.
 
 ## Preguntas para Anna
 

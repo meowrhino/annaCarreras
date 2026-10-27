@@ -1,0 +1,29 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Walking Man",
+  "year": 2013,
+  "medium": [
+    "event"
+  ],
+  "cover": "1",
+  "text": [
+    "“Walking man: se hace camino al andar” makes reference to time passing by. It’s a tribute to the cinema technology. A man walking in an eternal loop based in 12 images (12 months) that compose a digital personage walking in a zoetrope animated way.",
+    "Coded for the [Medialab-Prado](http://medialab-prado.es/)‘s digital facade, 15 meters wide, as a generative sketch based on Processing.js and showcased as part of [AfterArco](http://programalaplaza.medialab-prado.es/static/videos.html) activities program.",
+    "[[vimeo:70045128 | Walking man: se hace camino al andar]]",
+    "[[2]]"
+  ],
+  "credits": [
+    {
+      "role": "Project development",
+      "name": "1 day"
+    },
+    {
+      "role": "Project running",
+      "name": "13.02.2013 – 17.02.2013"
+    },
+    {
+      "role": "Tasks",
+      "name": "idea and coding."
+    }
+  ]
+}

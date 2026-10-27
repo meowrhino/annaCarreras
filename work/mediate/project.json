@@ -1,0 +1,38 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "MEDIATE",
+  "year": 2001,
+  "medium": [
+    "installation"
+  ],
+  "cover": "1",
+  "text": [
+    "**MEDIATE** is an intelligent, immersive, multi-sensory, interactive space conceived for children with severe autism. Through visual, sonorous and tactile interaction, **MEDIATE** wishes to give the child the opportunity to have fun, play, explore and be creative in a predictable, controllable and safe space, by the action of the child’s own body.",
+    "**MEDIATE** reacts to the unique user, and allows that user to create expressions of their own sensory experience: creations which can be replayed and communicated to others. This environment performs in interaction with the individual autistic child through interfaces that are controlled and modified by a pattern matching software that recognises and identifies unique individual user characteristics.",
+    "[[2 3 4]]",
+    "**MEDIATE** was funded by The European Commission under the FP5 / IST / Systems and Services for the Citizen / Persons with special needs (including the elderly and the disabled).",
+    "The consortium was integrated by: University of Portsmouth, Responsive Environments Centre; Hogeschool voor de Kunsten Utrecht, Faculteit Kunst, Media and Technologie; Universitat Pompeu Fabra, Interactive Audiovisual Group; Kings College London, Social, Genetic and Developmental Psychiatry Research Centre; Show Connections Limited."
+  ],
+  "credits": [
+    {
+      "role": "Developed at",
+      "name": "Universitat Pompeu Fabra. Experimentation on Interactive Communication group."
+    },
+    {
+      "role": "Main researcher",
+      "name": "Dr. Narcís Parés."
+    },
+    {
+      "role": "Project develoment",
+      "name": "01.09.2001 – 30.06.2004"
+    },
+    {
+      "role": "Tasks",
+      "name": "user detection design and coding."
+    },
+    {
+      "role": "Photos",
+      "name": "Pere Freixa, Narcís Parés, Univ. Porsmouth."
+    }
+  ]
+}

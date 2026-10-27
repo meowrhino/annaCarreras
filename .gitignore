@@ -1,3 +1,9 @@
 .DS_Store
 node_modules/
 .claude/
+# La web generada: la escribe node build/build.mjs y la publica la Action
+dist/
+# Las imágenes para compartir (sharp): las hace el build
+.cache/
+.vscode/*
+!.vscode/settings.json

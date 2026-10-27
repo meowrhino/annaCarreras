@@ -1,28 +1,24 @@
 #!/usr/bin/env python3
 """
-Scrape annacarreras.com (WordPress REST API) into plain JSON + local assets.
+Trae proyectos del WordPress de annacarreras.com (su API REST) a la forma de
+la casa: work/<slug>/project.json + img/1.webp, 2.webp…
 
-Usage:
-    python3 scripts/scrape.py              # scrape the slugs in SLUGS
-    python3 scripts/scrape.py --no-assets  # JSON only, skip downloads
-    python3 scripts/scrape.py --index      # only rebuild index.json from the
-                                           # project JSONs (no network)
+    python3 scripts/scrape.py                  # los de SLUGS que aún no están
+    python3 scripts/scrape.py ganxillo discs   # estos
 
-The fields written by hand (MANUAL in each project, SITE_MANUAL in
-site.json) are never overwritten: a new scrape keeps what is there.
+Solo trae lo que no tiene carpeta: lo que ya está en work/ se edita a mano y
+no se toca nunca. Las fotos bajan en su tamaño original y las pasa a webp
+scripts/webp.mjs (sharp: q85, como imgToWeb). Después, el slug va a mano en
+data/site.json → lists → work, en su sitio (por año), y el "title" corto.
 
-Output:
-    content/site.json
-    content/about.json
-    content/projects/index.json
-    content/projects/<slug>.json
-    assets/projects/<slug>/<file>
+Solo stdlib (y node para las fotos).
 """
 
 import json
 import os
 import re
 import html as htmlmod
+import subprocess
 import sys
 import urllib.request
 import urllib.parse
@@ -31,9 +27,7 @@ from pathlib import Path
 SITE = "https://www.annacarreras.com"
 API = SITE + "/wp-json/wp/v2"
 ROOT = Path(__file__).resolve().parent.parent
-CONTENT = ROOT / "content"
-ASSETS = ROOT / "assets" / "projects"
-ASSET_URL_PREFIX = "/assets/projects"
+WORK = ROOT / "work"
 
 SLUGS = [
     "mediate",
@@ -50,14 +44,6 @@ SLUGS = [
     "trossets",
     "arrels",
 ]
-
-DOWNLOAD_ASSETS = "--no-assets" not in sys.argv
-
-# Written by hand, not scraped: empty until someone fills them in.
-MANUAL = {"name": "", "line": "", "medium": [], "facts": [], "links": [],
-          "exhibitions": [], "press": [], "geek": []}
-SITE_MANUAL = {"contact": [], "upcoming": []}
-
 
 # ---------------------------------------------------------------- http ------
 
@@ -198,54 +184,17 @@ def original_url(src):
     return re.sub(r"-\d{2,4}x\d{2,4}(\.[a-zA-Z0-9]+)$", r"\1", src)
 
 
-def image_size(path):
-    with open(path, "rb") as f:
-        head = f.read(32)
-    try:
-        if head[:8] == b"\x89PNG\r\n\x1a\n":
-            import struct
-            w, h = struct.unpack(">II", head[16:24])
-            return int(w), int(h)
-        if head[:3] == b"GIF":
-            import struct
-            w, h = struct.unpack("<HH", head[6:10])
-            return int(w), int(h)
-        if head[:2] == b"\xff\xd8":
-            with open(path, "rb") as f:
-                data = f.read()
-            i = 2
-            while i < len(data) - 9:
-                if data[i] != 0xFF:
-                    i += 1
-                    continue
-                marker = data[i + 1]
-                if marker in (0xC0, 0xC1, 0xC2, 0xC3, 0xC5, 0xC6, 0xC7,
-                              0xC9, 0xCA, 0xCB, 0xCD, 0xCE, 0xCF):
-                    import struct
-                    h, w = struct.unpack(">HH", data[i + 5:i + 9])
-                    return int(w), int(h)
-                if marker in (0xD8, 0xD9) or 0xD0 <= marker <= 0xD7:
-                    i += 2
-                    continue
-                import struct
-                seg = struct.unpack(">H", data[i + 2:i + 4])[0]
-                i += 2 + seg
-    except Exception:
-        pass
-    return None, None
-
-
 downloaded = {}
 
 
 def fetch_asset(src, slug):
-    """Download to assets/projects/<slug>/, preferring the full-size original."""
+    """Download to work/<slug>/img/, preferring the full-size original."""
     src = abs_url(src)
     name = urllib.parse.unquote(src.rsplit("/", 1)[-1].split("?")[0])
     key = (slug, name)
     if key in downloaded:
         return downloaded[key]
-    dest_dir = ASSETS / slug
+    dest_dir = WORK / slug / "img"
     dest_dir.mkdir(parents=True, exist_ok=True)
     candidates = []
     orig = original_url(src)
@@ -260,9 +209,6 @@ def fetch_asset(src, slug):
         if dest.exists() and dest.stat().st_size > 0:
             saved = dest
             break
-        if not DOWNLOAD_ASSETS:
-            saved = dest
-            break
         try:
             data = get(url)
             if len(data) < 100:
@@ -274,9 +220,8 @@ def fetch_asset(src, slug):
         except Exception as e:
             print("      ! %s: %s" % (fname, e))
     if saved is None:
-        return {"src": src, "width": None, "height": None}
-    w, h = image_size(saved) if saved.exists() else (None, None)
-    info = {"src": "%s/%s/%s" % (ASSET_URL_PREFIX, slug, saved.name), "width": w, "height": h}
+        return {"src": src}
+    info = {"src": saved.name}
     downloaded[key] = info
     return info
 
@@ -307,10 +252,7 @@ def fetch_tweet(tid, slug):
     for m in d.get("mediaDetails") or []:
         # "small" is ~680px wide: enough for a tweet card, a fraction of the weight
         info = fetch_asset(m["media_url_https"] + "?name=small", slug)
-        item = {"src": info["src"], "width": info["width"], "height": info["height"],
-                "alt": m.get("ext_alt_text") or ""}
-        if m.get("type") in ("video", "animated_gif"):
-            item["kind"] = "video"  # src is only the poster frame
+        item = {"src": info["src"]}
         media.append(item)
     out = {"text": htmlmod.unescape(text).strip(), "date": (d.get("created_at") or "")[:10] or None,
            "author": (d.get("user") or {}).get("screen_name")}
@@ -369,14 +311,7 @@ def parse_image(outer, slug, known_slugs):
     src = attr(img.group(0), "src")
     info = fetch_asset(src, slug)
     caption = re.search(r"<figcaption[^>]*>(.*?)</figcaption>", outer, re.S)
-    alt = htmlmod.unescape(attr(img.group(0), "alt") or "")
-    # WordPress fills alt with the file name when nobody wrote one: that's noise
-    # (or a sibling's file name): a single token with digits or underscores
-    if re.fullmatch(r"[\w.-]*[\d_][\w.-]*", alt):
-        alt = ""
-    block = {"type": "image", "src": info["src"],
-             "width": info["width"], "height": info["height"],
-             "alt": alt}
+    block = {"type": "image", "src": info["src"]}
     if caption:
         block["caption"] = clean_inline(caption.group(1), known_slugs)
     return block
@@ -494,118 +429,108 @@ def clean_title(t):
     return re.sub(r"\s+", " ", t).strip()
 
 
-def scrape_projects(cats, tags):
-    known = set(SLUGS)
-    index, projects = [], []
-    for slug in SLUGS:
-        print("  · %s" % slug)
-        data = get_json("%s/posts?slug=%s" % (API, urllib.parse.quote(slug)))
-        if not data:
-            print("    ! not found")
-            continue
-        p = data[0]
-        blocks, credits = parse_content(p["content"]["rendered"], slug, known)
-        title = clean_title(p["title"]["rendered"])
-        year = year_of(p["title"]["rendered"], credits, p["date"])
-
-        cover = None
-        if p.get("featured_media"):
-            try:
-                media = get_json("%s/media/%d" % (API, p["featured_media"]))
-                info = fetch_asset(media["source_url"], slug)
-                cover = {"src": info["src"], "width": info["width"],
-                         "height": info["height"],
-                         "alt": htmlmod.unescape(media.get("alt_text") or "")}
-            except Exception as e:
-                print("    ! cover: %s" % e)
-        if cover is None:
-            first = next((b for b in blocks if b["type"] == "image"), None)
-            if first:
-                cover = {k: first.get(k) for k in ("src", "width", "height", "alt")}
-
-        project = {
-            "slug": slug,
-            "title": title,
-            "name": "",
-            "year": year,
-            "line": "",
-            "medium": [],
-            "date": p["date"][:10],
-            "summary": plain(p["excerpt"]["rendered"]),
-            "categories": [cats[c] for c in p.get("categories", []) if c in cats],
-            "tags": [tags[t] for t in p.get("tags", []) if t in tags],
-            "cover": cover,
-            "blocks": blocks,
-            "credits": credits,
-            **{k: v for k, v in MANUAL.items() if k not in ("name", "line", "medium")},
-            "source": p["link"],
-        }
-        keep_manual(project, CONTENT / "projects" / ("%s.json" % slug), MANUAL)
-        projects.append(project)
-    return projects
-
-
-def keep_manual(data, path, fields):
-    """Copy the hand-written fields from the file already on disk, if any."""
-    if path.exists():
-        old = json.loads(path.read_text(encoding="utf-8"))
-        for k in fields:
-            if k in old:
-                data[k] = old[k]
-
-
-def index_entry(p):
-    return {k: p[k] for k in ("slug", "title", "name", "year", "summary",
-                              "categories", "tags", "cover")}
-
-
-def write_index(projects):
-    index = sorted(map(index_entry, projects), key=lambda p: (-p["year"], p["title"].lower()))
-    write(CONTENT / "projects" / "index.json", index)
-
-
-# --------------------------------------------------------------- about ------
-
-def slugify(s):
-    s = re.sub(r"[^a-z0-9]+", "-", plain(s).lower())
-    return s.strip("-")
-
-
-def scrape_about(known):
-    page = get_json("%s/pages?slug=about" % API)[0]
-    markup = page["content"]["rendered"]
-    bio, sections, current = [], [], None
-    for tag, attrs, outer in top_level_blocks(markup):
-        if tag != "p":
-            continue
-        body = inner(outer)
-        h = clean_inline(body, known)
-        if not h:
-            continue
-        # a paragraph that is nothing but bold text opens a new section
-        if re.fullmatch(r"<strong>.*</strong>", h):
-            name = plain(h)
-            if name.lower() == "biography":
-                current = None
-                continue
-            current = {"title": name, "slug": slugify(name), "entries": []}
-            sections.append(current)
-            continue
-        if current is None:
-            bio.append(h)
-        else:
-            text = plain(h)
-            m = re.match(r"^(\d{4})", text)
-            current["entries"].append({"year": int(m.group(1)) if m else None, "html": h})
+def scrape_project(slug, cats, known):
+    """Un post de WordPress → la forma de antes (bloques); to_house la pasa a la de la casa."""
+    data = get_json("%s/posts?slug=%s" % (API, urllib.parse.quote(slug)))
+    if not data:
+        return None
+    p = data[0]
+    blocks, credits = parse_content(p["content"]["rendered"], slug, known)
+    cover = None
+    if p.get("featured_media"):
+        try:
+            media = get_json("%s/media/%d" % (API, p["featured_media"]))
+            cover = fetch_asset(media["source_url"], slug)
+        except Exception as e:
+            print("    ! cover: %s" % e)
+    if cover is None:
+        cover = next((b for b in blocks if b["type"] == "image"), None)
     return {
-        "title": "About",
-        "bio": bio,
-        "cv": sections,
-        "source": page["link"],
+        "title": clean_title(p["title"]["rendered"]),
+        "year": year_of(p["title"]["rendered"], credits, p["date"]),
+        "categories": [cats[c] for c in p.get("categories", []) if c in cats],
+        "cover": cover,
+        "blocks": blocks,
+        "credits": credits,
     }
 
 
-# ---------------------------------------------------------------- main ------
+# ---------------------------------------------------- la forma de la casa ---
+
+def md(h):
+    """El html reducido (a, strong, em, br) → el mini-markdown de los JSON."""
+    h = re.sub(r'<a href="([^"]*)">(.*?)</a>', lambda m: "[%s](%s)" % (m.group(2), htmlmod.unescape(m.group(1))), h, flags=re.S)
+    h = re.sub(r"</?strong>", "**", h)
+    h = re.sub(r"</?em>", "*", h)
+    h = h.replace("<br>", "\n")
+    h = re.sub(r"</?(code|sup|sub)>", "", h)  # shortcut: se pierden (no hay en los 13); si salen, al md
+    return htmlmod.unescape(h)
+
+
+def to_house(p, num):
+    """Un proyecto con bloques (lo que da scrape_project, o content/ de antes)
+    → project.json. num(src) da el número de cada foto o vídeo en img/."""
+    out = {"$schema": "../../schema/project.json", "title": p.get("name") or p["title"], "year": p["year"]}
+    medium = p.get("medium") or [re.sub(r"[_-]", " ", c) for c in p["categories"]]
+    if medium:
+        out["medium"] = medium
+    if p.get("line"):
+        out["line"] = p["line"]
+    if p.get("cover"):
+        out["cover"] = num(p["cover"]["src"])
+    text = []
+    for b in p["blocks"]:
+        t, prev = b["type"], (text[-1] if text else None)
+        if t == "text":
+            text.append(md(b["html"]))
+        elif t == "heading":
+            text.append("#" * b["level"] + " " + md(b["html"]))
+        elif t == "list":
+            text.append([md(i) for i in b["items"]])  # shortcut: las numeradas salen con puntos
+        elif t == "image":
+            n, cap = num(b["src"]), b.get("caption")
+            if not cap and isinstance(prev, str) and re.fullmatch(r"\[\[\d+( \d+)*\]\]", prev):
+                text[-1] = prev[:-2] + " " + n + "]]"
+            else:
+                text.append("[[%s%s]]" % (n, " | " + md(cap) if cap else ""))
+        elif t == "video":
+            text.append("[[video:%s]]" % num(b["src"]))
+        elif t == "quote":
+            text.append("> " + md(b["html"]) + ("\n" + md(b["cite"]) if b.get("cite") else ""))
+        elif b["provider"] in ("youtube", "vimeo"):
+            text.append("[[%s:%s%s]]" % (b["provider"], b["id"], " | " + b["title"] if b.get("title") else ""))
+        elif b["provider"] == "twitter":
+            tw = {"tweet": b["url"]}
+            if b.get("date"):
+                tw["date"] = b["date"]
+            if b.get("text"):
+                tw["text"] = b["text"]
+            if b.get("media"):
+                tw["photos"] = [num(m["src"]) for m in b["media"]]
+            text.append(tw)
+        else:
+            text.append("[[iframe:%s]]" % b["url"])
+    out["text"] = text
+    rows = [{"role": f["label"], "name": md(f["html"])} for f in p.get("facts", [])]
+    rows += [{"role": c["label"], "name": md(c["html"])} for c in p["credits"] if c["label"]]
+    press = ["[%s](%s)" % (l["label"], l["url"]) for l in p.get("press", [])]
+    press += [md(c["html"]) for c in p["credits"] if not c["label"]]
+    links = ["[%s](%s)" % (l["label"], l["url"]) for l in p.get("links", [])]
+    for k, v in (("credits", rows), ("links", links), ("exhibitions", p.get("exhibitions")),
+                 ("press", press), ("geek", [md(g) for g in p.get("geek", [])])):
+        if v:
+            out[k] = v
+    return out
+
+
+def numerador():
+    """Numera fotos y vídeos por orden de aparición (la portada, la 1)."""
+    nums = {}
+    def num(src):
+        name = src.rsplit("/", 1)[-1]
+        return nums.setdefault(name, str(len(nums) + 1))
+    return num, nums
+
 
 def write(path, data):
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -613,39 +538,33 @@ def write(path, data):
     print("  → %s" % path.relative_to(ROOT))
 
 
-def main():
-    print("Taxonomies…")
+def main(slugs):
     cats = {c["id"]: c["slug"] for c in get_json("%s/categories?per_page=100" % API)}
-    tags = {t["id"]: t["slug"] for t in get_json("%s/tags?per_page=100" % API)}
-
-    print("Projects…")
-    projects = scrape_projects(cats, tags)
-    for p in projects:
-        write(CONTENT / "projects" / ("%s.json" % p["slug"]), p)
-    write_index(projects)
-
-    print("About…")
-    write(CONTENT / "about.json", scrape_about(set(SLUGS)))
-
-    root = get_json(SITE + "/wp-json/")
-    site = {
-        "name": htmlmod.unescape(root["name"]),
-        "description": htmlmod.unescape(root["description"]),
-        "source": SITE,
-        "nav": [
-            {"label": "Work", "href": "/"},
-            {"label": "About", "href": "/about"},
-        ],
-        **SITE_MANUAL,
-    }
-    keep_manual(site, CONTENT / "site.json", SITE_MANUAL)
-    write(CONTENT / "site.json", site)
-    print("Done.")
+    known = set(slugs) | {d.name for d in WORK.iterdir() if d.is_dir()}
+    for slug in slugs:
+        if (WORK / slug).exists():
+            print("  · %s: ya está en work/, no se toca" % slug)
+            continue
+        print("  · %s" % slug)
+        p = scrape_project(slug, cats, known)
+        if not p:
+            print("    ! no está en el WordPress")
+            continue
+        num, nums = numerador()
+        house = to_house(p, num)
+        img = WORK / slug / "img"
+        for name, n in nums.items():
+            src = img / name
+            if src.exists():
+                src.rename(img / (n + src.suffix.lower()))
+        for f in img.iterdir():
+            if not re.fullmatch(r"\d+\.\w+", f.name):
+                f.unlink()  # bajada y sin usar (una versión que no era la que se usa)
+        write(WORK / slug / "project.json", house)
+        sys.stdout.flush()
+        subprocess.run(["node", str(ROOT / "scripts" / "webp.mjs"), str(img)], check=True)
+    print("Hecho. Los nuevos, a data/site.json → lists → work, y su \"title\" corto.")
 
 
 if __name__ == "__main__":
-    if "--index" in sys.argv:
-        files = sorted((CONTENT / "projects").glob("*.json"))
-        write_index([json.loads(f.read_text(encoding="utf-8")) for f in files if f.name != "index.json"])
-    else:
-        main()
+    main(sys.argv[1:] or SLUGS)

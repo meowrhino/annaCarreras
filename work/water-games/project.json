@@ -1,0 +1,43 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Water Games",
+  "year": 2003,
+  "medium": [
+    "installation"
+  ],
+  "cover": "1",
+  "text": [
+    "Water Games is an interactive, open air, refreshing installation for the “Universal Forum of Cultures, Barcelona 2004” that summons the users to collaborate in favor of peace and agreement. Visitors must form a ring around a fountain and collaborate in turning around to activate its water jets!",
+    "The installation has a footprint of approximately 1200m2 and its composed of a set of circular plazas that are connected by short paths. Each plaza has a water fountain in its center as an interaction element.",
+    "Visitors must find friends to form a ring around one of the nine fountains in the plazas: holding hands as a symbol of agreement and respect to diversity; collaborating in spinning around the fountain as a symbol of a common goal: work for peace. These rings must spin around the fountains in order to activate them and discover the hidden **Water Games**.",
+    "[[2 3 4]]",
+    "[[youtube:O1b-Ax1Gpe8 | Water Games - Jocs d'Aigua - interactive water fountains]]",
+    "[[5 6]]"
+  ],
+  "credits": [
+    {
+      "role": "Developed at",
+      "name": "Universitat Pompeu Fabra. Experimentation on Interactive Communication group."
+    },
+    {
+      "role": "Main researcher",
+      "name": "Dr. Narcís Parés."
+    },
+    {
+      "role": "Project development",
+      "name": "01.11.2003 – 09.05.2004"
+    },
+    {
+      "role": "Project running",
+      "name": "09.05.2004 – 26.09.2004"
+    },
+    {
+      "role": "Tasks",
+      "name": "user detection design and coding, installation."
+    },
+    {
+      "role": "Photos",
+      "name": "Joan Benassar, Narcís Parés. Video; Narcís Parés, Fòrum TV."
+    }
+  ]
+}

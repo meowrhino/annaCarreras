@@ -1,0 +1,29 @@
+{
+  "$schema": "../schema/site.json",
+  "name": "Anna Carreras",
+  "description": "generative art && interactive installations",
+  "url": null,
+  "social": {
+    "X": "https://x.com/carreras_anna"
+  },
+  "lists": {
+    "work": {
+      "name": "Work",
+      "projects": [
+        "tesi",
+        "tops-m",
+        "arrels",
+        "trossets",
+        "3d-forms-sounds",
+        "my-city-my-playground",
+        "kit-libertad-expresion",
+        "walking-man",
+        "app-n-jorge-drexler",
+        "hamelin",
+        "magia-per-a-pixeloscopi",
+        "water-games",
+        "mediate"
+      ]
+    }
+  }
+}

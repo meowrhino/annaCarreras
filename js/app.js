@@ -1,76 +1,33 @@
-// El contenido: lee los JSON de content/ y pinta cada ruta encima del fondo
-// (#/, #/about, #/contact, #/<slug>). Lo único que le dice al fondo es la
-// semilla: cada proyecto dibuja con su carácter.
+// La navegación, encima del fondo. La web no recarga al hacer clic: el
+// dibujo sigue y solo cambia la semilla (cada proyecto dibuja con su
+// carácter), que es lo único que app.js le dice al fondo.
 //
-// Los `src` de los JSON son root-absolutos (/assets/...). Se resuelven contra
-// la carpeta de la página, así funciona igual en local que en GitHub Pages
-// (/annaCarreras/). Una copia archivada fuera de este repo apunta a otro
-// origen con <html data-content>.
+// En la web construida (<html data-built>) cada dirección es una página de
+// verdad (/trossets/) con su contenido dentro: al hacer clic se pide esa
+// página, se cambia el <main> y la dirección (pushState). Las de antes
+// (#/trossets) llevan a la nueva.
+//
+// Sin data-built es la vista previa (Live Server, sin build): lee los JSON,
+// los revisa con su esquema como el build, pinta con js/paginas.js (lo mismo
+// que escribe el build) y navega por #/ruta. Lo que esté mal sale en pantalla.
 import { semilla } from './fondo.js';
+import { pagina } from './paginas.js';
+import { leerJSON, validar } from './validar.js';
 
-const ROOT = new URL(document.documentElement.dataset.content || '.', location.href);
-const url = (path) => new URL(path.replace(/^\//, ''), ROOT).href;
-
+const BUILT = document.documentElement.hasAttribute('data-built');
+const BASE = new URL('./', document.baseURI).href;
 const app = document.getElementById('app');
 
-const cache = {};
-const get = (path) => cache[path] ??= fetch(url(path)).then(r => {
-  if (!r.ok) throw new Error(path + ' → HTTP ' + r.status);
-  return r.json();
-});
-
-const el = (tag, attrs = {}, ...children) => {
-  const n = document.createElement(tag);
-  for (const [k, v] of Object.entries(attrs)) {
-    if (v == null) continue;
-    if (k === 'html') n.innerHTML = v;
-    else if (k === 'text') n.textContent = v;
-    else n.setAttribute(k, v);
-  }
-  n.append(...children.filter(c => c != null && c !== false));
-  return n;
+// La ruta de una dirección: '' (work), 'about', 'trossets'… null si no es una página.
+const rutaDe = (href) => {
+  const u = new URL(href, BASE);
+  if (u.origin !== location.origin || !u.href.startsWith(BASE)) return null;
+  const r = u.pathname.slice(new URL(BASE).pathname.length).replace(/\/$/, '');
+  return r.includes('/') || r.includes('.') ? null : decodeURIComponent(r);
 };
+const rutaHash = () => location.hash.replace(/^#\/?/, '').replace(/\/$/, '');
 
-// Slugs de WordPress (do_it_yourself) → texto (do it yourself)
-const label = (slug) => slug.replace(/[_-]/g, ' ');
-
-const img = (m, attrs = {}) => el('img', {
-  src: url(m.src), alt: m.alt || '', width: m.width, height: m.height, loading: 'lazy', ...attrs,
-});
-
-const extLink = (href, text) => el('a', { href, target: '_blank', rel: 'noopener', text: text + ' ↗' });
-
-// Los enlaces internos del contenido vienen como /slug: pasarlos a rutas hash.
-function fixLinks(node, slugs) {
-  node.querySelectorAll('a[href^="/"]').forEach(a => {
-    const slug = a.getAttribute('href').replace(/^\/|\/$/g, '');
-    if (slugs.has(slug)) a.href = '#/' + slug;
-  });
-  node.querySelectorAll('a[href^="http"]').forEach(a => { a.target = '_blank'; a.rel = 'noopener'; });
-  return node;
-}
-
-// Cada proyecto tiene campos escritos a mano (name, line, medium, facts…)
-// junto a lo scrapeado; vacíos, manda lo scrapeado.
-const nameOf = (p) => p.name || p.title;
-const mediumOf = (p) => p.medium?.length ? p.medium : p.categories.map(label);
-
-/* ---------- work: todos los proyectos ---------- */
-
-// Portadas grandes, del más nuevo al más viejo, con el título y el año
-// encima (v3ga). Apaisadas en ordenador, en vertical en el móvil.
-function renderWork(index) {
-  document.title = 'Anna Carreras';
-  app.replaceChildren(el('ul', { class: 'work' }, ...index.map((p, i) => {
-    const name = el('span', { class: 'name', text: nameOf(p) });
-    const a = el('a', { href: '#/' + p.slug },
-      p.cover ? img(p.cover, { loading: i < 4 ? 'eager' : 'lazy' }) : el('span', { class: 'no-cover' }),
-      el('span', { class: 'label' }, name, el('span', { class: 'year', text: p.year })));
-    a.addEventListener('pointerenter', () => baraja(name, nameOf(p)));
-    a.addEventListener('focus', () => baraja(name, nameOf(p)));
-    return el('li', {}, a);
-  })));
-}
+/* ---------- lo que se hace en cada página ---------- */
 
 // El título se baraja: las letras pasan por caracteres al azar y se van
 // recomponiendo de izquierda a derecha (~0,5 s). Atzar que acaba en el nombre.
@@ -90,182 +47,128 @@ function baraja(node, texto) {
   node.baraja = requestAnimationFrame(paso);
 }
 
-/* ---------- proyecto: ficha + cuerpo + racó geek ---------- */
-
-function renderBlock(b) {
-  switch (b.type) {
-    case 'text':    return el('p', { html: b.html });
-    case 'heading': return el('h' + Math.min(Math.max(b.level, 2), 4), { html: b.html });
-    case 'list':    return el(b.ordered ? 'ol' : 'ul', {}, ...b.items.map(i => el('li', { html: i })));
-    case 'image':   return el('figure', {}, img(b), b.caption && el('figcaption', { html: b.caption }));
-    case 'video':   return el('video', { src: url(b.src), controls: '', preload: 'metadata', playsinline: '' });
-    case 'quote':
-      return el('blockquote', {}, el('p', { html: b.html }), b.cite && el('cite', { html: b.cite }));
-    case 'embed':
-      if (b.provider === 'youtube' || b.provider === 'vimeo') {
-        const src = b.provider === 'youtube'
-          ? 'https://www.youtube-nocookie.com/embed/' + b.id
-          : 'https://player.vimeo.com/video/' + b.id;
-        return el('figure', { class: 'embed' },
-          el('iframe', { src, title: b.title || b.provider, loading: 'lazy', allowfullscreen: '' }),
-          b.title && el('figcaption', { text: b.title }));
-      }
-      if (b.provider === 'twitter') return renderTweet(b);
-      return el('figure', { class: 'embed' }, el('iframe', { src: b.url, loading: 'lazy' }));
-  }
-  return null;
-}
-
-function renderTweet(b) {
-  const media = b.media && el('div', { class: 'tweet-media' }, ...b.media.map(m => img(m)));
-  const who = (b.author ? '@' + b.author : 'X') + (b.date ? ' · ' + b.date : '');
-  return el('blockquote', { class: 'tweet' },
-    b.text && el('p', { text: b.text }),
-    media,
-    el('a', { class: 'src', href: b.url, text: who + ' ↗' }));
-}
-
-// Dos o más imágenes (o tuits) seguidos se agrupan en una rejilla de outputs.
-function renderBody(blocks) {
-  const kind = (b) => b.type === 'image' ? 'outputs'
-    : b.type === 'embed' && b.provider === 'twitter' ? 'tweets' : null;
-  const out = [];
-  for (let i = 0; i < blocks.length;) {
-    const k = kind(blocks[i]);
-    let j = i + 1;
-    while (k && j < blocks.length && kind(blocks[j]) === k) j++;
-    if (k && j - i > 1) out.push(el('div', { class: k, 'data-n': j - i }, ...blocks.slice(i, j).map(renderBlock)));
-    else out.push(renderBlock(blocks[i]));
-    i = j;
-  }
-  return el('div', { class: 'body' }, ...out);
-}
-
-function renderFicha(p) {
-  const dl = el('dl', { class: 'ficha' });
-  const row = (dt, ...dd) => dd.length && dl.append(el('dt', { text: dt }), el('dd', {}, ...dd));
-  const list = (items) => el('ul', {}, ...items.map(i => el('li', {}, i)));
-
-  (p.facts || []).forEach(f => row(f.label, el('span', { html: f.html })));
-
-  // Créditos con etiqueta van a la ficha; las líneas sueltas suelen ser prensa.
-  const credits = p.credits.filter(x => x.label);
-  const loose = p.credits.filter(x => !x.label);
-  credits.forEach(x => row(x.label, el('span', { html: x.html })));
-
-  if (p.links?.length) row('Links', list(p.links.map(l => extLink(l.url, l.label))));
-  if (p.exhibitions?.length) row('Exhibitions', list(p.exhibitions.map(t => document.createTextNode(t))));
-  const press = [...(p.press || []).map(l => extLink(l.url, l.label)), ...loose.map(x => el('span', { html: x.html }))];
-  if (press.length) row('Press', list(press));
-  return dl.children.length ? dl : null;
-}
-
-// El «Racó geek» es como acaba cada proyecto en su tesis: cómo funciona el
-// algoritmo, con números. Solo sale si el proyecto tiene texto en «geek».
-function renderGeek(c) {
-  if (!c.geek?.length) return null;
-  return el('section', { class: 'geek' },
-    el('h2', { text: 'Racó geek' }),
-    ...c.geek.map(h => el('p', { html: h })));
-}
-
-// Arriba, lo importante: el primer vídeo, con la portada hasta que se clica
-// (La Diegol); así no carga el reproductor sin que nadie lo pida. Sin
-// vídeo, la portada sola.
-const isVideo = (b) => b.type === 'embed' && (b.provider === 'youtube' || b.provider === 'vimeo');
-
-function renderHero(p, video) {
-  if (!video) return p.cover && el('figure', { class: 'hero' }, img(p.cover, { loading: 'eager' }));
-  const box = el('button', { type: 'button', class: 'hero play', 'aria-label': 'Play ' + (video.title || 'video') },
-    p.cover && img(p.cover, { loading: 'eager' }), el('span', { class: 'play-icon', text: '▶' }));
-  box.addEventListener('click', () => {
-    const src = video.provider === 'youtube'
-      ? 'https://www.youtube-nocookie.com/embed/' + video.id + '?autoplay=1'
-      : 'https://player.vimeo.com/video/' + video.id + '?autoplay=1&dnt=1';
-    box.replaceWith(el('div', { class: 'hero' },
-      el('iframe', { src, title: video.title || video.provider, allow: 'autoplay; fullscreen', allowfullscreen: '' })));
+function anima() {
+  app.querySelectorAll('.work a').forEach((a) => {
+    const name = a.querySelector('.name');
+    const texto = name.textContent;
+    a.addEventListener('pointerenter', () => baraja(name, texto));
+    a.addEventListener('focus', () => baraja(name, texto));
   });
-  return box;
 }
 
-function renderProject(p, index) {
-  const name = nameOf(p);
-  document.title = name + ' — Anna Carreras';
-  const slugs = new Set(index.map(i => i.slug));
-
-  const video = p.blocks.find(isVideo);
-  const i = index.findIndex(x => x.slug === p.slug);
-  const pagerLink = (q, dir, cls) => q && el('a', { href: '#/' + q.slug, class: cls },
-    el('small', { text: dir }), document.createTextNode(nameOf(q)));
-
-  const article = el('article', { class: 'project' },
-    renderHero(p, video),
-    el('header', { class: 'project-head' },
-      el('h1', { text: name }),
-      el('p', { class: 'meta', text: [p.year, mediumOf(p).join(', ')].join(' · ') }),
-      p.line && el('p', { class: 'line', text: p.line })),
-    renderBody(p.blocks.filter(b => b !== video)),
-    renderFicha(p),
-    renderGeek(p),
-    el('nav', { class: 'pager' },
-      pagerLink(index[i - 1], '← Newer', 'newer'),
-      el('a', { class: 'back', href: '#/', text: 'All projects' }),
-      pagerLink(index[i + 1], 'Older →', 'older')));
-
-  app.replaceChildren(fixLinks(article, slugs));
+function marca(ruta, page) {
+  semilla(ruta);
+  document.body.dataset.page = page;
+  const nav = page === 'about' || page === 'contact' ? page : 'work';
+  document.querySelectorAll('[data-nav]').forEach((a) =>
+    a.dataset.nav === nav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
 }
 
-/* ---------- about y contact ---------- */
+// El vídeo de arriba: la portada hasta que se clica, y entonces el reproductor.
+app.addEventListener('click', (e) => {
+  const box = e.target.closest('.hero.play');
+  if (!box) return;
+  const div = document.createElement('div');
+  div.className = 'hero';
+  const f = document.createElement('iframe');
+  Object.assign(f, { src: box.dataset.video, title: box.getAttribute('aria-label').replace(/^Play /, ''), allow: 'autoplay; fullscreen', allowFullscreen: true });
+  div.append(f);
+  box.replaceWith(div);
+});
 
-function renderAbout(a, site) {
-  document.title = 'About — Anna Carreras';
-  const upcoming = site.upcoming?.length > 0 && el('section', { class: 'upcoming' },
-    el('h2', { text: 'Upcoming' }),
-    el('ul', {}, ...site.upcoming.map(u => el('li', { html: u }))));
-  const bio = el('div', { class: 'bio' }, ...a.bio.map(h => el('p', { html: h })));
-  const cv = el('div', { class: 'cv' });
-  a.cv.filter(s => s.entries.length).forEach(s => {
-    const ul = el('ul');
-    s.entries.forEach((e, i) => {
-      const same = e.year != null && i > 0 && s.entries[i - 1].year === e.year;
-      // El html repite el año al principio; se quita porque ya va en su columna.
-      const html = e.year != null ? e.html.replace(new RegExp('^\\s*' + e.year + '[.,:]?\\s*'), '') : e.html;
-      ul.append(el('li', same ? { class: 'same-year' } : {},
-        el('span', { class: 'year', text: e.year ?? '' }),
-        el('span', { html })));
-    });
-    cv.append(el('h2', { text: s.title }), ul);
-  });
-  app.replaceChildren(fixLinks(el('section', { class: 'about' }, upcoming, bio, cv), new Set()));
-}
+/* ---------- la web construida: cada página, la suya ---------- */
 
-function renderContact(site) {
-  document.title = 'Contact — Anna Carreras';
-  app.replaceChildren(el('section', { class: 'contact' },
-    el('ul', {}, ...site.contact.map(c => el('li', {}, extLink(c.url, c.label))))));
-}
-
-/* ---------- rutas ---------- */
-
-const PAGES = ['about', 'contact'];
-
-async function route() {
-  const path = location.hash.replace(/^#\/?/, '');
-  semilla(path);
-  document.body.dataset.page = path ? (PAGES.includes(path) ? path : 'project') : 'work';
-  document.querySelectorAll('[data-nav]').forEach(a =>
-    a.dataset.nav === (PAGES.includes(path) ? path : 'work') ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
+let turno = 0;
+async function ve(ruta, push) {
+  const yo = ++turno;
+  const url = BASE + (ruta ? encodeURIComponent(ruta) + '/' : '');
   try {
-    const [index, site] = await Promise.all([get('content/projects/index.json'), get('content/site.json')]);
-    if (!path || path === 'archive') renderWork(index);
-    else if (path === 'about') renderAbout(await get('content/about.json'), site);
-    else if (path === 'contact') renderContact(site);
-    else renderProject(await get('content/projects/' + path + '.json'), index);
+    const res = await fetch(url);
+    if (!res.ok && res.status !== 404) throw new Error(res.status);
+    const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
+    if (yo !== turno) return;
+    if (push) history.pushState(null, '', url);
+    app.innerHTML = doc.getElementById('app').innerHTML;
+    document.title = doc.title;
+    marca(ruta, doc.body.dataset.page);
+    anima();
+    scrollTo(0, 0);
+  } catch {
+    location.href = url;   // sin red o algo raro: que cargue entera
+  }
+}
+
+/* ---------- la vista previa: desde los JSON ---------- */
+
+let datos;
+async function lee() {
+  const get = async (path, schema) => {
+    const res = await fetch(BASE + path, { cache: 'no-store' });
+    if (!res.ok) throw new Error(`no encuentro ${path} (HTTP ${res.status})`);
+    const d = leerJSON(await res.text(), path);
+    const errors = validar(d, await (await fetch(BASE + `schema/${schema}.json`)).json(), path);
+    if (errors.length) throw new Error(errors.join('\n✗ '));
+    return d;
+  };
+  const [site, about] = await Promise.all([get('data/site.json', 'site'), get('data/about.json', 'about')]);
+  const slugs = site.lists.work.projects;
+  const projects = Object.fromEntries(await Promise.all(slugs.map(async (s) => [s, await get(`work/${s}/project.json`, 'project')])));
+  return { site, about, projects };
+}
+
+async function pinta() {
+  const ruta = rutaHash();
+  try {
+    datos ??= await lee();
+    const p = pagina(ruta, datos);
+    if (!p) throw new Error(`no hay ninguna página "${ruta}": ni about, ni contact, ni un proyecto de data/site.json → lists`);
+    document.querySelector('.site-tagline').textContent = datos.site.description;
+    app.innerHTML = p.html;
+    document.title = p.title;
+    marca(ruta, p.page);
+    anima();
+    // el navegador no ve el disco: una foto que no está se sabe al pedirla
+    app.querySelectorAll('img, video').forEach((m) => {
+      m.addEventListener('error', () => avisa(`no hay ningún ${m.getAttribute('src')}: revisa el número en work/${ruta}/project.json`), { once: true });
+      m.loading = 'eager';
+    });
   } catch (e) {
-    app.replaceChildren(el('p', { class: 'error', text: e.message }));
+    avisa(e.message);
   }
   scrollTo(0, 0);
 }
 
-addEventListener('hashchange', route);
-route();
+function avisa(msg) {
+  let box = document.getElementById('errores');
+  if (!box) {
+    box = document.createElement('pre');
+    box.id = 'errores';
+    box.style.cssText = 'position:fixed;inset:0;z-index:99999;margin:0;padding:2rem;overflow:auto;white-space:pre-wrap;background:#fff;color:#000;font:15px/1.5 monospace';
+    box.textContent = 'esto no se publicaría:\n\n\narréglalo, guarda, y la página se recarga sola.\n';
+    document.body.append(box);
+  }
+  box.firstChild.insertData(box.textContent.lastIndexOf('\narréglalo'), `✗ ${msg}\n`);
+}
+
+/* ---------- los clics ---------- */
+
+document.addEventListener('click', (e) => {
+  const a = e.target.closest('a[href]');
+  if (!a || a.target || e.defaultPrevented || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  const ruta = rutaDe(a.href);
+  if (ruta == null) return;
+  e.preventDefault();
+  if (BUILT) ve(ruta, true);
+  else location.hash = '#/' + ruta;
+});
+
+if (BUILT) {
+  const vieja = location.hash.startsWith('#/') && rutaHash();
+  if (vieja !== false) location.replace(BASE + (vieja ? encodeURIComponent(vieja) + '/' : ''));
+  addEventListener('popstate', () => ve(rutaDe(location.href) ?? '', false));
+  semilla(rutaDe(location.href) ?? '');
+  anima();
+} else {
+  addEventListener('hashchange', pinta);
+  pinta();
+}

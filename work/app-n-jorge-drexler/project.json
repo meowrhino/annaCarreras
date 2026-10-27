@@ -1,0 +1,53 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "n",
+  "year": 2012,
+  "medium": [
+    "mobile"
+  ],
+  "cover": "1",
+  "text": [
+    "[[2]]",
+    "**“n”** represents a revolutionary approach to songwriting, in which, for the first time, songs are editable, and listeners become users. **“n”** contains three original songs: **“n1”**, **“n2”** and **“n3”**; each is a unique interactive musical experience.",
+    "**“n1”** called “Habitación 316” (also playable in English as “Room 316”), explores what Drexler calls “combinatory poetry.” Each time the song starts, there is a new combination spontaneous text. As the song unfolds, users can play with the lyrics, freely arranging the verses and choruses Drexler sings. One can also choose, with touch of a button at any point in the song, to hear the song acoustic or with a full band. Touching the pause button, the user can see written the lyrics of the song as she or he has ordered it: what has already played as well as what remains to be combined. An almost infinite number of versions are possible.",
+    "[[youtube:EvxSWpFCFkM | Jorge Drexler - Habitación 316 (n1)]]",
+    "[[3]]",
+    "[[youtube:2k1Ga13K5UY | Jorge Drexler introduces n1]]",
+    "**“n2”** entitled “Driftwood” (“Madera de Deriva”) is a song about drifting through life, and in the app, listeners must drift to experience the song. Drexler recorded the tracks with some 80 musicians from la Orquesta Sinfónica de Euskadi (the Basque Country Symphonic Orchestra). Once users activate location services within the app, they can move throughout a place, unlocking, adding and subtracting sections of the orchestra. The experience is something like music-arrangement-by-scavenger hunt: at any given moment, the app tells the user the location of the next instrument of section of the orchestra that can be added.",
+    "[[youtube:pOWHmurlpKM | Jorge Drexler introduces n2]]",
+    "[[4 5]]",
+    "To create **“n3”**, “Décima a la Décima” (“Décima to the Power of Ten”), Drexler invited an international and stylistically diverse group of distinguished singers—including René Pérez from Calle 13 (Puerto Rico), Kiko Veneno (Spain), Xoel López (Spain), Vitor Ramil (Brazil), Fernando Cabrera (Argentina), Martín Buscaglia (Uruguay), Kevin Johansen (Argentina / U.S.), Daniel Drexler (Uruguay) and Alex Ferreira (Dominican Republic)—to contribute vocals. Users can choose which of the ten singers sings each verse.",
+    "[[youtube:AO1pzr_KlkM | Jorge Drexler presenta n3 con \"Décima a la décima\"]]",
+    "[[6 7]]"
+  ],
+  "credits": [
+    {
+      "role": "Client",
+      "name": "Warner Music, Samsung."
+    },
+    {
+      "role": "Developed at",
+      "name": "[Reactable Systems](http://reactable.com/)."
+    },
+    {
+      "role": "Project development",
+      "name": "01.08.2012 – 29.11.2012"
+    },
+    {
+      "role": "Project running",
+      "name": "29.11.2012 – currently"
+    },
+    {
+      "role": "Tasks",
+      "name": "project manager and coding."
+    },
+    {
+      "role": "Photo",
+      "name": "Jacobo Begareche."
+    },
+    {
+      "role": "Videos",
+      "name": "Wakeapp"
+    }
+  ]
+}

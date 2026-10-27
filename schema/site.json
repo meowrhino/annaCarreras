@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "data/site.json: lo general de la web",
+  "description": "data/site.json: lo general de la web y la lista de proyectos. VS Code lee este fichero para autocompletar y subrayar lo que está mal; el build y la vista previa lo usan para revisar.",
+  "type": "object",
+  "required": ["name", "description", "lists"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "_": { "type": "string" },
+    "name": { "type": "string", "description": "El nombre: el título de la web en Google y en la pestaña." },
+    "description": { "type": "string", "description": "Lo que sale en Google y al compartir la portada." },
+    "url": { "type": ["string", "null"], "pattern": "^https://[^/]+$", "description": "El dominio, \"https://www.annacarreras.com\". null hasta tenerlo: entonces Google no la indexa." },
+    "social": { "type": "object", "additionalProperties": { "type": "string", "pattern": "^https://" }, "description": "La página Contact: { \"X\": \"https://x.com/…\" }, la palabra y la dirección entera." },
+    "lists": {
+      "type": "object",
+      "required": ["work"],
+      "additionalProperties": false,
+      "properties": {
+        "work": {
+          "type": "object",
+          "required": ["name", "projects"],
+          "additionalProperties": false,
+          "properties": {
+            "name": { "type": "string" },
+            "projects": {
+              "type": "array",
+              "description": "Los proyectos que salen, en orden (del más nuevo al más viejo): el nombre de su carpeta en work/. Uno que no está aquí no sale.",
+              "items": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "El nombre de la carpeta, en minúsculas y con guiones." }
+            }
+          }
+        }
+      }
+    }
+  }
+}

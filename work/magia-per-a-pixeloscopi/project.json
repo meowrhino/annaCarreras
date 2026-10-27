@@ -1,0 +1,60 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Màgia per a Pixeloscopi",
+  "year": 2008,
+  "medium": [
+    "theater"
+  ],
+  "cover": "1",
+  "text": [
+    "**Màgia per a Pixeloscopi** is a one hour show conceived to be represented in a theater scenario that merges mixed and augmented reality and full-body interaction with classical magic to create new tricks. The show was conceived by an interdisciplinary team composed by a magician, two interaction designers, a theater director and a stage designer. The magician uses custom based hardware and software to create new illusions which are a starting point to explore new language for magical expression.",
+    "[[2 3 4 5]]",
+    "[[vimeo:8067493 | Màgia per a Pixeloscopi]]"
+  ],
+  "credits": [
+    {
+      "role": "Magician",
+      "name": "Màgic Jaïr."
+    },
+    {
+      "role": "Actress",
+      "name": "Fiona Rycroft."
+    },
+    {
+      "role": "Interaction design",
+      "name": "[Carles Sora](http://www.csora.org), Anna Carreras."
+    },
+    {
+      "role": "Script and direction",
+      "name": "Carles Sora."
+    },
+    {
+      "role": "Stage director",
+      "name": "Ferran Utzet."
+    },
+    {
+      "role": "Sound designer",
+      "name": "Ariadna Alsina."
+    },
+    {
+      "role": "Set designer",
+      "name": "Martí Baltà."
+    },
+    {
+      "role": "Project development",
+      "name": "15.09.2008 – 19.12.2008"
+    },
+    {
+      "role": "Performance",
+      "name": "05.11.2009 at Casa Elizalde. 15.05.2010 at Cosmocaixa Barcelona."
+    },
+    {
+      "role": "Tasks",
+      "name": "idea, design, production, coding, installation, performance."
+    },
+    {
+      "role": "Photos",
+      "name": "Marta Farràs. Video: Carles Sora."
+    }
+  ]
+}

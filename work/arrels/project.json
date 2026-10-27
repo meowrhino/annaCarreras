@@ -1,0 +1,21 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Arrels",
+  "year": 2021,
+  "medium": [
+    "generative"
+  ],
+  "cover": "1",
+  "text": [
+    "[[2]]",
+    "> Arrels\n[live view](https://cdn.feralfileassets.com/previews/43c29566-9fad-42ce-aab9-1c4947164d94/1615728457/index.html)\n75 editions, animated + generative",
+    "[Curated](https://feralfile.com/exhibitions/shows/social-codes-pcl) by Casey Reas:",
+    "“Anna Carreras’ work has a strong relationship to the Spanish landscape where she spends her time, and her piece in Social Codes, “Arrels,” connects drawing, code, and the environment through a cycle of growth and decay. While Anna looks to nature for the source of her work, she interprets and transforms her experience into carefully choreographed generative animation. In “Arrels,” growing tendrils the color of earth and sky collide in a vibrant dance. New growth in the arid soil overtakes the old, and the cycle continues.”",
+    "[[3 4 5 6 7 8 9 10 11 12 13]]",
+    "[Review](https://bruces.medium.com/social-codes-at-feralfile-399840a43757) by Bruce Sterling:",
+    "Work number six is “Arrels” by Anna Carreras. “Arrels” means “roots” in the Catalan language and this quite simple work is a series of growing, seething, root-like forms.",
+    "The code is very lucid in “Arrels.” It’s a series of disks that are gently propelled across the screen. As they move according to their code instructions, the disks overlap and shrink, leaving long, tapered, rootlike forms in their wake. Periodically the thick, twisted roots break up and reveal their fragile tips as little disks, which unmasks the process.",
+    "The muted color choices are nice, they have a folk-art feeling. The disks carry sketchy interior lines that give the roots a robust, hand-drawn, volumetric quality. The behavior of the roots varies; they emerge from different angles at different speeds and rhythms, and, rarely but pleasingly, one of them manages to root its way across the entire screen.",
+    "**There’s nothing earth-shaking about “Arrels,” but if I had to live with one of these artworks for the rest of my life, it would likely be this one**. It lacks high-tech gosh-wow, but it has the pleasingly gnarly feeling of the roots of an olive tree."
+  ]
+}

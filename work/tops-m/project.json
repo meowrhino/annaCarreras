@@ -1,0 +1,17 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "TOPS-M",
+  "year": 2022,
+  "medium": [
+    "installation",
+    "museum",
+    "performance"
+  ],
+  "cover": "1",
+  "text": [
+    "[[youtube:5T07KivJbaA | Anna Carreras | Ljudmila Artist-In-Residence]]",
+    "[[2 3 4]]",
+    "[[video:5]]",
+    "[[6 7 8 9 10 11 12 13 14 15 16 17 18 19 20]]"
+  ]
+}

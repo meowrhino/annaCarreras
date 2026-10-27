@@ -1,0 +1,62 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Kit de Libertad de Expresión",
+  "year": 2013,
+  "medium": [
+    "do it yourself",
+    "event",
+    "performance"
+  ],
+  "cover": "1",
+  "text": [
+    "The **Freedom of Speech Kit** (**Kit de Libertad de Expresión** in Spanish) consist of an electronic portable banner where a user can display messages either using a local physical interface, such a keyboard, or remote interfaces using social networks through internet. Hence there are different entry interfaces: a physical one, so anyone close to the banner can send messages to it, and another one via internet, thus anyone in the world, using a cell phone, a computer or other devices connected to the cloud can send messages to the banner as well.",
+    "The device is built with a series of textiles (both conductors and insulators of electricity) and LEDs, together with a microprocessor and communication modules. All software and hardware design is being documented in an instructions manual, so anyone will be able to build their own kit: a Do-It-Yourself kit. It is delivered under copyleft license, so users are able to improve the design and adapt it to their local circumstances.",
+    "[[2]]",
+    "[[vimeo:70939001 | La libertad de expresión tiene forma de LED]]",
+    "[[3 4 5]]"
+  ],
+  "credits": [
+    {
+      "role": "Developed at",
+      "name": "[Interactivos’13 Medialab Prado](http://medialab-prado.es/article/future_tools)."
+    },
+    {
+      "role": "Project develoment",
+      "name": "10.04.2013 – 27.04.2013"
+    },
+    {
+      "role": "Project running",
+      "name": "27.04.2013 – currently"
+    },
+    {
+      "role": "Tasks",
+      "name": "idea, desing circuits, prototiping, sewing soft hardware and coding."
+    },
+    {
+      "role": "Promoters",
+      "name": "Etc Inventions (Chema Blanco, Anna Carreras) and María Solé Bravo."
+    },
+    {
+      "role": "Collaborators",
+      "name": "Gonzalo Iglesias, Rafael Fernandes, Carlos Fernández, Daniel Alonso, Sonya Ricketts, Andrea Rosales, Soraya Nasser, Echedey Lorenzo, Miguel Fernández, Eva Rueda & Christian Rojo."
+    },
+    {
+      "role": "Photos",
+      "name": "Chema Blanco, María Solé."
+    },
+    {
+      "role": "Video",
+      "name": "Carlos Fernandez"
+    },
+    {
+      "role": "Details at",
+      "name": "[Google DEV ART](https://devart.withgoogle.com/#/project/18103025)"
+    }
+  ],
+  "press": [
+    "[Project web page](http://freedomofspeechproject.org/)",
+    "[Article at We make money not art](http://we-make-money-not-art.com/archives/2013/05/kit-de-libertad-de-expresion-f.php)",
+    "[Article at Yorokobu nº40 page 51](http://www.yorokobu.es/yorokobumayo2013)",
+    "[Article at Wired UK](http://www.wired.co.uk/news/archive/2013-05/17/freedom-of-expression-kit)"
+  ]
+}

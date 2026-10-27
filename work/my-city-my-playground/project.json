@@ -1,0 +1,61 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "My City My Playground",
+  "year": 2014,
+  "medium": [
+    "installation"
+  ],
+  "cover": "1",
+  "text": [
+    "Create and play with My City My Playground transforming your city into a playground. You can turn any element of the urban landscape into the pieces of a game: the outline of a building, cars and traffic, passers-by, lampposts and other street furniture.",
+    "Play and provide a new perspective of the city. Your own perspective. Rediscover the streets, the buildings, the corners, the city life. Rethink the urban landscape, experiment and search for new ways of looking at your everyday scenery. Do it by creating a playground. Do it in a funny, different and artistic way.",
+    "Seek out an interesting area of your city. Point your webcam to it or record a short, fixed video shot. In your computer, outline the buildings and other elements that will be part of the game. With a simple click of the mouse, balls or any other geometrical shapes will start falling and bounce off roofs, balconies, stairs and every other element you previously made elastic.",
+    "[[vimeo:110556416 | MY CITY MY PLAYGROUND]]",
+    "Each game is unique and it performs one-off. From this simple basis, you can create an endless number of games and turn your favorite city sites into an endless number of magical playgrounds.",
+    "[[2]]",
+    "My City my Playground s a game with a drawing tool to easily shape the outline of a building, the floor, any house, staircases,… The game turns them into elastic objects creating a real shaped board game. Balls and objects can fall from sky, or be thrown to them using the mouse, bouncing on every element you previously made elastic. An automatic image processing algorithm detects traffic, bicycles and pedestrians making them also elastic and part of the game.",
+    "[[3]]",
+    "Watch** different games already proposed**\nOr send a short video and your idea to create your own one to: hola@annacarreras.com",
+    "[[vimeo:101509566 | My City My Playground - game#1]]",
+    "[[vimeo:101512003 | My City My Playground - game#2]]",
+    "[[vimeo:101928929 | My City My Playground - game#4]]",
+    "[[vimeo:102123868 | My City My Playground - game#3]]",
+    "[[vimeo:102511968 | My City My Playground - game#5]]",
+    "[[vimeo:104968163 | My City My Playground - game#6]]",
+    "[[vimeo:105233491 | My City My Playground - game#7]]",
+    "[[vimeo:105652969 | My City My Playground - game#8]]",
+    "[[vimeo:106373549 | My City My Playground - game#9]]",
+    "[[vimeo:106480769 | My City My Playground - game#10]]",
+    "[[vimeo:106590091 | My City My Playground - game#11]]",
+    "[[vimeo:107608762 | My City My Playground - game#12]]",
+    "[[vimeo:108177138 | My City My Playground - game#13]]",
+    "[[vimeo:108482796 | My City My Playground - game#14]]",
+    "[[vimeo:108482797 | My City My Playground - game#15]]"
+  ],
+  "credits": [
+    {
+      "role": "Project development",
+      "name": "01.08.2014 – 31.10.2014"
+    },
+    {
+      "role": "Tasks",
+      "name": "idea, soft development."
+    },
+    {
+      "role": "Texts",
+      "name": "Mariona Roca."
+    },
+    {
+      "role": "Video",
+      "name": "Atzucac Films."
+    },
+    {
+      "role": "Actor",
+      "name": "Adrián Pino Olivera."
+    },
+    {
+      "role": "Thanks to",
+      "name": "Marcos Alonso (SFO), Noemí Conesa (Graz), Manuel J. Alonso (Bcn), Natalia Rojas (Miami), Guillem Perez (Buenos Aires), Sytse Wierenga (Bcn) and Judith Pujol (Boston)."
+    }
+  ]
+}

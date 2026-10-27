@@ -1,0 +1,54 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Hamelin",
+  "year": 2008,
+  "medium": [
+    "advertising",
+    "installation"
+  ],
+  "cover": "1",
+  "text": [
+    "**Hamelin** is an outdoor interactive display consisting in a cubic structure lacking the two side faces of the cube. Measuring 3m wide, 2,5m long and 3m high, it is designed to be assembled and set on a fixed location –a shopping center, for example- to be used as an advertising medium for different campaigns.",
+    "People have access into the structure through the open sides of the cube. Once inside the module, they can see the outline of their body traced on a plasma screen, as if it was a kind of mirror. The game starts as the participants interact with the module by moving themselves, walking, jumping, gesturing, etc. and watching their movements reflected on the screen in real time and scale. Thus, this full-body interaction is used in **Hamelin** to integrate the participants into the advertisement itself and to create recreational, amusing experiences.",
+    "[[2 3]]",
+    "[[youtube:By8kajiE4rU | La Sexta - Hamelin El Muro Infernal]]",
+    "[[youtube:fw8950OeGvg | Kandoo de Dodot - Hamelin]]",
+    "[[youtube:QhpIrmLq0FA | Hamelin - La Sexta Bones]]",
+    "[[vimeo:3237318 | Raimat]]",
+    "[[vimeo:3161914 | Cerveza Alhambra]]"
+  ],
+  "credits": [
+    {
+      "role": "Clients",
+      "name": "La Sexta, Kandoo, Cervezas Alhambra, Raimat, Generalitat de Catalunya."
+    },
+    {
+      "role": "Developed at",
+      "name": "Cuatic"
+    },
+    {
+      "role": "Creative Director",
+      "name": "Natalia Rojas."
+    },
+    {
+      "role": "Project initial development",
+      "name": "18.02.2008 – 07.07.2008"
+    },
+    {
+      "role": "Ad-games development",
+      "name": "07.07.2008 – 31.01.2009."
+    },
+    {
+      "role": "Project running",
+      "name": "07.07.2008 – 31.01.2009 at La Illa Diagonal."
+    },
+    {
+      "role": "Tasks",
+      "name": "sensors, image processing, coding, technology director, on-site installation."
+    },
+    {
+      "role": "Photos",
+      "name": "Natalia Rojas."
+    }
+  ]
+}

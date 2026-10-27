@@ -1,0 +1,59 @@
+{
+  "$schema": "../../schema/project.json",
+  "title": "Generative 3D Forms/Sounds",
+  "year": 2017,
+  "medium": [
+    "development"
+  ],
+  "cover": "1",
+  "text": [
+    "A custom software developed for Insert Club to generate 3D forms from techno sound. A real-time sound analysis coupled with 3D flocking and wander behaviors creates unique 3D objects. The generated objects are directly exported to a 3D printer format to print them, thus, obtaining physical sounds.",
+    "[[vimeo:233722283 | INSERT 5th SEASON - 3D FORMS]]",
+    "[[2 3 4 5 6 7 8 9 10 11 12]]"
+  ],
+  "credits": [
+    {
+      "role": "Idea Creativa",
+      "name": "LaDosis"
+    },
+    {
+      "role": "Guión y Dirección",
+      "name": "Manuel Domínguez de la Osa"
+    },
+    {
+      "role": "Producción",
+      "name": "Edu Segurado"
+    },
+    {
+      "role": "Diseño y Programación",
+      "name": "Anna Carreras"
+    },
+    {
+      "role": "DOP",
+      "name": "Oriol Bosch"
+    },
+    {
+      "role": "Edición i sound design",
+      "name": "Aimar Galdós"
+    },
+    {
+      "role": "BSO",
+      "name": "Flug"
+    },
+    {
+      "role": "Agradecimientos",
+      "name": "Pau, L Ex – Designer project Bar, Alessandro di Renzo, CTRlight"
+    },
+    {
+      "role": "Dates de desenvolupament",
+      "name": "20.07.2017 – 10.10.2017"
+    },
+    {
+      "role": "Vídeos i fotos",
+      "name": "Anna Carreras, Edu Segurado, Manu Domínguez"
+    }
+  ],
+  "press": [
+    "Developed for http://insertclub.net/en"
+  ]
+}
