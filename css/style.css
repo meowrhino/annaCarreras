@@ -106,8 +106,11 @@ main { flex: 1; }
   color: var(--dim);
   font-size: .85rem;
 }
-.seed { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
-.seed:hover { text-decoration: underline; }
+/* el dibujo se controla desde el pie: los botones encima, la semilla en chico debajo */
+.dice { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: .3rem 1.2rem; }
+.dice button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+.dice button:hover { text-decoration: underline; }
+.seed { flex-basis: 100%; text-align: right; font-size: .7rem; opacity: .7; font-variant-numeric: tabular-nums; }
 
 .error { padding: var(--gut); }
 

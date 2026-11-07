@@ -37,7 +37,11 @@
 
 <footer class="site-foot">
   <span>Anna Carreras</span>
-  <button class="seed" type="button" title="Draw it again with a new seed"></button>
+  <div class="dice">
+    <button type="button" data-dice="again" title="Draw it again with a new seed">draw again</button>
+    <button type="button" data-dice="pause" title="Stop and resume the drawing">pause</button>
+    <small class="seed"></small>
+  </div>
 </footer>
 
 <script type="module" src="js/app.js"></script>

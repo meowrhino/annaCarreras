@@ -6,7 +6,8 @@
 // Cada página tiene su semilla (la portada, la vacía; cada proyecto, su
 // slug): misma página, mismo campo; otra página, otro campo (más grande o
 // más rizado, en curva o en ángulos rectos). El pie enseña la semilla y la
-// iteración, y clicarlo vuelve a tirar los dados con la misma semilla.
+// iteración; «draw again» vuelve a tirar los dados con la misma semilla y
+// «pause» para el dibujo.
 // Al pasar el ratón o el dedo nacen puntas nuevas.
 //
 // El canvas no recibe clics (pointer-events: none): el botón derecho no
@@ -44,7 +45,7 @@ export function semilla(nuevo = '', otra = false) {
   ({ rnd, c, rumbo } = campo(texto, iteracion));
   puntas = [];
   mini = icono(texto, iteracion, performance.now());
-  if (pie) pie.textContent = `seed ${texto} · iteration ${iteracion} · draw again`;
+  if (pie) pie.textContent = `seed ${texto} · iteration ${iteracion}`;
 }
 
 function nace(x, y, tope = PUNTAS) {
@@ -103,14 +104,19 @@ function mide() {
 mide();
 addEventListener('resize', mide);
 semilla();
-pie?.addEventListener('click', () => semilla(texto, true));
+document.querySelector('[data-dice="again"]')?.addEventListener('click', () => semilla(texto, true));
+let parado = false;
+document.querySelector('[data-dice="pause"]')?.addEventListener('click', (e) => {
+  parado = !parado;
+  e.target.textContent = parado ? 'resume' : 'pause';
+});
 
 // 30 pasos por segundo bastan para que se vea crecer, y gasta la mitad.
 // Si los cuadros llegan tarde (móvil cansado), recupera hasta 4 pasos.
 let antes = 0;
 requestAnimationFrame(function bucle(t) {
   const pasos = Math.min(4, Math.floor((t - antes) / 33));
-  if (pasos > 0) {
+  if (pasos > 0 && !parado) {
     antes = t;
     for (let i = 0; i < pasos; i++) avanza(t);
     dibuja(t);
