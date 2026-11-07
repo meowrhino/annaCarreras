@@ -10,12 +10,14 @@
 // Al pasar el ratón o el dedo nacen puntas nuevas.
 //
 // El canvas no recibe clics (pointer-events: none): el botón derecho no
-// ofrece «guardar imagen». Con «reducir movimiento», un dibujo quieto.
+// ofrece «guardar imagen».
+
+import { campo } from './campo.js';
+import { icono, LADO, PAPEL, TINTA, RADIO } from './icono.js';
 
 const canvas = document.querySelector('.fondo');
 const g = canvas.getContext('2d');
 const pie = document.querySelector('.seed');
-const quieto = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const VIDA = 12000;       // ms que tarda un trazo en borrarse
 let PUNTAS = 26;          // puntas vivas como mucho: según el tamaño de la pantalla
@@ -23,66 +25,27 @@ const MAX = 60000;        // trazos guardados como mucho (anillo)
 const ALFA = .5;          // tinta como mucho: el texto se lee por encima
 const TONOS = 10;         // escalones de opacidad: un path por escalón
 
-// mulberry32: azar determinista a partir de un entero.
-const azar = (a) => () => {
-  a = a + 0x6D2B79F5 | 0;
-  let t = Math.imul(a ^ a >>> 15, 1 | a);
-  t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
-  return ((t ^ t >>> 14) >>> 0) / 4294967296;
-};
-const hash = (s) => [...s].reduce((h, c) => Math.imul(h ^ c.charCodeAt(0), 16777619), 2166136261) >>> 0;
-
-let rnd = Math.random, c;          // c: el carácter de la página
+let rnd = Math.random, c, rumbo;   // c: el carácter de la página; rumbo: su campo
+let mini;                          // el icono de la pestaña (abajo)
 let texto = '', iteracion = 0;
 let puntas = [];
 const trazos = new Float32Array(MAX * 5);   // x1 y1 x2 y2 t
 let n = 0, cabeza = 0;
 let w = 0, h = 0, tinta = '#111';
 
-// Ruido de valor en 3D (x, y, tiempo), suave, a partir de una tabla barajada
-// con la semilla. Entre 0 y 1.
-const tabla = new Uint8Array(512);
-const suave = (t) => t * t * (3 - 2 * t);
-function ruido(x, y, z) {
-  const X = Math.floor(x), Y = Math.floor(y), Z = Math.floor(z);
-  const u = suave(x - X), v = suave(y - Y), s = suave(z - Z);
-  const at = (i, j, k) => tabla[(tabla[(tabla[(X + i) & 255] + Y + j) & 255] + Z + k) & 255] / 255;
-  const mezcla = (a, b, t) => a + (b - a) * t;
-  const capa = (k) => mezcla(mezcla(at(0, 0, k), at(1, 0, k), u), mezcla(at(0, 1, k), at(1, 1, k), u), v);
-  return mezcla(capa(0), capa(1), s);
-}
-
 // El carácter sale de la semilla; la iteración solo cambia la tirada.
 export function semilla(nuevo = '', otra = false) {
   nuevo ||= 'anna carreras';
   iteracion = otra && nuevo === texto ? iteracion + 1 : 1;
   texto = nuevo;
-  rnd = azar(hash(texto) + iteracion);
-  for (let i = 0; i < 256; i++) tabla[i] = i;
-  for (let i = 255; i > 0; i--) { const j = rnd() * (i + 1) | 0; [tabla[i], tabla[j]] = [tabla[j], tabla[i]]; }
-  tabla.copyWithin(256, 0, 256);
-  c = {
-    paso: 1.6 + rnd() * 1.8,               // px por paso
-    escala: 1 / (120 + rnd() * 320),       // tamaño de los remolinos, en px
-    rizo: 1 + rnd() * 2.5,                 // cuánto gira el campo (vueltas)
-    deriva: 1 / (40000 + rnd() * 80000),   // cuánto cambia el campo con el tiempo
-    rama: .004 + rnd() * .02,              // probabilidad de ramificar por paso
-    recto: rnd() < .35,                    // ángulos rectos (circuito) o curva libre
-    vida: 150 + rnd() * 450,               // pasos que vive una punta
-    grueso: .9 + rnd() * 1,
-  };
+  ({ rnd, c, rumbo } = campo(texto, iteracion));
   puntas = [];
+  mini = icono(texto, iteracion, performance.now());
   if (pie) pie.textContent = `seed ${texto} · iteration ${iteracion} · draw again`;
-  if (quieto) estatico();
 }
 
 function nace(x, y, tope = PUNTAS) {
   if (puntas.length < tope) puntas.push({ x, y, edad: 0 });
-}
-
-function rumbo(x, y, t) {
-  const a = (ruido(x * c.escala, y * c.escala, t * c.deriva) - .5) * Math.PI * 2 * c.rizo;
-  return c.recto ? Math.round(a / (Math.PI / 2)) * Math.PI / 2 : a;
 }
 
 function traza(x1, y1, x2, y2, t) {
@@ -124,15 +87,6 @@ function dibuja(t) {
   g.globalAlpha = 1;
 }
 
-// Con «reducir movimiento»: unos cientos de pasos de golpe y nada más.
-function estatico() {
-  if (!w) return;
-  n = cabeza = 0;
-  const t = performance.now();
-  for (let i = 0; i < 400; i++) avanza(t);
-  dibuja(t);
-}
-
 function mide() {
   const dpr = Math.min(devicePixelRatio || 1, 2);
   w = innerWidth; h = innerHeight;
@@ -141,7 +95,6 @@ function mide() {
   canvas.height = Math.round(h * dpr);
   g.setTransform(dpr, 0, 0, dpr, 0, 0);
   tinta = getComputedStyle(document.documentElement).getPropertyValue('--trazo').trim() || tinta;
-  if (quieto) estatico();
 }
 
 mide();
@@ -149,23 +102,46 @@ addEventListener('resize', mide);
 semilla();
 pie?.addEventListener('click', () => semilla(texto, true));
 
-if (!quieto) {
-  // 30 pasos por segundo bastan para que se vea crecer, y gasta la mitad.
-  // Si los cuadros llegan tarde (móvil cansado), recupera hasta 4 pasos.
-  let antes = 0;
-  requestAnimationFrame(function bucle(t) {
-    const pasos = Math.min(4, Math.floor((t - antes) / 33));
-    if (pasos > 0) {
-      antes = t;
-      for (let i = 0; i < pasos; i++) avanza(t);
-      dibuja(t);
-    }
-    requestAnimationFrame(bucle);
-  });
-  let ultimo = 0;
-  addEventListener('pointermove', (e) => {
-    if (e.timeStamp - ultimo < 90) return;
-    ultimo = e.timeStamp;
-    nace(e.clientX, e.clientY, PUNTAS + 14);   // el cursor puede pasarse del tope
-  }, { passive: true });
-}
+// 30 pasos por segundo bastan para que se vea crecer, y gasta la mitad.
+// Si los cuadros llegan tarde (móvil cansado), recupera hasta 4 pasos.
+let antes = 0;
+requestAnimationFrame(function bucle(t) {
+  const pasos = Math.min(4, Math.floor((t - antes) / 33));
+  if (pasos > 0) {
+    antes = t;
+    for (let i = 0; i < pasos; i++) avanza(t);
+    dibuja(t);
+  }
+  requestAnimationFrame(bucle);
+});
+let ultimo = 0;
+addEventListener('pointermove', (e) => {
+  if (e.timeStamp - ultimo < 90) return;
+  ultimo = e.timeStamp;
+  nace(e.clientX, e.clientY, PUNTAS + 14);   // el cursor puede pasarse del tope
+}, { passive: true });
+
+// El icono de la pestaña, que se sigue dibujando con la pestaña de fondo, que
+// es cuando se ve: setInterval, porque ahí requestAnimationFrame no corre (el
+// navegador lo deja en una vez por segundo, e icono.js recupera los pasos).
+// Safari no cambia el icono: enseña el quieto del build.
+const ico = document.createElement('canvas');
+ico.width = ico.height = LADO;
+const ig = ico.getContext('2d');
+let link = document.querySelector('link[rel="icon"]');
+if (!link) { link = document.createElement('link'); link.rel = 'icon'; document.head.append(link); }
+setInterval(() => {
+  const t = performance.now();
+  mini.hasta(t);
+  ig.clearRect(0, 0, LADO, LADO);
+  ig.save();
+  ig.beginPath(); ig.roundRect(0, 0, LADO, LADO, RADIO); ig.fillStyle = PAPEL; ig.fill(); ig.clip();
+  ig.strokeStyle = TINTA; ig.lineWidth = mini.grueso; ig.lineCap = 'round';
+  for (const tr of mini.trazos) {
+    ig.globalAlpha = mini.alfa(tr, t);
+    ig.beginPath(); ig.moveTo(tr[0], tr[1]); ig.lineTo(tr[2], tr[3]); ig.stroke();
+  }
+  ig.restore();
+  link.type = 'image/png';
+  link.href = ico.toDataURL('image/png');
+}, 200);

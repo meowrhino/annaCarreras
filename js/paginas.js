@@ -32,11 +32,17 @@ export function md(s, slugs = new Set()) {
 // El texto sin marcas: para la description de Google y para leer el año del CV.
 export const plain = (s) => s.replace(LINK, '$1').replace(/\*/g, '').replace(/\s+/g, ' ').trim();
 
+// lists.work.projects: "slug", o { "project": "slug", "visible": false }, que es
+// un proyecto oculto: tiene su página (sin indexar) para mandarla en privado,
+// y no sale en la portada, en el sitemap ni en el «newer · older».
+export const slugs = (site) => site.lists.work.projects.map((x) => x.project ?? x);
+export const visibles = (site) => site.lists.work.projects.filter((x) => x.visible !== false).map((x) => x.project ?? x);
+
 const extLink = (url, text) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)} ↗</a>`;
 
-const img = (d, slug, n, loading = 'lazy') => {
+const img = (d, slug, n, loading = 'lazy', alt = '') => {
   const [width, height] = d.sizes?.[`${slug}/${n}`] || [];
-  return `<img${attrs({ src: `work/${slug}/img/${n}.webp`, alt: '', width, height, loading })}>`;
+  return `<img${attrs({ src: `work/${slug}/img/${n}.webp`, alt, width, height, loading })}>`;
 };
 
 /* ---------- work: todos los proyectos ---------- */
@@ -44,7 +50,7 @@ const img = (d, slug, n, loading = 'lazy') => {
 // Portadas grandes, del más nuevo al más viejo, con el título y el año
 // encima (v3ga). Apaisadas en ordenador, en vertical en el móvil.
 function work(d) {
-  return `<ul class="work">${d.site.lists.work.projects.map((slug, i) => {
+  return `<ul class="work">${visibles(d.site).map((slug, i) => {
     const p = d.projects[slug];
     const cover = p.cover ? img(d, slug, p.cover, i < 4 ? 'eager' : 'lazy') : '<span class="no-cover"></span>';
     return `<li><a href="${slug}/">${cover}<span class="label"><span class="name">${esc(p.title)}</span><span class="year">${p.year}</span></span></a></li>`;
@@ -125,22 +131,22 @@ const geek = (p, slugs) => p.geek?.length ? `<section class="geek"><h2>Racó gee
 // (La Diegol); así no carga el reproductor sin que nadie lo pida. Sin
 // vídeo, la portada sola. app.js cambia el botón por el reproductor.
 function hero(d, slug, p, video) {
-  const cover = p.cover ? img(d, slug, p.cover, 'eager') : '';
+  const cover = p.cover ? img(d, slug, p.cover, 'eager', p.title) : '';
   if (!video) return cover && `<figure class="hero">${cover}</figure>`;
   return `<button${attrs({ type: 'button', class: 'hero play', 'aria-label': 'Play ' + (video.title || 'video'), 'data-video': embedSrc(video, true) })}>${cover}<span class="play-icon">▶</span></button>`;
 }
 
 function project(d, slug) {
   const p = d.projects[slug];
-  const order = d.site.lists.work.projects;
-  const slugs = new Set(order);
+  const order = visibles(d.site);
+  const todos = new Set(slugs(d.site));
   const video = p.text.find((t) => isVideo(marca(t)));
-  const i = order.indexOf(slug);
+  const i = order.indexOf(slug);   // -1 si está oculto: sin «newer · older»
   const pager = (q, dir, cls) => q ? `<a href="${q}/" class="${cls}"><small>${dir}</small>${esc(d.projects[q].title)}</a>` : '';
   return `<article class="project">${hero(d, slug, p, video && marca(video))}`
     + `<header class="project-head"><h1>${esc(p.title)}</h1><p class="meta">${esc([p.year, (p.medium || []).join(', ')].join(' · '))}</p>${p.line ? `<p class="line">${esc(p.line)}</p>` : ''}</header>`
-    + body(d, slug, p.text.filter((t) => t !== video), slugs) + ficha(p, slugs) + geek(p, slugs)
-    + `<nav class="pager">${pager(order[i - 1], '← Newer', 'newer')}<a class="back" href="./">All projects</a>${pager(order[i + 1], 'Older →', 'older')}</nav></article>`;
+    + body(d, slug, p.text.filter((t) => t !== video), todos) + ficha(p, todos) + geek(p, todos)
+    + `<nav class="pager">${i < 0 ? '' : pager(order[i - 1], '← Newer', 'newer')}<a class="back" href="./">All projects</a>${i < 0 ? '' : pager(order[i + 1], 'Older →', 'older')}</nav></article>`;
 }
 
 /* ---------- about y contact ---------- */
@@ -175,10 +181,10 @@ export function pagina(ruta, d) {
   if (!ruta) return { page: 'work', title: name, description: d.site.description, html: work(d) };
   if (ruta === 'about') return { page: 'about', title: 'About — ' + name, description: plain(d.about.bio[0] || d.site.description), html: about(d) };
   if (ruta === 'contact') return { page: 'contact', title: 'Contact — ' + name, description: d.site.description, html: contact(d) };
-  const p = d.site.lists.work.projects.includes(ruta) && d.projects[ruta];
+  const p = slugs(d.site).includes(ruta) && d.projects[ruta];
   if (!p) return null;
   const first = p.text.find((t) => typeof t === 'string' && !marca(t) && !/^(#|> )/.test(t));
-  return { page: 'project', title: p.title + ' — ' + name, description: p.description || plain(first || d.site.description), cover: p.cover, html: project(d, ruta) };
+  return { page: 'project', title: p.title + ' — ' + name, description: p.description || plain(first || d.site.description), cover: p.cover, oculto: !visibles(d.site).includes(ruta), html: project(d, ruta) };
 }
 
 // Las que no son proyectos: un proyecto no se puede llamar así.

@@ -101,6 +101,10 @@ publicat; ✗ vermella, no s'ha publicat (punt 7).
 **Per treure'n un** de la web sense esborrar-lo, treu-lo d'aquesta llista: la
 carpeta es queda i no surt.
 
+**Per amagar-ne un** però poder enviar-ne l'enllaç en privat, a la llista en
+comptes del nom posa `{ "project": "ganxillo", "visible": false }`. Té la seva
+pàgina (`annacarreras.com/ganxillo/`), però no surt a la portada ni a Google.
+
 ---
 
 ## 4. Els camps d'un projecte

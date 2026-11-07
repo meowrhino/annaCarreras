@@ -33,6 +33,9 @@ Tiempo: unos 20 minutos, más lo que tarden los DNS.
 
 ## Antes
 
+- [ ] Al quedar con Anna: que mire si en el ordenador que va a traer están **VS Code** y
+      **git** (`git --version` en el Terminal). Si no, mejor que lo traiga instalado: git
+      en Mac, `xcode-select --install`; en Windows, `winget install --id Git.Git -e`.
 - [ ] `main` está al día y sin cambios a medias (`git status` limpio).
 - [ ] Anna tiene cuenta de GitHub. Su usuario: `<su-usuario>`.
 - [ ] Anna tiene cuenta de Cloudflare, y el dominio `annacarreras.com` (dónde
@@ -45,15 +48,20 @@ Tiempo: unos 20 minutos, más lo que tarden los DNS.
       fotos en jpg de antes, ~70 MB). Desde esta carpeta:
       ```bash
       rm -rf /tmp/anna && mkdir /tmp/anna && git archive HEAD | tar -x -C /tmp/anna
-      cd /tmp/anna && git init -b main && git add -A && git commit -m "La web de Anna Carreras"
+      cd /tmp/anna && rm CLAUDE.md TRASPASO.md DISEÑO.md
+      git init -b main && git add -A && git commit -m "La web de Anna Carreras"
       git push https://github.com/<su-usuario>/web.git main
       ```
       (si pide permiso, que nos añada antes como colaboradores, paso 3). Nada de `push --mirror`.
+- [ ] En su copia no van `CLAUDE.md`, `TRASPASO.md` ni `DISEÑO.md`: son nuestros y se quedan
+      en el repo de meowrhino. El README los nombra sin enlazarlos.
 
 ## 2. Cloudflare
 
 - [ ] En su Cloudflare: **Workers & Pages → Create → Import a repository** → `<su-usuario>/web`.
       Lo demás lo lee de `wrangler.jsonc` (instala sharp con `npm install`, build `node build/build.mjs`, sale `dist/`).
+- [ ] Mirar el primer build entero. Workers Builds no lee `engines` de `package.json`: si
+      falla por la versión de Node, **Settings → Build → Variables** → `NODE_VERSION` = `22`.
 - [ ] **Settings → Domains & Routes → Add → Custom domain**: `annacarreras.com` y `www.annacarreras.com`.
 - [ ] En **su** repo, `data/site.json` → `"url": "https://www.annacarreras.com"`. Commit y push
       a su repo (no al de meowrhino). Con eso deja de llevar `noindex`.

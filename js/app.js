@@ -11,7 +11,7 @@
 // los revisa con su esquema como el build, pinta con js/paginas.js (lo mismo
 // que escribe el build) y navega por #/ruta. Lo que esté mal sale en pantalla.
 import { semilla } from './fondo.js';
-import { pagina } from './paginas.js';
+import { pagina, slugs } from './paginas.js';
 import { leerJSON, validar } from './validar.js';
 
 const BUILT = document.documentElement.hasAttribute('data-built');
@@ -32,10 +32,8 @@ const rutaHash = () => location.hash.replace(/^#\/?/, '').replace(/\/$/, '');
 // El título se baraja: las letras pasan por caracteres al azar y se van
 // recomponiendo de izquierda a derecha (~0,5 s). Atzar que acaba en el nombre.
 const AZAR = 'abcdefghijklmnopqrstuvwxyz#/+*=<>';
-const quieto = matchMedia('(prefers-reduced-motion: reduce)');
 
 function baraja(node, texto) {
-  if (quieto.matches) return;
   cancelAnimationFrame(node.baraja);
   const t0 = performance.now();
   const paso = (t) => {
@@ -78,8 +76,14 @@ app.addEventListener('click', (e) => {
 
 /* ---------- la web construida: cada página, la suya ---------- */
 
+// Al volver atrás, la página donde estabas: cada entrada del historial guarda su
+// scroll (el navegador no puede: el contenido llega después).
+history.scrollRestoration = 'manual';
+let quieto;   // al parar de hacer scroll: replaceState en cada evento, el navegador lo frena
+addEventListener('scroll', () => { clearTimeout(quieto); quieto = setTimeout(() => history.replaceState({ y: scrollY }, ''), 150); }, { passive: true });
+
 let turno = 0;
-async function ve(ruta, push) {
+async function ve(ruta, push, y = 0) {
   const yo = ++turno;
   const url = BASE + (ruta ? encodeURIComponent(ruta) + '/' : '');
   try {
@@ -87,12 +91,12 @@ async function ve(ruta, push) {
     if (!res.ok && res.status !== 404) throw new Error(res.status);
     const doc = new DOMParser().parseFromString(await res.text(), 'text/html');
     if (yo !== turno) return;
-    if (push) history.pushState(null, '', url);
+    if (push) { clearTimeout(quieto); history.replaceState({ y: scrollY }, ''); history.pushState(null, '', url); }
     app.innerHTML = doc.getElementById('app').innerHTML;
     document.title = doc.title;
     marca(ruta, doc.body.dataset.page);
     anima();
-    scrollTo(0, 0);
+    scrollTo(0, y);
   } catch {
     location.href = url;   // sin red o algo raro: que cargue entera
   }
@@ -111,8 +115,7 @@ async function lee() {
     return d;
   };
   const [site, about] = await Promise.all([get('data/site.json', 'site'), get('data/about.json', 'about')]);
-  const slugs = site.lists.work.projects;
-  const projects = Object.fromEntries(await Promise.all(slugs.map(async (s) => [s, await get(`work/${s}/project.json`, 'project')])));
+  const projects = Object.fromEntries(await Promise.all(slugs(site).map(async (s) => [s, await get(`work/${s}/project.json`, 'project')])));
   return { site, about, projects };
 }
 
@@ -129,7 +132,7 @@ async function pinta() {
     anima();
     // el navegador no ve el disco: una foto que no está se sabe al pedirla
     app.querySelectorAll('img, video').forEach((m) => {
-      m.addEventListener('error', () => avisa(`no hay ningún ${m.getAttribute('src')}: revisa el número en work/${ruta}/project.json`), { once: true });
+      m.addEventListener('error', () => avisa(`no hay ningún ${m.getAttribute('src')}: revisa el número en work/${m.getAttribute('src').split('/')[1]}/project.json`), { once: true });
       m.loading = 'eager';
     });
   } catch (e) {
@@ -165,7 +168,7 @@ document.addEventListener('click', (e) => {
 if (BUILT) {
   const vieja = location.hash.startsWith('#/') && rutaHash();
   if (vieja !== false) location.replace(BASE + (vieja ? encodeURIComponent(vieja) + '/' : ''));
-  addEventListener('popstate', () => ve(rutaDe(location.href) ?? '', false));
+  addEventListener('popstate', (e) => ve(rutaDe(location.href) ?? '', false, e.state?.y));
   semilla(rutaDe(location.href) ?? '');
   anima();
 } else {

@@ -48,8 +48,9 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
   lectura (proyecto y about). En los márgenes, entero.
 - Tipografía: Instrument Sans 400 y 500, woff2 propias en `fonts/`.
 - Ligero: un canvas 2D, ~30 pasos por segundo, puntas según el tamaño de la
-  pantalla (16 a 50). Se para con la pestaña oculta. Con «reducir
-  movimiento», un dibujo quieto.
+  pantalla (16 a 50). Se para con la pestaña oculta. Sin
+  `prefers-reduced-motion` (receta, 2026-10-29): con «reducir movimiento» se
+  veía quieto.
 
 ## Falta
 

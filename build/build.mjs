@@ -14,8 +14,9 @@
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, pagina, RESERVADAS } from '../js/paginas.js';
+import { esc, pagina, RESERVADAS, slugs, visibles } from '../js/paginas.js';
 import { leerJSON, validar } from '../js/validar.js';
+import { icono } from '../js/icono.js';
 
 const ROOT = resolve(fileURLToPath(import.meta.url), '../..');
 const OUT = join(ROOT, 'dist');
@@ -32,7 +33,7 @@ const schema = (t) => JSON.parse(readFileSync(at('schema', `${t}.json`), 'utf8')
 const site = read('data/site.json');
 const about = read('data/about.json');
 const errors = [...validar(site, schema('site'), 'data/site.json'), ...validar(about, schema('about'), 'data/about.json')];
-const order = errors.length ? [] : site.lists.work.projects;
+const order = errors.length ? [] : slugs(site);   // todos, también los ocultos
 const projects = {};
 const used = {};   // las fotos que usa cada proyecto: "slug/3"
 for (const slug of order) {
@@ -127,12 +128,12 @@ function page(ruta, { robots } = {}) {
   html = swap(html, /<title>[^<]*<\/title>/, `<title>${esc(p.title)}</title>`);
   for (const [re, v] of [
     [/(<meta name="description" content=")[^"]*(")/, cut(p.description)],
-    [/(<meta name="robots" content=")[^"]*(")/, robots || (INDEX ? 'index,follow' : 'noindex')],
+    [/(<meta name="robots" content=")[^"]*(")/, robots || (INDEX && !p.oculto ? 'index,follow' : 'noindex')],
     [/(<link rel="canonical" href=")[^"]*(")/, url],
     [/(<meta property="og:url" content=")[^"]*(")/, url],
     [/(<meta property="og:title" content=")[^"]*(")/, p.title],
     [/(<meta property="og:description" content=")[^"]*(")/, cut(p.description)],
-    [/(<meta property="og:image" content=")[^"]*(")/, ogUrl(p.page === 'project' ? ruta : order.find((s) => projects[s].cover))],
+    [/(<meta property="og:image" content=")[^"]*(")/, ogUrl(p.page === 'project' ? ruta : visibles(site).find((s) => projects[s].cover))],
     [/(<p class="site-tagline">)[^<]*(<)/, site.description],
   ]) html = swap(html, re, (_, a, b) => `${a}${esc(v)}${b}`);
   html = swap(html, new RegExp(`(data-nav="${nav}")`), '$1 aria-current="page"');
@@ -158,10 +159,16 @@ for (const ruta of rutas) {
 writeFileSync(join(OUT, '404.html'), page('', { robots: 'noindex' }));
 writeFileSync(join(OUT, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${rutas.map((r) => `  <url><loc>${SITE}/${r ? encodeURIComponent(r) + '/' : ''}</loc></url>`).join('\n')}
+${rutas.filter((r) => !order.includes(r) || visibles(site).includes(r)).map((r) => `  <url><loc>${SITE}/${r ? encodeURIComponent(r) + '/' : ''}</loc></url>`).join('\n')}
 </urlset>
 `);
 writeFileSync(join(OUT, 'robots.txt'), INDEX ? `User-agent: *\nAllow: /\n\nSitemap: ${SITE}/sitemap.xml\n` : 'User-agent: *\nDisallow: /\n');
 writeFileSync(join(OUT, '.nojekyll'), '');
+// El icono quieto, el de la portada (en la pestaña lo cambia fondo.js por el vivo)
+const ico = icono('anna carreras', 1, 0).svg(0);
+writeFileSync(join(OUT, 'favicon.svg'), ico);
+if (sharp) await sharp(Buffer.from(ico), { density: 216 }).resize(180, 180).png().toFile(join(OUT, 'apple-touch-icon.png'))
+  .catch((e) => console.warn(`⚠ sin apple-touch-icon.png (${e.message})`));
 
-console.log(`✓ dist/: work, about, contact y ${order.length} proyectos${INDEX ? ` · se indexa (${SITE})` : ' · sin indexar'}`);
+const ocultos = order.length - visibles(site).length;
+console.log(`✓ dist/: work, about, contact y ${order.length} proyectos${ocultos ? ` (${ocultos} oculto${ocultos > 1 ? 's' : ''})` : ''}${INDEX ? ` · se indexa (${SITE})` : ' · sin indexar'}`);

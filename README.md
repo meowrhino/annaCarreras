@@ -7,12 +7,12 @@ a pelo, y un build en Node (solo `sharp`) que escribe `dist/`.
 <https://meowrhino.github.io/annaCarreras/> (sin indexar)
 
 El diseño es el **10** (portadas a sangre, el vídeo arriba, un dibujo que se
-hace en directo detrás); por qué y qué falta, en [`DISEÑO.md`](DISEÑO.md). Las
+hace en directo detrás); por qué y qué falta, en `DISEÑO.md`. Las
 pruebas anteriores, en
 [meowrhino/annaCarreras-disenos](https://github.com/meowrhino/annaCarreras-disenos).
 Lo que edita Anna: [`GUIA.md`](GUIA.md) (en catalán; los mensajes del build,
-en castellano). El traspaso: [`TRASPASO.md`](TRASPASO.md). Si el build falla:
-[`CLAUDE.md`](CLAUDE.md).
+en castellano). El traspaso: `TRASPASO.md`. Si el build falla:
+`CLAUDE.md`. (Esos tres son nuestros: no van en la copia de Anna.)
 
 ```
 data/site.json            lo general y lists.work: qué proyectos salen y en qué orden

@@ -301,7 +301,3 @@ cite { display: block; font-size: .9rem; font-style: normal; color: var(--dim); 
   .pager .older { grid-column: 2; }
   [data-page="work"] .site { min-height: 0; }
 }
-
-@media (prefers-reduced-motion: reduce) {
-  * { transition: none !important; }
-}

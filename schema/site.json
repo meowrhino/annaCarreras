@@ -26,11 +26,28 @@
             "projects": {
               "type": "array",
               "description": "Los proyectos que salen, en orden (del más nuevo al más viejo): el nombre de su carpeta en work/. Uno que no está aquí no sale.",
-              "items": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "El nombre de la carpeta, en minúsculas y con guiones." }
+              "items": {
+                "anyOf": [
+                  { "$ref": "#/$defs/slug" },
+                  {
+                    "type": "object",
+                    "required": ["project"],
+                    "additionalProperties": false,
+                    "description": "Un proyecto oculto: { \"project\": \"nombre\", \"visible\": false }. Tiene su página para mandarla en privado, sin Google, y no sale en la portada.",
+                    "properties": {
+                      "project": { "$ref": "#/$defs/slug" },
+                      "visible": { "type": "boolean", "description": "false: no sale en la portada ni en Google." }
+                    }
+                  }
+                ]
+              }
             }
           }
         }
       }
     }
+  },
+  "$defs": {
+    "slug": { "type": "string", "pattern": "^[a-z0-9-]+$", "description": "El nombre de la carpeta en work/, en minúsculas y con guiones." }
   }
 }

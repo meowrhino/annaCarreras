@@ -45,7 +45,7 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
           REGISTRO: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
-          GUIA: ${{ github.server_url }}/${{ github.repository }}/blob/main/${{ github.repository_owner == 'meowrhino' && 'CLAUDE.md' || 'GUIA.md#si-sale-en-rojo' }}
+          GUIA: ${{ github.server_url }}/${{ github.repository }}/blob/main/${{ github.repository_owner == 'meowrhino' && 'CLAUDE.md' || 'GUIA.md#7-si-surt-en-vermell' }}
         run: |
           errores=$(grep -E '^(✗|⚠)' build.log 2>/dev/null || tail -n 20 build.log 2>/dev/null || echo 'fallo antes del build: mira el registro')
           cuerpo=$(printf 'El push %s no se ha publicado: la web sigue como estaba.\n\n```\n%s\n```\n\n[El registro entero](%s) · [cómo arreglarlo](%s)' "${GITHUB_SHA::7}" "$errores" "$REGISTRO" "$GUIA")
