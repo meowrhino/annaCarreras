@@ -8,7 +8,8 @@ la casa: work/<slug>/project.json + img/1.webp, 2.webp…
 
 Solo trae lo que no tiene carpeta: lo que ya está en work/ se edita a mano y
 no se toca nunca. Las fotos bajan en su tamaño original y las pasa a webp
-scripts/webp.mjs (sharp: q85, como imgToWeb). Después, el slug va a mano en
+scripts/webp.mjs (sharp: q85, como imgToWeb); los gif animados y los mp4, a
+webm con su fotograma (ffmpeg, como videoToWeb). Después, el slug va a mano en
 data/site.json → lists → work, en su sitio (por año), y el "title" corto.
 
 Solo stdlib (y node para las fotos).

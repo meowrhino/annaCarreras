@@ -26,10 +26,18 @@ arregles (punt 7).
 3. Instal·la l'extensió **Live Server** (a l'esquerra, la icona dels
    quadradets, busca *Live Server*, **Install**). És per veure els canvis abans
    de pujar-los (punt 2).
+4. Digues-li a git qui ets (si no, el primer **Commit** es queda parat): a dalt,
+   **Terminal → New Terminal**, i escriu aquestes dues línies (cadascuna i
+   **Enter**), amb el correu del teu compte de GitHub:
+   ```
+   git config --global user.name "Anna Carreras"
+   git config --global user.email "el-teu-correu@exemple.com"
+   ```
 
 Per preparar les fotos, **imgToWeb**: https://meowrhino.github.io/imgToWeb/
-(les passa a `.webp`, a la mida justa, i les numera `1.webp, 2.webp…`).
-**Obre'l amb Chrome o Firefox**, no amb Safari: Safari no sap fer `.webp`.
+(les passa a `.webp`, a la mida justa, i les numera `1.webp, 2.webp…`). Per als
+vídeos i els gifs, **videoToWeb**: https://meowrhino.github.io/videoToWeb/ (punt 6).
+**Obre'ls amb Chrome o Firefox**, no amb Safari: Safari no sap fer `.webp`.
 
 ---
 
@@ -43,7 +51,7 @@ data/
 work/
   trossets/
     project.json    ← el text, l'any, la fitxa…
-    img/            ← les seves fotos: 1.webp, 2.webp… (i algun vídeo, 5.mp4)
+    img/            ← les seves fotos: 1.webp, 2.webp… (i algun vídeo: 5.webm i 5.poster.webp)
   arrels/
   …
 ```
@@ -148,9 +156,9 @@ pàgina (`annacarreras.com/ganxillo/`), però no surt a la portada ni a Google.
 |---|---|
 | `"Un text amb **negreta**, *cursiva* i un [enllaç](https://…)."` | un paràgraf |
 | `"[[3]]"` | la foto `img/3.webp` |
-| `"[[3 4 5]]"` | tres fotos juntes, en graella |
+| `"[[3 4 5]]"` | tres fotos juntes, en graella (si un número és un vídeo, surt en bucle i sense so) |
 | `"[[3 \| el peu de foto]]"` | una foto amb el seu peu |
-| `"[[video:5]]"` | el vídeo `img/5.mp4` |
+| `"[[video:5]]"` | el vídeo `img/5.webm`, amb so i botons |
 | `"[[vimeo:233722283 \| títol]]"` o `"[[youtube:bNONmWUsA70 \| títol]]"` | el vídeo; **el primer surt a dalt, gran** |
 | `"> la cita\nde qui"` | una cita (`\n` és un salt de línia) |
 | `"## Un títol"` | un títol |
@@ -182,6 +190,16 @@ amb `name` i `description` de `site.json`.
 - Al JSON, per número i entre cometes: `"3"` és `img/3.webp`.
 - Per canviar-ne una, substitueix el fitxer amb el mateix número.
 
+**Els vídeos i els gifs**, per **videoToWeb** amb *fotograma* i *numerar* marcats.
+Et dona `5.webm` (el vídeo) i `5.poster.webp` (la imatge que es veu mentre
+carrega): tots dos a `img/`, i al JSON `"5"`, com una foto.
+
+- On va una foto (`"[[5]]"`, `"[[4 5 6]]"`), el vídeo surt **en bucle i sense
+  so**, i es posa en marxa quan arriba a la pantalla. Per als gifs, el mode *loop*.
+- Amb **so i botons**: `"[[video:5]]"`, en 720p.
+- El fotograma només és imprescindible si el vídeo és la `cover` (la portada i el
+  que surt en compartir). Si no el vols, l'esborres i ja està.
+
 ---
 
 ## 7. Si surt en vermell
@@ -195,8 +213,9 @@ missatges són en castellà; volen dir:
   llista. O unes cometes sense tancar. Mira aquella línia i la d'abans.
 - **"no es un campo de aquí (¿mal escrito?)"**: un camp amb un altre nom
   (`"tittle"`). El missatge diu quins n'hi ha.
-- **"dice "7", y no hay ningún work/…/img/7.webp"**: una foto que no hi és.
-  Puja-la, o canvia el número.
+- **"dice "7", y no hay ningún work/…/img/7.webp"**: una foto (o un vídeo,
+  `7.webm`) que no hi és. Puja-la, o canvia el número. Si diu que hi ha un
+  `.mp4`, passa'l per videoToWeb.
 - **"lists dice "x", y no hay ningún work/x/project.json"**: el nom de la
   llista i el de la carpeta no són iguals.
 

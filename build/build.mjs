@@ -12,9 +12,10 @@
    ============================================================ */
 
 import { cpSync, existsSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync } from 'node:fs';
+import { createHash } from 'node:crypto';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { esc, pagina, RESERVADAS, slugs, visibles } from '../js/paginas.js';
+import { esc, numeros, pagina, RESERVADAS, slugs, visibles } from '../js/paginas.js';
 import { leerJSON, validar } from '../js/validar.js';
 import { icono } from '../js/icono.js';
 
@@ -35,7 +36,8 @@ const about = read('data/about.json');
 const errors = [...validar(site, schema('site'), 'data/site.json'), ...validar(about, schema('about'), 'data/about.json')];
 const order = errors.length ? [] : slugs(site);   // todos, también los ocultos
 const projects = {};
-const used = {};   // las fotos que usa cada proyecto: "slug/3"
+const used = {};   // la imagen quieta de cada número que se usa: "slug/3" → su .webp o su .poster.webp
+const media = {};  // qué hay de cada número: { webp, webm, poster }
 for (const slug of order) {
   const rel = `work/${slug}/project.json`;
   if (projects[slug]) { errors.push(`data/site.json: "${slug}" está dos veces en "lists"`); continue; }
@@ -45,24 +47,27 @@ for (const slug of order) {
   const before = errors.length;
   errors.push(...validar(p, schema('project'), rel));
   if (errors.length > before) continue;
-  // cada foto o vídeo que nombra, en su img/
-  const files = existsSync(at('work', slug, 'img')) ? readdirSync(at('work', slug, 'img')) : [];
-  const need = (n, ext, donde) => {
-    if (!files.includes(`${n}.${ext}`)) errors.push(`${rel}: ${donde} dice "${n}", y no hay ningún work/${slug}/img/${n}.${ext}`);
-    else if (ext === 'webp') used[`${slug}/${n}`] = at('work', slug, 'img', `${n}.webp`);
-  };
-  if (p.cover) need(p.cover, 'webp', '"cover"');
+  // una marca [[…]] mal escrita
   p.text.forEach((t, i) => {
-    const donde = `"text" (el párrafo ${i + 1})`;
-    if (typeof t === 'object' && !Array.isArray(t)) return (t.photos || []).forEach((n) => need(n, 'webp', donde));
     const m = typeof t === 'string' && /^\[\[([\s\S]+)\]\]$/.exec(t.trim());
-    if (!m) return;
-    const head = m[1].split(' | ')[0].trim();
-    if (/^video:/.test(head)) need(head.slice(6), 'mp4', donde);
-    else if (/^(youtube|vimeo|iframe):/.test(head)) return;
-    else if (/^\d+( \d+)*$/.test(head)) head.split(' ').forEach((n) => need(n, 'webp', donde));
-    else errors.push(`${rel}: ${donde}: "${t}" no es una marca que entienda. Fotos: [[3]] o [[3 4 5]]; vídeos: [[video:5]], [[youtube:ID | título]], [[vimeo:ID | título]]`);
+    const head = m && m[1].split(' | ')[0].trim();
+    if (m && !/^(video|youtube|vimeo|iframe):/.test(head) && !/^\d+( \d+)*$/.test(head))
+      errors.push(`${rel}: "text" (el párrafo ${i + 1}): "${t}" no es una marca que entienda. Fotos o vídeos en bucle: [[3]] o [[3 4 5]]; un vídeo con sonido: [[video:5]]; [[youtube:ID | título]], [[vimeo:ID | título]]`);
   });
+  // cada foto o vídeo que nombra, en su img/: N.webp, o N.webm de videoToWeb (con
+  // su fotograma N.poster.webp, que solo hace falta si es la portada)
+  const files = existsSync(at('work', slug, 'img')) ? readdirSync(at('work', slug, 'img')) : [];
+  const has = (f) => files.includes(f);
+  for (const { n, donde, video, portada } of numeros(p)) {
+    const h = media[`${slug}/${n}`] = { webp: has(`${n}.webp`), webm: has(`${n}.webm`), poster: has(`${n}.poster.webp`) };
+    const falta = (f) => `${rel}: ${donde} dice "${n}", y no hay ningún work/${slug}/img/${f}`;
+    if (has(`${n}.mp4`) && !h.webm) errors.push(`${falta(`${n}.webm`)}: hay un ${n}.mp4, pásalo por videoToWeb (https://meowrhino.github.io/videoToWeb/), que da ${n}.webm y ${n}.poster.webp`);
+    else if (video && !h.webm) errors.push(falta(`${n}.webm`));
+    else if (!h.webp && !h.webm) errors.push(`${falta(`${n}.webp`)} (ni ${n}.webm, si es un vídeo)`);
+    else if (portada && !h.webp && !h.poster) errors.push(`${rel}: "cover" es el vídeo ${n}.webm y le falta su fotograma work/${slug}/img/${n}.poster.webp: la portada y la imagen al compartir son una foto. Sale de videoToWeb, con «fotograma» marcado`);
+    const quieta = h.webp ? `${n}.webp` : h.poster ? `${n}.poster.webp` : null;
+    if (quieta) used[`${slug}/${n}`] = at('work', slug, 'img', quieta);
+  }
 }
 if (errors.length) fail(errors.join('\n✗ '));
 for (const d of readdirSync(at('work'))) {
@@ -92,7 +97,7 @@ if (sharp) {
     try {
       const m = await sharp(file).metadata();
       sizes[key] = [m.width, m.pageHeight || m.height];
-    } catch (e) { console.warn(`⚠ work/${key}.webp: sharp no la puede leer (${e.message})`); }
+    } catch (e) { console.warn(`⚠ ${file.slice(ROOT.length + 1)}: sharp no la puede leer (${e.message})`); }
   }
   for (const slug of order.filter((s) => projects[s].cover)) {
     const src = used[`${slug}/${projects[slug].cover}`];
@@ -106,11 +111,18 @@ if (sharp) {
     } catch (e) { console.warn(`⚠ work/${slug}: no sale la imagen al compartir (${e.message})`); }
   }
 }
-const ogUrl = (slug) => !slug ? '' : ogs.has(slug) ? `${SITE}/og/${slug}.jpg` : projects[slug].cover ? `${SITE}/work/${slug}/img/${projects[slug].cover}.webp` : '';
+const ogUrl = (slug) => !slug ? '' : ogs.has(slug) ? `${SITE}/og/${slug}.jpg` : used[`${slug}/${projects[slug].cover}`] ? `${SITE}/${used[`${slug}/${projects[slug].cover}`].slice(ROOT.length + 1)}` : '';
 
 /* ---------- las páginas ---------- */
 
-const datos = { site, about, projects, sizes };
+const datos = { site, about, projects, sizes, media };
+
+/* ?v=<hash> a css/ y js/: tras publicar, nadie se queda con el CSS o el JS
+   viejos junto al HTML nuevo (Pages los guarda 10 min, Cloudflare 1 h, por
+   _headers). Uno para todos, porque los módulos se importan entre ellos. */
+const hash = createHash('sha1');
+for (const d of ['css', 'js']) for (const f of readdirSync(at(d)).sort()) hash.update(f).update(readFileSync(at(d, f)));
+const V = `?v=${hash.digest('hex').slice(0, 8)}`;
 const TEMPLATE = readFileSync(at('index.html'), 'utf8');
 function swap(html, find, replace) {
   if (!find.test(html)) fail(`no encuentro ${find} en index.html: el build lo necesita para escribir las páginas.`);
@@ -125,6 +137,8 @@ function page(ruta, { robots } = {}) {
   let html = TEMPLATE;
   html = swap(html, /<html lang="en">/, '<html lang="en" data-built>');
   html = swap(html, /(<meta charset="utf-8">)/, `$1\n<base href="${BASE}/">`);
+  html = swap(html, /(href="css\/style\.css)(")/, `$1${V}$2`);
+  html = swap(html, /(src="js\/app\.js)(")/, `$1${V}$2`);
   html = swap(html, /<title>[^<]*<\/title>/, `<title>${esc(p.title)}</title>`);
   for (const [re, v] of [
     [/(<meta name="description" content=")[^"]*(")/, cut(p.description)],
@@ -146,6 +160,10 @@ function page(ruta, { robots } = {}) {
 rmSync(OUT, { recursive: true, force: true });
 mkdirSync(OUT, { recursive: true });
 for (const f of ['css', 'js', 'fonts', '_headers']) cpSync(at(f), join(OUT, f), { recursive: true, filter: (x) => !x.endsWith('.DS_Store') });
+for (const f of readdirSync(join(OUT, 'js'))) {
+  const js = join(OUT, 'js', f);
+  writeFileSync(js, readFileSync(js, 'utf8').replace(/(from\s+'\.\/[\w-]+\.js)'/g, `$1${V}'`));
+}
 for (const slug of order) if (existsSync(at('work', slug, 'img'))) cpSync(at('work', slug, 'img'), join(OUT, 'work', slug, 'img'), { recursive: true, filter: (x) => !x.endsWith('.DS_Store') });
 mkdirSync(join(OUT, 'og'), { recursive: true });
 for (const [slug, cached] of ogs) cpSync(cached, join(OUT, 'og', `${slug}.jpg`));

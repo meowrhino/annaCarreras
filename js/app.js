@@ -11,7 +11,7 @@
 // los revisa con su esquema como el build, pinta con js/paginas.js (lo mismo
 // que escribe el build) y navega por #/ruta. Lo que esté mal sale en pantalla.
 import { semilla } from './fondo.js';
-import { pagina, slugs } from './paginas.js';
+import { numeros, pagina, slugs } from './paginas.js';
 import { leerJSON, validar } from './validar.js';
 
 const BUILT = document.documentElement.hasAttribute('data-built');
@@ -45,7 +45,13 @@ function baraja(node, texto) {
   node.baraja = requestAnimationFrame(paso);
 }
 
+// Los vídeos en bucle (los de videoToWeb donde iría una foto) van al verse y
+// se paran al salir: así no bajan todos a la vez.
+const bucles = new IntersectionObserver((es) => es.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())));
+
 function anima() {
+  bucles.disconnect();
+  app.querySelectorAll('video[loop]').forEach((v) => bucles.observe(v));
   app.querySelectorAll('.work a').forEach((a) => {
     const name = a.querySelector('.name');
     const texto = name.textContent;
@@ -116,7 +122,19 @@ async function lee() {
   };
   const [site, about] = await Promise.all([get('data/site.json', 'site'), get('data/about.json', 'about')]);
   const projects = Object.fromEntries(await Promise.all(slugs(site).map(async (s) => [s, await get(`work/${s}/project.json`, 'project')])));
-  return { site, about, projects };
+  // El navegador no ve las carpetas: de cada número, se pide si hay foto o, si no, vídeo y fotograma.
+  const hay = async (f) => (await fetch(BASE + f, { method: 'HEAD', cache: 'no-store' })).ok;
+  const media = {}, faltan = [];
+  await Promise.all(Object.entries(projects).flatMap(([s, p]) => numeros(p).map(async ({ n, donde, video, portada }) => {
+    const f = `work/${s}/img/${n}`;
+    const h = media[`${s}/${n}`] = (await hay(`${f}.webp`)) && !video ? { webp: true } : { webp: false, webm: await hay(`${f}.webm`), poster: await hay(`${f}.poster.webp`) };
+    const de = `work/${s}/project.json: ${donde} dice "${n}", y no hay ningún`;
+    if (video && !h.webm) faltan.push(`${de} ${f}.webm (videoToWeb)`);
+    else if (!h.webp && !h.webm) faltan.push(`${de} ${f}.webp (ni ${n}.webm, si es un vídeo)`);
+    else if (portada && !h.webp && !h.poster) faltan.push(`work/${s}/project.json: "cover" es el vídeo ${n}.webm y le falta su fotograma ${f}.poster.webp (videoToWeb, con «fotograma»)`);
+  })));
+  if (faltan.length) throw new Error(faltan.join('\n✗ '));
+  return { site, about, projects, media };
 }
 
 async function pinta() {

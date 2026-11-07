@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "work/<nombre>/project.json: un proyecto",
-  "description": "work/<nombre>/project.json: un proyecto. Las fotos, en su carpeta img/ (1.webp, 2.webp… de imgToWeb), y aquí por número. VS Code lee este fichero (por el \"$schema\" de arriba del JSON) para autocompletar, explicar cada campo y subrayar lo que está mal; el build y la vista previa lo usan para revisar.",
+  "description": "work/<nombre>/project.json: un proyecto. Las fotos, en su carpeta img/ (1.webp, 2.webp… de imgToWeb; un vídeo, 5.webm y 5.poster.webp de videoToWeb), y aquí por número. VS Code lee este fichero (por el \"$schema\" de arriba del JSON) para autocompletar, explicar cada campo y subrayar lo que está mal; el build y la vista previa lo usan para revisar.",
   "type": "object",
   "required": ["title", "year", "text"],
   "additionalProperties": false,
@@ -13,10 +13,10 @@
     "medium": { "type": "array", "items": { "type": "string" }, "description": "El soporte, sale al lado del año: [\"installation\", \"generative\"]." },
     "line": { "type": "string", "description": "Una frase bajo el título. Sin este campo, nada." },
     "description": { "type": "string", "description": "Lo que sale en Google y al compartir. Sin este campo, el primer párrafo de «text»." },
-    "cover": { "$ref": "#/$defs/photo", "description": "La foto de la portada y de compartir: su número en img/ (\"1\")." },
+    "cover": { "$ref": "#/$defs/photo", "description": "La foto de la portada y de compartir: su número en img/ (\"1\"). Si es un vídeo, hace falta su fotograma (1.poster.webp)." },
     "text": {
       "type": "array",
-      "description": "El cuerpo, en orden, un párrafo por línea. Un párrafo puede ser: texto (con **negrita**, *cursiva* y [enlace](https://…)); \"## Título\"; \"> cita\" (y en las líneas siguientes, de quién); fotos, \"[[3]]\" o varias juntas \"[[3 4 5]]\" (con pie: \"[[3 | el pie]]\"); un vídeo de img/, \"[[video:5]]\"; uno de YouTube o Vimeo, \"[[youtube:ID | título]]\", \"[[vimeo:ID | título]]\" (el primero sale arriba, grande); una lista [ \"…\", \"…\" ]; o un tuit { \"tweet\": \"https://…\", … }.",
+      "description": "El cuerpo, en orden, un párrafo por línea. Un párrafo puede ser: texto (con **negrita**, *cursiva* y [enlace](https://…)); \"## Título\"; \"> cita\" (y en las líneas siguientes, de quién); fotos, \"[[3]]\" o varias juntas \"[[3 4 5]]\" (con pie: \"[[3 | el pie]]\"; si el número es un vídeo de videoToWeb, sale en bucle y sin sonido); un vídeo con sonido y botones, \"[[video:5]]\" (img/5.webm); uno de YouTube o Vimeo, \"[[youtube:ID | título]]\", \"[[vimeo:ID | título]]\" (el primero sale arriba, grande); una lista [ \"…\", \"…\" ]; o un tuit { \"tweet\": \"https://…\", … }.",
       "items": {
         "anyOf": [
           { "type": "string" },
@@ -44,7 +44,7 @@
     "geek": { "type": "array", "items": { "type": "string" }, "description": "Racó geek: cómo funciona, un párrafo por línea. Sin este campo, no sale." }
   },
   "$defs": {
-    "photo": { "type": "string", "pattern": "^[0-9]+$", "description": "El número de una foto de img/, entre comillas: \"3\" es img/3.webp." },
+    "photo": { "type": "string", "pattern": "^[0-9]+$", "description": "El número de una foto de img/, entre comillas: \"3\" es img/3.webp (o img/3.webm, si es un vídeo de videoToWeb)." },
     "tweet": {
       "type": "object",
       "required": ["tweet"],

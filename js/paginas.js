@@ -3,8 +3,10 @@
 // escribe en cada página de dist/, y la vista previa (app.js, sin build), que
 // lo pinta. Así se ven igual.
 //
-// d = { site, about, projects: { slug: project.json }, sizes: { "slug/3": [w, h] } }
-// (sizes solo en el build, que mide las fotos; en la vista previa no hay).
+// d = { site, about, projects: { slug: project.json }, sizes: { "slug/3": [w, h] },
+//       media: { "slug/3": { webp, webm, poster } } }
+// (sizes solo en el build, que mide las fotos; media, lo que hay en img/: lo
+// mira el build en el disco y la vista previa pidiéndolo).
 
 export const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
@@ -40,10 +42,39 @@ export const visibles = (site) => site.lists.work.projects.filter((x) => x.visib
 
 const extLink = (url, text) => `<a href="${esc(url)}" target="_blank" rel="noopener">${esc(text)} ↗</a>`;
 
+// Un número de img/ es una foto (3.webp) o un vídeo de videoToWeb (3.webm, y su
+// fotograma 3.poster.webp, que el cliente borra si no hace falta). Donde va una
+// foto, un vídeo va en bucle y sin sonido (app.js lo pone en marcha al verse);
+// donde hace falta una imagen quieta (la portada, al compartir), su fotograma.
+const hay = (d, slug, n) => d.media?.[`${slug}/${n}`] || { webp: true };
+const quieta = (d, slug, n) => { const h = hay(d, slug, n); return `work/${slug}/img/${n}${!h.webp && h.webm ? '.poster' : ''}.webp`; };
 const img = (d, slug, n, loading = 'lazy', alt = '') => {
   const [width, height] = d.sizes?.[`${slug}/${n}`] || [];
-  return `<img${attrs({ src: `work/${slug}/img/${n}.webp`, alt, width, height, loading })}>`;
+  return `<img${attrs({ src: quieta(d, slug, n), alt, width, height, loading })}>`;
 };
+const video = (d, slug, n, extra) => {
+  const [width, height] = d.sizes?.[`${slug}/${n}`] || [];
+  return `<video${attrs({ src: `work/${slug}/img/${n}.webm`, poster: hay(d, slug, n).poster && `work/${slug}/img/${n}.poster.webp`, width, height, playsinline: true, ...extra })}></video>`;
+};
+const media = (d, slug, n, loading = 'lazy', alt = '') => {
+  const h = hay(d, slug, n);
+  return h.webp || !h.webm ? img(d, slug, n, loading, alt) : video(d, slug, n, { muted: true, loop: true, preload: 'none', 'aria-label': alt || null });
+};
+
+// Los números de img/ que nombra un proyecto, y dónde: el build los revisa y la
+// vista previa los pide. video: un [[video:N]], con sonido y botones.
+export function numeros(p) {
+  const out = [];
+  if (p.cover) out.push({ n: p.cover, donde: '"cover"', portada: true });
+  p.text.forEach((t, i) => {
+    const donde = `"text" (el párrafo ${i + 1})`;
+    if (t && typeof t === 'object' && !Array.isArray(t)) return (t.photos || []).forEach((n) => out.push({ n, donde }));
+    const m = marca(t);
+    if (m?.kind === 'photos') m.nums.filter((n) => /^\d+$/.test(n)).forEach((n) => out.push({ n, donde }));
+    if (m?.kind === 'video') out.push({ n: m.ref, donde, video: true });
+  });
+  return out;
+}
 
 /* ---------- work: todos los proyectos ---------- */
 
@@ -77,13 +108,13 @@ function pieces(d, slug, item, slugs) {
   if (Array.isArray(item)) return [{ html: `<ul>${item.map((i) => `<li>${md(i, slugs)}</li>`).join('')}</ul>` }];
   if (typeof item === 'object') {
     const author = item.tweet.split('/')[3];
-    const media = item.photos ? `<div class="tweet-media">${item.photos.map((n) => img(d, slug, n)).join('')}</div>` : '';
+    const fotos = item.photos ? `<div class="tweet-media">${item.photos.map((n) => media(d, slug, n)).join('')}</div>` : '';
     const who = '@' + author + (item.date ? ' · ' + item.date : '');
-    return [{ kind: 'tweets', html: `<blockquote class="tweet">${item.text ? `<p>${esc(item.text)}</p>` : ''}${media}<a class="src" href="${esc(item.tweet)}" target="_blank" rel="noopener">${esc(who)} ↗</a></blockquote>` }];
+    return [{ kind: 'tweets', html: `<blockquote class="tweet">${item.text ? `<p>${esc(item.text)}</p>` : ''}${fotos}<a class="src" href="${esc(item.tweet)}" target="_blank" rel="noopener">${esc(who)} ↗</a></blockquote>` }];
   }
   const m = marca(item);
-  if (m?.kind === 'photos') return m.nums.map((n) => ({ kind: 'outputs', html: `<figure>${img(d, slug, n)}${m.caption ? `<figcaption>${md(m.caption, slugs)}</figcaption>` : ''}</figure>` }));
-  if (m?.kind === 'video') return [{ html: `<video src="work/${slug}/img/${esc(m.ref)}.mp4" controls="" preload="metadata" playsinline=""></video>` }];
+  if (m?.kind === 'photos') return m.nums.map((n) => ({ kind: 'outputs', html: `<figure>${media(d, slug, n)}${m.caption ? `<figcaption>${md(m.caption, slugs)}</figcaption>` : ''}</figure>` }));
+  if (m?.kind === 'video') return [{ html: video(d, slug, m.ref, { controls: true, preload: 'metadata' }) }];
   if (isVideo(m)) return [{ html: `<figure class="embed"><iframe${attrs({ src: embedSrc(m), title: m.title || m.kind, loading: 'lazy', allowfullscreen: true })}></iframe>${m.title ? `<figcaption>${esc(m.title)}</figcaption>` : ''}</figure>` }];
   if (m?.kind === 'iframe') return [{ html: `<figure class="embed"><iframe src="${esc(m.ref)}" loading="lazy"></iframe></figure>` }];
   const h = /^(#{1,6}) /.exec(item);
@@ -130,22 +161,22 @@ const geek = (p, slugs) => p.geek?.length ? `<section class="geek"><h2>Racó gee
 // Arriba, lo importante: el primer vídeo, con la portada hasta que se clica
 // (La Diegol); así no carga el reproductor sin que nadie lo pida. Sin
 // vídeo, la portada sola. app.js cambia el botón por el reproductor.
-function hero(d, slug, p, video) {
+function hero(d, slug, p, embed) {
+  if (!embed) return p.cover ? `<figure class="hero">${media(d, slug, p.cover, 'eager', p.title)}</figure>` : '';
   const cover = p.cover ? img(d, slug, p.cover, 'eager', p.title) : '';
-  if (!video) return cover && `<figure class="hero">${cover}</figure>`;
-  return `<button${attrs({ type: 'button', class: 'hero play', 'aria-label': 'Play ' + (video.title || 'video'), 'data-video': embedSrc(video, true) })}>${cover}<span class="play-icon">▶</span></button>`;
+  return `<button${attrs({ type: 'button', class: 'hero play', 'aria-label': 'Play ' + (embed.title || 'video'), 'data-video': embedSrc(embed, true) })}>${cover}<span class="play-icon">▶</span></button>`;
 }
 
 function project(d, slug) {
   const p = d.projects[slug];
   const order = visibles(d.site);
   const todos = new Set(slugs(d.site));
-  const video = p.text.find((t) => isVideo(marca(t)));
+  const embed = p.text.find((t) => isVideo(marca(t)));
   const i = order.indexOf(slug);   // -1 si está oculto: sin «newer · older»
   const pager = (q, dir, cls) => q ? `<a href="${q}/" class="${cls}"><small>${dir}</small>${esc(d.projects[q].title)}</a>` : '';
-  return `<article class="project">${hero(d, slug, p, video && marca(video))}`
+  return `<article class="project">${hero(d, slug, p, embed && marca(embed))}`
     + `<header class="project-head"><h1>${esc(p.title)}</h1><p class="meta">${esc([p.year, (p.medium || []).join(', ')].join(' · '))}</p>${p.line ? `<p class="line">${esc(p.line)}</p>` : ''}</header>`
-    + body(d, slug, p.text.filter((t) => t !== video), todos) + ficha(p, todos) + geek(p, todos)
+    + body(d, slug, p.text.filter((t) => t !== embed), todos) + ficha(p, todos) + geek(p, todos)
     + `<nav class="pager">${i < 0 ? '' : pager(order[i - 1], '← Newer', 'newer')}<a class="back" href="./">All projects</a>${i < 0 ? '' : pager(order[i + 1], 'Older →', 'older')}</nav></article>`;
 }
 

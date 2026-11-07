@@ -43,22 +43,25 @@ Tiempo: unos 20 minutos, más lo que tarden los DNS.
 
 ## 1. Su copia
 
-- [ ] En su cuenta, **New repository** → `web`, público y vacío (sin README ni licencia).
+- [ ] En su cuenta, **New repository** → `annacarreras`, público y vacío (sin README ni licencia).
+      El mismo nombre que el Worker (`name` de `wrangler.jsonc`): Cloudflare llama al proyecto
+      como el repo, y si no coinciden el deploy falla (oriol, 2026-10-30).
 - [ ] La copia va **sin historial** (la nuestra lleva los diseños descartados y las
       fotos en jpg de antes, ~70 MB). Desde esta carpeta:
       ```bash
       rm -rf /tmp/anna && mkdir /tmp/anna && git archive HEAD | tar -x -C /tmp/anna
-      cd /tmp/anna && rm CLAUDE.md TRASPASO.md DISEÑO.md
+      cd /tmp/anna && rm -r CLAUDE.md TRASPASO.md manus
       git init -b main && git add -A && git commit -m "La web de Anna Carreras"
-      git push https://github.com/<su-usuario>/web.git main
+      git push https://github.com/<su-usuario>/annacarreras.git main
       ```
       (si pide permiso, que nos añada antes como colaboradores, paso 3). Nada de `push --mirror`.
-- [ ] En su copia no van `CLAUDE.md`, `TRASPASO.md` ni `DISEÑO.md`: son nuestros y se quedan
+- [ ] En su copia no van `CLAUDE.md`, `TRASPASO.md` ni `manus/` (las notas del diseño): son nuestros y se quedan
       en el repo de meowrhino. El README los nombra sin enlazarlos.
 
 ## 2. Cloudflare
 
-- [ ] En su Cloudflare: **Workers & Pages → Create → Import a repository** → `<su-usuario>/web`.
+- [ ] En su Cloudflare: **Workers & Pages → Create → Import a repository** → `<su-usuario>/annacarreras`.
+      *Project name*: `annacarreras` (si pone otro, se cambia `name` en `wrangler.jsonc` de su copia antes del deploy).
       Lo demás lo lee de `wrangler.jsonc` (instala sharp con `npm install`, build `node build/build.mjs`, sale `dist/`).
 - [ ] Mirar el primer build entero. Workers Builds no lee `engines` de `package.json`: si
       falla por la versión de Node, **Settings → Build → Variables** → `NODE_VERSION` = `22`.
@@ -94,6 +97,10 @@ Con ella delante, siguiendo [GUIA.md](GUIA.md) ("0. Abans de començar"):
 
 - [ ] Clona **su** repositorio, no el de meowrhino, en una carpeta **fuera de Google Drive** (ni iCloud ni Dropbox).
       El repo ya lleva `.vscode/settings.json`: *Sync* pone sus commits encima de los nuestros sin preguntar.
+- [ ] Su nombre y su correo para git, antes del primer Commit (si no, VS Code se para con
+      "configure your user.name and user.email"). En la terminal de VS Code **de su ordenador**:
+      `git config --global user.name "Anna Carreras"` y `git config --global user.email "<su correo de GitHub>"`
+      (o el noreply, `<id>+<usuario>@users.noreply.github.com`; el id: `gh api users/<usuario> --jq .id`).
 - [ ] Live Server: **Open with Live Server** y ve la vista previa.
 - [ ] Un cambio pequeño (una coma en el about), Commit → Sync, y la boleta verde en GitHub.
 - [ ] El aviso: quitar una coma a propósito, subirlo, y que le llegue el correo de GitHub

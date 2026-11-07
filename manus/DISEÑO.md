@@ -23,7 +23,7 @@ pruebas anteriores (01–09, Rajoles incluida) están archivadas en
 - **Papel claro y tinta negra.** Nada de tema oscuro ni cajas: el contenido
   va directo sobre el fondo.
 - **Fondo**: un dibujo que se hace en directo
-  ([`js/fondo.js`](js/fondo.js)). Unas puntas siguen un campo de flujo (un
+  ([`js/fondo.js`](../js/fondo.js)). Unas puntas siguen un campo de flujo (un
   ruido suave que deriva con el tiempo), se ramifican y mueren, y lo que
   dibujan se borra a los 12 s. Nunca está quieto. Al pasar el ratón o el dedo
   nacen puntas nuevas. El canvas no recibe clics: no hay «guardar imagen».

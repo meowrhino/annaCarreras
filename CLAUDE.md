@@ -25,9 +25,13 @@ Cuando falla, la web se queda como estaba. Para arreglarlo:
      comillas sin cerrar, cerca de esa línea.
    - "no es un campo de aquí", "falta…", "no tiene la forma que toca": lo dice
      el esquema (`schema/<tipo>.json`); el mensaje lleva cómo va el campo.
-   - "dice "3", y no hay ningún work/<slug>/img/3.webp": una foto de
-     `cover`, de una marca `[[3]]` o de un tuit que no está en `img/`. Pregunta
-     si falta subirla; si no, quita el número y dilo.
+   - "dice "3", y no hay ningún work/<slug>/img/3.webp (ni 3.webm…)": una
+     foto o un vídeo de `cover`, de una marca `[[3]]`, `[[video:3]]` o de un
+     tuit que no está en `img/`. Pregunta si falta subirla; si no, quita el
+     número y dilo. Si hay un `3.mp4` (o un gif), se pasa por videoToWeb (o con
+     ffmpeg igual que videoToWeb: VP8; gif, modo loop): `3.webm` + `3.poster.webp`.
+   - "cover es el vídeo … y le falta su fotograma": la portada necesita
+     `N.poster.webp`; en el resto el fotograma es opcional.
    - "no es una marca que entienda": un párrafo `[[…]]` mal escrito; el
      mensaje lleva las que hay.
    - "lists dice …, y no hay ningún work/…/project.json": el slug de

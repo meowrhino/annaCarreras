@@ -41,7 +41,7 @@ body {
 
 a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: .2em; }
 img, video, iframe { display: block; max-width: 100%; }
-img { height: auto; }
+img, video { height: auto; }
 
 /* el dibujo: fijo detrás de todo y sin recibir clics */
 .fondo {
@@ -186,7 +186,7 @@ main { flex: 1; }
   padding: 0;
   border: 0;
 }
-.hero img, .hero iframe { width: 100%; height: 100%; object-fit: cover; border: 0; }
+.hero img, .hero video, .hero iframe { width: 100%; height: 100%; object-fit: cover; border: 0; }
 .hero.play { cursor: pointer; }
 .play-icon {
   position: absolute;
@@ -220,7 +220,7 @@ main { flex: 1; }
 .body h2, .body h3, .body h4 { font-weight: 500; margin: 2.5rem auto 1rem; }
 
 figure { margin: 0; }
-figure img, .body video { width: 100%; }
+figure img, figure video, .body video { width: 100%; }
 figcaption { color: var(--dim); font-size: .85rem; margin-top: .5rem; }
 
 .embed iframe { width: 100%; aspect-ratio: 16 / 9; border: 0; background: var(--ink); }
