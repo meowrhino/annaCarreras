@@ -227,6 +227,10 @@ figcaption { color: var(--dim); font-size: .85rem; margin-top: .5rem; }
 
 /* dos o más imágenes seguidas: a dos columnas, grandes */
 .outputs { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--gut); align-items: start; }
+/* si son impares, la última sola, centrada y del ancho de las demás (en el móvil van en una columna) */
+@media (min-width: 701px) {
+  .outputs > :last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc((100% - var(--gut)) / 2); }
+}
 
 blockquote { margin: 2.5rem auto; padding: 0; font-size: 1.5rem; line-height: 1.35; }
 blockquote p { font-size: inherit !important; }
