@@ -14,28 +14,46 @@ Cloudflare: el build, al no estar en GitHub, va a la raíz con el `url` de
 
 Tiempo: unos 20 minutos, más lo que tarden los DNS.
 
-## Antes: lo que se pierde del WordPress
+## 0. Pre-traspaso: una reunión antes, solo en esta web
 
-`annacarreras.com` es hoy su WordPress. Al llevar el dominio a la web nueva,
-**todo lo que no esté en `work/` deja de existir**. Antes de tocar el DNS:
+Anna ya tiene web (su WordPress en `annacarreras.com`) y al llevar el dominio a la
+nueva **todo lo que no esté en `work/` deja de existir**. Por eso, antes del traspaso,
+una reunión para decidir esto. Lo que hay que llevar:
 
-- [ ] Qué proyectos quiere: la web nueva tiene 13 de ~103 posts. Los que falten,
-      `python3 scripts/scrape.py <slug…>` (README) y a `data/site.json` → `lists`.
-- [ ] Los ficheros del WordPress a los que enlaza la web nueva, y que hay que
-      traer (a `work/<slug>/`) o apuntar a otro sitio:
-  - `tesi`: el PDF de la tesis, `/phd/TESI_art_generatiu_complexitat_Anna_Carreras.pdf`.
-  - `trossets`: la página de las copias impresas, `/trossets-prints/`.
-  - `about`: `/constelations/` (en el CV).
-- [ ] Una copia del WordPress entero (exportación de *Herramientas → Exportar* y
-      la carpeta `wp-content/uploads`), por si acaso.
-- [ ] Las direcciones de los proyectos son las mismas (`/<slug>/`): las que ya
-      circulan siguen valiendo para los que se traen.
+**Lo que se pierde del WordPress** (hoy la web nueva enlaza ahí):
+- [ ] **El PDF de la tesi** (`tesi`, "tesi pdf paper"): `/phd/TESI_art_generatiu_complexitat_Anna_Carreras.pdf`.
+      ¿Lo traemos a `work/tesi/` (un enlace a `work/tesi/tesi.pdf`), o lo sube a otro sitio (su
+      universidad, TDX)? Mirar cuánto pesa: más de 25 MiB no cabe en Cloudflare.
+- [ ] **Trossets prints** (`trossets`, "purchase" y "order your print here"): `/trossets-prints/`.
+      ¿Sigue vendiendo las copias? ¿Adónde lleva el enlace: una tienda, su correo, nada?
+- [ ] **Constelations** (en el CV, `data/about.json`): `/constelations/`. Además el enlace está
+      vacío (`[ ](…)`, sin texto: no se ve). ¿Se trae como proyecto, se enlaza a otra cosa o se quita?
+- [ ] **Qué proyectos más quiere**: la web nueva tiene 13 de ~103 posts. Que traiga la lista
+      (los slugs del WordPress); se traen con `python3 scripts/scrape.py <slug…>` (README).
+- [ ] **Una copia del WordPress entero**, por si acaso: *Herramientas → Exportar* y la carpeta
+      `wp-content/uploads` (que la baje ella o quien le lleve el hosting).
+
+**El dominio y el correo**:
+- [ ] **¿Dónde está registrado `annacarreras.com` y quién tiene acceso** a sus DNS?
+- [ ] **El correo `hola@annacarreras.com`** (sale en My City My Playground): ¿va con el dominio?
+      Al pasar los DNS a Cloudflare hay que copiar los registros **MX** (y SPF/DKIM) tal cual,
+      o se queda sin correo. Que diga quién le da el correo (el hosting del WordPress, Google…).
+
+**Para el día del traspaso**:
+- [ ] Que se haga **cuenta de GitHub** y nos pase el usuario, y **cuenta de Cloudflare**.
+- [ ] El **correo de su cuenta de GitHub** (para `git config`, paso 6).
+- [ ] Que traiga un ordenador con **VS Code** y **git** (`git --version` en el Terminal). Si no,
+      mejor instalado antes: git en Mac, `xcode-select --install`; en Windows,
+      `winget install --id Git.Git -e`.
+- [ ] Enseñarle la web (`meowrhino.github.io/annaCarreras/`) y el **proyecto oculto**: una página
+      que puede mandar en privado sin que salga en la portada ni en Google.
+
+Las direcciones de los proyectos son las del WordPress (`/<slug>/`): las que ya circulan
+siguen valiendo para los que se traen.
 
 ## Antes
 
-- [ ] Al quedar con Anna: que mire si en el ordenador que va a traer están **VS Code** y
-      **git** (`git --version` en el Terminal). Si no, mejor que lo traiga instalado: git
-      en Mac, `xcode-select --install`; en Windows, `winget install --id Git.Git -e`.
+- [ ] Lo del pre-traspaso (paso 0), decidido y hecho en `main`.
 - [ ] `main` está al día y sin cambios a medias (`git status` limpio).
 - [ ] Anna tiene cuenta de GitHub. Su usuario: `<su-usuario>`.
 - [ ] Anna tiene cuenta de Cloudflare, y el dominio `annacarreras.com` (dónde
@@ -65,6 +83,9 @@ Tiempo: unos 20 minutos, más lo que tarden los DNS.
       Lo demás lo lee de `wrangler.jsonc` (instala sharp con `npm install`, build `node build/build.mjs`, sale `dist/`).
 - [ ] Mirar el primer build entero. Workers Builds no lee `engines` de `package.json`: si
       falla por la versión de Node, **Settings → Build → Variables** → `NODE_VERSION` = `22`.
+- [ ] Si `annacarreras.com` no está aún en su Cloudflare: **Add a site**, y antes de cambiar los
+      nameservers en el registrador, comprobar que Cloudflare ha importado los **MX** (y SPF/DKIM)
+      del correo (paso 0). Si falta alguno, se copia a mano del DNS de ahora.
 - [ ] **Settings → Domains & Routes → Add → Custom domain**: `annacarreras.com` y `www.annacarreras.com`.
 - [ ] En **su** repo, `data/site.json` → `"url": "https://www.annacarreras.com"`. Commit y push
       a su repo (no al de meowrhino). Con eso deja de llevar `noindex`.

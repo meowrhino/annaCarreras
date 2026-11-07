@@ -68,6 +68,13 @@ function marca(ruta, page) {
     a.dataset.nav === nav ? a.setAttribute('aria-current', 'page') : a.removeAttribute('aria-current'));
 }
 
+// Un vídeo en bucle que el móvil no deja arrancar solo (el ahorro de batería de
+// iOS): al tocarlo, va.
+app.addEventListener('click', (e) => {
+  const v = e.target.closest('video[loop]');
+  if (v?.paused) v.play().catch(() => {});
+});
+
 // El vídeo de arriba: la portada hasta que se clica, y entonces el reproductor.
 app.addEventListener('click', (e) => {
   const box = e.target.closest('.hero.play');
