@@ -10,6 +10,7 @@
 // Sin data-built es la vista previa (Live Server, sin build): lee los JSON,
 // los revisa con su esquema como el build, pinta con js/paginas.js (lo mismo
 // que escribe el build) y navega por #/ruta. Lo que esté mal sale en pantalla.
+import { aparece } from './aparece.js';
 import { semilla } from './fondo.js';
 import { numeros, pagina, slugs } from './paginas.js';
 import { leerJSON, validar } from './validar.js';
@@ -50,6 +51,7 @@ function baraja(node, texto) {
 const bucles = new IntersectionObserver((es) => es.forEach((e) => (e.isIntersecting ? e.target.play().catch(() => {}) : e.target.pause())));
 
 function anima() {
+  aparece(app);
   bucles.disconnect();
   app.querySelectorAll('video[loop]').forEach((v) => bucles.observe(v));
   app.querySelectorAll('.work a').forEach((a) => {

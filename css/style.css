@@ -301,3 +301,16 @@ cite { display: block; font-size: .9rem; font-style: normal; color: var(--dim); 
   .pager .older { grid-column: 2; }
   [data-page="work"] .site { min-height: 0; }
 }
+
+/* Las cosas aparecen traídas por la corriente del fondo (js/aparece.js): cada
+   pieza llega desde aguas arriba (--dx, --dy), cuando le toca (--espera). Con
+   JS, #app se esconde hasta que aparece.js lo prepara; si ese JS no llega, a
+   los 3 s se ve igual. */
+html.js #app:not(.listo) { opacity: 0; animation: respaldo 0s 3s forwards; }
+@keyframes respaldo { to { opacity: 1; } }
+.aparece { opacity: 0; transform: translate(var(--dx, 0), var(--dy, 0)); }
+.aparece.ya {
+  opacity: 1;
+  transform: none;
+  transition: opacity .7s ease-out var(--espera, 0ms), transform 1s cubic-bezier(.2, .7, .2, 1) var(--espera, 0ms);
+}

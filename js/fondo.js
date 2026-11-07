@@ -33,6 +33,9 @@ const trazos = new Float32Array(MAX * 5);   // x1 y1 x2 y2 t
 let n = 0, cabeza = 0;
 let w = 0, h = 0, tinta = '#111';
 
+// El rumbo del campo de esta página en (x, y): lo usa aparece.js.
+export const corriente = (x, y, t) => rumbo(x, y, t);
+
 // El carácter sale de la semilla; la iteración solo cambia la tirada.
 export function semilla(nuevo = '', otra = false) {
   nuevo ||= 'anna carreras';
